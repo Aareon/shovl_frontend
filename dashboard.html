@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Shovl - My Websites</title>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+</head>
+<body>
+    <style type="text/css">
+      table {
+        border: 1px solid #3F6558;
+        margin-bottom: 20px;
+      }
+      th, td {
+        padding: 0 10px;
+      }
+    </style>
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="#">
+				<img src="http://blog.xebialabs.com/wp-content/uploads/2016/04/docker-logo.png" style="width:64px;height:64px>
+			</a>
+
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>Websites</a></li>
+                <li class="pure-menu-item"><a href="billing.html" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
+				<li class="pure-menu-item"><a href="support.html" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
+				<li class="pure-menu-item"><a href="profile.html" class="pure-menu-link"><i class="fa fa-user"></i><br>Profile</a></li>
+				<li class="pure-menu-item"><a href="login.html" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h2>Manage your websites</h2>			  
+			 <button id="bar1" class="button-large pure-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> New website</button> <a id="bar2">Balance:<a class="green"> 00.00 USD</a></a>
+        </div>
+        <div class="content">
+			
+			<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Domain name</th>
+            <th>RAM</th>
+            <th>Disk Space</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><i class="fa fa-wordpress web_icon"></i></td>
+            <td><a href="#">hostname.com</a></td>
+            <td>512 MB</td>
+            <td>10 GB</td>
+            <td>expires: 12/5/16</td>
+        </tr>
+    </tbody>
+		</div>
+    </div>
+</div>
+<script src="js/ui.js"></script>
+</body>
+</html>
