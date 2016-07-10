@@ -7,14 +7,14 @@ $("#signup").click(function(){
             data: JSON.stringify(account),
             processData: false,
             success: function(result) {
-                $("#error").text("Account created"); 
+                sweetAlert("Success", "Account created", "success");
                 setTimeout(function() 
 							{
 							window.location.assign("/app/login.html");
 							}, 1000);  
             },
             error: function(result) {
-				$("#error").text(result.responseText);
+				sweetAlert("Oops...", result.responseText, "error");
 			}
     });
 });

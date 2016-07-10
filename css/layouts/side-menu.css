@@ -46,6 +46,26 @@ The content `<div>` is where all your content goes.
     line-height: 1.6em;
 }
 
+.topbar {
+     margin: 0;
+     color: #333;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     padding-bottom: 20px;
+ }
+    .topbar h1 {
+        margin: 0.2em 0;
+        color: rgba(54, 59, 64);
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .topbar h2 {
+        font-weight: 300;
+        color: rgba(54, 59, 64);
+        padding: 0;
+        margin-top: 0;
+    }
+   
 .header {
      margin: 0;
      color: #333;
@@ -143,12 +163,40 @@ appears on the left side of the page.
 	font-size: 2em;
 }
 
-.green {
-	color: #2ecc71;
+.orange {
+	color: #e67e22;
 }
+
+.green {
+	color: #27ae60;
+}
+
+.button-error {
+     background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+#block1 {display:inline-block; float:left; margin-left: 50px;} 
+#block2 {display:inline-block; float:right; margin-left: 50px; line-height:25px; font-size:15px;} 
 
 .red {
 	color: #e74c3c;
+}
+
+p {    
+    font-weight: normal;
+    color: black;
+}
+
+p.thick {
+    background: rgb(242, 249, 255);
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.line-separator{
+ border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
 }
 
 #menu {

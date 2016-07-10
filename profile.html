@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
     <![endif]-->
@@ -27,7 +29,7 @@
     <div id="menu">
         <div class="pure-menu">
             <a class="pure-menu-heading" href="#">
-				<img src="http://blog.xebialabs.com/wp-content/uploads/2016/04/docker-logo.png" style="width:64px;height:64px>
+				<img src="icon.png" style="width:90px;height:64px>
 			</a>
 
             <ul class="pure-menu-list">
@@ -35,7 +37,7 @@
                 <li class="pure-menu-item"><a href="billing.html" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
 				<li class="pure-menu-item"><a href="support.html" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
 				<li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-user"></i><br>Profile</a></li>
-				<li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
+				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>
     </div>
@@ -53,21 +55,20 @@
         <div class="content">
 			<div id="profile_div">
             <h2 class="content-subhead">Your Details</h2>
-             <h2 id="profile_msg" class="content-subhead center"></h2>
             <form class="pure-form pure-form-aligned">
 				
 			<div class="pure-control-group">
-				<input id="fullname" class="pure-input-1 form-large" type="text" placeholder="Full Name">
+				<input id="fullname" class="pure-input-1 form-large" type="text" placeholder="Full Name" maxlength="32">
 			</div>
 			<div class="pure-control-group">
-				<input id="phonenumber" class="pure-input-1 form-large" type="text" placeholder="Phone Number">
+				<input id="phonenumber" class="pure-input-1 form-large" type="text" placeholder="Phone Number" maxlength="20">
 			</div>
 			<div class="pure-control-group">
-				<input id="address" class="pure-input-1 form-large" type="text" placeholder="Address">
+				<input id="address" class="pure-input-1 form-large" type="text" placeholder="Address" maxlength="64">
 			</div>
 			
 			<div class="pure-control-group">
-				<input id="city" class="pure-input-1 form-large" type="text" placeholder="City">
+				<input id="city" class="pure-input-1 form-large" type="text" placeholder="City" maxlength="32">
 			</div>
 			<div class="pure-control-group">
 			<select id="country" class="pure-input-1 form-large">
@@ -324,29 +325,29 @@
 			</select>
 			</div>
 			</form>
-			<button class="pure-button pure-button-primary button-large pure-u-5-5">Update Profile</button>
+			<button id="update-profile" class="pure-button pure-button-primary button-large pure-u-5-5">Update Profile</button>
 			</div>
 			
 			<div id="password_div">
 			 <h2 class="content-subhead">Change Password</h2>
-			 <h2 id="password_msg" class="content-subhead center"></h2>
             <form class="pure-form pure-form-aligned">
 			
 			<div class="pure-control-group">
-				<input class="pure-input-1 form-large" type="password" placeholder="Current Password">
+				<input id="password" class="pure-input-1 form-large" type="password" placeholder="Current Password" maxlength="48">
 			</div>
 			
 			<div class="pure-control-group">
-				<input class="pure-input-1 form-large" type="password" placeholder="New Password">
+				<input id="newpassword_1" class="pure-input-1 form-large" type="password" placeholder="New Password" maxlength="48">
 			</div>
 			<div class="pure-control-group">
-				<input class="pure-input-1 form-large" type="password" placeholder="Confirm New Password">
+				<input id="newpassword_2" class="pure-input-1 form-large" type="password" placeholder="Confirm New Password" maxlength="48">
 			</div>
 			</form>
-			<button class="pure-button pure-button-primary button-large pure-u-5-5">Change Password</button>
+			<button id="change-password" class="pure-button pure-button-primary button-large pure-u-5-5">Change Password</button>
 			</div>
         </div>
 </div>
+<script src="js/global.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/profile.js"></script>
 </body>

@@ -6,15 +6,16 @@ $("#login").click(function(){
             url: "/api/account/login",
             data: JSON.stringify(account),
             success: function(result) {
-				//Parse JSON, store into localstorage		
-                $("#error").text("Login Successful");
+				//Parse JSON, store into localstorage	
+				sweetAlert("Well done!", "Login Successful", "success");
                 var req = JSON.parse(result);
                 localStorage.setItem("token", req.token);
                 localStorage.setItem("expires", req.expires);
                 localStorage.setItem("refresh_token", req.refresh_token);
+                window.location.assign("/app/dashboard.html");
             },
             error: function(result) {
-				$("#error").text(result.responseText);
+				sweetAlert("Oops...", result.responseText, "error");
 			}
     });
 });
