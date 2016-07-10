@@ -64,6 +64,7 @@ $("#create-ticket").click(function(){
 });
 
 function mytickets(){
+			isloggedin();
             $.ajax({
             type:"GET",
             url: "/api/account/ticket",
@@ -88,6 +89,7 @@ function mytickets(){
 }
 
 function alltickets(){
+		   isloggedin();
             $.ajax({
             type:"GET",
             url: "/api/account/ticket/admin",
@@ -105,7 +107,7 @@ function alltickets(){
 					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
 					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
 					tr.append("<td>" + status(data[i].status) + "</td>");
-					$('#admin_body').append(tr);
+					$('#giftcode_body').append(tr);
 				}
 				
             }

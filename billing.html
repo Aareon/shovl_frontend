@@ -56,7 +56,17 @@
 			</div>
 		</div>
         <div class="content">
-		<div id="credit_div"></div>
+		<div id="credit_div">
+			 <h2 class="content-subhead">Add a Giftcode to your balance</h2>
+            <form class="pure-form pure-form-aligned">
+			
+			<div class="pure-control-group">
+				<input id="giftcode" class="pure-input-1 form-large" type="text" placeholder="Gift Code" maxlength="32">
+			</div>
+			</form>
+			
+			<button id="addfunds" class="pure-button pure-button-primary button-large pure-u-5-5">Apply Giftcode</button>
+		</div>
 		<div id="history_div">
 			<h2 class="content-subhead">Transaction History</h2>
 			<table class="pure-table pure-table-horizontal">
@@ -71,7 +81,19 @@
 			<tbody id="history_body"></tbody>    
 			</table>
 		</div>
-		<div id="invoice_div"></div>
+		<div id="admin_div"></div>
+			<h2 class="content-subhead">Giftcodes Information</h2>
+			<table class="pure-table pure-table-horizontal">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Amount</th>
+					<th>Used by</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="giftcode_body"></tbody>    
+			</table>
         </div>
     </div>
 </div>
