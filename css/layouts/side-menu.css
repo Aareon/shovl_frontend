@@ -178,6 +178,9 @@ appears on the left side of the page.
 #block1 {display:inline-block; float:left; margin-left: 50px;} 
 #block2 {display:inline-block; float:right; margin-left: 50px; line-height:25px; font-size:15px;} 
 
+.element1 {display:inline-block; float:left;} 
+.element2 {display:inline-block; float:right;} 
+
 .red {
 	color: #e74c3c;
 }

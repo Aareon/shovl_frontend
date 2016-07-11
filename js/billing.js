@@ -5,7 +5,8 @@ $(document).ready(function(){
     gethistory();
     balance();
     if(IsAdmin()){
-		$("#admin_tab").show();			
+		$("#admin_tab").show();		
+		getgiftcodes();	
 	}
 });
 
@@ -37,6 +38,10 @@ $("#admin_tab").click(function(){
     $("#admin_tab").addClass('pure-menu-selected');
 })
 
+$("#randomcode").click(function(){
+    $("#giftcode_admin").val(randomString(32));
+})
+
 $("#addfunds").click(function(){
 	var giftcode = {"code": $("#giftcode").val()}
 	        $.ajax({
@@ -52,6 +57,27 @@ $("#addfunds").click(function(){
 				gethistory();
 				balance();
 				sweetAlert("Well done!", "Your account has been credited", "success");
+				},
+			 error: function(result) {	
+				sweetAlert("Oops...", result.responseText, "error");
+				}
+    });	
+})
+
+$("#creategiftcode").click(function(){
+	var giftcode = {"code": $("#giftcode_admin").val(), "amount": parseFloat($("#amount_admin").val())}
+	        $.ajax({
+            type:"POST",
+            url: "/api/account/billing/giftcode/admin",
+            data: JSON.stringify(giftcode),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {	
+				$("#giftcode_body").html("");
+				getgiftcodes();	
+				sweetAlert("Well done!", "Gift code created", "success");
 				},
 			 error: function(result) {	
 				sweetAlert("Oops...", result.responseText, "error");
@@ -101,7 +127,7 @@ function getgiftcodes(){
 					tr.append("<td>" + data[i].amount+ "</a>" + "</td>");
 					tr.append("<td>" + data[i].usedby+"</a>" + "</td>");
 					tr.append("<td>" + status(data[i].status) + "</td>");
-					$('#admin_body').append(tr);
+					$('#giftcode_body').append(tr);
 				}
 				
             }
@@ -139,5 +165,6 @@ function status(code){
 		response = "<div class='red'>Used</div>";	
 	}else if(code == 1){
 		response = "<div class='green'>Unused</div>";	
+	}
 	return response;
 }
