@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	isloggedin();
     $("#ticket_div").hide();
     $("#admin_div").hide();
     $("#admin_tab").hide();

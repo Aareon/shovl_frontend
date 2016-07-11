@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	isloggedin();
     $("#history_div").hide();
     $("#admin_div").hide();
     $("#admin_tab").hide();
@@ -96,6 +97,9 @@ function gethistory(){
             },
             success: function(result) {	
 				var data = JSON.parse(result);
+				data.sort(function(x, y){
+					return y.timestamp - x.timestamp;
+				})
 				var p;
 				for (var i = 0; i < data.length; i++) {
 					p = $('<tr>');

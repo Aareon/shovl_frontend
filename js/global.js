@@ -4,7 +4,22 @@ function isloggedin(){
 			window.location.assign("/app/login.html");
 		}
 	if (localStorage.getItem("expires") < Math.floor(Date.now() / 1000)){
-			window.location.assign("/app/login.html");
+			var refresh = {refresh_token: localStorage.getItem("refresh_token")};
+			$.ajax({
+            type:"POST",
+            url: "/api/account/refreshtoken",
+            data: JSON.stringify(refresh),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {	
+				var data = JSON.parse(result);
+				localStorage.setItem("token", data.token);
+				localStorage.setItem("expires", data.expires);
+				localStorage.setItem("refresh_token", data.refresh_token);
+            },
+			});	
 	}	
 }
 
@@ -22,7 +37,7 @@ function logout(){
 	localStorage.removeItem("token");
 	localStorage.removeItem("expires");
 	localStorage.removeItem("refresh_token");
-	isloggedin();
+	window.location.assign("/app/login.html");
 }
 
 function convertTimestamp(timestamp) {
