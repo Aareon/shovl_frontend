@@ -19,6 +19,10 @@ function isloggedin(){
 				localStorage.setItem("expires", data.expires);
 				localStorage.setItem("refresh_token", data.refresh_token);
             },
+            error: function(result) {	
+				window.location.assign("/app/login.html");
+            },
+            async: false
 			});	
 	}	
 }
@@ -97,13 +101,13 @@ function IsAdmin() {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
-				localStorage.setItem("status", true);
+				status = true;
             },
             error: function(result) {
-				localStorage.setItem("status", false);	
-			}
-    });	
-    status = localStorage.getItem("status"); 	
+				stauts = false;	
+			},
+			async: false
+    });		
     return status;
 }
 

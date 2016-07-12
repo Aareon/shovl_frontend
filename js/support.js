@@ -108,7 +108,7 @@ function alltickets(){
 					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
 					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
 					tr.append("<td>" + status(data[i].status) + "</td>");
-					$('#giftcode_body').append(tr);
+					$('#admin_body').append(tr);
 				}
 				
             }

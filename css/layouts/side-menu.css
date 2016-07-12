@@ -2,6 +2,8 @@ body {
     color: #777;
 }
 
+li {list-style-type: none;}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
@@ -161,6 +163,11 @@ appears on the left side of the page.
 	margin-bottom:5px;
 	color: #3498db;
 	font-size: 2em;
+}
+
+.checkbox_icon {
+	color: #3498db;
+	font-size:12em;
 }
 
 .orange {
@@ -446,3 +453,27 @@ Hides the menu at `48em`, but modify this based on your app's needs.
       font-weight: bold;
     }
   }
+
+.deploy_block						{ position:relative; padding-left:60px; margin-bottom:30px; }
+.deploy_block_step					{ position:absolute; top:14px; left:0px; margin-top:-21px; height:42px; width:42px; border:1px solid #D2D8DC; color:#8a9399; font-size:16px; font-weight:500; text-align:center; line-height:40px; border-radius:26px; }
+
+@media all and (min-width:0px) and (max-width:767px)
+{
+	.deploy_block { padding-left: 0px; }
+	.deploy_block > h3 { padding-left: 60px; }
+}
+
+input.deploy_checkbox											{ display:none;}
+input.deploy_checkbox + label									{ position:relative; vertical-align:top; display:-webkit-inline-flex; display:inline-flex; -webkit-flex-direction:column; flex-direction:column; -webkit-justify-content:center; justify-content:center; -webkit-align-items:flex-start; align-items:flex-start; width:240px; height:89px; padding:0px 0px 0px 80px; margin:0px 18px 23px 0px; border:1px solid #e6e9eb; border-radius:3px; cursor:pointer; white-space:nowrap; }
+.deploy_checkbox_icon											{ position:absolute; top:50%; left:16px; margin-top:-24px; font-size:48px; line-height:48px; width:48px; transition:opacity ease-in .25s;}
+.deploy_checkbox_line1											{ display:block; width:160px; overflow:hidden; text-overflow:ellipsis; font-size:15px; padding-top:2px; line-height:23px; color:#363b40; font-weight:bold; }
+.deploy_checkbox_line2											{ display:block; width:160px; overflow:hidden; text-overflow:ellipsis; font-size:12px; opacity:.8;}
+input.deploy_checkbox + label:hover								{ border:1px solid #1e88e5; }
+input.deploy_checkbox:checked + label							{ border:1px solid #27ae60; }
+input.deploy_checkbox:disabled + label							{ display:none; }
+@media all and (min-width:0px) and (max-width:767px)
+{
+	input.deploy_checkbox + label { width: 100%; }
+	.deploy_checkbox_line1 { width: 100%; }
+	.deploy_checkbox_line2 { width: 100%; }
+}

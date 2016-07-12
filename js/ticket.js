@@ -2,6 +2,10 @@ $(document).ready(function(){
 	isloggedin();
 	getticket();
     getreplies();
+    $("#close").hide();
+    if(IsAdmin()){
+		$("#close").show();
+	}
 });
 
 function getticket(){
