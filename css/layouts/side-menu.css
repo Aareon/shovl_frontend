@@ -165,6 +165,17 @@ appears on the left side of the page.
 	font-size: 2em;
 }
 
+form {
+    padding-bottom: 10px;
+}
+
+.package_icon {
+	margin-top:5px;
+	margin-bottom:5px;
+	color: #27ae60;
+	font-size: 2em;
+}
+
 .checkbox_icon {
 	color: #3498db;
 	font-size:12em;

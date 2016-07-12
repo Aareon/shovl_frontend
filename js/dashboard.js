@@ -21,6 +21,11 @@ $("#admin_tab").click(function(){
     $("#admin_tab").addClass('pure-menu-selected');
 })
 
+$("#newwebsite").click(function(){	
+	window.location.assign("/app/create.html");
+});
+
+
 $("#createpackage").click(function(){	
 	 var package = {name: $("#package_name").val(), price: parseFloat($("#package_amount").val()), ram: parseInt($("#package_ram").val()), diskspace: parseInt($("#package_disk").val())};
 	 isloggedin();
