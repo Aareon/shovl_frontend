@@ -12,7 +12,10 @@ $("#login").click(function(){
                 localStorage.setItem("token", req.token);
                 localStorage.setItem("expires", req.expires);
                 localStorage.setItem("refresh_token", req.refresh_token);
-                window.location.assign("/app/dashboard.html");
+                setTimeout(function() 
+							{
+							window.location.assign("/app/dashboard.html");
+							},800); 
             },
             error: function(result) {
 				sweetAlert("Oops...", result.responseText, "error");

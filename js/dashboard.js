@@ -2,6 +2,9 @@ $(document).ready(function(){
 	isloggedin();
     $("#menubar").hide();
     $("#admin_div").hide();
+    getservices();
+    getpackages();
+    getcontainers();
     if(IsAdmin()){
 		$("#menubar").show();	
 	}
@@ -65,3 +68,95 @@ $("#createservice").click(function(){
 	  }
 		});	
 });
+
+function getcontainers(){
+	 isloggedin();
+         $.ajax({
+            type:"GET",
+            url: "/api/containers",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {	
+				var data = JSON.parse(result);
+				var p;
+				for (var i = 0; i < data.length; i++) {
+					if (data[i].serviceid != 0){
+					tr = $('<tr>');
+					tr.append("<td>" + "<i class='fa " + serviceiconfromid(data[i].serviceid) +  " web_icon'></i>" +"</td>");
+					tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
+					tr.append("<td>" + packagename(data[i].packageid) + "</td>");
+					tr.append("<td>" + status(data[i].status) + "</td>");
+					tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
+					$('#service_table').append(tr);
+					}
+				}
+            }
+    });	
+}
+
+function serviceiconfromid(id){
+	return serviceicon(localStorage.getItem("service_" + id));
+}
+
+function packagename(id){
+	return localStorage.getItem("package_"+id)
+}
+
+function getservices(){
+		   isloggedin();
+            $.ajax({
+            type:"GET",
+            url: "/api/services",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				for (var i = 0; i < data.length; i++) {
+					localStorage.setItem("service_"+data[i].id,data[i].name)
+				}				
+            }
+    });	
+}
+
+function getpackages(){
+		   isloggedin();
+            $.ajax({
+            type:"GET",
+            url: "/api/packages",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				for (var i = 0; i < data.length; i++) {
+					localStorage.setItem("package_"+data[i].id,data[i].name)
+				}
+				
+            }
+    });	
+}
+
+
+function link(id){
+		return '<a href="manage.html?id='+id+'">';
+}
+
+
+function status(code){
+	var response;
+	if(code == 0){
+		response = "<div class='red'>Stopped</div>";	
+	}else if(code == 1){
+		response = "<div class='green'>Running</div>";	
+	}else if(code == 2){
+		response = "<div class='orange'>Upgrading</div>";	
+	}else if(code == 3){
+		response = "<div class='red'>Suspended</div>";	
+	}
+	return response;
+}

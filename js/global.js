@@ -44,6 +44,17 @@ function logout(){
 	window.location.assign("/app/login.html");
 }
 
+function GiveDate(timestamp) {
+  var d = new Date(timestamp * 1000),	// Convert the passed timestamp to milliseconds
+		yyyy = d.getFullYear(),
+		mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
+		dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
+		time;		
+	time = yyyy + '-' + mm + '-' + dd;
+		
+	return time;
+}
+
 function convertTimestamp(timestamp) {
   var d = new Date(timestamp * 1000),	// Convert the passed timestamp to milliseconds
 		yyyy = d.getFullYear(),
@@ -118,6 +129,22 @@ function randomString(length) {
 $("#signout").click(function(){
      logout();
 });
+
+function serviceicon(name){
+	var icon;
+	if (name == "Wordpress"){
+			icon = "fa-wordpress";
+	}else if (name == "Joomla"){
+			icon = "fa-joomla";
+	}else if( name == "Owncloud"){
+			icon = "fa-cloud";
+	}else if( name == "Custom"){
+			icon = "fa-globe";
+	}else{
+		icon = "fa-question";
+	}	
+	return icon;
+}
 
 $(document).ready(function(){
 isloggedin();	

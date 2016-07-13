@@ -49,42 +49,34 @@ function getpackages(){
     });	
 }
 
-function serviceicon(name){
-	var icon;
-	if (name == "Wordpress"){
-			icon = "fa-wordpress";
-	}else if (name == "Joomla"){
-			icon = "fa-joomla";
-	}else if( name == "Owncloud"){
-			icon = "fa-cloud";
-	}else{
-		icon = "fa-question";
-	}	
-	return icon;
-}
-/*
-For create 
-if (document.getElementById('r1').checked) {
-  rate_value = document.getElementById('r1').value;
-}*/
-
 $("#createservice").click(function(){	
-	 var ticket = {id: parseInt($_GET("id"))};
+	if (!$("#hostname").val()){
+		sweetAlert("Oops...", "You forgot to enter your domain", "error");
+	}else if (document.querySelector('input[name="SID"]:checked') == null){
+		sweetAlert("Oops...", "You forgot to select a service", "error");
+	} else if (document.querySelector('input[name="PID"]:checked') == null){
+		sweetAlert("Oops...", "You forgot to select a package", "error");
+	} else{
+	 var order = {hostname: $("#hostname").val(), serviceid: parseInt(document.querySelector('input[name="SID"]:checked').value),packageid: parseInt(document.querySelector('input[name="PID"]:checked').value)};
 	 isloggedin();
          $.ajax({
             type:"POST",
-            url: "/api/account/ticket/close",
-            data: JSON.stringify(ticket),
+            url: "/api/containers/new",
+            data: JSON.stringify(order),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
-				$("#message").val("");
-				$("#message_box").html("");
-				getticket();
-				getreplies();
-				sweetAlert("Well done!", "Ticket has been closed", "success");				
-            }
+				sweetAlert("Well done!", "Your service has been created", "success");	
+				    setTimeout(function() 
+							{
+							window.location.assign("/app/dashboard.html");
+							}, 1000); 			
+            },
+			 error: function(result) {	
+				sweetAlert("Oops...", result.responseText, "error");
+				}
 		});	
+	}
 });
