@@ -10,7 +10,7 @@ $("#signup").click(function(){
                 sweetAlert("Success", "Account created", "success");
                 setTimeout(function() 
 							{
-							window.location.assign("/app/login.html");
+							window.location.assign("/app/login");
 							}, 1000);  
             },
             error: function(result) {

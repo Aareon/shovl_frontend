@@ -10,7 +10,7 @@ $("#reset").click(function(){
 				sweetAlert("Well done!", "We've sent a password reset link to you", "success");
                 setTimeout(function() 
 							{
-							window.location.assign("/app/login.html");
+							window.location.assign("/app/login");
 							}, 2000);  
             },
             error: function(result) {

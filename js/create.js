@@ -71,7 +71,7 @@ $("#createservice").click(function(){
 				sweetAlert("Well done!", "Your service has been created", "success");	
 				    setTimeout(function() 
 							{
-							window.location.assign("/app/dashboard.html");
+							window.location.assign("/app/dashboard");
 							}, 1000); 			
             },
 			 error: function(result) {	

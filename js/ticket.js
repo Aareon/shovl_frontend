@@ -35,7 +35,7 @@ function getticket(){
 				$('#message_box').append(p);
             },
             error: function(result) {
-				window.location.assign("/app/support.html");
+				window.location.assign("/app/support");
 			}
     });	
 }

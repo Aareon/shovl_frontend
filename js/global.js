@@ -1,7 +1,7 @@
 
 function isloggedin(){
 	if(localStorage.getItem("token") === null){
-			window.location.assign("/app/login.html");
+			window.location.assign("/app/login");
 		}
 	if (localStorage.getItem("expires") < Math.floor(Date.now() / 1000)){
 			var refresh = {refresh_token: localStorage.getItem("refresh_token")};
@@ -20,7 +20,7 @@ function isloggedin(){
 				localStorage.setItem("refresh_token", data.refresh_token);
             },
             error: function(result) {	
-				window.location.assign("/app/login.html");
+				window.location.assign("/app/login");
             },
             async: false
 			});	
@@ -41,7 +41,7 @@ function logout(){
 	localStorage.removeItem("token");
 	localStorage.removeItem("expires");
 	localStorage.removeItem("refresh_token");
-	window.location.assign("/app/login.html");
+	window.location.assign("/app/login");
 }
 
 function GiveDate(timestamp) {
@@ -129,6 +129,69 @@ function randomString(length) {
 $("#signout").click(function(){
      logout();
 });
+
+function website_status(code){
+	var response;
+	if(code == 0){
+		response = "<div class='red'>Stopped</div>";	
+	}else if(code == 1){
+		response = "<div class='green'>Running</div>";	
+	}else if(code == 2){
+		response = "<div class='orange'>Upgrading</div>";	
+	}else if(code == 3){
+		response = "<div class='red'>Suspended</div>";	
+	}
+	return response;
+}
+
+function serviceiconfromid(id){
+	return serviceicon(localStorage.getItem("service_" + id));
+}
+
+function servicename(id){
+	return localStorage.getItem("service_"+id)
+}
+
+function packagename(id){
+	return localStorage.getItem("package_"+id)
+}
+
+function getservices(){
+		   isloggedin();
+            $.ajax({
+            type:"GET",
+            url: "/api/services",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				for (var i = 0; i < data.length; i++) {
+					localStorage.setItem("service_"+data[i].id,data[i].name)
+				}				
+            }
+    });	
+}
+
+function getpackages(){
+		   isloggedin();
+            $.ajax({
+            type:"GET",
+            url: "/api/packages",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				for (var i = 0; i < data.length; i++) {
+					localStorage.setItem("package_"+data[i].id,data[i].name)
+				}
+				
+            }
+    });	
+}
 
 function serviceicon(name){
 	var icon;

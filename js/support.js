@@ -116,7 +116,7 @@ function alltickets(){
 }
 
 function link(id){
-		return '<a href="ticket.html?id='+id+'">';
+		return '<a href="ticket?id='+id+'">';
 }
 
 function status(code){

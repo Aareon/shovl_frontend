@@ -14,7 +14,7 @@ $("#login").click(function(){
                 localStorage.setItem("refresh_token", req.refresh_token);
                 setTimeout(function() 
 							{
-							window.location.assign("/app/dashboard.html");
+							window.location.assign("/app/dashboard");
 							},800); 
             },
             error: function(result) {
@@ -31,5 +31,3 @@ $('#pass_field').keypress(function (e) {
     return false;  
   }
 });   
-
-//if time.now > stamped time
