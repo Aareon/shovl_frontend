@@ -108,6 +108,10 @@ function(){
             },
             success: function(result) {	
                 swal("Deleted!", "Your website has been tasked to be deleted.", "success");
+                setTimeout(function() 
+							{
+							window.location.assign("/app/dashboard");
+							},200); 
             },
             error: function(result) {
 				sweetAlert("Oops...", result.responseText, "error");	

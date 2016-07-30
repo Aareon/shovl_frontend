@@ -18,7 +18,38 @@ $("#login").click(function(){
 							},800); 
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				if (result.responseText == "Please confirm your email to login"){
+					swal({
+					  title: "Oops...",
+					  text: "You haven't confirmed your email yet, please confirm your account before logging in",
+					  type: "error",
+					  showCancelButton: true,
+					  confirmButtonText: "Resend email",
+					  cancelButtonText: "Close",
+					  closeOnConfirm: false
+					},
+					function(){
+					  swal("Well Done!", result.responseText, "success");
+					  
+					       var account = {email: $("#email_field").val()};
+     
+							 $.ajax({
+								type:"POST",
+								url: "/api/resendconfirm",
+								data: JSON.stringify(account),
+								processData: false,
+								success: function(result) {
+									sweetAlert("Well done!", "We have resent the confirmation email, you can't find it, check your spam folder.", "success");
+								},
+								error: function(result) {
+									sweetAlert("Oops...", result.responseText, "error");
+								},
+						});
+					  
+					});
+				} else {
+					sweetAlert("Oops...", result.responseText, "error");
+				}
 			}
     });
 });

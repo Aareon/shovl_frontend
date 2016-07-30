@@ -41,6 +41,14 @@ function logout(){
 	localStorage.removeItem("token");
 	localStorage.removeItem("expires");
 	localStorage.removeItem("refresh_token");
+	 $.ajax({
+            type:"GET",
+            url: "/api/account/logout",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+    });		
 	window.location.assign("/app/login");
 }
 
