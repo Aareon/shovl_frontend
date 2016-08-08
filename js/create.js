@@ -4,6 +4,14 @@ $(document).ready(function(){
 	getpackages();
 });
 
+$("#torenable").click(function(){
+    if (document.getElementById('torenable').checked){
+		$("#domainbox").hide();
+	}else{
+		$("#domainbox").show();
+	}
+});
+
 function getservices(){
 		   isloggedin();
             $.ajax({
@@ -57,7 +65,7 @@ $("#createservice").click(function(){
 	} else if (document.querySelector('input[name="PID"]:checked') == null){
 		sweetAlert("Oops...", "You forgot to select a package", "error");
 	} else{
-	 var order = {hostname: $("#hostname").val(), serviceid: parseInt(document.querySelector('input[name="SID"]:checked').value),packageid: parseInt(document.querySelector('input[name="PID"]:checked').value)};
+	 var order = {hostname: $("#hostname").val(), serviceid: parseInt(document.querySelector('input[name="SID"]:checked').value),packageid: parseInt(document.querySelector('input[name="PID"]:checked').value), torenabled: document.getElementById('torenable').checked};
 	 isloggedin();
          $.ajax({
             type:"POST",

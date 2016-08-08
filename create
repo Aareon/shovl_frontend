@@ -57,18 +57,25 @@
 		<div id="header"></div>
         
         <div class="content"> 
+			<div id="domainbox">
 			<h2 class="content-subhead">Domain name</h2>
 			   <form class="pure-form pure-form-aligned">			
 			<div class="pure-control-group">
 				<input id="hostname" class="element1 form-large pure-u-1" type="text" placeholder="domain.com" maxlength="32">
 			</div>
-			</form>
-			
+			</form></div>
 				<h2 class="content-subhead">Select a Service Type:</h2>
 <div id="services" class="deploy_block" style="margin-top:10px;"></div>
 
+				<h2 class="content-subhead">Advanced Settings</h2>
+				<div id="advanced" class="deploy_block" style="margin-top:10px;">
+				<input class='deploy_checkbox' id='torenable' type='checkbox'></input>
+				<label for='torenable'><span class='deploy_checkbox_icon'><img src="tor.png"></span><span class='deploy_checkbox_line1'>Tor hidden service</label>
+				</div>
+				
 				<h2 class="content-subhead">Select a Package</h2>
 <div id="packages" class="deploy_block" style="margin-top:10px;"></div>
+
 
 <button id="createservice" class="pure-button pure-button-primary button-large pure-u-5-5">Create Service</button>
 </div>
