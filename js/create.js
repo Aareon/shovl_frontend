@@ -58,8 +58,10 @@ function getpackages(){
 }
 
 $("#createservice").click(function(){	
-	if (!$("#hostname").val()){
-		sweetAlert("Oops...", "You forgot to enter your domain", "error");
+	if(!document.getElementById('torenable').checked){
+		if (!$("#hostname").val()){
+			sweetAlert("Oops...", "You forgot to enter your domain", "error");
+		}	
 	}else if (document.querySelector('input[name="SID"]:checked') == null){
 		sweetAlert("Oops...", "You forgot to select a service", "error");
 	} else if (document.querySelector('input[name="PID"]:checked') == null){
