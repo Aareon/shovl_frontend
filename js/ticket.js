@@ -70,7 +70,7 @@ $("#reply").click(function(){
 	 var reply = {id: parseInt($_GET("id")), message: $("#message").val()};
 	 isloggedin();
 	 if(reply.message.length < 10){
-		sweetAlert("Oops...", "Your message must be atleast 20 characters long", "error");	
+		sweetAlert("Oops...", "Your message must be atleast 10 characters long", "error");	
 	  }else{
          $.ajax({
             type:"POST",
@@ -88,7 +88,7 @@ $("#reply").click(function(){
 				sweetAlert("Well done!", "Your reply was submitted", "success");				
             },
             error: function(result){
-				sweetAlert(result.reponseText, "error");	
+				sweetAlert("Oops...", result.reponseText, "error");	
 			}
 		});	
 	}
