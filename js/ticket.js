@@ -69,7 +69,7 @@ function getreplies(){
 $("#reply").click(function(){	
 	 var reply = {id: parseInt($_GET("id")), message: $("#message").val()};
 	 isloggedin();
-	 if(reply.message.length < 20){
+	 if(reply.message.length < 10){
 		sweetAlert("Oops...", "Your message must be atleast 20 characters long", "error");	
 	  }else{
          $.ajax({
@@ -86,7 +86,10 @@ $("#reply").click(function(){
 				getticket();
 				getreplies();
 				sweetAlert("Well done!", "Your reply was submitted", "success");				
-            }
+            },
+            error: function(result){
+				sweetAlert(result.reponseText, "error");	
+			}
 		});	
 	}
 });
