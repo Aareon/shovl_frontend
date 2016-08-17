@@ -87,9 +87,9 @@ $("#reply").click(function(){
 				getreplies();
 				sweetAlert("Well done!", "Your reply was submitted", "success");				
             },
-            error: function(result){
-				sweetAlert("Oops...", result.reponseText, "error");	
-			}
+            error: function(result) {
+				sweetAlert("Oops...", result.responseText, "error");
+			},
 		});	
 	}
 });
