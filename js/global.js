@@ -26,6 +26,22 @@ function isloggedin(){
 	}	
 }
 
+function logout(){
+	 $.ajax({
+            type:"GET",
+            url: "/api/account/logout",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", "566521");
+            },
+    });
+    localStorage.removeItem("token");
+	localStorage.removeItem("expires");
+	localStorage.removeItem("refresh_token");	
+		
+	window.location.assign("/app/login");
+}
+
 function success_color(element){
     $(element).removeClass('red');
     $(element).addClass('green');	
@@ -34,21 +50,6 @@ function success_color(element){
 function error_color(element){
     $(element).removeClass('green');
     $(element).addClass('red');	
-}
-
-function logout(){
-	localStorage.removeItem("token");
-	localStorage.removeItem("expires");
-	localStorage.removeItem("refresh_token");
-	 $.ajax({
-            type:"GET",
-            url: "/api/account/logout",
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-    });		
-	window.location.assign("/app/login");
 }
 
 function GiveDate(timestamp) {
