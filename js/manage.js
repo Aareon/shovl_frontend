@@ -36,7 +36,7 @@ $("#start").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
-                sweetAlert("Well done!", "Website Started", "success");
+                sweetAlert("Well done!", "Website has been tasked to start", "success");
             },
             error: function(result) {
 				sweetAlert("Oops...", result.responseText, "error");	
@@ -56,7 +56,7 @@ $("#stop").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
-                sweetAlert("Well done!", "Website Stopped", "success");
+                sweetAlert("Well done!", "Website has been tasked to stop", "success");
             },
             error: function(result) {
 				sweetAlert("Oops...", result.responseText, "error");	
@@ -95,7 +95,7 @@ swal({
   closeOnConfirm: false
 },
 function(){
-  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+  swal("Deleted!", "Your website has been tasked to be deleted.", "success");
   	  var container = {containerid: $_GET("id")};
 	 isloggedin();
          $.ajax({
