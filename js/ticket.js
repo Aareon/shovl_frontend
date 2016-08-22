@@ -24,8 +24,8 @@ function getticket(){
 				var p;
 				if (data.status == 2){
 					$("#message").hide();
-					$("#close").hide();
 					$("#reply").hide();
+					$("#close").hide();
 				}
 				p = $('<p>');
 				p.append('<p class="thick"><i class="fa fa-user"></i> '+data.creator+':</p>');

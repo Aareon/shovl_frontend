@@ -9,12 +9,8 @@
 <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="css/layouts/login.css">
-    <!--<![endif]-->
+<link rel="stylesheet" href="css/layouts/externalglobal.css">
+<link rel="stylesheet" href="css/layouts/login.css">
 </head>
 <body>
 
@@ -33,7 +29,7 @@
 			<space></space>
 			</form>			
 			<button id="login" class="pure-button pure-button-primary button-large pure-u-5-5">Log in</button>
-			<center><a href="signup">Sign up</a>  <a href="forgot">Forgot Password?</a></center>
+			<center><footer><a href="signup">Sign up</a>  <a href="forgot">Forgot Password?</a></footer></center>
         </div>
     </pep>
 <script src="js/login.js"></script>
