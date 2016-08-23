@@ -32,7 +32,7 @@ function logout(){
             url: "/api/account/logout",
             beforeSend: function (request)
             {
-                request.setRequestHeader("Authorization", "566521");
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
     });
     localStorage.removeItem("token");
