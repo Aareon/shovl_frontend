@@ -81,10 +81,14 @@
 			</div>
 			<div>
 				    <form action="/api/containers/zipload" method="post" enctype="multipart/form-data" target="uploadfile" >
-						Zip file of website: <input name="zipload" type="file" />
-						<input type="submit" name="submitBtn" value="Upload" />
+						Zip file of website: <input name="zipload" type="file" accept="application/zip,application/x-zip,application/x-zip-compressed" />
 					</form>
 			</div>
+
+<div class="progress">
+	<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar"></div>
+</div>
+<div id="status"></div>
 
 </div>
 <script src="js/global.js"></script>

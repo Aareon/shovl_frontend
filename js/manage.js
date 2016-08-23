@@ -2,6 +2,31 @@ $(document).ready(function(){
     getinfo();
 });
 
+$(function() {
+
+    var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
+
+    $('form').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            $('#progressbar').css('display', percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            $('#progressbar').css('display',percentVal);
+        },
+        complete: function(xhr) {
+            sweetAlert("Smashing!", "Website file upload complete", "success");	
+            },
+       error: function(result) {
+				sweetAlert("Oops...", "File upload has failed!", "error");	
+			},
+    });
+}); 
+
 function getinfo(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
