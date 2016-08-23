@@ -80,8 +80,8 @@
 			
 			</div>
 			<div>
-				    <form action="/api/zipload" method="post" enctype="multipart/form-data" target="uploadfile" >
-						Zip file of website: <input name="myfile" type="file" />
+				    <form action="/api/containers/zipload" method="post" enctype="multipart/form-data" target="uploadfile" >
+						Zip file of website: <input name="zipload" type="file" />
 						<input type="submit" name="submitBtn" value="Upload" />
 					</form>
 			</div>
