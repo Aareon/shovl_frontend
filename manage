@@ -51,8 +51,8 @@
 				<div class="header">
 					<div id="menubar" class="pure-menu pure-menu-horizontal">
 						<ul class="pure-menu-list">
-							<li id="manage_tab" class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Manage</a></li>
-							<li id="logs_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Logs</a></li>
+							<li id="manage_tab" class="pure-menu-item pure-menu-selected"><a href="javascript:void(0)" class="pure-menu-link">Manage</a></li>
+							<li id="logs_tab" class="pure-menu-item"><a href="javascript:void(0)" class="pure-menu-link">Logs</a></li>
 						</ul>
 					</div>
 				</div>

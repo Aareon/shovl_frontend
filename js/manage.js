@@ -1,6 +1,7 @@
+var logs_offset = 1
 $(document).ready(function(){
-	isloggedin();
   getinfo();
+  getmanagelogs(logs_offset);
 });
 
 $("#manage_tab").click(function(){
@@ -17,9 +18,9 @@ $("#logs_tab").click(function(){
     $("#logs_tab").addClass('pure-menu-selected');
 })
 
-function getmanagelogs(){
+function getmanagelogs(offset){
 	 isloggedin();
-	 var req = {containerid: $_GET("id")};
+	 var req = {containerid: $_GET("id"), offset: offset};
          $.ajax({
             type:"POST",
             url: "/api/containers/managelogs",
@@ -48,6 +49,11 @@ function getmanagelogs(){
             }
     });	
 }
+
+$("#loadmore").click(function(){
+	getmanagelogs(logs_offset+1);
+});
+
 
 function getinfo(){
     var container = {containerid: $_GET("id")};
