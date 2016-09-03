@@ -58,7 +58,7 @@ function getreplies(){
 					p = $('<p>');
 					p.append('<p class="thick"><i class="fa fa-user"></i> '+data[i].creator+':</p>');
 					p.append("<p>"+htmlEntities(data[i].message)+"</p>");
-					p.append("<p>"+convertTimestamp(data[i].create_stamp)+"</p>");
+					p.append("<p>"+"Sent: " + convertTimestamp(data[i].create_stamp)+"</p>");
 					p.append('<div class="line-separator"></div>');
 					$('#message_box').append(p);
 				}

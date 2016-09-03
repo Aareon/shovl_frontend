@@ -1,3 +1,5 @@
+var tickets_offset = 0
+var admin_offset = 0
 $(document).ready(function(){
 	isloggedin();
     $("#ticket_div").hide();
@@ -9,6 +11,83 @@ $(document).ready(function(){
 		$("#admin_tab").show();			
 	}
 });
+
+$("#loadmore").click(function(){
+	if ($("#loadmore").hasClass("pure-button-disabled") == false){		
+		tickets_offset += 1
+		mytickets(tickets_offset);
+	}
+});
+
+$("#adminloadmore").click(function(){
+	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){		
+		admin_offset += 1
+		alltickets(admin_offset);
+	}
+});
+
+function mytickets(offset){
+			isloggedin();
+			var req = {offset: offset};
+            $.ajax({
+            type:"GET",
+            url: "/api/account/ticket",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				var tr;
+				for (var i = 0; i < data.length; i++) {
+					tr = $('<tr/>');
+					tr.append("<td>" + data[i].id + "</td>");
+					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
+					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
+					tr.append("<td>" + status(data[i].status) + "</td>");
+					$('#ticket_body').append(tr);
+				}
+				if (data.canloadmore) {
+					 $("#loadmore").removeClass("pure-button-disabled")
+				}else {
+					 $("#loadmore").addClass("pure-button-disabled")
+				}
+            }
+    });	
+}
+
+function alltickets(offset){
+		   isloggedin();
+		   	var req = {offset: offset};
+            $.ajax({
+            type:"GET",
+            url: "/api/account/ticket/admin",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				var tr;
+				for (var i = 0; i < data.length; i++) {
+					tr = $('<tr/>');
+					tr.append("<td>" + data[i].id + "</td>");
+					tr.append("<td>" + data[i].creator+"</a>" + "</td>");
+					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
+					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
+					tr.append("<td>" + status(data[i].status) + "</td>");
+					$('#admin_body').append(tr);
+				}
+				if (data.canloadmore) {
+					 $("#adminloadmore").removeClass("pure-button-disabled")
+				}else {
+					 $("#adminloadmore").addClass("pure-button-disabled")
+				}
+            }
+    });	
+}
 
 //Tab system for menu
 $("#create_tab").click(function(){
@@ -43,7 +122,7 @@ $("#create-ticket").click(function(){
 	 isloggedin();
          $.ajax({
             type:"POST",
-            url: "/api/account/ticket",
+            url: "/api/account/ticket/new",
             data: JSON.stringify(ticket),
             beforeSend: function (request)
             {
@@ -61,59 +140,8 @@ $("#create-ticket").click(function(){
             error: function(result) {
 				sweetAlert("Oops...", result.responseText, "error");	
 	  }
+	});
 });
-});
-
-function mytickets(){
-			isloggedin();
-            $.ajax({
-            type:"GET",
-            url: "/api/account/ticket",
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            success: function(result) {
-				var data = JSON.parse(result);
-				var tr;
-				for (var i = 0; i < data.length; i++) {
-					tr = $('<tr/>');
-					tr.append("<td>" + data[i].id + "</td>");
-					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
-					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
-					tr.append("<td>" + status(data[i].status) + "</td>");
-					$('#ticket_body').append(tr);
-				}
-				
-            }
-    });	
-}
-
-function alltickets(){
-		   isloggedin();
-            $.ajax({
-            type:"GET",
-            url: "/api/account/ticket/admin",
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            success: function(result) {
-				var data = JSON.parse(result);
-				var tr;
-				for (var i = 0; i < data.length; i++) {
-					tr = $('<tr/>');
-					tr.append("<td>" + data[i].id + "</td>");
-					tr.append("<td>" + data[i].creator+"</a>" + "</td>");
-					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
-					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
-					tr.append("<td>" + status(data[i].status) + "</td>");
-					$('#admin_body').append(tr);
-				}
-				
-            }
-    });	
-}
 
 function link(id){
 		return '<a href="ticket?id='+id+'">';

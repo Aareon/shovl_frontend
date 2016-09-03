@@ -79,6 +79,7 @@
 				</thead>
 				<tbody id="ticket_body"></tbody>	
 			</table>
+				<center><button id="loadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
 		</div>
 			<div id="admin_div" style="display: none;">
 				<h2 class="content-subhead">All tickets</h2>			
@@ -94,6 +95,7 @@
 				</thead>
 				<tbody id="admin_body"></tbody>
 			</table>
+				<center><button id="adminloadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
 		</div>
         </div>
     </div>
