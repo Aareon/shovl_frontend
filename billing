@@ -99,7 +99,7 @@
 					<th>Status</th>
 				</tr>
 			</thead>
-			<tbody id="giftcode_body" style="display: none;"z></tbody>    
+			<tbody id="giftcode_body"></tbody>    
 			</table>			
 			</div>
         </div>
