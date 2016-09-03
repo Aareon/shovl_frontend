@@ -102,14 +102,12 @@ function gethistory(offset){
 				var data = JSON.parse(result);
 				var p;
 				for (var i = 0; i < data.bills.length; i++) {
-					if (data.manage_logs[i].serviceid != 0){
 						p = $('<tr>');
 						p.append('<td>'+data.bills[i].id+'</td>');
 						p.append("<td>"+htmlEntities(data.bills[i].description)+"</td>");
 						p.append("<td>"+convertTimestamp(data.bills[i].timestamp)+"</td>");
 						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
 						$('#history_body').append(p);
-					}
 				}
 				
 				if (data.canloadmore) {
@@ -122,8 +120,8 @@ function gethistory(offset){
 }
 
 $("#loadmore").click(function(){
-	logs_offset += 1
-	gethistory(logs_offset);
+	history_offset += 1
+	gethistory(history_offset);
 });
 
 function getgiftcodes(){
