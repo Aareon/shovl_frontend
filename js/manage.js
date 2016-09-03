@@ -24,7 +24,7 @@ function getmanagelog(offset){
          $.ajax({
             type:"POST",
             url: "/api/containers/managelogs",
-            data: JSON.stringify(container),
+            data: JSON.stringify(req),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
