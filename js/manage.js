@@ -1,7 +1,7 @@
 var logs_offset = 1
 $(document).ready(function(){
   getinfo();
-  getmanagelogs(logs_offset);
+  getmanagelog(logs_offset);
 });
 
 $("#manage_tab").click(function(){
@@ -18,7 +18,7 @@ $("#logs_tab").click(function(){
     $("#logs_tab").addClass('pure-menu-selected');
 })
 
-function getmanagelogs(offset){
+function getmanagelog(offset){
 	 isloggedin();
 	 var req = {containerid: $_GET("id"), offset: offset};
          $.ajax({
@@ -37,7 +37,7 @@ function getmanagelogs(offset){
 					tr = $('<tr>');
 					tr.append("<td>" + data.manage_logs[i].action + "</td>");
 					tr.append("<td>" + "expires: " +GiveDate(data.manage_logs[i].timestamp) + "</td>");
-					$('#service_table').append(tr);
+					$('#managelog_table').append(tr);
 					}
 				}
 				
@@ -51,7 +51,8 @@ function getmanagelogs(offset){
 }
 
 $("#loadmore").click(function(){
-	getmanagelogs(logs_offset+1);
+	logs_offset += 1
+	getmanagelog(logs_offset);
 });
 
 
