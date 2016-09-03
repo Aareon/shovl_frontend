@@ -76,6 +76,7 @@
 			</thead>
 			<tbody id="history_body"></tbody>    
 			</table>
+			<center><button id="loadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
 		</div>
 		<div id="admin_div" style="display: none;">
 			<h2 class="content-subhead">Make a Giftcode</h2>
@@ -99,7 +100,7 @@
 				</tr>
 			</thead>
 			<tbody id="giftcode_body" style="display: none;"z></tbody>    
-			</table>
+			</table>			
 			</div>
         </div>
     </div>

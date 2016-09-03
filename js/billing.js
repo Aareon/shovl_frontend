@@ -1,13 +1,14 @@
+var history_offset = 0
 $(document).ready(function(){
 	isloggedin();
     $("#history_div").hide();
     $("#admin_div").hide();
     $("#admin_tab").hide();
-    gethistory();
+    gethistory(history_offset);
     balance();
     if(IsAdmin()){
+		getgiftcodes();
 		$("#admin_tab").show();		
-		getgiftcodes();	
 	}
 });
 
@@ -86,33 +87,44 @@ $("#creategiftcode").click(function(){
     });	
 })
 
-function gethistory(){
+function gethistory(offset){
 	 isloggedin();
+	 var req = {offset: offset};
          $.ajax({
-            type:"GET",
+            type:"POST",
             url: "/api/account/billing/history",
+            data: JSON.stringify(req),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
 				var data = JSON.parse(result);
-				data.sort(function(x, y){
-					return y.timestamp - x.timestamp;
-				})
 				var p;
-				for (var i = 0; i < data.length; i++) {
-					p = $('<tr>');
-					p.append('<td>'+data[i].id+'</td>');
-					p.append("<td>"+htmlEntities(data[i].description)+"</td>");
-					p.append("<td>"+convertTimestamp(data[i].timestamp)+"</td>");
-					p.append("<td>"+credit_text(data[i].amount)+"</td>");
-					$('#history_body').append(p);
+				for (var i = 0; i < data.bills.length; i++) {
+					if (data.manage_logs[i].serviceid != 0){
+						p = $('<tr>');
+						p.append('<td>'+data.bills[i].id+'</td>');
+						p.append("<td>"+htmlEntities(data.bills[i].description)+"</td>");
+						p.append("<td>"+convertTimestamp(data.bills[i].timestamp)+"</td>");
+						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
+						$('#history_body').append(p);
+					}
+				}
+				
+				if (data.canloadmore) {
+					 $("#loadmore").removeClass("pure-button-disabled")
+				}else {
+					 $("#loadmore").addClass("pure-button-disabled")
 				}
             }
     });	
 }
 
+$("#loadmore").click(function(){
+	logs_offset += 1
+	gethistory(logs_offset);
+});
 
 function getgiftcodes(){
             $.ajax({
