@@ -1,4 +1,4 @@
-/*function isloggedin(){
+function isloggedin(){
 	if(localStorage.getItem("token") === null){
 			window.location.assign("/app/login");
 		}
@@ -21,7 +21,7 @@
             async: false
 			});	
 	}	
-}*/
+}
 
 function logout(){
 	 $.ajax({
