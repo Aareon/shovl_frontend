@@ -40,12 +40,12 @@ function mytickets(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var tr;
-				for (var i = 0; i < data.length; i++) {
+				for (var i = 0; i < data.tickets.length; i++) {
 					tr = $('<tr/>');
-					tr.append("<td>" + data[i].id + "</td>");
-					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
-					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
-					tr.append("<td>" + status(data[i].status) + "</td>");
+					tr.append("<td>" + data.tickets[i].id + "</td>");
+					tr.append("<td>" + link(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
+					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
+					tr.append("<td>" + status(data.tickets[i].status) + "</td>");
 					$('#ticket_body').append(tr);
 				}
 				if (data.canloadmore) {
@@ -71,13 +71,13 @@ function alltickets(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var tr;
-				for (var i = 0; i < data.length; i++) {
+				for (var i = 0; i < data.tickets.length; i++) {
 					tr = $('<tr/>');
-					tr.append("<td>" + data[i].id + "</td>");
-					tr.append("<td>" + data[i].creator+"</a>" + "</td>");
-					tr.append("<td>" + link(data[i].id)+htmlEntities(data[i].subject)+"</a>" + "</td>");
-					tr.append("<td>" + convertTimestamp(data[i].create_stamp) + "</td>");
-					tr.append("<td>" + status(data[i].status) + "</td>");
+					tr.append("<td>" + data.tickets[i].id + "</td>");
+					tr.append("<td>" + data.tickets[i].creator+"</a>" + "</td>");
+					tr.append("<td>" + link(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
+					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
+					tr.append("<td>" + status(data.tickets[i].status) + "</td>");
 					$('#admin_body').append(tr);
 				}
 				if (data.canloadmore) {
