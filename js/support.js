@@ -30,7 +30,7 @@ function mytickets(offset){
 			isloggedin();
 			var req = {offset: offset};
             $.ajax({
-            type:"GET",
+            type:"POST",
             url: "/api/account/ticket",
             data: JSON.stringify(req),
             beforeSend: function (request)
@@ -61,7 +61,7 @@ function alltickets(offset){
 		   isloggedin();
 		   	var req = {offset: offset};
             $.ajax({
-            type:"GET",
+            type: "POST",
             url: "/api/account/ticket/admin",
             data: JSON.stringify(req),
             beforeSend: function (request)
