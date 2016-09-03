@@ -43,6 +43,7 @@ function getmanagelog(offset){
 				
 				if (data.canloadmore) {
 					 $("#loadmore").removeClass("pure-button-disabled")
+					 alert("Can load more c:")
 				}else {
 					 $("#loadmore").addClass("pure-button-disabled")
 				}
