@@ -51,8 +51,10 @@ function getmanagelog(offset){
 }
 
 $("#loadmore").click(function(){
-	logs_offset += 1
-	getmanagelog(logs_offset);
+	if ($("#loadmore").hasClass("pure-button-disabled") == false){	
+		logs_offset += 1
+		getmanagelog(logs_offset);
+	}
 });
 
 

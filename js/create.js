@@ -6,9 +6,9 @@ $(document).ready(function(){
 
 $("#torenable").click(function(){
     if (document.getElementById('torenable').checked){
-		$("#domainbox").hide();
+		$("#domainbox").prop('disabled', true);
 	}else{
-		$("#domainbox").show();
+		$("#domainbox").removeProp('disabled');
 	}
 });
 

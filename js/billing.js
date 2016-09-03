@@ -7,8 +7,8 @@ $(document).ready(function(){
     gethistory(history_offset);
     balance();
     if(IsAdmin()){
-		getgiftcodes();
 		$("#admin_tab").show();		
+		getgiftcodes();
 	}
 });
 
@@ -120,8 +120,10 @@ function gethistory(offset){
 }
 
 $("#loadmore").click(function(){
-	history_offset += 1
-	gethistory(history_offset);
+	if ($("#loadmore").hasClass("pure-button-disabled") == false){		
+		history_offset += 1
+		gethistory(history_offset);
+	}
 });
 
 function getgiftcodes(){
