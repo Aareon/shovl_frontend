@@ -1,4 +1,4 @@
-var logs_offset = 1
+var logs_offset = 0
 $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
@@ -36,7 +36,7 @@ function getmanagelog(offset){
 					if (data.manage_logs[i].serviceid != 0){
 					tr = $('<tr>');
 					tr.append("<td>" + data.manage_logs[i].action + "</td>");
-					tr.append("<td>" + "expires: " +GiveDate(data.manage_logs[i].timestamp) + "</td>");
+					tr.append("<td>" + GiveDate(data.manage_logs[i].timestamp) + "</td>");
 					$('#managelog_table').append(tr);
 					}
 				}
