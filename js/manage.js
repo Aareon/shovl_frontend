@@ -32,7 +32,7 @@ function getmanagelog(offset){
             success: function(result) {	
 				var data = JSON.parse(result);
 				var p;
-				for (var i = 0; i < data.manage_logs[i].length; i++) {
+				for (var i = 0; i < data.manage_logs.length; i++) {
 					if (data.manage_logs[i].serviceid != 0){
 					tr = $('<tr>');
 					tr.append("<td>" + data.manage_logs[i].action + "</td>");
