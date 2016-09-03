@@ -7,14 +7,19 @@ $("#login").click(function(){
             data: JSON.stringify(account),
             success: function(result) {
 				//Parse JSON, store into localstorage	
-				sweetAlert("Well done!", "Login Successful", "success");
                 var req = JSON.parse(result);
                 localStorage.setItem("token", req.token);
                 localStorage.setItem("expires", req.expires);
                 localStorage.setItem("refresh_token", req.refresh_token);
                 setTimeout(function() 
 							{
-							window.location.assign("/app/dashboard");
+							var lastlink = localStorage.getItem("lastlink") 
+								if (lastlink === null) {
+									 window.location.assign("/app/dashboard");
+								}else{
+									localStorage.removeItem("lastlink");
+									window.location.assign(lastlink);
+								}
 							},800); 
             },
             error: function(result) {

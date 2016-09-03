@@ -63,7 +63,7 @@
 			
 			<button id="addfunds" class="pure-button pure-button-primary button-large pure-u-5-5">Apply Giftcode</button>
 		</div>
-		<div id="history_div">
+		<div id="history_div" style="display: none;">
 			<h2 class="content-subhead">Transaction History</h2>
 			<table class="pure-table pure-table-horizontal">
 			<thead>
@@ -77,7 +77,7 @@
 			<tbody id="history_body"></tbody>    
 			</table>
 		</div>
-		<div id="admin_div">
+		<div id="admin_div" style="display: none;">
 			<h2 class="content-subhead">Make a Giftcode</h2>
 		    <form class="pure-form pure-form-aligned">			
 			<div class="pure-control-group">
@@ -98,7 +98,7 @@
 					<th>Status</th>
 				</tr>
 			</thead>
-			<tbody id="giftcode_body"></tbody>    
+			<tbody id="giftcode_body" style="display: none;"z></tbody>    
 			</table>
 			</div>
         </div>

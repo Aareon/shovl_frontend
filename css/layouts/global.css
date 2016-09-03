@@ -119,6 +119,10 @@ a:hover, a:active {
 			background: #3498db;
 			color: #ecf0f1;
 }
+
+.spacedout {
+	margin-top: 1em;
+}
 /*
 ul .navbar{
     list-style-type: none;

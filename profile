@@ -325,7 +325,7 @@
 			<button id="update-profile" class="pure-button pure-button-primary button-large pure-u-5-5">Update Profile</button>
 			</div>
 			
-			<div id="password_div">
+			<div id="password_div" style="display: none;">
 			 <h2 class="content-subhead">Change Password</h2>
             <form class="pure-form pure-form-aligned">
 			

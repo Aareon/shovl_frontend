@@ -1,4 +1,4 @@
-function isloggedin(){
+/*function isloggedin(){
 	if(localStorage.getItem("token") === null){
 			window.location.assign("/app/login");
 		}
@@ -8,10 +8,6 @@ function isloggedin(){
             type:"POST",
             url: "/api/account/refreshtoken",
             data: JSON.stringify(refresh),
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
             success: function(result) {	
 				var data = JSON.parse(result);
 				localStorage.setItem("token", data.token);
@@ -19,12 +15,13 @@ function isloggedin(){
 				localStorage.setItem("refresh_token", data.refresh_token);
             },
             error: function(result) {	
+                localStorage.setItem("lastlink", window.location.pathname);
 				window.location.assign("/app/login");
             },
             async: false
 			});	
 	}	
-}
+}*/
 
 function logout(){
 	 $.ajax({

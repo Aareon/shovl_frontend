@@ -24,9 +24,7 @@
     </style>
 
 <div id="layout">
-    <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
-        <!-- Hamburger icon -->
         <span></span>
     </a>
 
@@ -48,48 +46,63 @@
 
     <div id="main">
 		<div class="topbar">
-		 <h2 id="block1">Manage your website</h2>		 
+			<h2 id="block1">Manage your website</h2>
 		</div>
-        <div class="header"></div>     
-        </div>
-        
-        <div class="content"> 
-						<div class="front">
-				<table class="pure-table pure-table-horizontal">
-    <thead>
-        <tr>
-            <th>Information</th>
-        </tr>
-    </thead>
+				<div class="header">
+					<div id="menubar" class="pure-menu pure-menu-horizontal">
+						<ul class="pure-menu-list">
+							<li id="manage_tab" class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Manage</a></li>
+							<li id="logs_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Logs</a></li>
+						</ul>
+					</div>
+				</div>
 
-    <tbody id="service_table">
-		 <tr><td id="hostname"></td></tr>
-		 <tr><td id="status"></td></tr>
-		 <tr><td id="service"></td></tr>
-		 <tr><td id="package"></td></tr>
-		 <tr><td id="expires"></td></tr>
-    </tbody>
-			</div>
-			<div>    
-			<center>
-			<button id="start" class="pure-button pure-button-primary button-large square"><i class="fa fa-play button_icon"></i></button>
-			<button id="stop" class="pure-button pure-button-primary button-large square"><i class="fa fa-stop button_icon"></i></button>
-			<button id="restart" class="pure-button pure-button-primary button-large square"><i class="fa fa-refresh button_icon"></i></button>
-			<button id="delete" class="pure-button pure-button-primary button-large square"><i class="fa fa-remove button_icon"></i></button>
-			</center>
-			
-			</div>
-			<div>
-				    <form action="/api/containers/zipload" method="post" enctype="multipart/form-data" target="uploadfile" >
-						Zip file of website: <input name="zipload" type="file" accept="application/zip,application/x-zip,application/x-zip-compressed" />
-					</form>
+<div class="content">
+			<div id="manage_div">
+  				<table class="pure-table pure-table-horizontal">
+  				<thead>
+  					<tr>
+  						<th>Information</th>
+  					</tr>
+  				</thead>
+  				<tbody id="service_table">
+  					<tr><td id="hostname"></td></tr>
+  					<tr><td id="status"></td></tr>
+  					<tr><td id="service"></td></tr>
+  					<tr><td id="package"></td></tr>
+  					<tr><td id="expires"></td></tr>
+  				</tbody>
+        </table>
+					<div class="spacedout">
+  					<center>
+  					<button id="start" class="pure-button pure-button-primary button-large square"><i class="fa fa-play button_icon"></i></button>
+  					<button id="stop" class="pure-button pure-button-primary button-large square"><i class="fa fa-stop button_icon"></i></button>
+  					<button id="restart" class="pure-button pure-button-primary button-large square"><i class="fa fa-refresh button_icon"></i></button>
+  					<button id="delete" class="pure-button pure-button-primary button-large square"><i class="fa fa-remove button_icon"></i></button>
+  					</center>
+					</div>
 			</div>
 
+      <div id="logs_div" style="display: none;">
+        <table class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="managelog_table"></tbody>
+      </table>
+		<center><button id="loadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
+      </div>
+</div>
+<!--
 <div class="progress">
 	<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar"></div>
 </div>
-<div id="status"></div>
-
+<div id="status"></div>-->
+  </div>
+</div>
 </div>
 <script src="js/global.js"></script>
 <script src="js/manage.js"></script>

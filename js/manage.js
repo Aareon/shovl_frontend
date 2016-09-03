@@ -1,31 +1,53 @@
 $(document).ready(function(){
-    getinfo();
+	isloggedin();
+  getinfo();
 });
 
-$(function() {
+$("#manage_tab").click(function(){
+  $("#logs_div").hide();
+  $("#manage_div").show();
+  $('#logs_tab').removeClass('pure-menu-selected');
+  $("#manage_tab").addClass('pure-menu-selected');
+})
 
-    var bar = $('.bar');
-    var percent = $('.percent');
-    var status = $('#status');
+$("#logs_tab").click(function(){
+    $("#manage_div").hide();
+    $("#logs_div").show();
+    $('#manage_tab').removeClass('pure-menu-selected');
+    $("#logs_tab").addClass('pure-menu-selected');
+})
 
-    $('form').ajaxForm({
-        beforeSend: function() {
-            status.empty();
-            var percentVal = '0%';
-            $('#progressbar').css('display', percentVal);
-        },
-        uploadProgress: function(event, position, total, percentComplete) {
-            var percentVal = percentComplete + '%';
-            $('#progressbar').css('display',percentVal);
-        },
-        complete: function(xhr) {
-            sweetAlert("Smashing!", "Website file upload complete", "success");	
+function getmanagelogs(){
+	 isloggedin();
+	 var req = {containerid: $_GET("id")};
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/managelogs",
+            data: JSON.stringify(container),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-       error: function(result) {
-				sweetAlert("Oops...", "File upload has failed!", "error");	
-			},
-    });
-}); 
+            success: function(result) {	
+				var data = JSON.parse(result);
+				var p;
+				for (var i = 0; i < data.manage_logs[i].length; i++) {
+					if (data.manage_logs[i].serviceid != 0){
+					tr = $('<tr>');
+					tr.append("<td>" + data.manage_logs[i].action + "</td>");
+					tr.append("<td>" + "expires: " +GiveDate(data.manage_logs[i].timestamp) + "</td>");
+					$('#service_table').append(tr);
+					}
+				}
+				
+				if (data.canloadmore) {
+					 $("#loadmore").removeClass("pure-button-disabled")
+				}else {
+					 $("#loadmore").addClass("pure-button-disabled")
+				}
+            }
+    });	
+}
 
 function getinfo(){
     var container = {containerid: $_GET("id")};
@@ -38,18 +60,18 @@ function getinfo(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
-				var data = JSON.parse(result);		 
+            success: function(result) {
+				var data = JSON.parse(result);
 				$("#hostname").html("Domain: "+data.hostname);
 				$("#service").html("Service: "+"<i class='fa " + serviceiconfromid(data.serviceid) +  "'></i> "+servicename(data.serviceid));
 				$("#status").html("Status: "+website_status(data.status));
 				$("#package").html("Package: "+packagename(data.packageid));
 				$("#expires").html("Due date: "+GiveDate(data.expires_stamp));
             },
-    });	
+    });
 }
 
-$("#start").click(function(){	
+$("#start").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
          $.ajax({
@@ -60,16 +82,16 @@ $("#start").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
                 sweetAlert("Well done!", "Website has been tasked to start", "success");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
+				sweetAlert("Oops...", result.responseText, "error");
 	  }
 	});
 });
 
-$("#stop").click(function(){	
+$("#stop").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
          $.ajax({
@@ -80,16 +102,16 @@ $("#stop").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
                 sweetAlert("Well done!", "Website has been tasked to stop", "success");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
+				sweetAlert("Oops...", result.responseText, "error");
 	  }
 	});
 });
 
-$("#restart").click(function(){	
+$("#restart").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
          $.ajax({
@@ -100,16 +122,16 @@ $("#restart").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
                 sweetAlert("Well done!", "Website Restarted", "success");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
+				sweetAlert("Oops...", result.responseText, "error");
 	  }
 	});
 });
 
-$("#delete").click(function(){	
+$("#delete").click(function(){
 swal({
   title: "WARNING! Are you sure you want to delete your website?",
   text: "You will not be able to recover your website!",
@@ -131,15 +153,15 @@ function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
                 swal("Deleted!", "Your website has been tasked to be deleted.", "success");
-                setTimeout(function() 
+                setTimeout(function()
 							{
 							window.location.assign("/app/dashboard");
-							},200); 
+							},200);
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
+				sweetAlert("Oops...", result.responseText, "error");
 	  }
 		});
 	});
