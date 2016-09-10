@@ -69,7 +69,7 @@
 			</div>
 			<div class="pure-control-group">
 			<select id="country" class="pure-input-1 form-large">
-				<option>Select your country</option>
+				<option value="">Select your country</option>
 				<option value="AF">Afghanistan</option>
 				<option value="AX">Åland Islands</option>
 				<option value="AL">Albania</option>
