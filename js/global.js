@@ -149,10 +149,6 @@ function website_status(code){
 	return response;
 }
 
-function serviceiconfromid(id){
-	return serviceicon(localStorage.getItem("service_" + id));
-}
-
 function servicename(id){
 	return localStorage.getItem("service_"+id)
 }

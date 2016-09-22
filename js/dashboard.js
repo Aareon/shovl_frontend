@@ -64,7 +64,7 @@ function getcontainers(){
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].serviceid != 0){
 					tr = $('<tr>');
-					tr.append("<td>" + "<i class='fa " + serviceiconfromid(data[i].serviceid) +  " web_icon'></i>" +"</td>");
+					tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
 					tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
 					tr.append("<td>" + packagename(data[i].packageid) + "</td>");
 					tr.append("<td>" + website_status(data[i].status) + "</td>");
