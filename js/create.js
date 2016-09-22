@@ -25,8 +25,8 @@ function getservices(){
 				var data = JSON.parse(result);
 				var tr;
 				for (var i = 0; i < data.length; i++) {
-					tr = $("<input class='deploy_checkbox' name='SID' value='" + data[i].id + "' id='SID"+data[i].id+"' type='radio'></input>");
-					lbl = $("<label for='SID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa " + serviceicon(data[i].name)+ " checkbox_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + "</span></span></label>");
+					tr = $("<input class='deploy_checkbox' name='SID' value='" + data[i].name + "' id='SID"+data[i].name+"' type='radio'></input>");
+					lbl = $("<label for='SID" + data[i].name + "'> <span class='deploy_checkbox_icon'><i class='fa " + serviceicon(data[i].name)+ " checkbox_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + "</span></span></label>");
 					$('#services').append(tr);
 					$('#services').append(lbl);
 				}				

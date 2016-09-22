@@ -49,26 +49,6 @@ $("#createpackage").click(function(){
 		});	
 });
 
-$("#createservice").click(function(){	
-	 var package = {name: $("#service_name").val()};
-	 isloggedin();
-         $.ajax({
-            type:"POST",
-            url: "/api/services/new",
-            data: JSON.stringify(package),
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            success: function(result) {	
-				sweetAlert("Well done!", "Service has been created", "success");				
-            },
-            error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
-	  }
-		});	
-});
-
 function getcontainers(){
 	 isloggedin();
          $.ajax({
