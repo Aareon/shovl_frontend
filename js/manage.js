@@ -2,6 +2,7 @@ var logs_offset = 0
 $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
+  getdbinfo();
 });
 
 $("#manage_tab").click(function(){
