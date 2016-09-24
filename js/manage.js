@@ -72,7 +72,7 @@ function getinfo(){
             success: function(result) {
 				var data = JSON.parse(result);
 				$("#hostname").html("Domain: "+data.hostname);
-				$("#service").html("Service: "+"<i class='fa " + serviceiconfromid(data.serviceid) +  "'></i> "+servicename(data.serviceid));
+				$("#service").html("Service: "+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("Status: "+website_status(data.status));
 				$("#package").html("Package: "+packagename(data.packageid));
 				$("#expires").html("Due date: "+GiveDate(data.expires_stamp));
