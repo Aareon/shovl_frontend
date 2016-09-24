@@ -107,7 +107,7 @@
   				<tbody id="service_table">
   					<tr><td id="db_hostname"></td></tr>
   					<tr><td id="db_username"></td></tr>
-  					<tr><td id="db_username"></td></tr>
+  					<tr><td id="db_password"></td></tr>
   				</tbody>
 				</table>
 		</div>
