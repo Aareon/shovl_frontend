@@ -6,16 +6,29 @@ $(document).ready(function(){
 
 $("#manage_tab").click(function(){
   $("#logs_div").hide();
+  $("#database_div").hide();
   $("#manage_div").show();
+  $('#database_tab').removeClass('pure-menu-selected');
   $('#logs_tab').removeClass('pure-menu-selected');
   $("#manage_tab").addClass('pure-menu-selected');
 })
 
 $("#logs_tab").click(function(){
     $("#manage_div").hide();
+    $("#database_div").hide();
     $("#logs_div").show();
+    $('#database_tab').removeClass('pure-menu-selected');
     $('#manage_tab').removeClass('pure-menu-selected');
     $("#logs_tab").addClass('pure-menu-selected');
+})
+
+$("#database_tab").click(function(){
+    $("#manage_div").hide();
+    $("#logs_div").hide();
+    $("#database_div").show();
+    $('#manage_tab').removeClass('pure-menu-selected');
+    $("#logs_tab").removeClass('pure-menu-selected');
+    $("#database_tab").addClass('pure-menu-selected');
 })
 
 function getmanagelog(offset){
@@ -57,6 +70,23 @@ $("#loadmore").click(function(){
 	}
 });
 
+function getdbinfo(){
+	 isloggedin();
+         $.ajax({
+            type:"GET",
+            url: "/api/account/database",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				$("#db_hostname").html("Domain: "+data.hostname);
+				$("#db_username").html("Username: "+data.username);
+				$("#db_password").html("Password: "+data.password);
+            },
+    });
+}
 
 function getinfo(){
     var container = {containerid: $_GET("id")};
@@ -92,6 +122,7 @@ $("#start").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
+				$("#status").html("Status: "+website_status(1))
                 sweetAlert("Well done!", "Website has been tasked to start", "success");
             },
             error: function(result) {
@@ -112,6 +143,7 @@ $("#stop").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
+				$("#status").html("Status: "+website_status(0))
                 sweetAlert("Well done!", "Website has been tasked to stop", "success");
             },
             error: function(result) {
