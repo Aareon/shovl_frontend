@@ -62,7 +62,7 @@ function getcontainers(){
 				var data = JSON.parse(result);
 				var p;
 				for (var i = 0; i < data.length; i++) {
-					if (data[i].serviceid != 0){
+					if (data[i].serviceid != "SQL"){
 					tr = $('<tr>');
 					tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
 					tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
