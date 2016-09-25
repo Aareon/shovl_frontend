@@ -237,7 +237,7 @@ function packagename(id){
             success: function(){
                 sweetAlert("Database uploaded!", "Starting import", "success");
             },error: function(){
-                alert("okey");
+                sweetAlert("Oops!", "Database upload has failed", "error");
             }
          });
       });

@@ -115,13 +115,13 @@
 				<table class="pure-table pure-table-horizontal">
 						<thead>
 							<tr>
-								<th>Information</th>
+								<th>IImport a Database</th>
 							</tr>
 						</thead>
 						<tbody id="service_table">
 							<tr><td>
 							<div class="pure-control-group">
-							<input name="db_name" required class="pure-input-1 form-large" type="text" placeholder="Database Name" maxlength="32">
+							<input name="db_name" class="pure-input-1 form-large" type="text" placeholder="Database Name" maxlength="32">
 							</div>
 							</td></tr>
 							<tr><td>
