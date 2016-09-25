@@ -264,7 +264,7 @@ isloggedin();
 e.preventDefault();
 
     var formdata = new FormData(this);
-    formData.set("containerid", $_GET("id"));
+    formdata.set("containerid", $_GET("id"));
 
         $.ajax({
 			xhr: function() {
