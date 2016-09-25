@@ -131,9 +131,8 @@
 							</td></tr>
 							<tr><td>
 							<div class="progress">
-								<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar"></div>
+								<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar">20</div>
 							</div>
-							<div id="status">30</div>
 							</td></tr>
 							<tr><td>
 							<div class="pure-control-group">
