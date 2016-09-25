@@ -119,7 +119,7 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
-				if(data.packageid == "Custom"){
+				if(data.serviceid == "Custom"){
 						$("#files_tab").show();
 				}
 				$("#hostname").html("Domain: "+data.hostname);
