@@ -8,30 +8,47 @@ $(document).ready(function(){
 $("#manage_tab").click(function(){
   $("#logs_div").hide();
   $("#database_div").hide();
+  $("#files_div").hide();
   $("#manage_div").show();
   $('#database_tab').removeClass('pure-menu-selected');
   $('#logs_tab').removeClass('pure-menu-selected');
+  $("#files_tab").removeClass('pure-menu-selected');
   $("#manage_tab").addClass('pure-menu-selected');
 })
 
 $("#logs_tab").click(function(){
     $("#manage_div").hide();
     $("#database_div").hide();
+    $("#files_div").hide();
     $("#logs_div").show();
     $('#database_tab').removeClass('pure-menu-selected');
     $('#manage_tab').removeClass('pure-menu-selected');
+    $("#files_tab").removeClass('pure-menu-selected');
     $("#logs_tab").addClass('pure-menu-selected');
 })
 
 $("#database_tab").click(function(){
     $("#manage_div").hide();
     $("#logs_div").hide();
+    $("#files_div").hide();
     $("#database_div").show();
     $('#manage_tab').removeClass('pure-menu-selected');
     $("#logs_tab").removeClass('pure-menu-selected');
+    $("#files_tab").removeClass('pure-menu-selected');
     $("#database_tab").addClass('pure-menu-selected');
 })
 
+$("#files_tab").click(function(){
+    $("#manage_div").hide();
+    $("#logs_div").hide();
+    $("#database_div").hide();
+    $("#files_div").show();
+    $('#manage_tab').removeClass('pure-menu-selected');
+    $("#logs_tab").removeClass('pure-menu-selected');
+    $("#database_tab").removeClass('pure-menu-selected');
+    $("#files_tab").addClass('pure-menu-selected');
+})
+"files_tab"
 function getmanagelog(offset){
 	 isloggedin();
 	 var req = {containerid: $_GET("id"), offset: offset};
@@ -102,6 +119,9 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
+				if(data.packageid == "Custom"){
+						$("#files_tab").show();
+				}
 				$("#hostname").html("Domain: "+data.hostname);
 				$("#service").html("Service: "+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("Status: "+website_status(data.status));
