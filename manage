@@ -131,7 +131,7 @@
 							</td></tr>
 							<tr><td>
 							<div class="progress">
-								<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar" style="width: 20;" value="100"></div>
+								<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar" style="width: 20%;"></div>
 							</div>
 							</td></tr>
 							<tr><td>
