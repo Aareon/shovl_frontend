@@ -119,7 +119,7 @@
 							</td></tr>
 							<tr><td>
 							<div class="pure-control-group">
-							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">IUpload</button></center>
+							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">Upload</button></center>
 							</div>
 							</td></tr>
 						</tbody>
