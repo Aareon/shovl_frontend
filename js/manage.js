@@ -228,8 +228,13 @@ e.preventDefault();
 				var xhr = new window.XMLHttpRequest();
 				xhr.upload.addEventListener("progress", function(evt) {
 					if (evt.lengthComputable) {
-						var percentComplete = (evt.loaded / evt.total) * 100;
-						//Do something with upload progress here
+						var percentComplete = (evt.loaded / evt.total) * 100;						
+						if (percentComplete == 100){
+							$("#db_progress").hide();
+						}else{
+							$("#db_progress").show();
+							$("#db_progress").css("width", percentComplete+"%")
+						}
 					}
 			   }, false);
 			   return xhr;
