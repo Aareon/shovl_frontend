@@ -252,7 +252,7 @@ e.preventDefault();
             processData: false,
             success: function(){
                 sweetAlert("Database uploaded!", "Starting import", "success");
-            },error: function(){
+            },error: function(result){
                 sweetAlert("Oops!", result.responseText, "error");
             }
          });
