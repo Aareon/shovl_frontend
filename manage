@@ -121,12 +121,14 @@
 						<tbody id="service_table">
 							<tr><td>
 							<div class="pure-control-group">
-							<input name="db_name" class="pure-input-1 form-large" type="text" placeholder="Database Name" maxlength="32">
+							<input name="db_name" required class="pure-input-1 form-large" type="text" placeholder="Database Name" maxlength="32">
 							</div>
 							<div class="pure-control-group">
-							Database file(.SQL):<br><input  type="file" name="file"  required id="upload">
+							Database file(.SQL): <input  type="file" name="file"  required id="upload">
 							</div>
+							<div class="pure-control-group">
 							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">Import Database</button></center>
+							</div>
 							</td></tr>
 						</tbody>
 				</table>
