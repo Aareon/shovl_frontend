@@ -233,7 +233,7 @@ e.preventDefault();
 							$("#db_progress").hide();
 						}else{
 							$("#db_progress").show();
-							$("#db_progress").css("width", percentComplete+"%")
+							$("#db_progressbar").css("width", percentComplete+"%")
 						}
 					}
 			   }, false);
