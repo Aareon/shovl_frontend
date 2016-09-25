@@ -110,6 +110,21 @@
   					<tr><td id="db_password"></td></tr>
   				</tbody>
 				</table>
+				
+			<form action="" id="formContent" method="post" enctype="multipart/form-data" >
+				<table class="pure-table pure-table-horizontal">
+						<thead>
+							<tr>
+								<th>Information</th>
+							</tr>
+						</thead>
+						<tbody id="service_table">
+							<tr><td><input id="address" class="pure-input-1 form-large" type="text" placeholder="Database Name" maxlength="32"></td></tr>
+							<tr><td>Database file(.SQL): <input  type="file" name="file"  required id="upload"></td></tr>
+						</tbody>
+				</table>
+				<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">Import Database</button></center>		
+			</form>
 		</div>
 </div>
 <!--

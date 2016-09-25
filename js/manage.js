@@ -216,3 +216,29 @@ function serviceiconfromid(id){
 function packagename(id){
 	return localStorage.getItem("package_"+id)
 }
+
+    $("#formContent").submit(function(e){
+        e.preventDefault();
+
+    var formdata = new FormData(this);
+
+        $.ajax({
+            url: "/account/database/import",
+            type: "POST",
+            data: formdata,
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            mimeTypes:"multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(){
+                sweetAlert("Database uploaded!", "Starting import", "success");
+            },error: function(){
+                alert("okey");
+            }
+         });
+      });
+    });
