@@ -223,7 +223,7 @@ function packagename(id){
     var formdata = new FormData(this);
 
         $.ajax({
-            url: "/account/database/import",
+            url: "/api/account/database/import",
             type: "POST",
             data: formdata,
             beforeSend: function (request)
