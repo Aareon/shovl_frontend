@@ -217,8 +217,9 @@ function packagename(id){
 	return localStorage.getItem("package_"+id)
 }
 
-    $("#formContent").submit(function(e){
-        e.preventDefault();
+$("#formContent").submit(function(e){
+isloggedin();
+e.preventDefault();
 
     var formdata = new FormData(this);
 

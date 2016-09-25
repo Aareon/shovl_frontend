@@ -115,7 +115,7 @@
 				<table class="pure-table pure-table-horizontal">
 						<thead>
 							<tr>
-								<th>IImport a Database</th>
+								<th>Import a Database</th>
 							</tr>
 						</thead>
 						<tbody id="service_table">
@@ -131,7 +131,7 @@
 							</td></tr>
 							<tr><td>
 							<div class="pure-control-group">
-							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">Import Database</button></center>
+							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">Import</button></center>
 							</div>
 							</td></tr>
 						</tbody>
