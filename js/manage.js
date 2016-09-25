@@ -217,7 +217,7 @@ function packagename(id){
 	return localStorage.getItem("package_"+id)
 }
 
-$("#formContent").submit(function(e){
+$("#dbupload").submit(function(e){
 isloggedin();
 e.preventDefault();
 
@@ -231,6 +231,7 @@ e.preventDefault();
 						var percentComplete = (evt.loaded / evt.total) * 100;						
 						if (percentComplete == 100){
 							$("#db_progress").hide();
+							$("#db_progressbar").css("width", "0%")
 						}else{
 							$("#db_progress").show();
 							$("#db_progressbar").css("width", percentComplete+"%")
@@ -252,6 +253,49 @@ e.preventDefault();
             processData: false,
             success: function(){
                 sweetAlert("Database uploaded!", "Starting import", "success");
+            },error: function(result){
+                sweetAlert("Oops!", result.responseText, "error");
+            }
+         });
+      });
+
+$("#webrootupload").submit(function(e){
+isloggedin();
+e.preventDefault();
+
+    var formdata = new FormData(this);
+    formData.set("containerid", $_GET("id"));
+
+        $.ajax({
+			xhr: function() {
+				var xhr = new window.XMLHttpRequest();
+				xhr.upload.addEventListener("progress", function(evt) {
+					if (evt.lengthComputable) {
+						var percentComplete = (evt.loaded / evt.total) * 100;						
+						if (percentComplete == 100){
+							$("#webroot_progress").hide();
+							$("#webroot_progressbar").css("width", "0%")
+						}else{
+							$("#webroot_progress").show();
+							$("#webroot_progressbar").css("width", percentComplete+"%")
+						}
+					}
+			   }, false);
+			   return xhr;
+			},
+            url: "/api/containers/webroot/upload",
+            type: "POST",
+            data: formdata,
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            mimeTypes:"multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(){
+                sweetAlert("Website uploaded!", "Starting import", "success");
             },error: function(result){
                 sweetAlert("Oops!", result.responseText, "error");
             }

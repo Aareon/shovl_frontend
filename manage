@@ -111,7 +111,7 @@
   				</tbody>
 				</table>
 				
-			<form action="" id="formContent" method="post" enctype="multipart/form-data" >
+			<form action="" id="dbupload" method="post" enctype="multipart/form-data" >
 				<table class="pure-table pure-table-horizontal">
 						<thead>
 							<tr>
@@ -137,6 +137,33 @@
 							<tr><td>
 							<div class="pure-control-group">
 							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">Import</button></center>
+							</div>
+							</td></tr>
+						</tbody>
+				</table>
+			</form>
+			
+						<form action="" id="webrootupload" method="post" enctype="multipart/form-data" >
+				<table class="pure-table pure-table-horizontal">
+						<thead>
+							<tr>
+								<th>Import Website</th>
+							</tr>
+						</thead>
+						<tbody id="service_table">
+							<tr><td>
+							<div class="pure-control-group">
+							Website contents (.zip .rar .7z .tar.gz): <input  type="file" name="file"  required id="upload">
+							</div>
+							</td></tr>
+							<tr id="webroot_progress" style="display: none;"><td>
+								<div class="progress">
+									<div id="webroot_progressbar" class="progress-bar progress-bar-success" role="progressbar"></div>
+								</div>
+							</td></tr>
+							<tr><td>
+							<div class="pure-control-group">
+							<center><button class="submit pure-button pure-button-primary button-large pure-u-1-4">IUpload</button></center>
 							</div>
 							</td></tr>
 						</tbody>
