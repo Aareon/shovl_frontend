@@ -224,6 +224,16 @@ e.preventDefault();
     var formdata = new FormData(this);
 
         $.ajax({
+			xhr: function() {
+				var xhr = new window.XMLHttpRequest();
+				xhr.upload.addEventListener("progress", function(evt) {
+					if (evt.lengthComputable) {
+						var percentComplete = (evt.loaded / evt.total) * 100;
+						//Do something with upload progress here
+					}
+			   }, false);
+			   return xhr;
+			},
             url: "/api/account/database/import",
             type: "POST",
             data: formdata,
@@ -238,7 +248,7 @@ e.preventDefault();
             success: function(){
                 sweetAlert("Database uploaded!", "Starting import", "success");
             },error: function(){
-                sweetAlert("Oops!", "Database upload has failed", "error");
+                sweetAlert("Oops!", result.responseText, "error");
             }
          });
       });

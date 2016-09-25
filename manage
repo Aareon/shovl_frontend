@@ -126,8 +126,14 @@
 							</td></tr>
 							<tr><td>
 							<div class="pure-control-group">
-							Database file(.SQL): <input  type="file" name="file"  required id="upload">
+							Database file(.sql): <input  type="file" name="file"  required id="upload">
 							</div>
+							</td></tr>
+							<tr><td>
+							<div class="progress">
+								<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar"></div>
+							</div>
+							<div id="status">30</div>
 							</td></tr>
 							<tr><td>
 							<div class="pure-control-group">
@@ -139,11 +145,6 @@
 			</form>
 		</div>
 </div>
-<!--
-<div class="progress">
-	<div id="progressbar" class="progress-bar progress-bar-success" role="progressbar"></div>
-</div>
-<div id="status"></div>-->
   </div>
 </div>
 </div>
