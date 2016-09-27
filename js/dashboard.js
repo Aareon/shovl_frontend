@@ -64,7 +64,7 @@ function getcontainers(){
             success: function(result) {	
 				var data = JSON.parse(result);
 				var p;
-				var allcontainers = $('<tr>');
+				var allcontainers = $();
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].serviceid != "SQL"){
 						tr = $('<tr>');
