@@ -75,7 +75,7 @@ function getreplies(){
 					p.append("<p>"+htmlEntities(data[i].message)+"</p>");
 					p.append("<p>"+"Sent: " + convertTimestamp(data[i].create_stamp)+"</p>");
 					p.append('<div class="line-separator"></div>');
-					allreplies.concat(p)
+					allreplies = allreplies.append(p)
 				}
 				$('#message_box').html(allreplies);
             }
