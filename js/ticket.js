@@ -1,12 +1,24 @@
 $(document).ready(function(){
 	isloggedin();
-	getticket();
-    getreplies();
-    $("#close").hide();
+	ReloadTicketDiv()
     if(IsAdmin()){
 		$("#close").show();
 	}
+	setInterval(function(){ 
+		ReloadTicketDiv()
+	}, 5000);
 });
+
+function ResetTicketDiv(){
+	$("#message").val("");
+	 ReloadTicketDiv();
+}
+
+function ReloadTicketDiv(){
+	$("#message_box").html("");
+	getticket();
+	getreplies();
+}
 
 function getticket(){
      var ticket = {id: parseInt($_GET("id"))};
@@ -36,7 +48,8 @@ function getticket(){
             },
             error: function(result) {
 				window.location.assign("/app/support");
-			}
+			},
+			async: false,
     });	
 }
 
@@ -81,10 +94,7 @@ $("#reply").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
-				$("#message").val("");
-				$("#message_box").html("");
-				getticket();
-				getreplies();
+				ResetTicketDiv();
 				sweetAlert("Well done!", "Your reply was submitted", "success");				
             },
             error: function(result) {
@@ -106,10 +116,7 @@ $("#close").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {	
-				$("#message").val("");
-				$("#message_box").html("");
-				getticket();
-				getreplies();
+				ResetTicketDiv();
 				sweetAlert("Well done!", "Ticket has been closed", "success");				
             }
 		});	

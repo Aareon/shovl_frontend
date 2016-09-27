@@ -57,7 +57,7 @@
 				<button id="reply" class="pure-button pure-button-primary button-large pure-u-5-5">Reply</button>
 				</div>
 				<div class="pure-control-group">
-				<button id="close" class="pure-button button-error button-large pure-u-5-5">Close Ticket</button>
+				<button id="close" class="pure-button button-error button-large pure-u-5-5" style="display: none;">Close Ticket</button>
 				</div
 			</div>
 
