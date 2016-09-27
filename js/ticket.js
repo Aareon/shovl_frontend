@@ -69,13 +69,15 @@ function getreplies(){
 				var data = JSON.parse(result);
 				var p;
 				var allreplies = ticket_head;
-				for (var i = 0; i < data.length; i++) {
-					p = $('<p>');
-					p.append('<p class="thick"><i class="fa fa-user"></i> '+data[i].creator+':</p>');
-					p.append("<p>"+htmlEntities(data[i].message)+"</p>");
-					p.append("<p>"+"Sent: " + convertTimestamp(data[i].create_stamp)+"</p>");
-					p.append('<div class="line-separator"></div>');
-					allreplies = allreplies.append(p)
+				if (data != null){
+					for (var i = 0; i < data.length; i++) {
+						p = $('<p>');
+						p.append('<p class="thick"><i class="fa fa-user"></i> '+data[i].creator+':</p>');
+						p.append("<p>"+htmlEntities(data[i].message)+"</p>");
+						p.append("<p>"+"Sent: " + convertTimestamp(data[i].create_stamp)+"</p>");
+						p.append('<div class="line-separator"></div>');
+						allreplies = allreplies.append(p)
+					}
 				}
 				$('#message_box').html(allreplies);
             }
