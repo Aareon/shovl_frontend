@@ -8,9 +8,6 @@ $(document).ready(function(){
     if(IsAdmin()){
 		$("#menubar").show();	
 	}
-	setInterval(function(){ 
-		getcontainers();
-	}, 5000);
 });
 
 $("#main_tab").click(function(){
@@ -64,7 +61,7 @@ function getcontainers(){
             success: function(result) {	
 				var data = JSON.parse(result);
 				var p;
-				var allcontainers = $();
+				var allcontainers = $('<tr>');
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].serviceid != "SQL"){
 						tr = $('<tr>');
@@ -73,10 +70,10 @@ function getcontainers(){
 						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
 						tr.append("<td>" + website_status(data[i].status) + "</td>");
 						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
+						//$('#service_table').append(tr);
 						allcontainers = allcontainers.append(tr);
 					}
 				}
-				sweetAlert("Oops...", allcontainers, "error");	
 				$('#service_table').html(allcontainers);
             }
     });	
