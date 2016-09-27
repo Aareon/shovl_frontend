@@ -73,7 +73,7 @@ function getcontainers(){
 						allcontainers = allcontainers.append(tr);
 					}
 				}
-				$('#service_table').html(allcontainers)
+				$('#service_table').replaceWith(allcontainers)
             }
     });	
 }
