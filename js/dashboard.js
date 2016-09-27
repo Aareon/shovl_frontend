@@ -8,6 +8,9 @@ $(document).ready(function(){
     if(IsAdmin()){
 		$("#menubar").show();	
 	}
+	setInterval(function(){ 
+		getcontainers();
+	}, 5000);
 });
 
 $("#main_tab").click(function(){
@@ -61,16 +64,18 @@ function getcontainers(){
             success: function(result) {	
 				var data = JSON.parse(result);
 				var p;
+				var allcontainers;
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].serviceid != "SQL"){
-					tr = $('<tr>');
-					tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
-					tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
-					tr.append("<td>" + packagename(data[i].packageid) + "</td>");
-					tr.append("<td>" + website_status(data[i].status) + "</td>");
-					tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
-					$('#service_table').append(tr);
+						tr = $('<tr>');
+						tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
+						tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
+						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
+						tr.append("<td>" + website_status(data[i].status) + "</td>");
+						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
+						allcontainers = allcontainers.append(tr);
 					}
+					$('#service_table').html(allcontainers);
 				}
             }
     });	
