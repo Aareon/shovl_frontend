@@ -61,7 +61,7 @@ function getcontainers(){
             success: function(result) {	
 				var data = JSON.parse(result);
 				var p;
-				var allcontainers = $('<tr>');
+				var allcontainers = $();
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].serviceid != "SQL"){
 						tr = $('<tr>');
@@ -71,7 +71,7 @@ function getcontainers(){
 						tr.append("<td>" + website_status(data[i].status) + "</td>");
 						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
 						//$('#service_table').append(tr);
-						allcontainers = allcontainers.append(tr);
+						allcontainers.push(tr)
 					}
 				}
 				$('#service_table').html(allcontainers);
