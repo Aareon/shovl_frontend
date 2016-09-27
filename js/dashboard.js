@@ -75,8 +75,8 @@ function getcontainers(){
 						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
 						allcontainers = allcontainers.append(tr);
 					}
-					$('#service_table').html(allcontainers);
 				}
+				$('#service_table').html(allcontainers);
             }
     });	
 }
