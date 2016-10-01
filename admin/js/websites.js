@@ -69,7 +69,7 @@ function getcontainers(offset){
 				for (var i = 0; i < data.containers.length; i++) {
 					if (data[i].serviceid != "SQL"){
 					tr = $('<tr/>');
-					tr.append("<td>" + data[i].Email + "</td>");
+					tr.append("<td>" + data.containers[i].Email + "</td>");
 					tr.append("<td>" + "<i class='fa " + serviceicon(data.containers[i].serviceid) +  " web_icon'></i>" +"</td>");
 					tr.append("<td>" + link(data.containers[i].containerid)+data[i].hostname+"</a>" + "</td>");
 					tr.append("<td>" + packagename(data.containers[i].packageid) + "</td>");
