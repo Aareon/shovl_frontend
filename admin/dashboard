@@ -36,9 +36,10 @@
 			</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="" class="pure-menu-link" active><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
                 <li class="pure-menu-item"><a href="websites" class="pure-menu-link"><i class="fa fa-globe"></i><br>Websites</a></li>
-                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-profile"></i><br>User Panel</a></li>
+                <li class="pure-menu-item"><a href="support" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
+                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-user"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>
@@ -48,6 +49,7 @@
         
 		</div>     
  </div>
+<script src="js/global.js"></script>
 <script src="js/ui.js"></script>
 </body>
 </html>

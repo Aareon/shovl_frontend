@@ -28,11 +28,10 @@
 			</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="dashboard" class="pure-menu-link"><i class="fa fa-globe"></i><br>Websites</a></li>
-                <li class="pure-menu-item"><a href="billing" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
-				<li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-envelope-o"></i><br>Support</a></li>
-				<li class="pure-menu-item"><a href="profile" class="pure-menu-link"><i class="fa fa-user"></i><br>Profile</a></li>
-				<li id="adminpanel" class="pure-menu-item" style="display: none;"><a href="/app/admin/dashboard" class="pure-menu-link"><i class="fa fa-terminal "></i><br>Admin Panel</a></li>
+                <li class="pure-menu-item"><a href="dashboard" class="pure-menu-link"><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
+                <li class="pure-menu-item"><a href="websites" class="pure-menu-link"><i class="fa fa-globe"></i><br>Websites</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-envelope-o"></i><br>Support</a></li>
+                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-profile"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>
@@ -48,7 +47,7 @@
         </div>
 
         <div class="content">
-			<div id="admin_div" style="display: none;">
+			<div id="admin_div">
 				<h2 class="content-subhead">All tickets</h2>			
 				<table id="ticket-table" class="pure-table pure-table-horizontal">
 				<thead>

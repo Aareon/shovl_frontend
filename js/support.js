@@ -4,6 +4,7 @@ $(document).ready(function(){
 	isloggedin();
     $("#ticket_div").hide();
 	mytickets();
+	isAdmin();
 });
 
 $("#loadmore").click(function(){
