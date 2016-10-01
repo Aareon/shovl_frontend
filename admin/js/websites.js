@@ -9,9 +9,6 @@ $(document).ready(function(){
     if(IsAdmin()){
 		$("#menubar").show();	
 	}
-	setInterval(function(){ 
-		getcontainers();
-	}, 5000);
 });
 
 $("#main_tab").click(function(){
