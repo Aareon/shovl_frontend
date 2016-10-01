@@ -36,7 +36,8 @@
 			</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>WIP</a></li>
+                <li class="pure-menu-item"><a href="dashboard" class="pure-menu-link"><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>Websites</a></li>
                 <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-profile"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
@@ -45,7 +46,7 @@
 
     <div id="main">
 		<div class="topbar">
-		 <h2 id="block1">Manage your websites</h2>		 
+		 <h2 id="block1">Customer Websites</h2>		 
 		</div>
         <div class="header">       
 			<div id="menubar" class="pure-menu pure-menu-horizontal">
