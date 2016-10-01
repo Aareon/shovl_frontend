@@ -89,7 +89,7 @@
     <center><button id="adminloadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
     </div>
 </div>
-<script src="js/dashboard.js"></script>
+<script src="js/websites.js"></script>
 <script src="js/ui.js"></script>
 </body>
 </html>

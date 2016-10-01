@@ -36,10 +36,9 @@
 			</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>Websites</a></li>
-                <li class="pure-menu-item"><a href="billing" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
-				<li class="pure-menu-item"><a href="support" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
-				<li class="pure-menu-item"><a href="profile" class="pure-menu-link"><i class="fa fa-user"></i><br>Profile</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>WIP</a></li>
+                <li class="pure-menu-item"><a href="websites" class="pure-menu-link active"><i class="fa fa-globe"></i><br>Websites</a></li>
+                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-profile"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>
@@ -60,38 +59,7 @@
         </div>
         
         <div class="content"> 
-			<div id="admin_div" style="display: none;">
-			
-			<h2 class="content-subhead">Create a package</h2>
-		    <form class="pure-form pure-form-aligned">			
-			<div class="pure-control-group">
-				<input id="package_name" class="element1 form-large pure-u-1-2" type="text" placeholder="Name" maxlength="32">
-				<input id="package_amount" class="element2 form-large pure-u-1-2" type="number" placeholder="Price" step="0.01">
-				<input id="package_ram" class="element1 form-large pure-u-1-2" type="number" placeholder="RAM (MB)">
-				<input id="package_disk" class="element2 form-large pure-u-1-2" type="number" placeholder="Disk Space (GB)">
-			</div>
-			</form>
-			
-			<button id="createpackage" class="pure-button pure-button-primary button-large pure-u-5-5">Create Package</button>
-			</div>
-	<div id="main_div">
-		<button id="newwebsite" class="element2 button-large pure-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Service</button>
-			<table class="pure-table pure-table-horizontal">
-    <thead>
-        <tr>
-            <th>Service</th>
-            <th>Domain name</th>
-            <th>Package</th>
-            <th>Status</th>
-            <th>Due Date</th>
-        </tr>
-    </thead>
-
-    <tbody id="service_table"></tbody>
-    </div>
 </div>
-<script src="js/global.js"></script>
-<script src="js/dashboard.js"></script>
 <script src="js/ui.js"></script>
 </body>
 </html>
