@@ -72,7 +72,7 @@ function getcontainers(offset){
 				for (var i = 0; i < data.tickets.length; i++) {
 					if (data[i].serviceid != "SQL"){
 					tr = $('<tr/>');
-					tr.append("<td>" data[i].Email + "</td>");
+					tr.append("<td>" + data[i].Email + "</td>");
 					tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
 					tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
 					tr.append("<td>" + packagename(data[i].packageid) + "</td>");
