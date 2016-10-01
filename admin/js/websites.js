@@ -31,7 +31,7 @@ $("#admin_tab").click(function(){
 $("#adminloadmore").click(function(){
 	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){		
 		admin_offset += 1
-		alltickets(admin_offset);
+		getcontainers(admin_offset);
 	}
 });
 
