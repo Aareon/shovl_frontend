@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Shovl - My Websites</title>
+ <title>Shovl Admin - Websites</title>
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
@@ -89,6 +89,7 @@
     <center><button id="adminloadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
     </div>
 </div>
+<script src="js/global.js"></script>
 <script src="js/websites.js"></script>
 <script src="js/ui.js"></script>
 </body>
