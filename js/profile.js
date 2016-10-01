@@ -2,6 +2,7 @@ $(document).ready(function(){
     $("#password_div").hide();
     //Load user information in details
    isloggedin();
+   IsAdmin();
             $.ajax({
             type:"GET",
             url: "/api/account/details",

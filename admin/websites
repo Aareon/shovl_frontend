@@ -52,7 +52,7 @@
 			<div id="menubar" class="pure-menu pure-menu-horizontal">
 				<ul class="pure-menu-list">
 					<li id="main_tab" class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Main</a></li>
-					<li id="admin_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Admin</a></li>
+					<li id="admin_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Config</a></li>
 				</ul>
 			</div>
 		</div>     

@@ -1,14 +1,10 @@
 var admin_offset = 0
 $(document).ready(function(){
 	isloggedin();
-    $("#menubar").hide();
     $("#admin_div").hide();
     getservices();
     getpackages();
     getcontainers();
-    if(IsAdmin()){
-		$("#menubar").show();	
-	}
 });
 
 $("#main_tab").click(function(){

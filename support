@@ -45,7 +45,6 @@
 				<ul class="pure-menu-list">
 					<li id="create_tab" class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Create</a></li>
 					<li id="ticket_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Tickets</a></li>
-					<li id="admin_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Admin</a></li>
 				</ul>
 			</div>
         </div>
@@ -81,22 +80,6 @@
 				<tbody id="ticket_body"></tbody>	
 			</table>
 				<center><button id="loadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
-		</div>
-			<div id="admin_div" style="display: none;">
-				<h2 class="content-subhead">All tickets</h2>			
-				<table id="ticket-table" class="pure-table pure-table-horizontal">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Creator</th>
-						<th>Subject</th>
-						<th>Date</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody id="admin_body"></tbody>
-			</table>
-				<center><button id="adminloadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
 		</div>
         </div>
     </div>

@@ -32,6 +32,7 @@
                 <li class="pure-menu-item"><a href="billing" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
 				<li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-envelope-o"></i><br>Support</a></li>
 				<li class="pure-menu-item"><a href="profile" class="pure-menu-link"><i class="fa fa-user"></i><br>Profile</a></li>
+				<li id="adminpanel" class="pure-menu-item" style="display: none;"><a href="/app/admin/dashboard" class="pure-menu-link"><i class="fa fa-terminal "></i><br>Admin Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>
@@ -42,45 +43,11 @@
         <div class="header">
             <div class="pure-menu pure-menu-horizontal">
 				<ul class="pure-menu-list">
-					<li id="create_tab" class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Create</a></li>
-					<li id="ticket_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Tickets</a></li>
-					<li id="admin_tab" class="pure-menu-item"><a href="#" class="pure-menu-link">Admin</a></li>
 				</ul>
 			</div>
         </div>
 
         <div class="content">
-			<div id="create_div">
-				<h2 class="content-subhead">Create a new ticket</h2>	
-				<h2 id="ticket_msg" class="content-subhead center"></h2>		
-				 <form id="creaton" class="pure-form pure-form-aligned">				
-				<div class="pure-control-group">
-					<input id="subject" class="pure-input-1 form-large" type="text" placeholder="Subject">
-				</div>
-				<div class="pure-control-group">
-				<textarea id="message" class="pure-input-1 form-large" cols="30" rows="5" placeholder="Message"></textarea>
-				</div>
-				</form>
-				<div class="pure-control-group">
-				<button id="create-ticket" class="pure-button pure-button-primary button-large pure-u-5-5">Create Ticket</button>
-				</div>
-			</div>
-			
-			<div id="ticket_div" style="display: none;">
-				<h2 class="content-subhead">My tickets</h2>			
-				<table id="ticket-table" class="pure-table pure-table-horizontal">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Subject</th>
-						<th>Date</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody id="ticket_body"></tbody>	
-			</table>
-				<center><button id="loadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
-		</div>
 			<div id="admin_div" style="display: none;">
 				<h2 class="content-subhead">All tickets</h2>			
 				<table id="ticket-table" class="pure-table pure-table-horizontal">
