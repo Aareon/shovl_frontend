@@ -71,7 +71,7 @@ function getcontainers(offset){
 						tr = $('<tr/>');
 						tr.append("<td>" + data.containers[i].Email + "</td>");
 						tr.append("<td>" + "<i class='fa " + serviceicon(data.containers[i].serviceid) +  " web_icon'></i>" +"</td>");
-						tr.append("<td>" + link(data.containers[i].containerid)+data[i].hostname+"</a>" + "</td>");
+						tr.append("<td>" + link(data.containers[i].containerid)+data.containers[i].hostname+"</a>" + "</td>");
 						tr.append("<td>" + packagename(data.containers[i].packageid) + "</td>");
 						tr.append("<td>" + website_status(data.containers[i].status) + "</td>");
 						$('#service_table').append(tr);
