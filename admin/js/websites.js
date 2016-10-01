@@ -69,7 +69,7 @@ function getcontainers(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var tr;
-				for (var i = 0; i < data.tickets.length; i++) {
+				for (var i = 0; i < data.containers.length; i++) {
 					if (data[i].serviceid != "SQL"){
 					tr = $('<tr/>');
 					tr.append("<td>" + data[i].Email + "</td>");
