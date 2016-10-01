@@ -118,7 +118,6 @@ function IsAdmin() {
             },
             success: function(result) {	
 				status = true;
-				$("#adminpanel").show();
             },
             error: function(result) {
 				stauts = false;	

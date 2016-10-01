@@ -32,6 +32,7 @@
                 <li class="pure-menu-item"><a href="billing" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
 				<li class="pure-menu-item"><a href="support" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
 				<li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-user"></i><br>Profile</a></li>
+				<li id="adminpanel" class="pure-menu-item" style="display: none;"><a href="/app/admin/dashboard" class="pure-menu-link"><i class="fa fa-terminal "></i><br>Admin Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>

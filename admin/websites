@@ -36,11 +36,8 @@
 			</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>Websites</a></li>
-                <li class="pure-menu-item"><a href="billing" class="pure-menu-link"><i class="fa fa-credit-card"></i><br>Billing</a></li>
-				<li class="pure-menu-item"><a href="support" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
-				<li class="pure-menu-item"><a href="profile" class="pure-menu-link"><i class="fa fa-user"></i><br>Profile</a></li>
-				<li id="adminpanel" class="pure-menu-item" style="display: none;"><a href="/app/admin/dashboard" class="pure-menu-link"><i class="fa fa-terminal "></i><br>Admin Panel</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-globe"></i><br>WIP</a></li>
+                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-profile"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>
@@ -76,22 +73,22 @@
 			<button id="createpackage" class="pure-button pure-button-primary button-large pure-u-5-5">Create Package</button>
 			</div>
 	<div id="main_div">
-		<button id="newwebsite" class="element2 button-large pure-button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Service</button>
 			<table class="pure-table pure-table-horizontal">
     <thead>
         <tr>
+            <th>Owner</th>
             <th>Service</th>
             <th>Domain name</th>
             <th>Package</th>
             <th>Status</th>
-            <th>Due Date</th>
         </tr>
     </thead>
 
     <tbody id="service_table"></tbody>
+    </table>
+    <center><button id="adminloadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
     </div>
 </div>
-<script src="js/global.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/ui.js"></script>
 </body>

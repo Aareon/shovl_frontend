@@ -1,0 +1,532 @@
+body {
+    color: #777;
+    background-image: url("daimond_eyes.png");
+    background-repeat: repeat;
+}
+
+li {list-style-type: none;}
+
+.square {
+    height:55px;
+    width:55px;
+    cursor:pointer;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        left: 150px;
+        width: 150px;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+.topbar {
+     margin: 0;
+     color: #333;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     padding-bottom: 20px;
+ }
+    .topbar h1 {
+        margin: 0.2em 0;
+        color: rgba(54, 59, 64);
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .topbar h2 {
+        font-weight: 300;
+        color: rgba(54, 59, 64);
+        padding: 0;
+        margin-top: 0;
+    }
+   
+.header {
+     margin: 0;
+     color: #333;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     border-bottom: 1px solid #eee;
+ }
+    .header h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .header h2 {
+        font-weight: 300;
+        color: #333;
+        padding: 0;
+        margin-top: 0;
+    }
+    
+a:link, a:visited {
+    color: rgb(0, 136, 204);
+    text-decoration: none;
+}
+
+a:hover, a:active {
+	color: rgb(0, 120, 231);
+}
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
+
+.form-large {
+            font-size: 120%;
+}
+
+.button-large {
+            font-size: 120%;
+			background: #3498db;
+			color: #ecf0f1;
+}
+
+.spacedout {
+	margin-top: 1em;
+}
+/*
+ul .navbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li .navbar{
+    float: left;
+}
+
+li a .navbar{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+*/
+#bar1 {display:inline-block;margin-right:10px;} 
+#bar2 {display:inline-block;} 
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+.pure-u-md-1-4 {
+	margin-top:10px;
+	margin-bottom:10px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.web_container {
+    border-radius: 25px;
+    background: #3498db;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    text-align: center; 
+    color: #ecf0f1; 
+}
+
+.web_container:hover {
+	background: #2980b9;
+}
+
+.web_icon {
+	margin-top:5px;
+	margin-bottom:5px;
+	color: #3498db;
+	font-size: 2em;
+}
+
+form {
+    padding-bottom: 10px;
+}
+
+.package_icon {
+	margin-top:5px;
+	margin-bottom:5px;
+	color: #27ae60;
+	font-size: 2em;
+}
+
+.checkbox_icon {
+	color: #3498db;
+	font-size:12em;
+}
+
+.orange {
+	color: #e67e22;
+}
+
+.green {
+	color: #27ae60;
+}
+
+.button-error {
+     background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+#block1 {display:inline-block; float:left; margin-left: 50px;} 
+#block2 {display:inline-block; float:right; margin-left: 50px; line-height:25px; font-size:15px;} 
+
+.element1 {display:inline-block; float:left;} 
+.element2 {display:inline-block; float:right;} 
+
+.red {
+	color: #e74c3c;
+}
+
+p {    
+    font-weight: normal;
+    color: black;
+}
+
+p.thick {
+    background: rgb(242, 249, 255);
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.line-separator{
+ border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.manage-separator{
+ border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+ padding-bottom: 10px;
+}
+
+#menu {
+    margin-left: -150px; /* "#menu" width */
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #3498db;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+    /*
+    All anchors inside the menu should be styled like this.
+    */
+    #menu a {
+        color: #A1C8EE;
+        border: none;
+        padding: 1em 0 1em 0;
+		text-align: center;
+		line-height: 1.8em;		
+        font-size: 120%;
+    }
+
+.center{
+text-align: center 
+}
+
+    /*
+    Remove all background/borders, since we are applying them to #menu.
+    */
+     #menu .pure-menu,
+     #menu .pure-menu ul {
+        border: none;
+        background: transparent;
+    }
+
+    /*
+    Add that light border to separate items into groups.
+    */
+    #menu .pure-menu ul,
+    #menu .pure-menu .menu-item-divided {
+        border-top: 1px solid #3498db;
+    }
+        /*
+        Change color of the anchor links on hover/focus.
+        */
+        #menu .pure-menu li a.active,
+        #menu .pure-menu li a:hover,
+        #menu .pure-menu li a:focus {
+            background: #3498db; 
+            color: #ecf0f1;      
+            padding: 1em 0 1em 0;     
+        }
+
+    /*
+    This styles the selected menu item `<li>`.
+    */
+    #menu .pure-menu-selected,
+    #menu .pure-menu-heading {
+        background: #3498db;
+    }
+        /*
+        This styles a link within a selected menu item `<li>`.
+        */
+        #menu .pure-menu-selected a {
+            color: #A1C8EE;
+            
+        }
+
+    /*
+    This styles the menu heading.
+    */
+    #menu .pure-menu-heading {
+        font-size: 110%;
+        color: #ecf0f1;
+        margin: 0;
+    }
+
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* "#menu width" */
+    background: #000;
+    background: rgba(0,0,0,0.7);
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+}
+
+    .menu-link:hover,
+    .menu-link:focus {
+        background: #000;
+    }
+
+    .menu-link span {
+        position: relative;
+        display: block;
+    }
+
+    .menu-link span,
+    .menu-link span:before,
+    .menu-link span:after {
+        background-color: #fff;
+        width: 100%;
+        height: 0.2em;
+    }
+
+        .menu-link span:before,
+        .menu-link span:after {
+            position: absolute;
+            margin-top: -0.6em;
+            content: " ";
+        }
+
+        .menu-link span:after {
+            margin-top: 0.6em;
+        }
+
+@media (min-width: 48em) {
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 150px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 150px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 48em) {
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+}
+
+
+  table {
+          margin: 1em 0;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding:0;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  table tr {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+
+  table th, table td {
+    padding: 10px;
+    text-align: center;
+    background: #3498db;
+  }
+
+  table th {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #ecf0f1;
+  }
+  
+  
+
+  @media screen and (max-width: 600px) {
+
+    table {
+    
+      border: 0;
+    }
+
+    table thead {
+      display: none;
+    }
+
+    table tr {
+      margin-bottom: 10px;
+      display: block;
+      border-bottom: 2px solid #ddd;
+    }
+
+    table td {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    table td:last-child {
+      border-bottom: 0;
+    }
+
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+
+.deploy_block						{ position:relative; padding-left:60px; margin-bottom:30px; }
+.deploy_block_step					{ position:absolute; top:14px; left:0px; margin-top:-21px; height:42px; width:42px; border:1px solid #D2D8DC; color:#8a9399; font-size:16px; font-weight:500; text-align:center; line-height:40px; border-radius:26px; }
+
+@media all and (min-width:0px) and (max-width:767px)
+{
+	.deploy_block { padding-left: 0px; }
+	.deploy_block > h3 { padding-left: 60px; }
+}
+
+input.deploy_checkbox											{ display:none;}
+input.deploy_checkbox + label									{ position:relative; vertical-align:top; display:-webkit-inline-flex; display:inline-flex; -webkit-flex-direction:column; flex-direction:column; -webkit-justify-content:center; justify-content:center; -webkit-align-items:flex-start; align-items:flex-start; width:240px; height:89px; padding:0px 0px 0px 80px; margin:0px 18px 23px 0px; border:1px solid #e6e9eb; border-radius:3px; cursor:pointer; white-space:nowrap; }
+.deploy_checkbox_icon											{ position:absolute; top:50%; left:16px; margin-top:-24px; font-size:48px; line-height:48px; width:48px; transition:opacity ease-in .25s;}
+.deploy_checkbox_line1											{ display:block; width:160px; overflow:hidden; text-overflow:ellipsis; font-size:15px; padding-top:2px; line-height:23px; color:#363b40; font-weight:bold; }
+.deploy_checkbox_line2											{ display:block; width:160px; overflow:hidden; text-overflow:ellipsis; font-size:12px; opacity:.8;}
+input.deploy_checkbox + label:hover								{ border:1px solid #1e88e5; }
+input.deploy_checkbox:checked + label							{ border:1px solid #27ae60; }
+input.deploy_checkbox:disabled + label							{ display:none; }
+@media all and (min-width:0px) and (max-width:767px)
+{
+	input.deploy_checkbox + label { width: 100%; }
+	.deploy_checkbox_line1 { width: 100%; }
+	.deploy_checkbox_line2 { width: 100%; }
+}
+
+.progress {
+height: 20px;
+margin-bottom: 20px;
+overflow: hidden;
+background-color: #f5f5f5;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+.progress {
+background-image: -webkit-gradient(linear,left 0,left 100%,from(#ebebeb),to(#f5f5f5));
+background-image: -webkit-linear-gradient(top,#ebebeb 0,#f5f5f5 100%);
+background-image: -moz-linear-gradient(top,#ebebeb 0,#f5f5f5 100%);
+background-image: linear-gradient(to bottom,#ebebeb 0,#f5f5f5 100%);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebebeb',endColorstr='#fff5f5f5',GradientType=0);
+}
+.progress {
+height: 24px;
+background-color: #ebeef1;
+background-image: none;
+box-shadow: none;
+}
+.progress-bar {
+float: left;
+width: 0;
+height: 100%;
+font-size: 12px;
+line-height: 20px;
+color: #fff;
+text-align: center;
+background-color: #428bca;
+-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+-webkit-transition: width .6s ease;
+transition: width .6s ease;
+}
+.progress-bar {
+background-image: -webkit-gradient(linear,left 0,left 100%,from(#428bca),to(#3071a9));
+background-image: -webkit-linear-gradient(top,#428bca 0,#3071a9 100%);
+background-image: -moz-linear-gradient(top,#428bca 0,#3071a9 100%);
+background-image: linear-gradient(to bottom,#428bca 0,#3071a9 100%);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca',endColorstr='#ff3071a9',GradientType=0);
+}
+.progress-bar {
+box-shadow: none;
+border-radius: 3px;
