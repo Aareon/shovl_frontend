@@ -29,8 +29,8 @@ function allusers(offset){
 					tr = $('<tr/>');
 					tr.append("<td>" + link(data.profiles[i].email)+data.profiles[i].email+"</a>" + "</td>");
 					tr.append("<td>" + data.profiles[i].country+"</a>" + "</td>");
-					tr.append("<td>" + data.profiles[i].balance + "</td>");
-					tr.append("<td>" + data.profiles[i].rank + "</td>");
+					tr.append("<td>" + data.profiles[i].credit + "</td>");
+					tr.append("<td>" + rank(data.profiles[i].rank) + "</td>");
 					$('#admin_body').append(tr);
 				}
 				if (data.canloadmore) {
