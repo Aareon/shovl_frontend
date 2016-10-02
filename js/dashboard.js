@@ -8,7 +8,7 @@ $(document).ready(function(){
 	}
 	setInterval(function(){ 
 		getcontainers();
-	}, 5000);
+	}, 2500);
 });
 
 $("#main_tab").click(function(){

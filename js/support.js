@@ -1,10 +1,8 @@
 var tickets_offset = 0
-var admin_offset = 0
 $(document).ready(function(){
 	isloggedin();
-    $("#ticket_div").hide();
 	mytickets();
-	isAdmin();
+    IsAdmin();
 });
 
 $("#loadmore").click(function(){

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Shovl - My Websites</title>
+ <title>Shovl - Support</title>
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
@@ -12,15 +12,7 @@
 <link rel="stylesheet" href="css/layouts/global.css">
 </head>
 <body>
-    <style type="text/css">
-      table {
-        border: 1px solid #3F6558;
-        margin-bottom: 20px;
-      }
-      th, td {
-        padding: 0 10px;
-      }
-    </style>
+
 
 <div id="layout">
     <!-- Menu toggle -->
@@ -32,14 +24,14 @@
     <div id="menu">
         <div class="pure-menu">
             <a class="pure-menu-heading" href="#">
-				<img src="icon.png" style="width:90px;height:64px>
+								<img src="icon.png" style="width:90px;height:64px>
 			</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
+                <li class="pure-menu-item"><a href="dashboard" class="pure-menu-link"><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
                 <li class="pure-menu-item"><a href="websites" class="pure-menu-link"><i class="fa fa-globe"></i><br>Websites</a></li>
                 <li class="pure-menu-item"><a href="support" class="pure-menu-link"><i class="fa fa-envelope-o"></i><br>Support</a></li>
-                <li class="pure-menu-item"><a href="users" class="pure-menu-link"><i class="fa fa-user"></i><br>Users</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-user"></i><br>Users</a></li>
                 <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-arrow-left"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
@@ -47,10 +39,35 @@
     </div>
 
     <div id="main">
-        <h1><Put graphs here and stats<h1>
-		</div>     
- </div>
+		<div class="topbar"><h2 id="block1">Customer Information</h2></div>
+        <div class="header">
+            <div class="pure-menu pure-menu-horizontal">
+				<ul class="pure-menu-list">
+				</ul>
+			</div>
+        </div>
+
+        <div class="content">
+			<div id="admin_div">
+				<h2 class="content-subhead"></h2>			
+				<table id="ticket-table" class="pure-table pure-table-horizontal">
+				<thead>
+					<tr>
+						<th>User</th>
+						<th>Country</th>
+						<th>Balance</th>
+						<th>Rank</th>
+					</tr>
+				</thead>
+				<tbody id="admin_body"></tbody>
+			</table>
+				<center><button id="adminloadmore" class="pure-button pure-button-primary button-large pure-u-1-4">Load More</button></center>
+		</div>
+        </div>
+    </div>
+</div>
 <script src="js/global.js"></script>
+<script src="js/users.js"></script>
 <script src="js/ui.js"></script>
 </body>
 </html>

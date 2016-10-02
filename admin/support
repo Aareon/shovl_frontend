@@ -31,7 +31,8 @@
                 <li class="pure-menu-item"><a href="dashboard" class="pure-menu-link"><i class="fa fa-tachometer"></i><br>Dashboard</a></li>
                 <li class="pure-menu-item"><a href="websites" class="pure-menu-link"><i class="fa fa-globe"></i><br>Websites</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link active"><i class="fa fa-envelope-o"></i><br>Support</a></li>
-                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-profile"></i><br>User Panel</a></li>
+                <li class="pure-menu-item"><a href="users" class="pure-menu-link"><i class="fa fa-user"></i><br>Users</a></li>
+                <li class="pure-menu-item"><a href="/app/dashboard" class="pure-menu-link"><i class="fa fa-arrow-left"></i><br>User Panel</a></li>
 				<li class="pure-menu-item"><a href="#" id="signout" class="pure-menu-link"><i class="fa fa-sign-out"></i><br>Sign out</a></li>
             </ul>
         </div>

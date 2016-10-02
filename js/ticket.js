@@ -80,6 +80,7 @@ function getreplies(){
 					}
 				}
 				$('#message_box').html(allreplies);
+				window.scrollTo(0,document.body.scrollHeight);
             }
     });	
 }
