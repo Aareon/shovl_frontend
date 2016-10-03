@@ -1,4 +1,4 @@
-var previous
+var previous;
 $(document).ready(function(){
 	isloggedin();
 	ReloadTicketDiv()
@@ -80,13 +80,11 @@ function getreplies(){
 						allreplies = allreplies.append(p)
 					}
 				}
-				if(previous != allreplies){
+				if(previous != data){
 					$('#message_box').html(allreplies);
 					window.scrollTo(0,document.body.scrollHeight);
-				}else{
-					$('#message_box').html(allreplies);
 				}
-				previous = allreplies
+				previous = data
             }
     });	
 }

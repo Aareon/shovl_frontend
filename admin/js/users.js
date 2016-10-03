@@ -58,7 +58,7 @@ function credit_text(amount){
 function rank(code){
 	var response;
 	if(code == 0){
-		response = "<div class='green'>User</div>";	
+		response = "User";	
 	}else if(code == 1){
 		response = "<div class='orange'>Sponsor</div>";	
 	}else if(code == 3){
