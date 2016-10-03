@@ -1,3 +1,4 @@
+var previous
 $(document).ready(function(){
 	isloggedin();
 	ReloadTicketDiv()
@@ -79,12 +80,13 @@ function getreplies(){
 						allreplies = allreplies.append(p)
 					}
 				}
-				if($('#message_box').html() != allreplies){
+				if(previous != allreplies){
 					$('#message_box').html(allreplies);
 					window.scrollTo(0,document.body.scrollHeight);
 				}else{
 					$('#message_box').html(allreplies);
 				}
+				previous = allreplies
             }
     });	
 }
