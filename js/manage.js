@@ -3,6 +3,7 @@ $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
   getdbinfo();
+  IsAdmin();
 });
 
 $("#manage_tab").click(function(){
@@ -321,3 +322,7 @@ e.preventDefault();
             }
          });
       });
+
+function SetManageStatus(){
+	
+}

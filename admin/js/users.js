@@ -29,7 +29,7 @@ function allusers(offset){
 					tr = $('<tr/>');
 					tr.append("<td>" + link(data.profiles[i].email)+data.profiles[i].email+"</a>" + "</td>");
 					tr.append("<td>" + data.profiles[i].country+"</a>" + "</td>");
-					tr.append("<td>" + data.profiles[i].credit + "</td>");
+					tr.append("<td>" + data.profiles[i].credits + "</td>");
 					tr.append("<td>" + rank(data.profiles[i].rank) + "</td>");
 					$('#admin_body').append(tr);
 				}
@@ -51,8 +51,10 @@ function rank(code){
 		response = "<div class='green'>User</div>";	
 	}else if(code == 1){
 		response = "<div class='orange'>Sponsor</div>";	
-	}else if(code == 5){
+	}else if(code == 3){
 		response = "<div class='red'>Admin</div>";	
-	}
+	}else{
+		response = "No rank"
+		}
 	return response;
 }

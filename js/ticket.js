@@ -79,8 +79,10 @@ function getreplies(){
 						allreplies = allreplies.append(p)
 					}
 				}
+				if($('#message_box').html() != allreplies){
+					window.scrollTo(0,document.body.scrollHeight);
+				}
 				$('#message_box').html(allreplies);
-				window.scrollTo(0,document.body.scrollHeight);
             }
     });	
 }
