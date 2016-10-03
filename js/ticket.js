@@ -80,9 +80,11 @@ function getreplies(){
 					}
 				}
 				if($('#message_box').html() != allreplies){
+					$('#message_box').html(allreplies);
 					window.scrollTo(0,document.body.scrollHeight);
+				}else{
+					$('#message_box').html(allreplies);
 				}
-				$('#message_box').html(allreplies);
             }
     });	
 }
