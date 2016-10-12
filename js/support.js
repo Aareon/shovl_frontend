@@ -55,7 +55,7 @@ $("#create-ticket").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-                pagealert(("success", "Ticket Created");
+                pagealert("success", "Ticket Created");
                 $("#subject").val("");
                 $("#message").val("");
                 setTimeout(function()
