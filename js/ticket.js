@@ -5,7 +5,7 @@ $(document).ready(function(){
     if(IsAdmin()){
 		$("#close").show();
 	}
-	setInterval(function(){ 
+	setInterval(function(){
 		ReloadTicketDiv()
 	}, 5000);
 });
@@ -33,7 +33,7 @@ function getticket(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				var data = JSON.parse(result);
 				var p;
 				if (data.status == 2){
@@ -41,18 +41,17 @@ function getticket(){
 					$("#reply").hide();
 					$("#close").hide();
 				}
-				p = $('<p>');
-				p.append('<p class="thick"><i class="fa fa-user"></i> '+data.creator+':</p>');
-				p.append("<p>"+htmlEntities(data.message)+"</p>");
-				p.append("<p>Sent: "+convertTimestamp(data.create_stamp)+"</p>");
-				p.append('<div class="line-separator"></div>');
+				p = $('<div class="panel panel-primary">');
+				p.append('<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+':</div>');
+				p.append('<div class="panel-body">'+htmlEntities(data.message));
+				p.append("<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
 				ticket_head = p;
             },
             error: function(result) {
 				window.location.assign("/app/support");
 			},
 			async: false,
-    });	
+    });
 }
 
 function getreplies(){
@@ -66,17 +65,16 @@ function getreplies(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				var data = JSON.parse(result);
 				var p;
 				var allreplies = ticket_head;
 				if (data != null){
 					for (var i = 0; i < data.length; i++) {
-						p = $('<p>');
-						p.append('<p class="thick"><i class="fa fa-user"></i> '+data[i].creator+':</p>');
-						p.append("<p>"+htmlEntities(data[i].message)+"</p>");
-						p.append("<p>"+"Sent: " + convertTimestamp(data[i].create_stamp)+"</p>");
-						p.append('<div class="line-separator"></div>');
+						p = $('<div class="panel panel-primary">');
+						p.append('<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+':</div>');
+						p.append('<div class="panel-body">'+htmlEntities(data.message));
+						p.append("<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
 						allreplies = allreplies.append(p)
 					}
 				}
@@ -86,14 +84,14 @@ function getreplies(){
 				}
 				previous = data
             }
-    });	
+    });
 }
 
-$("#reply").click(function(){	
+$("#reply").click(function(){
 	 var reply = {id: parseInt($_GET("id")), message: $("#message").val()};
 	 isloggedin();
 	 if(reply.message.length < 10){
-		sweetAlert("Oops...", "Your message must be atleast 10 characters long", "error");	
+		 pagealert("error", "Your message must be atleast 10 characters long");
 	  }else{
          $.ajax({
             type:"POST",
@@ -103,18 +101,18 @@ $("#reply").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				ResetTicketDiv();
-				sweetAlert("Well done!", "Your reply was submitted", "success");				
+					pagealert("success", "Your reply was submitted");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+					pagealert("error", result.responseText);
 			},
-		});	
+		});
 	}
 });
 
-$("#close").click(function(){	
+$("#close").click(function(){
 	 var ticket = {id: parseInt($_GET("id"))};
 	 isloggedin();
          $.ajax({
@@ -125,9 +123,9 @@ $("#close").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
-				ResetTicketDiv();
-				sweetAlert("Well done!", "Ticket has been closed", "success");				
+            success: function(result) {
+							ResetTicketDiv();
+							pagealert("success", "Ticket has been closed");
             }
-		});	
+		});
 });

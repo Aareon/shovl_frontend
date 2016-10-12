@@ -55,7 +55,7 @@ $("#create-ticket").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-                sweetAlert("Well done!", "Ticket Created", "success");
+                pagealert(("success", "Ticket Created");
                 $("#subject").val("");
                 $("#message").val("");
                 setTimeout(function()
@@ -64,7 +64,7 @@ $("#create-ticket").click(function(){
 							}, 1000);
             },
             error: function(result) {
-				pagelert("error", result.responseText);
+				pagealert("error", result.responseText);
 	  }
 	});
 });
