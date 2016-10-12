@@ -30,7 +30,7 @@ $("#addfunds").click(function(){
 				pagealert("success", "Your account has been credited");
 				},
 			 error: function(result) {
-				pagealert("error", result.responseText, );
+				pagealert("error", result.responseText);
 				}
     });
 })
