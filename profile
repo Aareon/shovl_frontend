@@ -18,10 +18,10 @@
         <div class="sidenav">
             <div class="sidenav-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span> Shovl</div>
             <ul class="sidenav-menu">
-                <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+                <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
                 <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
                 <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
-                <li><a href="profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
                 <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i><br>&nbsp;&nbsp;Admin Panel</a></li>
                 <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
             </ul>
