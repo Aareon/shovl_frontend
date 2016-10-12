@@ -18,7 +18,7 @@
         <div class="sidenav">
             <div class="sidenav-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span> Shovl</div>
             <ul class="sidenav-menu">
-                <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+                <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
                 <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
                 <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
                 <li><a href="profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
@@ -35,36 +35,31 @@
 					      <div class="col-md-12">
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
-                  <div id="domainbox">
-            			<h2 class="content-subhead">Domain name</h2>
-            			   <form>
-                      <div class="form-group">
-                        <input id="hostname" class="form-control input-md" id="inputsm" type="text" placeholder="domain.com" maxlength="32">
-                      </div>
-              			</form>
-                  </div>
+                  <h2>Dynamic Tabs</h2>
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+                  </ul>
 
-                    <div class="col-md-12">
-            				  <h2>Select a Service Type</h2>
-                      <div id="services" class="deploy_block" style="margin-top:10px;"></div>
+                  <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      <h3>HOME</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     </div>
-
-                    <div class="col-md-12">
-            				    <h2>Advanced Settings</h2>
-            				    <div id="advanced" class="deploy_block" style="margin-top:10px;">
-            				      <input class='deploy_checkbox' id='torenable' type='checkbox'></input>
-            				      <label for='torenable'><span class='deploy_checkbox_icon'><img src="tor.png"></span><span class='deploy_checkbox_line1'>Tor hidden service</label>
-            				    </div>
+                    <div id="menu1" class="tab-pane fade">
+                      <h3>Menu 1</h3>
+                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
-
-                    <div class="col-md-12">
-              				<h2 class="content-subhead">Select a Package</h2>
-                      <div id="packages" class="deploy_block" style="margin-top:10px;"></div>
+                    <div id="menu2" class="tab-pane fade">
+                      <h3>Menu 2</h3>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                     </div>
-
-                  <div class="col-md-12">
-                    <button id="createservice" type="button" class="btn btn-primary btn-md btn-block">Create Service</button>
-                  </div>
+                    <div id="menu3" class="tab-pane fade">
+                      <h3>Menu 3</h3>
+                      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    </div>
                   <!-- End of web contents -->
               </div>
             </div>
@@ -73,7 +68,6 @@
         </div>
       <!-- Start of JS imports -->
   <script src="js/global.js"></script>
-  <script src="js/create.js"></script>
       <!-- End of JS imports -->
     </body>
 </html>

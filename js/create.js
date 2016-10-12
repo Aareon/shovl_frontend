@@ -6,9 +6,9 @@ $(document).ready(function(){
 
 $("#torenable").click(function(){
     if (document.getElementById('torenable').checked){
-		$("#hostname").attr('disabled', 'disabled'); 
+		$("#hostname").attr('disabled', 'disabled');
 	}else{
-		$("#hostname").removeAttr('disabled'); 
+		$("#hostname").removeAttr('disabled');
 	}
 });
 
@@ -29,9 +29,9 @@ function getservices(){
 					lbl = $("<label for='SID" + data[i].name + "'> <span class='deploy_checkbox_icon'><i class='fa " + serviceicon(data[i].name)+ " checkbox_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + "</span></span></label>");
 					$('#services').append(tr);
 					$('#services').append(lbl);
-				}				
+				}
             }
-    });	
+    });
 }
 
 function getpackages(){
@@ -52,22 +52,22 @@ function getpackages(){
 					$('#packages').append(tr);
 					$('#packages').append(lbl);
 				}
-				
+
             }
-    });	
+    });
 }
 
-$("#createservice").click(function(){	
+$("#createservice").click(function(){
 	if(!document.getElementById('torenable').checked){
 		if (!$("#hostname").val()){
-			sweetAlert("Oops...", "You forgot to enter your domain", "error");
-		}	
+			pagealert("error", "You forgot to enter your domain");
+		}
 	}
-	
+
 	if (document.querySelector('input[name="SID"]:checked') == null){
-		sweetAlert("Oops...", "You forgot to select a service", "error");
+		pagealert("error", "You forgot to select a service");
 	} else if (document.querySelector('input[name="PID"]:checked') == null){
-		sweetAlert("Oops...", "You forgot to select a package", "error");
+		pagealert("error", "You forgot to select a package");
 	} else{
 	 var order = {hostname: $("#hostname").val(), serviceid: document.querySelector('input[name="SID"]:checked').value, packageid: parseInt(document.querySelector('input[name="PID"]:checked').value), torenabled: document.getElementById('torenable').checked};
 	 isloggedin();
@@ -79,16 +79,16 @@ $("#createservice").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
-				sweetAlert("Well done!", "Your service has been created", "success");	
-				    setTimeout(function() 
+            success: function(result) {
+							pagealert("success", "Your service has been created");
+				    setTimeout(function()
 							{
 							window.location.assign("/app/dashboard");
-							}, 1000); 			
+							}, 1000);
             },
-			 error: function(result) {	
-				sweetAlert("Oops...", result.responseText, "error");
+			 error: function(result) {
+					pagealert("error", result.responseText);
 				}
-		});	
+		});
 	}
 });

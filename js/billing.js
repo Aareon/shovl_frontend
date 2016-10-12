@@ -1,44 +1,13 @@
 var history_offset = 0
 $(document).ready(function(){
-	isloggedin();
-    $("#history_div").hide();
-    $("#admin_div").hide();
-    $("#admin_tab").hide();
+		isloggedin();
     gethistory(history_offset);
     balance();
     if(IsAdmin()){
-		$("#admin_tab").show();		
+		$("#admin_tab").show();
 		getgiftcodes();
 	}
 });
-
-
-$("#credit_tab").click(function(){
-    $("#credit_div").show();
-    $("#history_div").hide();
-    $("#admin_div").hide();
-    $('#admin_tab').removeClass('pure-menu-selected');
-    $("#history_tab").removeClass('pure-menu-selected');
-    $('#credit_tab').addClass('pure-menu-selected');
-})
-
-$("#history_tab").click(function(){
-    $("#credit_div").hide();
-    $("#history_div").show();
-    $("#admin_div").hide();
-    $('#admin_tab').removeClass('pure-menu-selected');
-    $('#credit_tab').removeClass('pure-menu-selected');
-    $("#history_tab").addClass('pure-menu-selected');
-})
-
-$("#admin_tab").click(function(){
-    $("#credit_div").hide();
-    $("#history_div").hide();
-    $("#admin_div").show();
-    $('#credit_tab').removeClass('pure-menu-selected');
-    $('#history_tab').removeClass('pure-menu-selected');
-    $("#admin_tab").addClass('pure-menu-selected');
-})
 
 $("#randomcode").click(function(){
     $("#giftcode_admin").val(randomString(32));
@@ -54,16 +23,16 @@ $("#addfunds").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				$("#history_body").html("");
 				gethistory();
 				balance();
-				sweetAlert("Well done!", "Your account has been credited", "success");
+				pagealert("success", "Your account has been credited");
 				},
-			 error: function(result) {	
-				sweetAlert("Oops...", result.responseText, "error");
+			 error: function(result) {
+				pagealert("error", result.responseText, );
 				}
-    });	
+    });
 })
 
 $("#creategiftcode").click(function(){
@@ -76,15 +45,15 @@ $("#creategiftcode").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				$("#giftcode_body").html("");
-				getgiftcodes();	
-				sweetAlert("Well done!", "Gift code created", "success");
+				getgiftcodes();
+				pagelert("success", "Gift code created");
 				},
-			 error: function(result) {	
-				sweetAlert("Oops...", result.responseText, "error");
+			 error: function(result) {
+				pagealert("error", result.responseText);
 				}
-    });	
+    });
 })
 
 function gethistory(offset){
@@ -98,7 +67,7 @@ function gethistory(offset){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				var data = JSON.parse(result);
 				var p;
 				for (var i = 0; i < data.bills.length; i++) {
@@ -109,18 +78,18 @@ function gethistory(offset){
 						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
 						$('#history_body').append(p);
 				}
-				
+
 				if (data.canloadmore) {
-					 $("#loadmore").removeClass("pure-button-disabled")
+					 $("#loadmore").removeClass("disabled")
 				}else {
-					 $("#loadmore").addClass("pure-button-disabled")
+					 $("#loadmore").addClass("disabled")
 				}
             }
-    });	
+    });
 }
 
 $("#loadmore").click(function(){
-	if ($("#loadmore").hasClass("pure-button-disabled") == false){		
+	if ($("#loadmore").hasClass("disabled") == false){
 		history_offset += 1
 		gethistory(history_offset);
 	}
@@ -145,12 +114,12 @@ function getgiftcodes(){
 					tr.append("<td>" + status(data[i].status) + "</td>");
 					$('#giftcode_body').append(tr);
 				}
-				
+
             }
-    });	
+    });
 }
 
-function balance() {	
+function balance() {
 	isloggedin();
     $.ajax({
             type:"GET",
@@ -159,7 +128,7 @@ function balance() {
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 			    $("#balance").html(credit_text(parseFloat(result)));
             }
     });
@@ -178,9 +147,9 @@ function credit_text(amount){
 function status(code){
 	var response;
 	if(code == 0){
-		response = "<div class='red'>Used</div>";	
+		response = "<div class='red'>Used</div>";
 	}else if(code == 1){
-		response = "<div class='green'>Unused</div>";	
+		response = "<div class='green'>Unused</div>";
 	}
 	return response;
 }
