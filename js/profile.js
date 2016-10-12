@@ -32,7 +32,7 @@ $("#update-profile").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				pagealert("success", "Details updated", );
+				pagealert("success", "Details updated");
             },
             error: function(result) {
 				pagealert("error", result.responseText);
