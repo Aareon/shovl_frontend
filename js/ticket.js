@@ -73,8 +73,8 @@ function getreplies(){
 					for (var i = 0; i < data.length; i++) {
 						p = $('<div class="col-md-12">');
 						p.append(`<div class="panel panel-primary">`+'<div class="panel-heading"><i class="fa fa-user"></i> '+data[i].creator+'</div>');
-						p.append('<div class="panel-body">'+htmlEntities(data.message)+"<br>Sent: "+convertTimestamp(data[i].create_stamp)+"</div></div>");
-						allreplies = allreplies.after(p)
+						p.append('<div class="panel-body">'+htmlEntities(data.message)+"Sent: "+convertTimestamp(data[i].create_stamp)+"</div></div>");
+						allreplies = allreplies.append(p)
 					}
 				}
 					$('#message_box').html(allreplies);

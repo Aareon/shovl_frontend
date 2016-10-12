@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    $("#password_div").hide();
     //Load user information in details
    isloggedin();
    IsAdmin();
@@ -19,22 +18,8 @@ $(document).ready(function(){
                 $("#country").val(req.country);
             }
     });
-}); 
-//Tab system for menu
-$("#password_tab").click(function(){
-    $("#profile_div").hide();
-    $("#password_div").show();
-    $("#profile_tab").removeClass('pure-menu-selected');
-    $('#password_tab').addClass('pure-menu-selected');
-})
+});
 
-$("#profile_tab").click(function(){
-    $("#password_div").hide();
-    $("#profile_div").show();
-    $('#password_tab').removeClass('pure-menu-selected');
-    $("#profile_tab").addClass('pure-menu-selected');
-})
-	
 $("#update-profile").click(function(){
      var details = {fullname: $("#fullname").val(), phonenumber: $("#phonenumber").val(), address: $("#address").val(), city: $("#city").val(), country: $("#country").val()};
 	 isloggedin();
@@ -46,11 +31,11 @@ $("#update-profile").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
-				sweetAlert("Good job!", "Details updated", "success");
+            success: function(result) {
+				pagealert("success", "Details updated", );
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				pagealert("error", result.responseText);
 			}
     });
 });
@@ -67,23 +52,23 @@ $("#change-password").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
-                sweetAlert("Good job!", "Password Changed", "success");
+            success: function(result) {
+                pagealert("success", "Password Changed");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				pagealert("error", result.responseText);
 			}
     });
 	}else{
-		 sweetAlert("Oops...", "Passwords don't match", "error");
+		 pagealert("error", "Passwords don't match");
 	}
 });
 
 function password_match(){
 	var status = false;
 	if($("#newpassword_2").val() == $("#newpassword_1").val()){
-		status = true	
+		status = true
 	}
-	
+
 	return status;
 }
