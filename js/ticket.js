@@ -72,17 +72,12 @@ function getreplies(){
 				if (data != null){
 					for (var i = 0; i < data.length; i++) {
 						p = $('<div class="panel panel-primary">');
-						p.append('<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+':</div>');
-						p.append('<div class="panel-body">'+htmlEntities(data.message));
-						p.append("<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
+						p.append('<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+'</div>');
+						p.append('<div class="panel-body">'+htmlEntities(data.message)+"<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
 						allreplies = allreplies.append(p)
 					}
 				}
-				if(previous != data){
 					$('#message_box').html(allreplies);
-					window.scrollTo(0,document.body.scrollHeight);
-				}
-				previous = data
             }
     });
 }
