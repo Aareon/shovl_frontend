@@ -137,9 +137,9 @@ function balance() {
 function credit_text(amount){
 	var response = "";
 		if(amount > 0){
-			response = '<h3 class="green">$'+amount.toFixed(2);+'</h3>';
+			response = '<h5 class="green">$'+amount.toFixed(2);+'</h5>';
 		}else{
-			response = '<h3 class="red">$'+amount.toFixed(2);+'</h3>';
+			response = '<h5 class="red">$'+amount.toFixed(2);+'</h5>';
 		}
 	return response;
 }

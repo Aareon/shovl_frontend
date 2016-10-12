@@ -6,50 +6,6 @@ $(document).ready(function(){
   IsAdmin();
 });
 
-$("#manage_tab").click(function(){
-  $("#logs_div").hide();
-  $("#database_div").hide();
-  $("#files_div").hide();
-  $("#manage_div").show();
-  $('#database_tab').removeClass('pure-menu-selected');
-  $('#logs_tab').removeClass('pure-menu-selected');
-  $("#files_tab").removeClass('pure-menu-selected');
-  $("#manage_tab").addClass('pure-menu-selected');
-})
-
-$("#logs_tab").click(function(){
-    $("#manage_div").hide();
-    $("#database_div").hide();
-    $("#files_div").hide();
-    $("#logs_div").show();
-    $('#database_tab').removeClass('pure-menu-selected');
-    $('#manage_tab').removeClass('pure-menu-selected');
-    $("#files_tab").removeClass('pure-menu-selected');
-    $("#logs_tab").addClass('pure-menu-selected');
-})
-
-$("#database_tab").click(function(){
-    $("#manage_div").hide();
-    $("#logs_div").hide();
-    $("#files_div").hide();
-    $("#database_div").show();
-    $('#manage_tab').removeClass('pure-menu-selected');
-    $("#logs_tab").removeClass('pure-menu-selected');
-    $("#files_tab").removeClass('pure-menu-selected');
-    $("#database_tab").addClass('pure-menu-selected');
-})
-
-$("#files_tab").click(function(){
-    $("#manage_div").hide();
-    $("#logs_div").hide();
-    $("#database_div").hide();
-    $("#files_div").show();
-    $('#manage_tab').removeClass('pure-menu-selected');
-    $("#logs_tab").removeClass('pure-menu-selected');
-    $("#database_tab").removeClass('pure-menu-selected');
-    $("#files_tab").addClass('pure-menu-selected');
-})
-"files_tab"
 function getmanagelog(offset){
 	 isloggedin();
 	 var req = {containerid: $_GET("id"), offset: offset};
@@ -61,7 +17,7 @@ function getmanagelog(offset){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				var data = JSON.parse(result);
 				var p;
 				for (var i = 0; i < data.manage_logs.length; i++) {
@@ -72,18 +28,18 @@ function getmanagelog(offset){
 					$('#managelog_table').append(tr);
 					}
 				}
-				
+
 				if (data.canloadmore) {
-					 $("#loadmore").removeClass("pure-button-disabled")
+					 $("#loadmore").removeClass("disabled")
 				}else {
-					 $("#loadmore").addClass("pure-button-disabled")
+					 $("#loadmore").addClass("disabled")
 				}
             }
-    });	
+    });
 }
 
 $("#loadmore").click(function(){
-	if ($("#loadmore").hasClass("pure-button-disabled") == false){	
+	if ($("#loadmore").hasClass("disabled") == false){
 		logs_offset += 1
 		getmanagelog(logs_offset);
 	}
@@ -145,10 +101,10 @@ $("#start").click(function(){
             },
             success: function(result) {
 				$("#status").html("Status: "+website_status(1))
-                sweetAlert("Well done!", "Website has been tasked to start", "success");
+                pagealert("success", "Website has been tasked to start");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				        pagealert("error", result.responseText);
 	  }
 	});
 });
@@ -166,10 +122,10 @@ $("#stop").click(function(){
             },
             success: function(result) {
 				$("#status").html("Status: "+website_status(0))
-                sweetAlert("Well done!", "Website has been tasked to stop", "success");
+                pagealert("success", "Website has been tasked to stop");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				        pagealert("error", result.responseText);
 	  }
 	});
 });
@@ -186,10 +142,10 @@ $("#restart").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-                sweetAlert("Well done!", "Website Restarted", "success");
+                pagealert("success", "Website Restarted");
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				        pagealert("error", result.responseText);
 	  }
 	});
 });
@@ -249,7 +205,7 @@ e.preventDefault();
 				var xhr = new window.XMLHttpRequest();
 				xhr.upload.addEventListener("progress", function(evt) {
 					if (evt.lengthComputable) {
-						var percentComplete = (evt.loaded / evt.total) * 100;						
+						var percentComplete = (evt.loaded / evt.total) * 100;
 						if (percentComplete == 100){
 							$("#db_progress").hide();
 							$("#db_progressbar").css("width", "0%")
@@ -273,9 +229,9 @@ e.preventDefault();
             cache: false,
             processData: false,
             success: function(){
-                sweetAlert("Database uploaded!", "Starting import", "success");
+                pagealert("success", "Database uploaded!<br>Starting import");
             },error: function(result){
-                sweetAlert("Oops!", result.responseText, "error");
+                pagealert("error", result.responseText);
             }
          });
       });
@@ -292,7 +248,7 @@ e.preventDefault();
 				var xhr = new window.XMLHttpRequest();
 				xhr.upload.addEventListener("progress", function(evt) {
 					if (evt.lengthComputable) {
-						var percentComplete = (evt.loaded / evt.total) * 100;						
+						var percentComplete = (evt.loaded / evt.total) * 100;
 						if (percentComplete == 100){
 							$("#webroot_progress").hide();
 							$("#webroot_progressbar").css("width", "0%")
@@ -316,13 +272,13 @@ e.preventDefault();
             cache: false,
             processData: false,
             success: function(){
-                sweetAlert("Website uploaded!", "Starting import", "success");
+                pagealert("success", "Website uploaded!<br>Starting import");
             },error: function(result){
-                sweetAlert("Oops!", result.responseText, "error");
+                pagealert("error", result.responseText);
             }
          });
       });
 
 function SetManageStatus(){
-	
+
 }

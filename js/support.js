@@ -2,11 +2,11 @@ var tickets_offset = 0
 $(document).ready(function(){
 	isloggedin();
 	mytickets();
-    IsAdmin();
+  IsAdmin();
 });
 
 $("#loadmore").click(function(){
-	if ($("#loadmore").hasClass("pure-button-disabled") == false){		
+	if ($("#loadmore").hasClass("disabled") == false){
 		tickets_offset += 1
 		mytickets(tickets_offset);
 	}
@@ -35,32 +35,13 @@ function mytickets(offset){
 					$('#ticket_body').append(tr);
 				}
 				if (data.canloadmore) {
-					 $("#loadmore").removeClass("pure-button-disabled")
+					 $("#loadmore").removeClass("disabled")
 				}else {
-					 $("#loadmore").addClass("pure-button-disabled")
+					 $("#loadmore").addClass("disabled")
 				}
             }
-    });	
+    });
 }
-
-//Tab system for menu
-$("#create_tab").click(function(){
-    $("#create_div").show();
-    $("#ticket_div").hide();
-    $("#admin_div").hide();
-    $("#ticket_tab").removeClass('pure-menu-selected');
-    $('#admin_tab').removeClass('pure-menu-selected');
-    $('#create_tab').addClass('pure-menu-selected');
-})
-
-$("#ticket_tab").click(function(){
-    $("#create_div").hide();
-    $("#admin_div").hide();
-    $("#ticket_div").show();
-    $('#create_tab').removeClass('pure-menu-selected');
-    $('#admin_tab').removeClass('pure-menu-selected');
-    $("#ticket_tab").addClass('pure-menu-selected');
-})
 
 $("#create-ticket").click(function(){
      var ticket = {subject: $("#subject").val(), message: $("#message").val()};
@@ -73,17 +54,17 @@ $("#create-ticket").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
                 sweetAlert("Well done!", "Ticket Created", "success");
                 $("#subject").val("");
                 $("#message").val("");
-                setTimeout(function() 
+                setTimeout(function()
 							{
 							window.location.reload();
-							}, 1000);  
+							}, 1000);
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
+				pagelert("error", result.responseText);
 	  }
 	});
 });
@@ -95,11 +76,11 @@ function link(id){
 function status(code){
 	var response;
 	if(code == 0){
-		response = "<div class='orange'>Awaiting Reply</div>";	
+		response = "<div class='orange'>Awaiting Reply</div>";
 	}else if(code == 1){
-		response = "<div class='green'>Replied</div>";	
+		response = "<div class='green'>Replied</div>";
 	}else if(code == 2){
-		response = "<div class='red'>Closed</div>";	
+		response = "<div class='red'>Closed</div>";
 	}
 	return response;
 }
