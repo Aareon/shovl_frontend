@@ -41,10 +41,10 @@ function getticket(){
 					$("#reply").hide();
 					$("#close").hide();
 				}
-				p = $('<div class="panel panel-primary">');
-				p.append('<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+':</div>');
+				p = $('<div class="col-md-12">');
+				p.append(`<div class="panel panel-primary">`+'<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+':</div>');
 				p.append('<div class="panel-body">'+htmlEntities(data.message));
-				p.append("<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
+				p.append("<br>Sent: "+convertTimestamp(data.create_stamp)+"</div></div>");
 				ticket_head = p;
             },
             error: function(result) {
@@ -71,9 +71,9 @@ function getreplies(){
 				var allreplies = ticket_head;
 				if (data != null){
 					for (var i = 0; i < data.length; i++) {
-						p = $('<div class="panel panel-primary">');
-						p.append('<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+'</div>');
-						p.append('<div class="panel-body">'+htmlEntities(data.message)+"<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
+						p = $('<div class="col-md-12">');
+						p.append(`<div class="panel panel-primary">`+'<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+'</div>');
+						p.append('<div class="panel-body">'+htmlEntities(data.message)+"<br>Sent: "+convertTimestamp(data.create_stamp)+"</div></div>");
 						allreplies = allreplies.append(p)
 					}
 				}
