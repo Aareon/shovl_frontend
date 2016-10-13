@@ -79,7 +79,7 @@ function getinfo(){
 				if(data.serviceid == "Custom"){
 						$("#files_tab").show();
 				}
-        //SetManageStatus(data.status);
+        SetManageStatus(data.status);
 				$("#hostname").html("Domain: "+data.hostname);
 				$("#service").html("Service: "+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("Status: "+website_status(data.status));
@@ -102,7 +102,7 @@ $("#start").click(function(){
             },
             success: function(result) {
 				        $("#status").html("Status: "+website_status(1));
-                //SetManageStatus(1);
+                SetManageStatus(1);
                 pagealert("success", "Website has been tasked to start");
             },
             error: function(result) {
@@ -124,7 +124,7 @@ $("#stop").click(function(){
             },
             success: function(result) {
 				        $("#status").html("Status: "+website_status(0));
-                //SetManageStatus(0);
+                SetManageStatus(0);
                 pagealert("success", "Website has been tasked to stop");
             },
             error: function(result) {
