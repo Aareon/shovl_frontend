@@ -79,6 +79,7 @@ function getinfo(){
 				if(data.serviceid == "Custom"){
 						$("#files_tab").show();
 				}
+        SetManageStatus(data.status);
 				$("#hostname").html("Domain: "+data.hostname);
 				$("#service").html("Service: "+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("Status: "+website_status(data.status));
@@ -100,7 +101,8 @@ $("#start").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#status").html("Status: "+website_status(1))
+				        $("#status").html("Status: "+website_status(1));
+                SetManageStatus(1);
                 pagealert("success", "Website has been tasked to start");
             },
             error: function(result) {
@@ -121,7 +123,8 @@ $("#stop").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#status").html("Status: "+website_status(0))
+				        $("#status").html("Status: "+website_status(0));
+                SetManageStatus(0);
                 pagealert("success", "Website has been tasked to stop");
             },
             error: function(result) {
@@ -279,6 +282,15 @@ e.preventDefault();
          });
       });
 
-function SetManageStatus(){
-
+function SetManageStatus(status){
+  if (status == 1){
+    $("#stop").removeClass("disabled");
+    $("#start").addClass("disabled");
+  }else if(status == 0){
+    $("#start").removeClass("disabled");
+    $("#stop").addClass("disabled");
+  }else {
+    $("#start").removeClass("disabled");
+    $("#stop").removeClass("disabled");
+  }
 }
