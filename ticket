@@ -36,6 +36,7 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                   <div id="message_box"></div>
+                  <div id="reply_box"></div>
 
             			<div id="create_div">
             				<h2 id="ticket_msg" class="content-subhead center"></h2>
