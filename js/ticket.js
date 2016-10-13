@@ -44,7 +44,7 @@ function getticket(){
 				p = $('<div class="col-md-12">');
 				p.append(`<div class="panel panel-primary">`+'<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+':</div>');
 				p.append('<div class="panel-body">'+htmlEntities(data.message));
-				p.append("<br>Sent: "+convertTimestamp(data.create_stamp)+"</div></div>");
+				p.append("<br><div>Sent: "+convertTimestamp(data.create_stamp)+"</div></div>");
 				ticket_head = p;
             },
             error: function(result) {
@@ -73,7 +73,7 @@ function getreplies(){
 					for (var i = 0; i < data.length; i++) {
 						p = $('<div class="col-md-12">');
 						p.append(`<div class="panel panel-primary">`+'<div class="panel-heading"><i class="fa fa-user"></i> '+data[i].creator+'</div>');
-						p.append('<div class="panel-body">'+htmlEntities(data.message)+"Sent: "+convertTimestamp(data[i].create_stamp)+"</div></div>");
+						p.append('<div class="panel-body">'+htmlEntities(data[i].message)+"<div>Sent: "+convertTimestamp(data[i].create_stamp)+"</div></div>");
 						allreplies = allreplies.after(p)
 					}
 				}
