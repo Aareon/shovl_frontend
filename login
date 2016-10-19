@@ -33,6 +33,7 @@
       <!-- End of login form -->
 
       <!-- Start of JS imports -->
+      <script src="js/alertsystem.js"></script>
       <script src="js/login.js"></script>
       <!-- End of JS imports -->
     </body>

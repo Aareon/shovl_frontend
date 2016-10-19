@@ -32,6 +32,7 @@
       <!-- End of sign up form -->
 
       <!-- Start of JS imports -->
+      <script src="js/alertsystem.js"></script>
       <script src="js/signup.js"></script>
       <!-- End of JS imports -->
     </body>
