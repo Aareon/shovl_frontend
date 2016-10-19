@@ -1,26 +1,26 @@
 $("#login").click(function(){
      var account = {email: $("#email_field").val(), password: $("#pass_field").val()};
-     
+
          $.ajax({
             type:"POST",
             url: "/api/account/login",
             data: JSON.stringify(account),
             success: function(result) {
-				//Parse JSON, store into localstorage	
+				//Parse JSON, store into localstorage
                 var req = JSON.parse(result);
                 localStorage.setItem("token", req.token);
                 localStorage.setItem("expires", req.expires);
                 localStorage.setItem("refresh_token", req.refresh_token);
-                setTimeout(function() 
+                setTimeout(function()
 							{
-							var lastlink = localStorage.getItem("lastlink") 
+							var lastlink = localStorage.getItem("lastlink")
 								if (lastlink === null) {
 									 window.location.assign("/app/dashboard");
 								}else{
 									localStorage.removeItem("lastlink");
 									window.location.assign(lastlink);
 								}
-							},800); 
+							},800);
             },
             error: function(result) {
 				if (result.responseText == "Please confirm your email to login"){
@@ -35,9 +35,9 @@ $("#login").click(function(){
 					},
 					function(){
 					  swal("Well Done!", result.responseText, "success");
-					  
+
 					       var account = {email: $("#email_field").val()};
-     
+
 							 $.ajax({
 								type:"POST",
 								url: "/api/resendconfirm",
@@ -50,10 +50,10 @@ $("#login").click(function(){
 									sweetAlert("Oops...", result.responseText, "error");
 								},
 						});
-					  
+
 					});
 				} else {
-					sweetAlert("Oops...", result.responseText, "error");
+					pagealert("Oops...", result.responseText, "error");
 				}
 			}
     });
@@ -64,6 +64,6 @@ $('#pass_field').keypress(function (e) {
  if(key == 13)
   {
     $('#login').click();
-    return false;  
+    return false;
   }
-});   
+});

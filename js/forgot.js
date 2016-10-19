@@ -1,20 +1,20 @@
 $("#reset").click(function(){
      var account = {email: $("#email_field").val()};
-     
+
          $.ajax({
             type:"POST",
             url: "/api/account/forgot",
             data: JSON.stringify(account),
             processData: false,
             success: function(result) {
-				sweetAlert("Well done!", "We've sent a password reset link to you", "success");
-                setTimeout(function() 
+				        pagealert("success", "We've sent a password reset link to you");
+                setTimeout(function()
 							{
 							window.location.assign("/app/login");
-							}, 2000);  
+							}, 2000);
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");
+				        pagealert("error", result.responseText);
 			}
     });
 });
@@ -24,6 +24,6 @@ $('#email_field').keypress(function (e) {
  if(key == 13)
   {
     $('#reset').click();
-    return false;  
+    return false;
   }
-});   
+});
