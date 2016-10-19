@@ -53,7 +53,7 @@ $("#login").click(function(){
 
 					});
 				} else {
-					pagealert("Oops...", result.responseText, "error");
+					pagealert("error", result.responseText);
 				}
 			}
     });
