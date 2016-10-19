@@ -1,0 +1,16 @@
+#login-container {
+  position: absolute;
+  width: 300px;
+  top: 30px;
+  left: 50%;
+  margin-left: -150px;
+  z-index: 1000;
+}
+
+@media screen and (min-width: 768px) {
+  #login-container {
+      width: 380px;
+      top: 120px;
+      margin-left: -190px;
+  }
+}

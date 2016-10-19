@@ -1,36 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Shovl - Password Reset</title>
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<link rel="stylesheet" href="css/layouts/externalglobal.css">
-<link rel="stylesheet" href="css/layouts/forgot.css">
-</head>
-<body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Shovl - Password Reset</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/layouts/loginbox.css">
+        <link rel="stylesheet" href="css/layouts/global.css">
+    </head>
+    <body>
+			<!-- Start of forgot form -->
+      <div id="login-container">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Create an account</div>
+        <div id="alertbox"></div>
+        <div class="panel-body">
+          <div class="form-group col-md-12">
+            <input id="email_field" class="form-control input-md" type="email" placeholder="Email Address">
+          </div>
+          <div class="col-md-12">
+            <button id="reset" class="btn btn-primary btn-block">Reset my password</button>
+          </div>
+          <center><footer><a href="login">Login Page</a></footer></center>
+      </div>
+    </div>
+      <!-- End of forgot form -->
 
-    <pep id="main" class="card">		
-        <div class="content container">
-			<div class="header">
-			<h3 id="error">Reset Password</h3>
-			</div>
-            <space></space>
-            <form class="pure-form pure-form-aligned">				
-			<div class="pure-control-group">
-				<input id="email_field" class="pure-input-1 form-large" type="email" placeholder="Email Address">
-			</div>
-			<space></space>
-			</form>
-			
-			<button id="reset" class="pure-button pure-button-primary button-large pure-u-5-5">Reset my password</button>
-			<center><footer><a href="login">Login Page</a></footer></center>
-        </div>
-    </pep>
-<script src="js/forgot.js"></script>
-</body>
+      <!-- Start of JS imports -->
+      <script src="js/forgot.js"></script>
+      <!-- End of JS imports -->
+    </body>
 </html>
