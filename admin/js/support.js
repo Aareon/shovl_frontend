@@ -2,11 +2,11 @@ var tickets_offset = 0
 var admin_offset = 0
 $(document).ready(function(){
 	isloggedin();
-	alltickets();			
+	alltickets();
 });
 
 $("#adminloadmore").click(function(){
-	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){		
+	if ($("#adminloadmore").hasClass("disabled") == false){
 		admin_offset += 1
 		alltickets(admin_offset);
 	}
@@ -36,12 +36,12 @@ function alltickets(offset){
 					$('#admin_body').append(tr);
 				}
 				if (data.canloadmore) {
-					 $("#adminloadmore").removeClass("pure-button-disabled")
+					 $("#adminloadmore").removeClass("disabled")
 				}else {
-					 $("#adminloadmore").addClass("pure-button-disabled")
+					 $("#adminloadmore").addClass("disabled")
 				}
             }
-    });	
+    });
 }
 function link(id){
 		return '<a href="/app/ticket?id='+id+'">';
@@ -50,11 +50,11 @@ function link(id){
 function status(code){
 	var response;
 	if(code == 0){
-		response = "<div class='orange'>Awaiting Reply</div>";	
+		response = "<div class='orange'>Awaiting Reply</div>";
 	}else if(code == 1){
-		response = "<div class='green'>Replied</div>";	
+		response = "<div class='green'>Replied</div>";
 	}else if(code == 2){
-		response = "<div class='red'>Closed</div>";	
+		response = "<div class='red'>Closed</div>";
 	}
 	return response;
 }

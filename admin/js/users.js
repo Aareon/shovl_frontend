@@ -1,11 +1,11 @@
 var admin_offset = 0
 $(document).ready(function(){
 	isloggedin();
-	allusers();			
+	allusers();
 });
 
 $("#adminloadmore").click(function(){
-	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){		
+	if ($("#adminloadmore").hasClass("disabled") == false){
 		admin_offset += 1
 		allusers(admin_offset);
 	}
@@ -34,12 +34,12 @@ function allusers(offset){
 					$('#admin_body').append(tr);
 				}
 				if (data.canloadmore) {
-					 $("#adminloadmore").removeClass("pure-button-disabled")
+					 $("#adminloadmore").removeClass("disabled")
 				}else {
-					 $("#adminloadmore").addClass("pure-button-disabled")
+					 $("#adminloadmore").addClass("disabled")
 				}
             }
-    });	
+    });
 }
 
 function link(id){
@@ -59,11 +59,11 @@ function credit_text(amount){
 function rank(code){
 	var response;
 	if(code == 0){
-		response = "User";	
+		response = "User";
 	}else if(code == 1){
-		response = "<div class='orange'>Sponsor</div>";	
+		response = "<div class='orange'>Sponsor</div>";
 	}else if(code == 3){
-		response = "<div class='red'>Admin</div>";	
+		response = "<div class='red'>Admin</div>";
 	}else{
 		response = "No rank"
 		}

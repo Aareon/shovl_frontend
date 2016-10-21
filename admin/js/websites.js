@@ -1,28 +1,13 @@
 var admin_offset = 0
 $(document).ready(function(){
-	isloggedin();
-    $("#admin_div").hide();
+		isloggedin();
     getservices();
     getpackages();
     getcontainers();
 });
 
-$("#main_tab").click(function(){
-    $("#main_div").show();
-    $("#admin_div").hide();
-    $("#admin_tab").removeClass('pure-menu-selected');
-    $('#main_tab').addClass('pure-menu-selected');
-})
-
-$("#admin_tab").click(function(){
-    $("#main_div").hide();
-    $("#admin_div").show();
-    $('#main_tab').removeClass('pure-menu-selected');
-    $("#admin_tab").addClass('pure-menu-selected');
-})
-
 $("#adminloadmore").click(function(){
-	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){
+	if ($("#adminloadmore").hasClass("disabled") == false){
 		admin_offset += 1
 		getcontainers(admin_offset);
 	}
@@ -40,7 +25,7 @@ $("#createpackage").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				pagealert("success", "Package has been created");				
+				pagealert("success", "Package has been created");
             },
             error: function(result) {
 				pagealert("error", result.responseText);
@@ -74,9 +59,9 @@ function getcontainers(offset){
 					}
 				}
 				if (data.canloadmore) {
-					 $("#adminloadmore").removeClass("pure-button-disabled")
+					 $("#adminloadmore").removeClass("disabled")
 				}else {
-					 $("#adminloadmore").addClass("pure-button-disabled")
+					 $("#adminloadmore").addClass("disabled")
 				}
             }
     });
