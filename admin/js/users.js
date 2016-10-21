@@ -46,6 +46,16 @@ function link(id){
 		return '<a href="manageuser?email='+id+'">';
 }
 
+function credit_text(amount){
+	var response = "";
+		if(amount > 0){
+			response = '<p class="green">$'+amount.toFixed(2);+'</p>';
+		}else{
+			response = '<p class="red">$'+amount.toFixed(2);+'</p>';
+		}
+	return response;
+}
+
 function rank(code){
 	var response;
 	if(code == 0){
