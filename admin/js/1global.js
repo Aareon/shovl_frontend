@@ -8,19 +8,39 @@ function isloggedin(){
             type:"POST",
             url: "/api/account/refreshtoken",
             data: JSON.stringify(refresh),
-            success: function(result) {	
+            success: function(result) {
 				var data = JSON.parse(result);
 				localStorage.setItem("token", data.token);
 				localStorage.setItem("expires", data.expires);
 				localStorage.setItem("refresh_token", data.refresh_token);
             },
-            error: function(result) {	
+            error: function(result) {
                 localStorage.setItem("lastlink", window.location.pathname);
 				window.location.assign("/app/login");
             },
             async: false
-			});	
-	}	
+			});
+	}
+}
+
+$(function() {
+		$('.sidenav-toggle').click(function() {
+				$('.sidenav').toggle();
+				$('.sidenav-mini').toggle();
+				$('#sidenav-offset').toggleClass('sidenav-offset');
+		})
+})
+
+function pagealert(type, message){
+	if (type == "success"){
+		$("#alertbox").html(`<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Well Done!</strong><br>`+message+`</div>`);
+	}else if (type == "info"){
+		$("#alertbox").html(`<div class="alert alert-info"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Heads Up!</strong><br>`+message+`</div>`);
+	}else if (type == "warning"){
+		$("#alertbox").html(`<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Warning!</strong><br>`+message+`</div>`);
+	}else if (type == "error"){
+		$("#alertbox").html(`<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh snap!</strong><br>`+message+`</div>`);
+	}
 }
 
 function logout(){
@@ -34,19 +54,19 @@ function logout(){
     });
     localStorage.removeItem("token");
 	localStorage.removeItem("expires");
-	localStorage.removeItem("refresh_token");	
-		
+	localStorage.removeItem("refresh_token");
+
 	window.location.assign("/app/login");
 }
 
 function success_color(element){
     $(element).removeClass('red');
-    $(element).addClass('green');	
+    $(element).addClass('green');
 }
 
 function error_color(element){
     $(element).removeClass('green');
-    $(element).addClass('red');	
+    $(element).addClass('red');
 }
 
 function GiveDate(timestamp) {
@@ -54,9 +74,9 @@ function GiveDate(timestamp) {
 		yyyy = d.getFullYear(),
 		mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
 		dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
-		time;		
+		time;
 	time = yyyy + '-' + mm + '-' + dd;
-		
+
 	return time;
 }
 
@@ -70,7 +90,7 @@ function convertTimestamp(timestamp) {
 		min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
 		ampm = 'AM',
 		time;
-			
+
 	if (hh > 12) {
 		h = hh - 12;
 		ampm = 'PM';
@@ -80,10 +100,10 @@ function convertTimestamp(timestamp) {
 	} else if (hh == 0) {
 		h = 12;
 	}
-	
-	// ie: 2013-02-18, 8:35 AM	
+
+	// ie: 2013-02-18, 8:35 AM
 	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
-		
+
 	return time;
 }
 
@@ -93,7 +113,7 @@ function htmlEntities(str) {
 
 function $_GET(param) {
 	var vars = {};
-	window.location.href.replace( location.hash, '' ).replace( 
+	window.location.href.replace( location.hash, '' ).replace(
 		/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
 		function( m, key, value ) { // callback
 			vars[key] = value !== undefined ? value : '';
@@ -101,7 +121,7 @@ function $_GET(param) {
 	);
 
 	if ( param ) {
-		return vars[param] ? vars[param] : null;	
+		return vars[param] ? vars[param] : null;
 	}
 	return vars;
 }
@@ -116,14 +136,15 @@ function IsAdmin() {
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
+            success: function(result) {
 				status = true;
+				$("#adminpanel").show();
             },
             error: function(result) {
-				stauts = false;	
+				stauts = false;
 			},
 			async: false
-    });		
+    });
     return status;
 }
 
@@ -138,13 +159,13 @@ $("#signout").click(function(){
 function website_status(code){
 	var response;
 	if(code == 0){
-		response = "<div class='red'>Stopped</div>";	
+		response = "<div class='red'>Stopped</div>";
 	}else if(code == 1){
-		response = "<div class='green'>Running</div>";	
+		response = "<div class='green'>Running</div>";
 	}else if(code == 2){
-		response = "<div class='orange'>Upgrading</div>";	
+		response = "<div class='orange'>Upgrading</div>";
 	}else if(code == 3){
-		response = "<div class='red'>Suspended</div>";	
+		response = "<div class='red'>Suspended</div>";
 	}
 	return response;
 }
@@ -170,9 +191,9 @@ function getservices(){
 				var data = JSON.parse(result);
 				for (var i = 0; i < data.length; i++) {
 					localStorage.setItem("service_"+data[i].id,data[i].name)
-				}				
+				}
             }
-    });	
+    });
 }
 
 function getpackages(){
@@ -189,9 +210,9 @@ function getpackages(){
 				for (var i = 0; i < data.length; i++) {
 					localStorage.setItem("package_"+data[i].id,data[i].name)
 				}
-				
+
             }
-    });	
+    });
 }
 
 function serviceicon(name){
@@ -206,13 +227,13 @@ function serviceicon(name){
 			icon = "fa-globe";
 	}else{
 		icon = "fa-question";
-	}	
+	}
 	return icon;
 }
 
 $(document).ready(function(){
-isloggedin();	
-}); 
+isloggedin();
+});
 
 /* Tribute to the NSA
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,,,,,,,,,,

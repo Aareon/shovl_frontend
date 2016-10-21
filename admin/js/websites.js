@@ -22,13 +22,13 @@ $("#admin_tab").click(function(){
 })
 
 $("#adminloadmore").click(function(){
-	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){		
+	if ($("#adminloadmore").hasClass("pure-button-disabled") == false){
 		admin_offset += 1
 		getcontainers(admin_offset);
 	}
 });
 
-$("#createpackage").click(function(){	
+$("#createpackage").click(function(){
 	 var package = {name: $("#package_name").val(), price: parseFloat($("#package_amount").val()), ram: parseInt($("#package_ram").val()), diskspace: parseInt($("#package_disk").val())};
 	 isloggedin();
          $.ajax({
@@ -39,13 +39,13 @@ $("#createpackage").click(function(){
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
-            success: function(result) {	
-				sweetAlert("Well done!", "Package has been created", "success");				
+            success: function(result) {
+				pagealert("success", "Package has been created");				
             },
             error: function(result) {
-				sweetAlert("Oops...", result.responseText, "error");	
+				pagealert("error", result.responseText);
 	  }
-		});	
+		});
 });
 
 function getcontainers(offset){
@@ -79,7 +79,7 @@ function getcontainers(offset){
 					 $("#adminloadmore").addClass("pure-button-disabled")
 				}
             }
-    });	
+    });
 }
 
 function link(id){
