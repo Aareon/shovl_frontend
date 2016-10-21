@@ -41,8 +41,8 @@
                 				<thead>
                 					<tr>
                 						<th>User</th>
-                						<th>Country</th>
                 						<th>Registered</th>
+                						<th>Balance</th>
                 						<th>Rank</th>
                 					</tr>
                 				</thead>

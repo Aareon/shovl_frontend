@@ -50,7 +50,7 @@ function getcontainers(offset){
 				for (var i = 0; i < data.containers.length; i++) {
 					if (data.containers[i].serviceid != "SQL"){
 						tr = $('<tr/>');
-						tr.append("<td>" + data.containers[i].email + "</td>");
+						tr.append("<td>" + userlink(data.containers[i].email)+data.containers[i].email+"</a>" + "</td>");
 						tr.append("<td>" + "<i class='fa " + serviceicon(data.containers[i].serviceid) +  " web_icon'></i>" +"</td>");
 						tr.append("<td>" + link(data.containers[i].containerid)+data.containers[i].hostname+"</a>" + "</td>");
 						tr.append("<td>" + packagename(data.containers[i].packageid) + "</td>");
@@ -65,6 +65,10 @@ function getcontainers(offset){
 				}
             }
     });
+}
+
+function userlink(id){
+		return '<a href="manageuser?email='+id+'">';
 }
 
 function link(id){
