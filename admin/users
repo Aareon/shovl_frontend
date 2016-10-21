@@ -42,7 +42,7 @@
                 					<tr>
                 						<th>User</th>
                 						<th>Country</th>
-                						<th>Balance</th>
+                						<th>Registered</th>
                 						<th>Rank</th>
                 					</tr>
                 				</thead>
