@@ -28,8 +28,8 @@ function allusers(offset){
 				for (var i = 0; i < data.profiles.length; i++) {
 					tr = $('<tr/>');
 					tr.append("<td>" + link(data.profiles[i].email)+data.profiles[i].email+"</a>" + "</td>");
-					tr.append("<td>" + data.profiles[i].country + "</td>");
 					tr.append("<td>" + GiveDate(data.profiles[i].register_stamp) + "</td>");
+					tr.append("<td>" + credit_text(data.profiles[i].credits) + "</td>");
 					tr.append("<td>" + rank(data.profiles[i].rank) + "</td>");
 					$('#admin_body').append(tr);
 				}
