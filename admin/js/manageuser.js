@@ -8,7 +8,7 @@ $(document).ready(function(){
 //Login load more here
 function getloginlog(offset){
 	 isloggedin();
-	 var req = {containerid: $_GET("id"), offset: offset};
+	 var req = {email: $_GET("id"), offset: offset};
          $.ajax({
             type:"POST",
             url: "/api/admin/usermanage/loginlogs",
