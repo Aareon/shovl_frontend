@@ -119,7 +119,7 @@
         </div>
       <!-- Start of JS imports -->
   <script src="js/global.js"></script>
-  <script src="js/usermanage.js"></script>
+  <script src="js/manageuser.js"></script>
       <!-- End of JS imports -->
     </body>
 </html>

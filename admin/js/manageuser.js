@@ -1,6 +1,12 @@
 var llogs_offset = 0
+$(document).ready(function(){
+  getinfo();
+  getloginlog(llogs_offset);
+  IsAdmin();
+});
+
 //Login load more here
-function getmanagelog(offset){
+function getloginlog(offset){
 	 isloggedin();
 	 var req = {containerid: $_GET("id"), offset: offset};
          $.ajax({
@@ -33,8 +39,8 @@ function getmanagelog(offset){
 
 $("#llog_loadmore").click(function(){
 	if ($("#llog_loadmore").hasClass("disabled") == false){
-		logs_offset += 1
-		getmanagelog(logs_offset);
+		llogs_offset += 1
+		getloginlog(llogs_offset);
 	}
 });
 
