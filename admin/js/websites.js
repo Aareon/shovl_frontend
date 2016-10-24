@@ -67,10 +67,6 @@ function getcontainers(offset){
     });
 }
 
-function userlink(id){
-		return '<a href="manageuser?email='+id+'">';
-}
-
 function link(id){
 		return '<a href="/app/manage?id='+id+'">';
 }

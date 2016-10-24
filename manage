@@ -47,6 +47,7 @@
 
                   <div class="tab-content">
                     <div id="manage_div" class="tab-pane fade in active">
+                      <div class="col-md-12">
                         <div class="panel panel-primary">
                           <div class="panel-heading">Information</div>
                           <table class="table">
@@ -60,6 +61,28 @@
                   					<tr><td id="expires"></td></tr>
                   				</tbody>
                         </table>
+                      </div>
+
+                        <div class="col-md-12">
+                          <h3>All Websites</h3>
+                          <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Owner</th>
+                                  <th>Service</th>
+                                  <th>Domain name</th>
+                                  <th>Package</th>
+                                  <th>Status</th>
+                              </tr>
+                          </thead>
+                          <tbody id="service_table"></tbody>
+                          </table>
+                          <center><button id="adminloadmore" class="btn btn-primary">Load More</button></center>
+                        </div>
+
+                        <div class="col-md-12">
+                          
+                        </div>
                       </div>
             					<div class="spacedout">
               					<center>

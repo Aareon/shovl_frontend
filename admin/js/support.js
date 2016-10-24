@@ -29,7 +29,7 @@ function alltickets(offset){
 				for (var i = 0; i < data.tickets.length; i++) {
 					tr = $('<tr/>');
 					tr.append("<td>" + data.tickets[i].id + "</td>");
-					tr.append("<td>" + data.tickets[i].creator+"</a>" + "</td>");
+					tr.append("<td>" + userlink(data.tickets[i].creator)+data.tickets[i].creator+"</a>" + "</td>");
 					tr.append("<td>" + link(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
 					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
 					tr.append("<td>" + status(data.tickets[i].status) + "</td>");

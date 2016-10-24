@@ -27,7 +27,7 @@ function allusers(offset){
 				var tr;
 				for (var i = 0; i < data.profiles.length; i++) {
 					tr = $('<tr/>');
-					tr.append("<td>" + link(data.profiles[i].email)+data.profiles[i].email+"</a>" + "</td>");
+					tr.append("<td>" + userlink(data.profiles[i].email)+data.profiles[i].email+"</a>" + "</td>");
 					tr.append("<td>" + GiveDate(data.profiles[i].register_stamp) + "</td>");
 					tr.append("<td>" + credit_text(data.profiles[i].credits) + "</td>");
 					tr.append("<td>" + rank(data.profiles[i].rank) + "</td>");
@@ -40,10 +40,6 @@ function allusers(offset){
 				}
             }
     });
-}
-
-function link(id){
-		return '<a href="manageuser?email='+id+'">';
 }
 
 function credit_text(amount){

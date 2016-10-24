@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Shovl - User Manage</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+		    <link rel="stylesheet" href="css/layouts/sidenav.css">
+        <link rel="stylesheet" href="css/layouts/global.css">
+    </head>
+    <body>
+        <!-- Side Menu -->
+        <div class="sidenav-mini">
+            <div class="sidenav-mini-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span></div>
+        </div>
+        <div class="sidenav">
+            <div class="sidenav-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span> Shovl</div>
+            <ul class="sidenav-menu">
+                <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                <li><a href="websites"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+                <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
+                <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
+                <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
+            </ul>
+        </div>
+        <!-- End Side Menu -->
+
+        <div id="sidenav-offset" class="sidenav-offset">
+			<!-- Start of container -->
+          <div class="container">
+              <div class="row">
+					      <div class="col-md-12">
+                  <div id="alertbox"></div>
+                  <!-- Start of web contents -->
+                    <div class="col-md-12">
+                      <!-- Start of navbar -->
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#profile_div">Info</a></li>
+                        <li><a data-toggle="tab" href="#websites_div">Websites</a></li>
+                        <li><a data-toggle="tab" href="#billing_div">Billing</a></li>
+                        <li><a data-toggle="tab" href="#tickets_div">Tickets</a></li>
+                      </ul>
+                      <!-- End of navbar -->
+
+                        <div class="tab-content">
+
+                        <div id="profile_div" class="tab-pane fade in active">
+                          <div class="col-md-12">
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">Information</div>
+                              <table class="table">
+                              <thead>
+                              </thead>
+                              <tbody id="service_table">
+                                <tr><td id="email"></td></tr>
+                                <tr><td id="ip"></td></tr>
+                                <tr><td id="registerdate"></td></tr>
+                                <tr><td id="lastlogin"></td></tr>
+                                <tr><td id="fullname"></td></tr>
+                                <tr><td id="address"></td></tr>
+                                <tr><td id="city"></td></tr>
+                                <tr><td id="country"></td></tr>
+                                <tr><td id="phonenumber"></td></tr>
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <div class="col-md-12">
+                            <h3>Change Password</h3>
+                            <form>
+                            <div class="form-group">
+                              <input id="password" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
+                              <button id="change-password" class="btn btn-primary btn-block">Change Password</button>
+                            </div>
+                            </form>
+                          </div>
+
+                          <div class="col-md-12">
+                            <h3>Login Logs</h3>
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>IP</th>
+                                    <th>Timestamp</th>
+                                    <th>User Agent</th>
+                                </tr>
+                            </thead>
+                            <tbody id="llog_table"></tbody>
+                            </table>
+                            <center><button id="llog_loadmore" class="btn btn-primary">Load More</button></center>
+                          </div>
+                        </div>
+
+                        </div>
+
+                        <div id="websites_div" class="tab-pane fade">
+                          md-12 table of websites
+                        </div>
+
+                        <div id="billing_div" class="tab-pane fade">
+                          md-12 table of transactions
+                        </div>
+
+                        <div id="tickets_div" class="tab-pane fade">
+                          md-12 table of transactions
+                        </div>
+
+                      </div>
+
+              		  </div>
+                  <!-- End of web contents -->
+              </div>
+            </div>
+          </div>
+      <!-- End of container -->
+        </div>
+      <!-- Start of JS imports -->
+  <script src="js/global.js"></script>
+  <script src="js/usermanage.js"></script>
+      <!-- End of JS imports -->
+    </body>
+</html>
