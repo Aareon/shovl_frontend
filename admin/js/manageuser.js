@@ -25,7 +25,7 @@ function getloginlog(offset){
 					tr.append("<td>" + data.login_logs[i].ip + "</td>");
           tr.append("<td>" + convertTimestamp(data.login_logs[i].timestamp) + "</td>");
 					tr.append("<td>" + data.login_logs[i].useragent + "</td>");
-					$('#lloglog_table').append(tr);
+					$('#llog_table').append(tr);
 				}
 
 				if (data.canloadmore) {
@@ -80,8 +80,8 @@ function getinfo(){
             success: function(result) {
 				var data = JSON.parse(result);
 
-				$("#email").html("Email: "+data.email);
-				$("#ip").html("IP Address: "+data.ip);
+				$("#email").html("<strong>Email: </strong>"+data.email);
+				$("#ip").html("<strong>IP Address: </strong>"+data.ip);
 				$("#registerdate").html("<strong>Registered on: </strong>"+convertTimestamp(data.register_stamp));
 				$("#lastlogin").html("<strong>Last Login: </strong>"+convertTimestamp(data.login_stamp));
 				$("#fullname").html("<strong>Full Name: </strong>"+data.fullname);
