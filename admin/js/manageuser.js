@@ -240,3 +240,15 @@ function rank(code){
 		}
 	return response;
 }
+
+function status(code){
+	var response;
+	if(code == 0){
+		response = "<div class='orange'>Awaiting Reply</div>";
+	}else if(code == 1){
+		response = "<div class='green'>Replied</div>";
+	}else if(code == 2){
+		response = "<div class='red'>Closed</div>";
+	}
+	return response;
+}

@@ -54,7 +54,7 @@
                               <table class="table">
                               <thead>
                               </thead>
-                              <tbody id="service_table">
+                              <tbody>
                                 <tr><td id="email"></td></tr>
                                 <tr><td id="rank"></td></tr>
                                 <tr><td id="balance"></td></tr>
