@@ -73,9 +73,9 @@
                             <form>
                             <div class="form-group">
                               <input id="password" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
-                              <button id="change-password" class="btn btn-primary btn-block">Change Password</button>
                             </div>
                             </form>
+                            <button id="change-password" class="btn btn-primary btn-block">Change Password</button>
                           </div>
 
                           <div class="col-md-12">

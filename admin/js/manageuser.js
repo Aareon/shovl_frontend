@@ -8,7 +8,7 @@ $(document).ready(function(){
 //Login load more here
 function getloginlog(offset){
 	 isloggedin();
-	 var req = {email: $_GET("id"), offset: offset};
+	 var req = {email: $_GET("email"), offset: offset};
          $.ajax({
             type:"POST",
             url: "/api/admin/usermanage/loginlogs",
@@ -24,7 +24,7 @@ function getloginlog(offset){
 					tr = $('<tr>');
 					tr.append("<td>" + data.login_logs[i].ip + "</td>");
           tr.append("<td>" + convertTimestamp(data.login_logs[i].timestamp) + "</td>");
-					tr.append("<td>" + data.manage_logs[i].useragent + "</td>");
+					tr.append("<td>" + data.login_logs[i].useragent + "</td>");
 					$('#lloglog_table').append(tr);
 				}
 
@@ -82,13 +82,13 @@ function getinfo(){
 
 				$("#email").html("Email: "+data.email);
 				$("#ip").html("IP Address: "+data.ip);
-				$("#registerdate").html("Registered on: "+convertTimestamp(data.register_stamp));
-				$("#lastlogin").html("Last Login: "+convertTimestamp(data.login_stamp));
-				$("#fullname").html("Full Name: "+data.fullname);
-        $("#address").html("Address: "+data.address);
-        $("#city").html("City: "+data.city);
-        $("#country").html("Country: "+data.country);
-        $("#phonenumber").html("Phone Number: "+data.phonenumber);
+				$("#registerdate").html("<strong>Registered on: </strong>"+convertTimestamp(data.register_stamp));
+				$("#lastlogin").html("<strong>Last Login: </strong>"+convertTimestamp(data.login_stamp));
+				$("#fullname").html("<strong>Full Name: </strong>"+data.fullname);
+        $("#address").html("<strong>Address: </strong>"+data.address);
+        $("#city").html("<strong>City: </strong>"+data.city);
+        $("#country").html("<strong>Country: </strong>"+data.country);
+        $("#phonenumber").html("<strong>Phone Number: </strong>"+data.phonenumber);
             },
     });
 }
