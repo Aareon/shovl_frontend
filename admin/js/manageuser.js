@@ -35,7 +35,7 @@ function mytickets(offset){
 				for (var i = 0; i < data.tickets.length; i++) {
 					tr = $('<tr/>');
 					tr.append("<td>" + data.tickets[i].id + "</td>");
-					tr.append("<td>" + link(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
+					tr.append("<td>" + ticketlink(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
 					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
 					tr.append("<td>" + status(data.tickets[i].status) + "</td>");
 					$('#ticket_body').append(tr);
@@ -47,6 +47,10 @@ function mytickets(offset){
 				}
             }
     });
+}
+
+function ticketlink(id){
+		return '<a href="ticket?id='+id+'">';
 }
 
 //Billing load more
@@ -108,7 +112,7 @@ function getcontainers(){
 				for (var i = 0; i < data.length; i++) {
 						tr = $('<tr>');
 						tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
-						tr.append("<td>" + weblinklink(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
+						tr.append("<td>" + weblink(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
 						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
 						tr.append("<td>" + website_status(data[i].status) + "</td>");
 						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
