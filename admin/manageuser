@@ -72,10 +72,8 @@
 
                           <div class="col-md-12">
                             <h3>Change Password</h3>
-                            <form>
                             <div class="form-group">
                               <input id="password" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
-                            </form>
                             <button id="change-password" class="btn btn-primary btn-block">Change Password</button>
                             </div>
                           </div>
