@@ -95,7 +95,7 @@ function getcontainers(){
    	 var req = {email: $_GET("email")};
          $.ajax({
             type:"POST",
-            url: "/api/containers",
+            url: "/api/admin/usermanage/containers",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
