@@ -83,7 +83,7 @@ function getinfo(){
 				$("#email").html("Email: "+data.email);
 				$("#ip").html("IP Address: "+data.ip);
 				$("#registerdate").html("Registered on: "+convertTimestamp(data.register_stamp));
-				$("#lastlogin").html("Last Login: "+convertTimestamp(data.login_stamp);
+				$("#lastlogin").html("Last Login: "+convertTimestamp(data.login_stamp));
 				$("#fullname").html("Full Name: "+data.fullname);
         $("#address").html("Address: "+data.address);
         $("#city").html("City: "+data.city);
