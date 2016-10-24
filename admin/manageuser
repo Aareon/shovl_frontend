@@ -21,7 +21,7 @@
                 <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                 <li><a href="websites"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
                 <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
-                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
+                <li><a href="users"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
                 <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
                 <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
             </ul>
@@ -56,6 +56,8 @@
                               </thead>
                               <tbody id="service_table">
                                 <tr><td id="email"></td></tr>
+                                <tr><td id="rank"></td></tr>
+                                <tr><td id="balance"></td></tr>
                                 <tr><td id="ip"></td></tr>
                                 <tr><td id="registerdate"></td></tr>
                                 <tr><td id="lastlogin"></td></tr>
@@ -73,9 +75,9 @@
                             <form>
                             <div class="form-group">
                               <input id="password" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
-                            </div>
                             </form>
                             <button id="change-password" class="btn btn-primary btn-block">Change Password</button>
+                            </div>
                           </div>
 
                           <div class="col-md-12">
@@ -97,15 +99,57 @@
                         </div>
 
                         <div id="websites_div" class="tab-pane fade">
-                          md-12 table of websites
+                          <div class="col-md-12">
+                            <h3>All Websites</h3>
+                              <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Service</th>
+                                  <th>Domain name</th>
+                                  <th>Package</th>
+                                  <th>Status</th>
+                                  <th>Due Date</th>
+                                </tr>
+                              </thead>
+                              <tbody id="service_table"></tbody></table>
+                          </div>
                         </div>
 
                         <div id="billing_div" class="tab-pane fade">
-                          md-12 table of transactions
+                          <div class="col-md-12">
+                            <h3>Transaction History</h3>
+                            <table class="table">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                              </tr>
+                            </thead>
+                            <tbody id="billing_body"></tbody>
+                            </table>
+                            <center><button id="billingloadmore" class="btn btn-primary" type="button">Load More</button></center>
+                          </div>
                         </div>
 
                         <div id="tickets_div" class="tab-pane fade">
-                          md-12 table of transactions
+                          <div class="col-md-12">
+                          <h3>My tickets</h3>
+
+                          <table id="ticket-table" class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                 </tr>
+                              </thead>
+                              <tbody id="ticket_body"></tbody>
+                           </table>
+                          <center><button id="loadmore" class="btn btn-primary">Load More</button></center>
+                        </div>
                         </div>
 
                       </div>

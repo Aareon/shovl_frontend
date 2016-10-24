@@ -56,9 +56,9 @@ function getdbinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
-				$("#db_hostname").html("Domain: "+data.hostname);
-				$("#db_username").html("Username: "+data.username);
-				$("#db_password").html("Password: "+data.password);
+				$("#db_hostname").html("<strong>Domain: </strong>"+data.hostname);
+				$("#db_username").html("<strong>Username: </strong>"+data.username);
+				$("#db_password").html("<strong>Password: </strong>"+data.password);
             },
     });
 }
@@ -80,11 +80,11 @@ function getinfo(){
 						$("#files_tab").show();
 				}
         SetManageStatus(data.status);
-				$("#hostname").html("Domain: "+data.hostname);
-				$("#service").html("Service: "+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
-				$("#status").html("Status: "+website_status(data.status));
-				$("#package").html("Package: "+packagename(data.packageid));
-				$("#expires").html("Due date: "+GiveDate(data.expires_stamp));
+				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
+				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
+				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
+				$("#package").html("<strong>Package: </strong>"+packagename(data.packageid));
+				$("#expires").html("<strong>Due date: </strong>"+GiveDate(data.expires_stamp));
             },
     });
 }

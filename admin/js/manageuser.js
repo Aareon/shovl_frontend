@@ -1,9 +1,127 @@
 var llogs_offset = 0
+var billing_offset = 0
+var tickets_offset = 0
 $(document).ready(function(){
   getinfo();
   getloginlog(llogs_offset);
+  gethistory(billing_offset);
+  mytickets(tickets_offset)
+  getcontainers();
   IsAdmin();
 });
+
+//Tickets load more
+$("#ticketsloadmore").click(function(){
+	if ($("#ticketsloadmore").hasClass("disabled") == false){
+		tickets_offset += 1
+		mytickets(tickets_offset);
+	}
+});
+
+function mytickets(offset){
+			isloggedin();
+			var req = {email: $_GET("email"), offset: offset};
+            $.ajax({
+            type:"POST",
+            url: "/api/admin/usermanage/ticket",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				var tr;
+				for (var i = 0; i < data.tickets.length; i++) {
+					tr = $('<tr/>');
+					tr.append("<td>" + data.tickets[i].id + "</td>");
+					tr.append("<td>" + link(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
+					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
+					tr.append("<td>" + status(data.tickets[i].status) + "</td>");
+					$('#ticket_body').append(tr);
+				}
+				if (data.canloadmore) {
+					 $("#ticketsloadmore").removeClass("disabled")
+				}else {
+					 $("#ticketsloadmore").addClass("disabled")
+				}
+            }
+    });
+}
+
+//Billing load more
+function gethistory(offset){
+	 isloggedin();
+	 var req = {email: $_GET("email"), offset: offset};
+         $.ajax({
+            type:"POST",
+            url: "/api/admin/usermanage/billinghistory",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				var p;
+				for (var i = 0; i < data.bills.length; i++) {
+						p = $('<tr>');
+						p.append('<td>'+data.bills[i].id+'</td>');
+						p.append("<td>"+htmlEntities(data.bills[i].description)+"</td>");
+						p.append("<td>"+convertTimestamp(data.bills[i].timestamp)+"</td>");
+						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
+						$('#billing_body').append(p);
+				}
+
+				if (data.canloadmore) {
+					 $("#billingloadmore").removeClass("disabled")
+				}else {
+					 $("#billingloadmore").addClass("disabled")
+				}
+            }
+    });
+}
+
+$("#billingloadmore").click(function(){
+	if ($("#billingloadmore").hasClass("disabled") == false){
+		billing_offset += 1
+		gethistory(billing_offset);
+	}
+});
+
+//Websites load more here
+function getcontainers(){
+	 isloggedin();
+   	 var req = {email: $_GET("email")};
+         $.ajax({
+            type:"POST",
+            url: "/api/containers",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				var p;
+				var allcontainers = $('#service_table').clone().html("");
+				for (var i = 0; i < data.length; i++) {
+						tr = $('<tr>');
+						tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
+						tr.append("<td>" + weblinklink(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
+						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
+						tr.append("<td>" + website_status(data[i].status) + "</td>");
+						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
+						allcontainers = allcontainers.append(tr);
+				}
+				$('#service_table').replaceWith(allcontainers)
+            }
+    });
+}
+
+function weblink(id){
+		return '<a href="/app/manage?id='+id+'">';
+}
 
 //Login load more here
 function getloginlog(offset){
@@ -81,6 +199,8 @@ function getinfo(){
 				var data = JSON.parse(result);
 
 				$("#email").html("<strong>Email: </strong>"+data.email);
+        $("#rank").html("<strong>Rank: </strong>"+rank(data.rank));
+        $("#balance").html("<strong>Balance: </strong>"+credit_text(data.credits));
 				$("#ip").html("<strong>IP Address: </strong>"+data.ip);
 				$("#registerdate").html("<strong>Registered on: </strong>"+convertTimestamp(data.register_stamp));
 				$("#lastlogin").html("<strong>Last Login: </strong>"+convertTimestamp(data.login_stamp));
@@ -91,4 +211,28 @@ function getinfo(){
         $("#phonenumber").html("<strong>Phone Number: </strong>"+data.phonenumber);
             },
     });
+}
+
+function credit_text(amount){
+	var response = "";
+		if(amount > 0){
+			response = '<p class="green">$'+amount.toFixed(2);+'</p>';
+		}else{
+			response = '<p class="red">$'+amount.toFixed(2);+'</p>';
+		}
+	return response;
+}
+
+function rank(code){
+	var response;
+	if(code == 0){
+		response = "User";
+	}else if(code == 1){
+		response = "<div class='orange'>Sponsor</div>";
+	}else if(code == 3){
+		response = "<div class='red'>Admin</div>";
+	}else{
+		response = "No rank"
+		}
+	return response;
 }

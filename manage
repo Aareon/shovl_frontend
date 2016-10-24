@@ -64,23 +64,6 @@
                       </div>
 
                         <div class="col-md-12">
-                          <h3>All Websites</h3>
-                          <table class="table">
-                          <thead>
-                              <tr>
-                                  <th>Owner</th>
-                                  <th>Service</th>
-                                  <th>Domain name</th>
-                                  <th>Package</th>
-                                  <th>Status</th>
-                              </tr>
-                          </thead>
-                          <tbody id="service_table"></tbody>
-                          </table>
-                          <center><button id="adminloadmore" class="btn btn-primary">Load More</button></center>
-                        </div>
-
-                        <div class="col-md-12">
                           
                         </div>
                       </div>
