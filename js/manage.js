@@ -26,7 +26,7 @@ $("#fm-delete").click(function(){
     },
     function(){
         $("input[name='checkrowbox']:checked").each(function () {
-          FM_Delete($(this).val());
+          FM_Delete(currentdir+$(this).val());
         });
         pagealert("success", "Deleted selected elements.")
     	});
@@ -89,33 +89,33 @@ function FM_Mkdir(dir){
 }
 
 $('#fm-rename').click(function() {
-  swal({
-    title: "Rename file",
-    text: "Enter your new name for your file:",
-    type: "input",
-    showCancelButton: true,
-    closeOnConfirm: true,
-    animation: "slide-from-top",
-    inputPlaceholder: "New file name"
-  },
-  function(inputValue){
-    if (inputValue === false) return false;
-
-    if (inputValue === "") {
-      swal.showInputError("Your file name can't be blank");
-      return false
-    }
-    var elements = new Array();
+	var elements = new Array();
     $("input[name='checkrowbox']:checked").each(function () {
       elements.push($(this).val());
     });
 
     if (elements.length == 1) {
+		  swal({
+			title: "Rename file",
+			text: "Enter your new name for your file:",
+			type: "input",
+			showCancelButton: true,
+			closeOnConfirm: true,
+			animation: "slide-from-top",
+			inputPlaceholder: "New file name"
+		  },
+		  function(inputValue){
+			if (inputValue === false) return false;
+
+			if (inputValue === "") {
+			  swal.showInputError("Your file name can't be blank");
+			  return false
+			}
+		  });
 		FM_Rename(currentdir+elements[0], currentdir+inputValue);
 	}else{		
 		pagealert("error", "You can only rename one element at a time");
 	} 
-  });
 });
 
 function FM_Rename(dir, newdir){
@@ -123,7 +123,7 @@ function FM_Rename(dir, newdir){
   var req = {containerid: $_GET("id"), file: dir, newfile: newdir};
         $.ajax({
            type:"POST",
-           url: "/api/containers/filemanager/mkdir",
+           url: "/api/containers/filemanager/rename",
            data: JSON.stringify(req),
            beforeSend: function (request)
            {
