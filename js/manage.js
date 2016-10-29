@@ -41,7 +41,7 @@ $('#fm-mkdir').click(function() {
       swal.showInputError("Your folder name can't be blank");
       return false
     }
-    FM_Mkdir(inputValue);
+    FM_Mkdir(currentdir+inputValue);
   });
 });
 
@@ -80,13 +80,13 @@ $('#fm-rename').click(function() {
       swal.showInputError("Your file name can't be blank");
       return false
     }
-    FM_Rename(inputValue);
+    FM_Rename(currentdir+inputValue);
   });
 });
 
 function FM_Rename(dir){
   isloggedin();
-  var req = {containerid: $_GET("id"), file: };
+  var req = {containerid: $_GET("id"), file: dir};
         $.ajax({
            type:"POST",
            url: "/api/containers/filemanager/mkdir",
