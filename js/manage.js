@@ -14,10 +14,10 @@ $(document).ready(function(){
   });
 });
 
-$("fm-delete").click(function(){
+$("#fm-delete").click(function(){
       var values = new Array();
 
-      $("#filemanager").each($("input[name='checkrowbox']:checked").closest("td").siblings("td"),
+      $("#filemanager").each($("input[name='checkrowbox[]']:checked").closest("td").siblings("td"),
              function () {
                   values.push($(this).val());
              });
@@ -116,7 +116,7 @@ function FM_DisplayCurrentDir(dir){
   $('#filemanage_table').html("")
   if(dir != "/"){
     p = $('<tr>');
-    p.append(`<td></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_DisplayCurrentDir("/");'> / </a></td>`);
+    p.append(`<td></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_SetDir("/");'> / </a></td>`);
     $('#filemanage_table').append(p);
   }
   p = $('<tr>');
