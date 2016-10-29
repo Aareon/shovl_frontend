@@ -33,26 +33,12 @@ $('#fm-move').click(function() {
 			}
 			
         $("input[name='checkrowbox']:checked").each(function () {
-          FM_Rename(currentdir+elements[0], currentdir+inputValue);
+          FM_Rename(currentdir+$(this).val(), currentdir+inputValue);
         });        
         pagealert("success", "Moved selected elements.");
         FM_DisplayCurrentDir(currentdir);
 		});
 });
-
-function FM_Move(dir, newdir){
-  isloggedin();
-  var req = {containerid: $_GET("id"), file: dir, newfile: newdir};
-        $.ajax({
-           type:"POST",
-           url: "/api/containers/filemanager/move",
-           data: JSON.stringify(req),
-           beforeSend: function (request)
-           {
-               request.setRequestHeader("Authorization", localStorage.getItem("token"));
-           },
-   });
-}
 
 $("#fm-delete").click(function(){
     swal({
