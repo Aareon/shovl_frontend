@@ -25,7 +25,6 @@ $("#fm-delete").click(function(){
       closeOnConfirm: true
     },
     function(){
-        var values = new Array();
         $("input[name='checkrowbox']:checked").each(function () {
           FM_Delete($(this).val());
         });
@@ -33,6 +32,20 @@ $("#fm-delete").click(function(){
     	});
     });
 });
+
+function FM_Delete(dir){
+  isloggedin();
+  var req = {containerid: $_GET("id"), dir: dir};
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/filemanager/delete",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+   });
+}
 
 $('#fm-refresh').click(function() {
   FM_DisplayCurrentDir(currentdir);
@@ -73,7 +86,6 @@ function FM_Mkdir(dir){
            success: function(result) {
               pagealert("success", "Folder Created");
             },
-     async: false,
    });
 }
 
@@ -94,7 +106,7 @@ $('#fm-rename').click(function() {
       swal.showInputError("Your file name can't be blank");
       return false
     }
-    FM_Rename(currentdir+inputValue);
+      FM_Rename(currentdir+inputValue);
   });
 });
 
@@ -112,7 +124,6 @@ function FM_Rename(dir){
            success: function(result) {
               pagealert("success", "Folder Created");
             },
-     async: false,
    });
 }
 
