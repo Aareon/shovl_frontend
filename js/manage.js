@@ -187,13 +187,15 @@ function getmanagelog(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var p;
-				for (var i = 0; i < data.manage_logs.length; i++) {
-					if (data.manage_logs[i].serviceid != 0){
-					tr = $('<tr>');
-					tr.append("<td>" + data.manage_logs[i].action + "</td>");
-					tr.append("<td>" + convertTimestamp(data.manage_logs[i].timestamp) + "</td>");
-					$('#managelog_table').append(tr);
-					}
+  				for (var i = 0; i < data.manage_logs.length; i++) {
+            if (data != null){
+  					if (data.manage_logs[i].serviceid != 0){
+  					tr = $('<tr>');
+  					tr.append("<td>" + data.manage_logs[i].action + "</td>");
+  					tr.append("<td>" + convertTimestamp(data.manage_logs[i].timestamp) + "</td>");
+  					$('#managelog_table').append(tr);
+  					}
+          }
 				}
 
 				if (data.canloadmore) {
