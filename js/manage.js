@@ -17,10 +17,9 @@ $(document).ready(function(){
 $("#fm-delete").click(function(){
       var values = new Array();
 
-      $("#filemanager").each($("input[name='checkrowbox[]']:checked").closest("td").siblings("td"),
-             function () {
-                  values.push($(this).val());
-             });
+      $("input[name='checkrowbox']:checked").each(function () {
+        values.push($(this).val());
+      });
 
          alert("val---" + values.join(", "));
 });
