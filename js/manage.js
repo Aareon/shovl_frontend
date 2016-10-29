@@ -106,18 +106,22 @@ $('#fm-rename').click(function() {
       swal.showInputError("Your file name can't be blank");
       return false
     }
+    var elements = new Array();
     $("input[name='checkrowbox']:checked").each(function () {
-      FM_Delete($(this).val());
+      elements.push($(this).val());
     });
 
-    if (elements.length == 1) {} 
-      FM_Rename(currentdir+inputValue);
+    if (elements.length == 1) {
+		FM_Rename(currentdir+elements[0], currentdir+inputValue);
+	}else{		
+		pagealert("error", "You can only rename one element at a time");
+	} 
   });
 });
 
-function FM_Rename(dir){
+function FM_Rename(dir, newdir){
   isloggedin();
-  var req = {containerid: $_GET("id"), file: dir};
+  var req = {containerid: $_GET("id"), file: dir, newfile: newdir};
         $.ajax({
            type:"POST",
            url: "/api/containers/filemanager/mkdir",
@@ -133,7 +137,11 @@ function FM_Rename(dir){
 }
 
 function FM_SetDir(dir){
+  if (dir == "/"){
+	  currentdir = dir
+  }else{
   currentdir += dir + "/";
+  }
   FM_DisplayCurrentDir(currentdir);
 }
 
