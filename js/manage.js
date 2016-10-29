@@ -361,7 +361,7 @@ e.preventDefault();
 
 function FM_Upload(){
           isloggedin();
-          var formdata = new FormData($("#fm-form"));
+          var formdata = new FormData(document.querySelector("#fm-form"));
           formdata.set("containerid", $_GET("id"));
 
               $.ajax({
