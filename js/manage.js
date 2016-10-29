@@ -9,6 +9,17 @@ $(document).ready(function(){
   FM_DisplayCurrentDir(currentdir);
 });
 
+$("fm-delete").click(function(){
+      var values = new Array();
+
+      $("#filemanager").each($("input[name='case[]']:checked").closest("td").siblings("td"),
+             function () {
+                  values.push($(this).val());
+             });
+
+         alert("val---" + values.join(", "));
+});
+
 $('#fm-refresh').click(function() {
   FM_DisplayCurrentDir(currentdir);
 });
