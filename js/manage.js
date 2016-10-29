@@ -106,6 +106,11 @@ $('#fm-rename').click(function() {
       swal.showInputError("Your file name can't be blank");
       return false
     }
+    $("input[name='checkrowbox']:checked").each(function () {
+      FM_Delete($(this).val());
+    });
+
+    if (elements.length == 1) {} 
       FM_Rename(currentdir+inputValue);
   });
 });
