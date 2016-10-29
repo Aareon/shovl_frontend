@@ -111,8 +111,8 @@ $('#fm-rename').click(function() {
 			  swal.showInputError("Your file name can't be blank");
 			  return false
 			}
+			FM_Rename(currentdir+elements[0], currentdir+inputValue);
 		  });
-		FM_Rename(currentdir+elements[0], currentdir+inputValue);
 	}else{		
 		pagealert("error", "You can only rename one element at a time");
 	} 
