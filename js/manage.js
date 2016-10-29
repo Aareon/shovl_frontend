@@ -1,12 +1,17 @@
 var logs_offset = 0
 //File Manager global vars
-var currentdir = "";
+var currentdir = "/";
 $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
   getdbinfo();
   IsAdmin();
   FM_DisplayCurrentDir(currentdir);
+  $('tr').click(function(event) {
+    if (event.target.type !== 'checkbox') {
+      $(':checkbox', this).trigger('click');
+    }
+  });
 });
 
 $("fm-delete").click(function(){
@@ -167,12 +172,6 @@ function FM_DisplayFiles(dir){
      async: false,
    });
 }
-
-$('tr').click(function(event) {
-  if (event.target.type !== 'checkbox') {
-    $(':checkbox', this).trigger('click');
-  }
-});
 
 function getmanagelog(offset){
 	 isloggedin();
