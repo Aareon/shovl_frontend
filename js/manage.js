@@ -6,7 +6,7 @@ $(document).ready(function(){
   getmanagelog(logs_offset);
   getdbinfo();
   IsAdmin();
-  //FM_DisplayCurrentDir(currentdir);
+  FM_DisplayCurrentDir(currentdir);
 });
 
 $('#fm-refresh').click(function() {
@@ -29,10 +29,11 @@ function FM_DisplayCurrentDir(dir){
 
 function FM_DisplayDirs(dir){
   isloggedin();
+  var req = {containerid: $_GET("id"), dir: dir};
         $.ajax({
            type:"POST",
-           url: "/api/account/ticket/replies",
-           data: JSON.stringify(ticket),
+           url: "/api/containers/filemanager/listdirs",
+           data: JSON.stringify(req),
            beforeSend: function (request)
            {
                request.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -54,10 +55,11 @@ function FM_DisplayDirs(dir){
 
 function FM_DisplayFiles(dir){
   isloggedin();
+   var req = {containerid: $_GET("id"), dir: dir};
         $.ajax({
            type:"POST",
-           url: "/api/account/ticket/replies",
-           data: JSON.stringify(ticket),
+           url: "/api/containers/filemanager/listfiles",
+           data: JSON.stringify(req),
            beforeSend: function (request)
            {
                request.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -363,6 +365,7 @@ function FM_Upload(){
           isloggedin();
           var formdata = new FormData(document.querySelector("#fm-form"));
           formdata.set("containerid", $_GET("id"));
+          formdata.set("dir", currentdir);
 
               $.ajax({
       			xhr: function() {
