@@ -204,7 +204,7 @@ function FM_DisplayDirs(dir){
        if (data != null){
          for (var i = 0; i < data.length; i++) {
            p = $('<tr>');
-           p.append(`<td class="col-md-1"><input name="checkrowbox" type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_DisplayCurrentDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
+           p.append(`<td class="col-md-1"><input name="checkrowbox" type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_SetDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
            $('#filemanage_table').append(p);
          }
        }
