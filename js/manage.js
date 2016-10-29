@@ -13,6 +13,84 @@ $('#fm-refresh').click(function() {
   FM_DisplayCurrentDir(currentdir);
 });
 
+$('#fm-mkdir').click(function() {
+  swal({
+    title: "Create a Folder",
+    text: "Name your new folder:",
+    type: "input",
+    showCancelButton: true,
+    closeOnConfirm: false,
+    animation: "slide-from-top",
+    inputPlaceholder: "New Folder name"
+  },
+  function(inputValue){
+    if (inputValue === false) return false;
+
+    if (inputValue === "") {
+      swal.showInputError("Your folder name can't be blank");
+      return false
+    }
+    FM_Mkdir(inputValue);
+  });
+});
+
+function FM_Mkdir(dir){
+  isloggedin();
+  var req = {containerid: $_GET("id"), dir: dir};
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/filemanager/mkdir",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+              pagealert("success", "Folder Created");
+            },
+     async: false,
+   });
+}
+
+$('#fm-rename').click(function() {
+  swal({
+    title: "Rename file",
+    text: "Enter your new name for your file:",
+    type: "input",
+    showCancelButton: true,
+    closeOnConfirm: false,
+    animation: "slide-from-top",
+    inputPlaceholder: "New file name"
+  },
+  function(inputValue){
+    if (inputValue === false) return false;
+
+    if (inputValue === "") {
+      swal.showInputError("Your file name can't be blank");
+      return false
+    }
+    FM_Rename(inputValue);
+  });
+});
+
+function FM_Rename(dir){
+  isloggedin();
+  var req = {containerid: $_GET("id"), file: };
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/filemanager/mkdir",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+              pagealert("success", "Folder Created");
+            },
+     async: false,
+   });
+}
+
 function FM_SetDir(dir){
   currentdir += dir + "/";
   FM_DisplayCurrentDir(currentdir);
