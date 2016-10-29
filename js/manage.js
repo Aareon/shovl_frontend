@@ -14,6 +14,46 @@ $(document).ready(function(){
   });
 });
 
+$('#fm-move').click(function() {
+		  swal({
+			title: "Move File/Folder",
+			text: "Enter the path to where you wish you move it:",
+			type: "input",
+			showCancelButton: true,
+			closeOnConfirm: true,
+			animation: "slide-from-top",
+			inputPlaceholder: "Path"
+		  },
+		  function(inputValue){
+			if (inputValue === false) return false;
+
+			if (inputValue === "") {
+			  swal.showInputError("Your path can't be blank");
+			  return false
+			}
+			
+        $("input[name='checkrowbox']:checked").each(function () {
+          FM_Rename(currentdir+elements[0], currentdir+inputValue);
+        });        
+        pagealert("success", "Moved selected elements.");
+		});
+	FM_DisplayCurrentDir(currentdir);
+});
+
+function FM_Move(dir, newdir){
+  isloggedin();
+  var req = {containerid: $_GET("id"), file: dir, newfile: newdir};
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/filemanager/move",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+   });
+}
+
 $("#fm-delete").click(function(){
     swal({
       title: "WARNING! Are you sure you want to delete the selected elements?",
@@ -30,11 +70,12 @@ $("#fm-delete").click(function(){
         });
         pagealert("success", "Deleted selected elements.")
     	});
+    FM_DisplayCurrentDir(currentdir);
     });
 
 function FM_Delete(dir){
   isloggedin();
-  var req = {containerid: $_GET("id"), dir: dir};
+  var req = {containerid: $_GET("id"), file: dir};
         $.ajax({
            type:"POST",
            url: "/api/containers/filemanager/delete",
@@ -69,6 +110,7 @@ $('#fm-mkdir').click(function() {
     }
     FM_Mkdir(currentdir+inputValue);
   });
+  FM_DisplayCurrentDir(currentdir);
 });
 
 function FM_Mkdir(dir){
@@ -115,7 +157,8 @@ $('#fm-rename').click(function() {
 		  });
 	}else{		
 		pagealert("error", "You can only rename one element at a time");
-	} 
+	}
+	FM_DisplayCurrentDir(currentdir);
 });
 
 function FM_Rename(dir, newdir){
@@ -528,6 +571,7 @@ function FM_Upload(){
                       pagealert("error", result.responseText);
                   }
                });
+               FM_DisplayCurrentDir(currentdir);
             }
 
 function SetManageStatus(status){
