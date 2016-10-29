@@ -15,13 +15,23 @@ $(document).ready(function(){
 });
 
 $("#fm-delete").click(function(){
-      var values = new Array();
-
-      $("input[name='checkrowbox']:checked").each(function () {
-        values.push($(this).val());
-      });
-
-         alert("val---" + values.join(", "));
+    swal({
+      title: "WARNING! Are you sure you want to delete the selected elements?",
+      text: "You will not be able to recover these files",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: true
+    },
+    function(){
+        var values = new Array();
+        $("input[name='checkrowbox']:checked").each(function () {
+          FM_Delete($(this).val());
+        });
+        pagealert("success", "Deleted selected elements.")
+    	});
+    });
 });
 
 $('#fm-refresh').click(function() {
