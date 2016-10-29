@@ -17,7 +17,7 @@ $(document).ready(function(){
 $("fm-delete").click(function(){
       var values = new Array();
 
-      $("#filemanager").each($("input[name='checkrowbox[]']:checked").closest("td").siblings("td"),
+      $("#filemanager").each($("input[name='checkrowbox']:checked").closest("td").siblings("td"),
              function () {
                   values.push($(this).val());
              });
@@ -35,7 +35,7 @@ $('#fm-mkdir').click(function() {
     text: "Name your new folder:",
     type: "input",
     showCancelButton: true,
-    closeOnConfirm: false,
+    closeOnConfirm: true,
     animation: "slide-from-top",
     inputPlaceholder: "New Folder name"
   },
@@ -74,7 +74,7 @@ $('#fm-rename').click(function() {
     text: "Enter your new name for your file:",
     type: "input",
     showCancelButton: true,
-    closeOnConfirm: false,
+    closeOnConfirm: true,
     animation: "slide-from-top",
     inputPlaceholder: "New file name"
   },
@@ -114,6 +114,11 @@ function FM_SetDir(dir){
 
 function FM_DisplayCurrentDir(dir){
   $('#filemanage_table').html("")
+  if(dir != "/"){
+    p = $('<tr>');
+    p.append(`<td></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_DisplayCurrentDir("/");'> / </a></td>`);
+    $('#filemanage_table').append(p);
+  }
   p = $('<tr>');
   p.append(`<td></td><td class="move-left"><i class="fa fa-folder-open"></i>&nbsp;&nbsp;` + dir + `</td>`);
   $('#filemanage_table').append(p);
@@ -138,7 +143,7 @@ function FM_DisplayDirs(dir){
        if (data != null){
          for (var i = 0; i < data.length; i++) {
            p = $('<tr>');
-           p.append(`<td class="col-md-1"><input name="checkrowbox" type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="#" onclick='FM_DisplayCurrentDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
+           p.append(`<td class="col-md-1"><input name="checkrowbox" type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_DisplayCurrentDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
            $('#filemanage_table').append(p);
          }
        }
