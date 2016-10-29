@@ -1,9 +1,86 @@
 var logs_offset = 0
+//File Manager global vars
+var currentdir = "";
 $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
   getdbinfo();
   IsAdmin();
+  //FM_DisplayCurrentDir(currentdir);
+});
+
+$('#fm-refresh').click(function() {
+  FM_DisplayCurrentDir(currentdir);
+});
+
+function FM_SetDir(dir){
+  currentdir += dir + "/";
+  FM_DisplayCurrentDir(currentdir);
+}
+
+function FM_DisplayCurrentDir(dir){
+  $('#filemanage_table').html("")
+  p = $('<tr>');
+  p.append(`<td></td><td class="move-left"><i class="fa fa-folder-open"></i>&nbsp;&nbsp;` + dir + `</td>`);
+  $('#filemanage_table').append(p);
+  FM_DisplayDirs(dir);
+  FM_DisplayFiles(dir);
+}
+
+function FM_DisplayDirs(dir){
+  isloggedin();
+        $.ajax({
+           type:"POST",
+           url: "/api/account/ticket/replies",
+           data: JSON.stringify(ticket),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+       var data = JSON.parse(result);
+       var p;
+       if (data != null){
+         for (var i = 0; i < data.length; i++) {
+           p = $('<tr>');
+           p.append(`<td class="col-md-1"><input type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="#" onclick='FM_DisplayCurrentDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
+           $('#filemanage_table').append(p);
+         }
+       }
+     },
+     async: false,
+   });
+}
+
+function FM_DisplayFiles(dir){
+  isloggedin();
+        $.ajax({
+           type:"POST",
+           url: "/api/account/ticket/replies",
+           data: JSON.stringify(ticket),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+       var data = JSON.parse(result);
+       var p;
+       if (data != null){
+         for (var i = 0; i < data.length; i++) {
+           p = $('<tr>');
+           p.append(`<td class="col-md-1"><input type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-file"></i>&nbsp;&nbsp;` + data[i] + `</td>`);
+           $('#filemanage_table').append(p);
+         }
+       }
+     },
+     async: false,
+   });
+}
+
+$('tr').click(function(event) {
+  if (event.target.type !== 'checkbox') {
+    $(':checkbox', this).trigger('click');
+  }
 });
 
 function getmanagelog(offset){
@@ -281,6 +358,47 @@ e.preventDefault();
             }
          });
       });
+
+function FM_Upload(){
+          isloggedin();
+          var formdata = new FormData($("#fm-form"));
+          formdata.set("containerid", $_GET("id"));
+
+              $.ajax({
+      			xhr: function() {
+      				var xhr = new window.XMLHttpRequest();
+      				xhr.upload.addEventListener("progress", function(evt) {
+      					if (evt.lengthComputable) {
+      						var percentComplete = (evt.loaded / evt.total) * 100;
+      						if (percentComplete == 100){
+      							$("#filemanage_progress").hide();
+      							$("#filemanage_progressbar").css("width", "0%")
+      						}else{
+      							$("#filemanage_progress").show();
+      							$("#filemanage_progressbar").css("width", percentComplete+"%")
+      						}
+      					}
+      			   }, false);
+      			   return xhr;
+      			},
+                  url: "/api/containers/filemanager/upload",
+                  type: "POST",
+                  data: formdata,
+                  beforeSend: function (request)
+                  {
+                      request.setRequestHeader("Authorization", localStorage.getItem("token"));
+                  },
+                  mimeTypes:"multipart/form-data",
+                  contentType: false,
+                  cache: false,
+                  processData: false,
+                  success: function(){
+                      pagealert("success", "File Uploaded!");
+                  },error: function(result){
+                      pagealert("error", result.responseText);
+                  }
+               });
+            }
 
 function SetManageStatus(status){
   if (status == 1){

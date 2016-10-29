@@ -70,7 +70,7 @@ $("#create-ticket").click(function(){
 });
 
 function link(id){
-		return '<a href="ticket?id='+id+'">';
+		return '<a href="/app/ticket?id='+id+'">';
 }
 
 function status(code){

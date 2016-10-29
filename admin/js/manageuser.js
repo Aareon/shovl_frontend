@@ -50,7 +50,7 @@ function mytickets(offset){
 }
 
 function ticketlink(id){
-		return '<a href="ticket?id='+id+'">';
+		return '<a href="/app/ticket?id='+id+'">';
 }
 
 //Billing load more

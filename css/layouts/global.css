@@ -5,6 +5,15 @@
     cursor:pointer;
 }
 
+.margin-push {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.move-left {
+  text-align:left !important;
+}
+
 #newwebsite_div {
   padding-bottom: 1px;
 }
@@ -12,16 +21,6 @@
 a {
     text-decoration: none;
 }
-/*
-a:link, a:visited {
-    color: rgb(0, 136, 204);
-    text-decoration: none;
-}
-
-a:hover, a:active {
-	color: rgb(0, 120, 231);
-}
-*/
 
 .form-large {
     font-size: 120%;
@@ -37,13 +36,9 @@ a:hover, a:active {
 	margin-top: 1em;
 }
 
-*/
+
 #bar1 {display:inline-block;margin-right:10px;}
 #bar2 {display:inline-block;}
-/*
-The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
-appears on the left side of the page.
-*/
 
 .web_container {
     border-radius: 25px;
@@ -74,8 +69,6 @@ table th, table td {
     text-align: center;
   }
 
-
-
 .package_icon {
 	margin-top:5px;
 	margin-bottom:5px;
@@ -94,10 +87,6 @@ table th, table td {
 
 .green {
 	color: #27ae60;
-}
-
-.button-error {
-     background: rgb(202, 60, 60); /* this is a maroon */
 }
 
 #block1 {display:inline-block; float:left; margin-left: 50px;}
