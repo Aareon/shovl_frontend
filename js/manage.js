@@ -36,8 +36,8 @@ $('#fm-move').click(function() {
           FM_Rename(currentdir+elements[0], currentdir+inputValue);
         });        
         pagealert("success", "Moved selected elements.");
+        FM_DisplayCurrentDir(currentdir);
 		});
-	FM_DisplayCurrentDir(currentdir);
 });
 
 function FM_Move(dir, newdir){
@@ -69,8 +69,8 @@ $("#fm-delete").click(function(){
           FM_Delete(currentdir+$(this).val());
         });
         pagealert("success", "Deleted selected elements.")
+        FM_DisplayCurrentDir(currentdir);
     	});
-    FM_DisplayCurrentDir(currentdir);
     });
 
 function FM_Delete(dir){
@@ -109,8 +109,8 @@ $('#fm-mkdir').click(function() {
       return false
     }
     FM_Mkdir(currentdir+inputValue);
+    FM_DisplayCurrentDir(currentdir);
   });
-  FM_DisplayCurrentDir(currentdir);
 });
 
 function FM_Mkdir(dir){
@@ -154,11 +154,11 @@ $('#fm-rename').click(function() {
 			  return false
 			}
 			FM_Rename(currentdir+elements[0], currentdir+inputValue);
+			FM_DisplayCurrentDir(currentdir);
 		  });
 	}else{		
 		pagealert("error", "You can only rename one element at a time");
 	}
-	FM_DisplayCurrentDir(currentdir);
 });
 
 function FM_Rename(dir, newdir){
@@ -567,11 +567,11 @@ function FM_Upload(){
                   processData: false,
                   success: function(){
                       pagealert("success", "File Uploaded!");
+                      FM_DisplayCurrentDir(currentdir);
                   },error: function(result){
                       pagealert("error", result.responseText);
                   }
                });
-               FM_DisplayCurrentDir(currentdir);
             }
 
 function SetManageStatus(status){
