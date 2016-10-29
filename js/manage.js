@@ -31,7 +31,6 @@ $("#fm-delete").click(function(){
         pagealert("success", "Deleted selected elements.")
     	});
     });
-});
 
 function FM_Delete(dir){
   isloggedin();
