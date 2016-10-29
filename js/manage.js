@@ -17,7 +17,7 @@ $(document).ready(function(){
 $("fm-delete").click(function(){
       var values = new Array();
 
-      $("#filemanager").each($("input[name='case[]']:checked").closest("td").siblings("td"),
+      $("#filemanager").each($("input[name='checkrowbox[]']:checked").closest("td").siblings("td"),
              function () {
                   values.push($(this).val());
              });
@@ -138,7 +138,7 @@ function FM_DisplayDirs(dir){
        if (data != null){
          for (var i = 0; i < data.length; i++) {
            p = $('<tr>');
-           p.append(`<td class="col-md-1"><input type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="#" onclick='FM_DisplayCurrentDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
+           p.append(`<td class="col-md-1"><input name="checkrowbox" type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="#" onclick='FM_DisplayCurrentDir("`+ data[i] +`");'>` + data[i] + `</a></td>`);
            $('#filemanage_table').append(p);
          }
        }
@@ -164,7 +164,7 @@ function FM_DisplayFiles(dir){
        if (data != null){
          for (var i = 0; i < data.length; i++) {
            p = $('<tr>');
-           p.append(`<td class="col-md-1"><input type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-file"></i>&nbsp;&nbsp;` + data[i] + `</td>`);
+           p.append(`<td class="col-md-1"><input name="checkrowbox" type="checkbox" value="` + data[i] + `"></td><td class="move-left"><i class="fa fa-file"></i>&nbsp;&nbsp;` + data[i] + `</td>`);
            $('#filemanage_table').append(p);
          }
        }
