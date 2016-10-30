@@ -166,6 +166,46 @@ $("#llog_loadmore").click(function(){
 	}
 });
 
+$("#rank-user").click(function(){
+     var rank = {email: $_GET("email"), rank: 0};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/admin/usermanage/rank",
+            data: JSON.stringify(rank),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+                pagealert("success", "Rank Changed");
+            },
+            error: function(result) {
+				        pagealert("error", result.responseText);
+			}
+    });
+});
+
+$("#rank-admin").click(function(){
+     var rank = {email: $_GET("email"), rank: 3};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/admin/usermanage/rank",
+            data: JSON.stringify(rank),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+                pagealert("success", "Rank Changed");
+            },
+            error: function(result) {
+				        pagealert("error", result.responseText);
+			}
+    });
+});
+
 //Change password
 $("#change-password").click(function(){
      var passwordchange = {email: $_GET("email"), password: $("#password").val()};

@@ -79,6 +79,12 @@
                           </div>
 
                           <div class="col-md-12">
+                            <h3>Set a rank</h3>
+                              <button id="rank-user" class="btn btn-default" type="button">User</button>
+                              <button id="rank-admin" class="btn btn-danger" type="button">Admin</button>
+                          </div>
+                          
+                          <div class="col-md-12">
                             <h3>Login Logs</h3>
                             <table class="table">
                             <thead>
