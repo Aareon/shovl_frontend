@@ -157,6 +157,12 @@
                       </div>
                     </div>
 
+                    <div id="upgrade_div" class="tab-pane fade">
+                      <h2 class="content-subhead">Upgrade to another Package</h2>
+                      <div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
+                      <center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
+                    </div>
+
                     <div id="database_div" class="tab-pane fade">
                       <div class="panel panel-primary">
                         <div class="panel-heading">MySQL Database Information</div>
@@ -171,12 +177,6 @@
                 					<tr><td id="db_password"></td></tr>
                 				</tbody>
               				</table>
-                    </div>
-
-                    <div id="upgrade_div" class="tab-pane fade">
-                      <h2 class="content-subhead">Upgrade to another Package</h2>
-                      <div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
-                      <center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
                     </div>
 
                 			<form action="" id="dbupload" method="post" enctype="multipart/form-data" >

@@ -7,6 +7,7 @@ $(document).ready(function(){
   getdbinfo();
   IsAdmin();
   FM_DisplayCurrentDir(currentdir);
+  getpackages();
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
