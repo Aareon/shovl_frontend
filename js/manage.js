@@ -31,10 +31,10 @@ $('#fm-move').click(function() {
 			  swal.showInputError("Your path can't be blank");
 			  return false
 			}
-			
+
         $("input[name='checkrowbox']:checked").each(function () {
           FM_Rename(currentdir+$(this).val(), currentdir+inputValue);
-        });        
+        });
         pagealert("success", "Moved selected elements.");
         FM_DisplayCurrentDir(currentdir);
 		});
@@ -142,7 +142,7 @@ $('#fm-rename').click(function() {
 			FM_Rename(currentdir+elements[0], currentdir+inputValue);
 			FM_DisplayCurrentDir(currentdir);
 		  });
-	}else{		
+	}else{
 		pagealert("error", "You can only rename one element at a time");
 	}
 });
@@ -571,4 +571,50 @@ function SetManageStatus(status){
     $("#start").removeClass("disabled");
     $("#stop").removeClass("disabled");
   }
+}
+
+$("#package_upgrade").click(function(){
+	var req = {containerid: $_GET("id"), packageid: parseInt(document.querySelector('input[name="PID"]:checked').value)};
+	if (document.querySelector('input[name="PID"]:checked') == null){
+		pagealert("error", "You forgot to select a package");
+	}else{
+    isloggedin();
+          $.ajax({
+             type:"POST",
+             url: "/api/containers/upgrade",
+             data: JSON.stringify(req),
+             beforeSend: function (request)
+             {
+                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
+             },
+             success: function(result) {
+                 pagealert("success", result.responseText));
+             },
+             error: function(result) {
+ 				        pagealert("error", result.responseText);
+ 	  }
+ 	  });
+  }
+});
+
+function getpackages(){
+		   isloggedin();
+            $.ajax({
+            type:"GET",
+            url: "/api/packages",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				var tr;
+				for (var i = 0; i < data.length; i++) {
+					tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].id+"' type='radio'></input>");
+					lbl = $("<label for='PID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span><span class='deploy_checkbox_line2'>"+data[i].ram+"MB RAM "+data[i].diskspace+"GB Disk</span></label>");
+					$('#packages').append(tr);
+					$('#packages').append(lbl);
+				}
+      }
+    });
 }
