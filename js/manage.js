@@ -589,7 +589,7 @@ $("#package_upgrade").click(function(){
                  request.setRequestHeader("Authorization", localStorage.getItem("token"));
              },
              success: function(result) {
-                 pagealert("success", result.responseText);
+                 pagealert("success", result);
              },
              error: function(result) {
  				        pagealert("error", result.responseText);
