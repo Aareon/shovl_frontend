@@ -9,12 +9,17 @@
     top: 0;
     z-index: 1;
 }
+
 .sidenav-offset {
     margin-left:275px;
 }
+
+.container-fluid {
+   max-width:1024px;
+}
+
 #sidenav-offset {
     padding: 0 2em;
-    max-width: 800px;
     margin-top: 40px;
     margin-bottom: 50px;
     line-height: 1.6em;

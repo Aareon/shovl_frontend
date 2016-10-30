@@ -30,7 +30,7 @@
 
         <div id="sidenav-offset" class="sidenav-offset">
 			<!-- Start of container -->
-          <div class="container">
+          <div class="container-fluid">
               <div class="row">
 					      <div class="col-md-12">
                   <div id="alertbox"></div>

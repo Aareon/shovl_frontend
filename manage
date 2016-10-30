@@ -32,8 +32,9 @@
         <!-- End Side Menu -->
 
         <div id="sidenav-offset" class="sidenav-offset">
+          <div class="sidenav-offset-inner">
 			<!-- Start of container -->
-          <div class="container">
+          <div class="container-fluid">
               <div class="row">
 					      <div class="col-md-12">
                   <div id="alertbox"></div>
@@ -216,9 +217,9 @@
                   <!-- End of web contents -->
               </div>
             </div>
-          </div>
-      <!-- End of container -->
-        </div>
+          </div> <!-- End of container -->
+          </div> <!-- sidenav-offset-inner -->
+        </div> <!-- sidenav-offset -->
       <!-- Start of JS imports -->
   <script src="js/global.js"></script>
   <script src="js/manage.js"></script>
