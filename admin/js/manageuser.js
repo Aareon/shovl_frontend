@@ -68,14 +68,16 @@ function gethistory(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var p;
-				for (var i = 0; i < data.bills.length; i++) {
-						p = $('<tr>');
-						p.append('<td>'+data.bills[i].id+'</td>');
-						p.append("<td>"+htmlEntities(data.bills[i].description)+"</td>");
-						p.append("<td>"+convertTimestamp(data.bills[i].timestamp)+"</td>");
-						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
-						$('#billing_body').append(p);
-				}
+        if (data != null){
+  				for (var i = 0; i < data.bills.length; i++) {
+  						p = $('<tr>');
+  						p.append('<td>'+data.bills[i].id+'</td>');
+  						p.append("<td>"+htmlEntities(data.bills[i].description)+"</td>");
+  						p.append("<td>"+convertTimestamp(data.bills[i].timestamp)+"</td>");
+  						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
+  						$('#billing_body').append(p);
+  				}
+        }
 
 				if (data.canloadmore) {
 					 $("#billingloadmore").removeClass("disabled")
@@ -109,15 +111,17 @@ function getcontainers(){
 				var data = JSON.parse(result);
 				var p;
 				var allcontainers = $('#service_table').clone().html("");
-				for (var i = 0; i < data.length; i++) {
-						tr = $('<tr>');
-						tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
-						tr.append("<td>" + weblink(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
-						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
-						tr.append("<td>" + website_status(data[i].status) + "</td>");
-						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
-						allcontainers = allcontainers.append(tr);
-				}
+        if (data != null){
+  				for (var i = 0; i < data.length; i++) {
+  						tr = $('<tr>');
+  						tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
+  						tr.append("<td>" + weblink(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
+  						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
+  						tr.append("<td>" + website_status(data[i].status) + "</td>");
+  						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
+  						allcontainers = allcontainers.append(tr);
+  				}
+        }
 				$('#service_table').replaceWith(allcontainers)
             }
     });
@@ -142,14 +146,15 @@ function getloginlog(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var p;
-				for (var i = 0; i < data.login_logs.length; i++) {
-					tr = $('<tr>');
-					tr.append("<td>" + data.login_logs[i].ip + "</td>");
-          tr.append("<td>" + convertTimestamp(data.login_logs[i].timestamp) + "</td>");
-					tr.append("<td>" + data.login_logs[i].useragent + "</td>");
-					$('#llog_table').append(tr);
-				}
-
+        if (data != null){
+  				for (var i = 0; i < data.login_logs.length; i++) {
+  					tr = $('<tr>');
+  					tr.append("<td>" + data.login_logs[i].ip + "</td>");
+            tr.append("<td>" + convertTimestamp(data.login_logs[i].timestamp) + "</td>");
+  					tr.append("<td>" + data.login_logs[i].useragent + "</td>");
+  					$('#llog_table').append(tr);
+  				}
+        }
 				if (data.canloadmore) {
 					 $("#llog_loadmore").removeClass("disabled")
 				}else {
