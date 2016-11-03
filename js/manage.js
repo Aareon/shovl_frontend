@@ -114,6 +114,9 @@ function FM_Mkdir(dir){
            success: function(result) {
               pagealert("success", "Folder Created");
             },
+            error: function(result) {
+              pagealert("error", result.responseText);
+            },
    });
 }
 
@@ -161,6 +164,9 @@ function FM_Rename(dir, newdir){
            },
            success: function(result) {
               pagealert("success", "Folder Created");
+            },
+            error: function(result) {
+              pagealert("error", result.responseText);
             },
    });
 }
