@@ -1,6 +1,7 @@
 var logs_offset = 0
 //File Manager global vars
 var currentdir = "/";
+var currentpackage = 0;
 $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
@@ -321,7 +322,8 @@ function getinfo(){
 				if(data.serviceid == "Custom"){
 						$("#files_tab").show();
 				}
-        SetManageStatus(data.status);
+				SetManageStatus(data.status);
+				currentpackage = data.packageid;
 				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
 				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
@@ -617,10 +619,12 @@ function getpackages(){
 				var data = JSON.parse(result);
 				var tr;
 				for (var i = 0; i < data.length; i++) {
-					tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].id+"' type='radio'></input>");
-					lbl = $("<label for='PID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span><span class='deploy_checkbox_line2'>"+data[i].ram+"MB RAM "+data[i].diskspace+"GB Disk</span></label>");
-					$('#packages_list').append(tr);
-					$('#packages_list').append(lbl);
+					if (data[i].id != data.packageid) {
+						tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].id+"' type='radio'></input>");
+						lbl = $("<label for='PID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span><span class='deploy_checkbox_line2'>"+data[i].ram+"MB RAM "+data[i].diskspace+"GB Disk</span></label>");
+						$('#packages_list').append(tr);
+						$('#packages_list').append(lbl);
+					}
 				}
       }
     });
