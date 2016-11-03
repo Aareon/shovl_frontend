@@ -620,7 +620,7 @@ function getpackages(){
 				var data = JSON.parse(result);
 				var tr;
 				for (var i = 0; i < data.length; i++) {
-					if (data[i].id != data.packageid) {
+					if (data[i].id != currentpackage) {
 						tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].id+"' type='radio'></input>");
 						lbl = $("<label for='PID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span><span class='deploy_checkbox_line2'>"+data[i].ram+"MB RAM "+data[i].diskspace+"GB Disk</span></label>");
 						$('#packages_list').append(tr);
