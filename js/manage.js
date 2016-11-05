@@ -164,7 +164,7 @@ function FM_Rename(dir, newdir){
                request.setRequestHeader("Authorization", localStorage.getItem("token"));
            },
            success: function(result) {
-              pagealert("success", "Folder Created");
+              pagealert("success", result);
             },
             error: function(result) {
               pagealert("error", result.responseText);
@@ -337,6 +337,7 @@ function getinfo(){
 $("#start").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
+	  if ($("#start").hasClass("disabled")){
          $.ajax({
             type:"POST",
             url: "/api/containers/start",
@@ -351,14 +352,18 @@ $("#start").click(function(){
                 pagealert("success", "Website has been tasked to start");
             },
             error: function(result) {
-				        pagealert("error", result.responseText);
+				pagealert("error", result.responseText);
 	  }
 	});
+	}else{
+		pagealert("error", "Your website is already running");
+	}
 });
 
 $("#stop").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
+	 if ($("#stop").hasClass("disabled")){
          $.ajax({
             type:"POST",
             url: "/api/containers/stop",
@@ -376,6 +381,9 @@ $("#stop").click(function(){
 				        pagealert("error", result.responseText);
 	  }
 	});
+	}else{
+		pagealert("error", "Your website is already stopped");
+	}
 });
 
 $("#restart").click(function(){
