@@ -337,7 +337,7 @@ function getinfo(){
 $("#start").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	  if ($("#start").hasClass("disabled") == true){
+	  if ($(this).hasClass("disabled")){
          $.ajax({
             type:"POST",
             url: "/api/containers/start",
@@ -363,7 +363,7 @@ $("#start").click(function(){
 $("#stop").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	 if ($("#stop").hasClass("disabled") == true){
+	 if ($(this).hasClass.hasClass("disabled")){
          $.ajax({
             type:"POST",
             url: "/api/containers/stop",
