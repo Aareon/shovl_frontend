@@ -337,7 +337,7 @@ function getinfo(){
 $("#start").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	  if ($("#start").hasClass("disabled")){
+	  if ($("#start").hasClass("disabled") == true){
          $.ajax({
             type:"POST",
             url: "/api/containers/start",
@@ -347,7 +347,7 @@ $("#start").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				        $("#status").html("Status: "+website_status(1));
+				$("#status").html("Status: "+website_status(1));
                 SetManageStatus(1);
                 pagealert("success", "Website has been tasked to start");
             },
@@ -363,7 +363,7 @@ $("#start").click(function(){
 $("#stop").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	 if ($("#stop").hasClass("disabled")){
+	 if ($("#stop").hasClass("disabled") == true){
          $.ajax({
             type:"POST",
             url: "/api/containers/stop",
