@@ -15,6 +15,9 @@ $(document).ready(function(){
       $(':checkbox', this).trigger('click');
     }
   });
+  setInterval(function(){
+    getinfo();
+  }, 2500);
 });
 
 $('#fm-move').click(function() {
@@ -323,6 +326,9 @@ function getinfo(){
 				if(data.serviceid == "Custom"){
 						$("#files_tab").show();
 				}
+        if (data.cnameenabled == false && data.torenabled == false){
+            window.location.assign("/app/validatedomain?id="+$_GET("id"));
+        }
 				SetManageStatus(data.status);
 				currentpackage = data.packageid;
 				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
@@ -347,12 +353,11 @@ $("#start").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#status").html("Status: "+website_status(1));
-                SetManageStatus(1);
+				        SetManageStatus(1);
                 pagealert("success", "Website has been tasked to start");
             },
             error: function(result) {
-				pagealert("error", result.responseText);
+				          pagealert("error", result.responseText);
 	  }
 	});
 });
@@ -369,7 +374,6 @@ $("#stop").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#status").html("Status: "+website_status(0));
                 SetManageStatus(0);
                 pagealert("success", "Website has been tasked to stop");
             },
@@ -391,6 +395,7 @@ $("#restart").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
+                SetManageStatus(1);
                 pagealert("success", "Website Restarted");
             },
             error: function(result) {

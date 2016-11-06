@@ -44,19 +44,21 @@ $("#recheck").click(function(){
 	 isloggedin();
          $.ajax({
             type:"POST",
-            url: "/api/containers/start",
+            url: "/api/containers/recheck",
             data: JSON.stringify(container),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#status").html("Status: "+website_status(1));
-                SetManageStatus(1);
-                pagealert("success", "Website has been tasked to start");
+              pagealert("success", result);
+              setTimeout(function()
+              {
+                   window.location.assign("/app/manage?id="+$_GET("id"));
+              },1500);
             },
             error: function(result) {
-				pagealert("error", result.responseText);
-	  }
+        				pagealert("error", result.responseText);
+        	  }
 	});
 });

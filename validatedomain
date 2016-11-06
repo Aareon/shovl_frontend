@@ -56,6 +56,9 @@
                       </thead>
                       <tbody id="dnsrecord_table"></tbody>
                     </table>
+                    <div class="col-md-4 col-md-offset-8">
+                        <button id="recheck" class="btn btn-primary btn-block pull-right"> Recheck Records</button>
+                    </div>
                     </div>
                   </div>
                   <!-- End of web contents -->
