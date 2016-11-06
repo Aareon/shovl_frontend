@@ -338,7 +338,6 @@ function getinfo(){
 $("#start").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	  if (currentstatus = 1){
          $.ajax({
             type:"POST",
             url: "/api/containers/start",
@@ -356,15 +355,11 @@ $("#start").click(function(){
 				pagealert("error", result.responseText);
 	  }
 	});
-	}else{
-		pagealert("error", "Your website is already running");
-	}
 });
 
 $("#stop").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	 if (currentstatus == 0){
          $.ajax({
             type:"POST",
             url: "/api/containers/stop",
@@ -382,9 +377,6 @@ $("#stop").click(function(){
 				        pagealert("error", result.responseText);
 	  }
 	});
-	}else{
-		pagealert("error", "Your website is already stopped");
-	}
 });
 
 $("#restart").click(function(){
