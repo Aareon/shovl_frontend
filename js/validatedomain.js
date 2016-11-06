@@ -27,7 +27,7 @@ function getinfo(){
                 firsttr.append("<td>" + "CNAME" +"</td>");
                 firsttr.append("<td>" + data.hostname +"</td>");
                 firsttr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
-                $("#dnsrecord_table").append(firstttr);
+                $("#dnsrecord_table").append(firsttr);
 
                 secondtr = $('<tr>');
                 secondtr.append("<td>" + "CNAME" +"</td>");

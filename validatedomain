@@ -39,7 +39,7 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                   <div class="panel panel-primary">
-                    <div id="domain" class="panel-heading"><strong>website.com</strong></div>
+                    <div id="domain" class="panel-heading"><strong>Loading...</strong></div>
                     <div class="panel-body">
                       <h3 class="text-primary"><strong>Please visit your registrar's dashboard to set the following DNS records.</strong></h3>
                       <h4>Set the records in the table below, your domain registrar should have an advanced section to set the records, if you need help, contact our support.</h4>
