@@ -16,24 +16,24 @@ function getinfo(){
             success: function(result) {
       				var data = JSON.parse(result);
               $("#domain").html("<strong>"+data.hostname+"</strong>");
-              if ((data.hostname.match(/./g)||[]).length > 1){
+              if ((data.hostname.split('.').length-1) > 1){
                 tr = $('<tr>');
                 tr.append("<td>" + "CNAME" +"</td>");
                 tr.append("<td>" + data.hostname +"</td>");
                 tr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
                 $("#dnsrecord_table").append(tr);
               }else{
-                tr = $('<tr>');
-                tr.append("<td>" + "CNAME" +"</td>");
-                tr.append("<td>" + data.hostname +"</td>");
-                tr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
-                $("#dnsrecord_table").append(tr);
+                firsttr = $('<tr>');
+                firsttr.append("<td>" + "CNAME" +"</td>");
+                firsttr.append("<td>" + data.hostname +"</td>");
+                firsttr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
+                $("#dnsrecord_table").append(firstttr);
 
-                tr = $('<tr>');
-                tr.append("<td>" + "CNAME" +"</td>");
-                tr.append("<td>" + "www." + data.hostname +"</td>");
-                tr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
-                $("#dnsrecord_table").append(tr);
+                secondtr = $('<tr>');
+                secondtr.append("<td>" + "CNAME" +"</td>");
+                secondtr.append("<td>" + "www." + data.hostname +"</td>");
+                secondtr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
+                $("#dnsrecord_table").append(secondtr);
               }
             },
     });
