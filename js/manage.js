@@ -2,6 +2,7 @@ var logs_offset = 0
 //File Manager global vars
 var currentdir = "/";
 var currentpackage = 0;
+var currentstatus = 0;
 $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
@@ -337,7 +338,7 @@ function getinfo(){
 $("#start").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	  if ($(this).hasClass("disabled")){
+	  if (currentstatus = 1){
          $.ajax({
             type:"POST",
             url: "/api/containers/start",
@@ -363,7 +364,7 @@ $("#start").click(function(){
 $("#stop").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
-	 if ($(this).hasClass.hasClass("disabled")){
+	 if (currentstatus == 0){
          $.ajax({
             type:"POST",
             url: "/api/containers/stop",
@@ -373,7 +374,7 @@ $("#stop").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				        $("#status").html("Status: "+website_status(0));
+				$("#status").html("Status: "+website_status(0));
                 SetManageStatus(0);
                 pagealert("success", "Website has been tasked to stop");
             },
@@ -580,9 +581,11 @@ function FM_Upload(){
 
 function SetManageStatus(status){
   if (status == 1){
+	currentstatus = 1;
     $("#stop").removeClass("disabled");
     $("#start").addClass("disabled");
   }else if(status == 0){
+	currentstatus = 0;
     $("#start").removeClass("disabled");
     $("#stop").addClass("disabled");
   }else {
