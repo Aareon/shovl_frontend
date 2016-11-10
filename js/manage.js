@@ -353,7 +353,10 @@ function getinfo(){
             window.location.assign("/app/validatedomain?id="+$_GET("id"));
         }
 				SetManageStatus(data.status);
-				currentpackage = data.packageid;
+				if (data.sslenabled){
+					$('#https-box'.prop('checked', true);
+				}
+				currentpackage = data.packageid;				
 				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
 				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
