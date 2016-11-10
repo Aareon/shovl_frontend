@@ -20,6 +20,29 @@ $(document).ready(function(){
   }, 2500);
 });
 
+$('#https-box').click(function() {
+	var ischecked = false
+	if $(this).is(':checked'){
+		ischecked = true
+	}	
+	var req = {containerid: $_GET("id"), enabled: ischecked};
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/https/setting",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},     
+		   error: function(result) {
+			   pagealert("success", result.responseText)
+			},   
+   });
+});
+
 $('#fm-move').click(function() {
 		  swal({
 			title: "Move File/Folder",
