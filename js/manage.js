@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 $('#https-box').click(function() {
 	var ischecked = false
-	if $(this).is(':checked'){
+	if ($(this).is(':checked')){
 		ischecked = true
 	}	
 	var req = {containerid: $_GET("id"), enabled: ischecked};
