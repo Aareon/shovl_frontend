@@ -354,7 +354,7 @@ function getinfo(){
         }
 				SetManageStatus(data.status);
 				if (data.sslenabled){
-					$('#https-box'.prop('checked', true);
+					$('#https-box').prop('checked', true);
 				}
 				currentpackage = data.packageid;				
 				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
