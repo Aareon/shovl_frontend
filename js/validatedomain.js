@@ -39,6 +39,42 @@ function getinfo(){
     });
 }
 
+$("#delete").click(function(){
+swal({
+  title: "WARNING! Are you sure you want to delete your website?",
+  text: "You will not be able to recover your website!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, delete it!",
+  closeOnConfirm: false
+},
+function(){
+  swal("Deleted!", "Your website has been tasked to be deleted.", "success");
+  	  var container = {containerid: $_GET("id")};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/remove",
+            data: JSON.stringify(container),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+                swal("Deleted!", "Your website has been tasked to be deleted.", "success");
+                setTimeout(function()
+							{
+							window.location.assign("/app/dashboard");
+							},200);
+            },
+            error: function(result) {
+				sweetAlert("Oops...", result.responseText, "error");
+	  }
+		});
+	});
+});
+
 $("#recheck").click(function(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
