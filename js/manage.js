@@ -20,11 +20,30 @@ $(document).ready(function(){
   }, 2500);
 });
 
+$("#cd-change").click(function(){
+     var req = {containerid: $_GET("id"), hostname: $("#cd-hostname").val()};
+     $.ajax({
+        type:"POST",
+        url: "/api/containers/https/setting",
+        data: JSON.stringify(req),
+        beforeSend: function (request)
+        {
+            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
+        success: function(result) {
+          pagealert("success", result);
+       },
+        error: function(result) {
+          pagealert("success", result.responseText);
+       },
+    });
+});
+
 $('#https-box').click(function() {
 	var ischecked = false
 	if ($(this).is(':checked')){
 		ischecked = true
-	}	
+	}
 	var req = {containerid: $_GET("id"), enabled: ischecked};
         $.ajax({
            type:"POST",
@@ -36,10 +55,10 @@ $('#https-box').click(function() {
            },
            success: function(result) {
 			   pagealert("success", result)
-			},     
+			},
 		   error: function(result) {
 			   pagealert("success", result.responseText)
-			},   
+			},
    });
 });
 
@@ -346,17 +365,21 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
-				if(data.serviceid == "Custom"){
-						$("#files_tab").show();
+
+				if (data.cnameenabled == false && data.torenabled == false){
+					window.location.assign("/app/validatedomain?id="+$_GET("id"));
 				}
-        if (data.cnameenabled == false && data.torenabled == false){
-            window.location.assign("/app/validatedomain?id="+$_GET("id"));
-        }
+
+				if (data.torenabled == true){
+						$("#force-https").hide();
+            $("#change-domain").hide();
+				}
+
 				SetManageStatus(data.status);
 				if (data.sslenabled){
 					$('#https-box').prop('checked', true);
 				}
-				currentpackage = data.packageid;				
+				currentpackage = data.packageid;
 				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
 				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("<strong>Status: </strong>"+website_status(data.status));

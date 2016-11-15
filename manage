@@ -109,7 +109,7 @@
                     							<tr><td>
                     							<div class="form-group">
                                   WARNING! This will overwrite your website with the contents of the archive.<br>
-                    							Website contents (.zip .rar .7z .tar.gz): <label class="btn btn-sm btn-primary btn-file">Browse...<input  type="file" name="file"  required id="upload" style="display: none;"></label>                                  
+                    							Website contents (.zip .rar .7z .tar.gz): <label class="btn btn-sm btn-primary btn-file">Browse...<input  type="file" name="file"  required id="upload" style="display: none;"></label>
                     							</div>
                     							</td></tr>
                     							<tr id="webroot_progress" style="display: none;"><td>
@@ -168,10 +168,25 @@
 
                     <div id="security_div" class="tab-pane fade">
                       <h2 class="content-subhead">Security settings</h2>
-                      <p class="text-success">
-                      <label>
-                          <input id="https-box" type="checkbox"> Force HTTPS: Redirect all traffic through HTTPS (Recommended)</p>
-                      </label>
+                      <div id="force-https">
+          						  <p class="text-success">
+          						  <label>
+          							  <input id="https-box" type="checkbox"> Force HTTPS: Redirect all traffic through HTTPS (Recommended)</p>
+          						  </label>
+                      </div>
+                      <div id="change-domain">
+                          <div class="panel panel-primary">
+                            <div class="panel-heading">Change Domain Name</div>
+                            <div class="panel-body">
+                              <div class="form-group col-md-12">
+                                <input id="cd-hostname" class="form-control input-md" type="text" placeholder="Domain Name">
+                              </div>
+                              <div class="col-md-12">
+                                <button id="cd-change" class="btn btn-primary btn-block">Change Domain</button>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
                     </div>
 
                     <div id="database_div" class="tab-pane fade">
@@ -231,7 +246,7 @@
           </div> <!-- sidenav-offset-inner -->
         </div> <!-- sidenav-offset -->
       <!-- Start of JS imports -->
-  <script src="js/global.js"></script>
+  <!--script src="js/global.js"></script-->
   <script src="js/manage.js"></script>
       <!-- End of JS imports -->
     </body>
