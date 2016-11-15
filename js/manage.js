@@ -34,7 +34,7 @@ $("#cd-change").click(function(){
           pagealert("success", result);
        },
         error: function(result) {
-          pagealert("success", result.responseText);
+          pagealert("error", result.responseText);
        },
     });
 });
@@ -57,7 +57,7 @@ $('#https-box').click(function() {
 			   pagealert("success", result)
 			},
 		   error: function(result) {
-			   pagealert("success", result.responseText)
+			   pagealert("error", result.responseText)
 			},
    });
 });
