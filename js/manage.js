@@ -24,7 +24,7 @@ $("#cd-change").click(function(){
      var req = {containerid: $_GET("id"), hostname: $("#cd-hostname").val()};
      $.ajax({
         type:"POST",
-        url: "/api/containers/https/setting",
+        url: "/api/containers/changedomain",
         data: JSON.stringify(req),
         beforeSend: function (request)
         {
