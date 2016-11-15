@@ -2,6 +2,25 @@ $(document).ready(function(){
   getinfo();
 });
 
+$("#cd-change").click(function(){
+     var req = {containerid: $_GET("id"), hostname: $("#cd-hostname").val()};
+     $.ajax({
+        type:"POST",
+        url: "/api/containers/changedomain",
+        data: JSON.stringify(req),
+        beforeSend: function (request)
+        {
+            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
+        success: function(result) {
+          pagealert("success", result);
+       },
+        error: function(result) {
+          pagealert("error", result.responseText);
+       },
+    });
+});
+
 function getinfo(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();

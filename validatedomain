@@ -64,6 +64,19 @@
                     </div>
                     </div>
                   </div>
+                  <div id="change-domain">
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Change Domain Name</div>
+                        <div class="panel-body">
+                          <div class="form-group col-md-12">
+                            <input id="cd-hostname" class="form-control input-md" type="text" placeholder="Domain Name">
+                          </div>
+                          <div class="col-md-12">
+                            <button id="cd-change" class="btn btn-primary btn-block">Change Domain</button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
                   <!-- End of web contents -->
               </div>
             </div>
