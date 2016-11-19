@@ -20,6 +20,26 @@ $(document).ready(function(){
   }, 2500);
 });
 
+$("#renew").click(function(){
+    var container = {containerid: $_GET("id")};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/renew",
+            data: JSON.stringify(container),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+                pagealert("success", result);
+            },
+            error: function(result) {
+				pagealert("error", result.responseText);
+	  }
+	});
+});
+
 $("#cd-change").click(function(){
      var req = {containerid: $_GET("id"), hostname: $("#cd-hostname").val()};
      $.ajax({
