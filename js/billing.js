@@ -1,6 +1,6 @@
 var history_offset = 0
 $(document).ready(function(){
-		isloggedin();
+	isloggedin();
     gethistory(history_offset);
     balance();
     if(IsAdmin()){

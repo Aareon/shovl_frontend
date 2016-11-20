@@ -41,7 +41,7 @@
                     <ul class="nav nav-tabs">
                       <li class="active"><a data-toggle="tab" href="#history_div">Transactions</a></li>
                       <li><a data-toggle="tab" href="#funds_div">Add Funds</a></li>
-                      <li><a data-toggle="tab" id="admin_tab" href="#admin_div">Admin</a></li>
+                      <li><a data-toggle="tab" id="admin_tab" href="#admin_div" style="display: none;">Admin</a></li>
                     </ul>
                     <!-- End of navbar -->
 

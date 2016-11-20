@@ -210,7 +210,7 @@
                 				<tbody id="service_table">
                 					<tr><td id="db_hostname"></td></tr>
                 					<tr><td id="db_username"></td></tr>
-                					<tr><td id="db_password"></td></tr>
+                					<tr><td><div style="display: none;" id="db_password"></div><a style="display: none;" id="hide-password">Hide</a><a id="show-password">Show</a></td></tr>
                 				</tbody>
               				</table>
                     </div>
