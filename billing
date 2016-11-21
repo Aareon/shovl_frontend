@@ -73,11 +73,9 @@
 						  <div class="panel panel-primary">
 								<div class="panel-body">
 								   <h3>Add a Giftcode to your balance</h3>
-								   <form>
 								   <div class="form-group">
 								   <input id="giftcode" class="form-control input-md" type="text" placeholder="Gift Code" maxlength="32">
 								   </div>
-								   </form>
 
 								   <button id="addfunds" class="btn btn-primary btn-block" type="button">Apply Giftcode</button>
 								</div>
@@ -85,14 +83,12 @@
 						   <div class="panel panel-primary">
 								<div class="panel-body">
 									<h3>Make a paypal deposit</h3>
-									<form>
 
 									   <div id="paypal-div" class="form-group">
-										 <input id="paypal-amount" class="form-control input-md" type="number" step="0.01" placeholder="Amount of credits">
-									   </div>
-								   </form>
+										<input id="paypal-amount" class="form-control input-md" type="number" step="0.01" placeholder="Amount of credits">
 
 								   <button id="paypal-deposit" class="btn btn-primary btn-block" type="button">Buy Credits</button>
+								   </div>
 								  </div>
 							</div>
 						  </div>
