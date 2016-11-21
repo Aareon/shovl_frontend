@@ -13,6 +13,25 @@ $("#randomcode").click(function(){
     $("#giftcode_admin").val(randomString(32));
 })
 
+$("#paypal-deposit").click(function(){
+	var req = {"amount": $("#paypal-amount").val()}
+	        $.ajax({
+            type:"POST",
+            url: "/api/paypal/deposit",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				$("#paypal-div").html(result);
+				},
+			 error: function(result) {
+				pagealert("error", result.responseText);
+				}
+    });
+})
+
 $("#addfunds").click(function(){
 	var giftcode = {"code": $("#giftcode").val()}
 	        $.ajax({

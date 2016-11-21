@@ -23,13 +23,13 @@ $(document).ready(function(){
 $("#show-password").click(function(){
     $("#db_password").show();
     $(this).hide();
-    $("hide-password").show();
+    $("#hide-password").show();
 })
 
 $("#hide-password").click(function(){
     $("#db_password").hide();
     $(this).hide();
-    $("show-password").show();
+    $("#show-password").show();
 })
 
 $("#renew").click(function(){
