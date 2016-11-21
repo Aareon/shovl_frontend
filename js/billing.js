@@ -24,7 +24,7 @@ $("#paypal-deposit").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#paypal-amount").addClass("disabled");
+				$("#paypal-amount").attr('disabled', 'disabled');
 				$("#paypal-div").html(result);
 				},
 			 error: function(result) {
