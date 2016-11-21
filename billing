@@ -83,7 +83,7 @@
 						   <div class="panel panel-primary">
 								<div class="panel-body">
 									<h3>Make a paypal deposit</h3>
-									<div id="id="paypal-div">
+									<div id="paypal-div">
 									   <div class="form-group">
 											<input id="paypal-amount" class="form-control input-md" type="number" step="0.01" placeholder="Amount of credits">
 										</div>
