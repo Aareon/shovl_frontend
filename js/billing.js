@@ -14,7 +14,7 @@ $("#randomcode").click(function(){
 })
 
 $("#paypal-deposit").click(function(){
-	var req = {"amount": $("#paypal-amount").val()}
+	var req = {"amount": parseFloat($("#paypal-amount").val())}
 	        $.ajax({
             type:"POST",
             url: "/api/paypal/deposit",
