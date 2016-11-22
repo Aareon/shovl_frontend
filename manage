@@ -197,6 +197,33 @@
                             </div>
                         </div>
                       </div>
+                      <div id="firewall" class="panel panel-primary">
+                          <div class="panel-heading">Firewall</div>
+                          <div class="panel-body">
+                            <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Type</th>
+                                <th>IP address</th>
+                                <th>Manage</th>
+                              </tr>
+                            </thead>
+                            <tbody id="firewall_table"></tbody>
+                          </table>
+                          <div class="form-group col-md-3">
+                            <select class="form-control" id="fr-type">
+                              <option>Accept</option>
+                              <option>Block</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <input id="fr-ipcidr" class="form-control input-md" type="text" placeholder="IP address or IP CIDR">
+                          </div>
+                          <div class="col-md-3">
+                            <button id="fr-create" class="btn btn-success btn-block">Create Rule</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <div id="database_div" class="tab-pane fade">
@@ -256,7 +283,7 @@
           </div> <!-- sidenav-offset-inner -->
         </div> <!-- sidenav-offset -->
       <!-- Start of JS imports -->
-  <script src="js/global.js"></script>
+  <!--script src="js/global.js"></script>
   <script src="js/manage.js"></script>
       <!-- End of JS imports -->
     </body>

@@ -10,6 +10,7 @@ $(document).ready(function(){
   IsAdmin();
   FM_DisplayCurrentDir(currentdir);
   getpackages();
+  getfirewallrules();
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
@@ -19,6 +20,60 @@ $(document).ready(function(){
     getinfo();
   }, 2500);
 });
+
+function getfirewallrules(){
+	 isloggedin();
+   var req = {containerid: $_GET("id")};
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/firewall/list",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+    				var data = JSON.parse(result);
+    				var p;
+            if (data != null){
+        				for (var i = 0; i < data.length; i++) {
+                    var type = "";
+                    if (data[i].block == true) {
+                      type = "<div class='red'>Block</div>";
+                    }else {
+                      type = "<div class='green'>Accept</div>";
+                    }
+        						tr = $('<tr>');
+        						tr.append("<td>" + type +"</td>");
+        						tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
+        						tr.append("<td>" + data[i].ipcidr + "</td>");
+        						tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
+        						append.(tr)
+        				}
+              }
+            },
+    });
+}
+
+function DeleteFirewallRule(ipcidr){
+        var container = {containerid: $_GET("id"), ipcidr: ipcidr};
+        isloggedin();
+        $.ajax({
+          type:"POST",
+          url: "/api/containers/firewall/delete",
+          data: JSON.stringify(container),
+          beforeSend: function (request)
+          {
+              request.setRequestHeader("Authorization", localStorage.getItem("token"));
+          },
+          success: function(result) {
+              pagealert("success", result);
+          },
+          error: function(result) {
+              pagealert("error", result.responseText);
+          },
+      });
+}
 
 $("#show-password").click(function(){
     $("#db_password").show();
@@ -31,6 +86,29 @@ $("#hide-password").click(function(){
     $(this).hide();
     $("#show-password").show();
 })
+
+$("#fr-create").click(function(){
+    var type = false;
+    if ($("#fr-ipcidr").val() == "Allow") {
+      type = true;
+    }
+     var req = {containerid: $_GET("id"), ipcidr: $("#fr-ipcidr").val(), block: type};
+     $.ajax({
+        type:"POST",
+        url: "/api/containers/firewall/new",
+        data: JSON.stringify(req),
+        beforeSend: function (request)
+        {
+            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
+        success: function(result) {
+          pagealert("success", result);
+       },
+        error: function(result) {
+          pagealert("error", result.responseText);
+       },
+    });
+});
 
 $("#renew").click(function(){
     var container = {containerid: $_GET("id")};
@@ -412,7 +490,7 @@ function getinfo(){
 					$('#https-box').prop('checked', true);
 				}
 				currentpackage = data.packageid;
-				$("#hostname").html("<strong>Domain: </strong>"+data.hostname);
+				$("#hostname").html("<strong>Domain: </strong><a href='http://"+data.hostname+"'>"+data.hostname+"</a>");
 				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
 				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
 				$("#package").html("<strong>Package: </strong>"+packagename(data.packageid));
