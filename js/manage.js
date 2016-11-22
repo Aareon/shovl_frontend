@@ -99,7 +99,7 @@ $("#hide-password").click(function(){
 
 $("#fr-create").click(function(){
     var type = false;
-    if ($("#fr-ipcidr").val() == "Allow") {
+    if ($("#fr-type").val() == "Block") {
       type = true;
     }
      var req = {containerid: $_GET("id"), ipcidr: $("#fr-ipcidr").val(), block: type};
