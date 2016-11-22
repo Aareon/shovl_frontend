@@ -487,6 +487,7 @@ function getinfo(){
 				if (data.torenabled == true){
 						$("#force-https").hide();
             $("#change-domain").hide();
+            $("#firewall").hide();
 				}
 
 				SetManageStatus(data.status);
