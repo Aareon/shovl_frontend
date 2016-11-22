@@ -208,7 +208,7 @@
                                 <th>Manage</th>
                               </tr>
                             </thead>
-                            <tbody id="firewall_table"></tbody>
+                            <tbody id="firewall-table"></tbody>
                           </table>
                           <div class="form-group col-md-3">
                             <select class="form-control" id="fr-type">
