@@ -35,21 +35,25 @@ function getfirewallrules(){
             success: function(result) {
     				var data = JSON.parse(result);
     				var p;
-            if (data != null){
-        				for (var i = 0; i < data.length; i++) {
-                    var type = "";
-                    if (data[i].block == true) {
-                      type = "<div class='red'>Block</div>";
-                    }else {
-                      type = "<div class='green'>Accept</div>";
-                    }
-        						tr = $('<tr>');
-        						tr.append("<td>" + type +"</td>");
-        						tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
-        						tr.append("<td>" + data[i].ipcidr + "</td>");
-        						tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
-        						$("#firewall-table").append(tr)
-        				}
+            if (data != null) {
+                for (var i = 0; i < data.length; i++) {
+                      if (data[i].block == false) {
+                        tr = $('<tr>');
+                        tr.append("<td>" + "<div class='green'>Accept</div>" +"</td>");
+                        tr.append("<td>" + data[i].ipcidr + "</td>");
+                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
+                        $("#firewall-table").append(tr)
+                      }
+                }
+                for (var i = 0; i < data.length; i++) {
+                      if (data[i].block == true) {
+                        tr = $('<tr>');
+                        tr.append("<td>" + "<div class='red'>Block</div>" +"</td>");
+                        tr.append("<td>" + data[i].ipcidr + "</td>");
+                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
+                        $("#firewall-table").append(tr)
+                      }
+                }
               }
             },
     });
