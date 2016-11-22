@@ -21,6 +21,11 @@ $(document).ready(function(){
   }, 2500);
 });
 
+function reloadfirewallrules(){
+  $("#firewall-table").html("");
+  getfirewallrules();
+}
+
 function getfirewallrules(){
 	 isloggedin();
    var req = {containerid: $_GET("id")};
@@ -41,7 +46,7 @@ function getfirewallrules(){
                         tr = $('<tr>');
                         tr.append("<td>" + "<div class='green'>Accept</div>" +"</td>");
                         tr.append("<td>" + data[i].ipcidr + "</td>");
-                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
+                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'>Delete</button></td>`);
                         $("#firewall-table").append(tr)
                       }
                 }
@@ -50,7 +55,7 @@ function getfirewallrules(){
                         tr = $('<tr>');
                         tr.append("<td>" + "<div class='red'>Block</div>" +"</td>");
                         tr.append("<td>" + data[i].ipcidr + "</td>");
-                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
+                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'>Delete</button></td>`);
                         $("#firewall-table").append(tr)
                       }
                 }
@@ -72,6 +77,7 @@ function DeleteFirewallRule(ipcidr){
           },
           success: function(result) {
               pagealert("success", result);
+              reloadfirewallrules();
           },
           error: function(result) {
               pagealert("error", result.responseText);
@@ -107,6 +113,7 @@ $("#fr-create").click(function(){
         },
         success: function(result) {
           pagealert("success", result);
+          reloadfirewallrules();
        },
         error: function(result) {
           pagealert("error", result.responseText);
