@@ -48,7 +48,7 @@ function getfirewallrules(){
         						tr.append("<td>" + link(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
         						tr.append("<td>" + data[i].ipcidr + "</td>");
         						tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'></td>`);
-        						append.(tr)
+        						$("#firewall-table").append(tr)
         				}
               }
             },
