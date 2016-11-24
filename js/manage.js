@@ -46,7 +46,7 @@ function getfirewallrules(){
                         tr = $('<tr>');
                         tr.append("<td>" + "<div class='green'>Accept</div>" +"</td>");
                         tr.append("<td>" + data[i].ipcidr + "</td>");
-                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'>Delete</button></td>`);
+                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`", false)'>Delete</button></td>`);
                         $("#firewall-table").append(tr)
                       }
                 }
@@ -55,7 +55,7 @@ function getfirewallrules(){
                         tr = $('<tr>');
                         tr.append("<td>" + "<div class='red'>Block</div>" +"</td>");
                         tr.append("<td>" + data[i].ipcidr + "</td>");
-                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`")'>Delete</button></td>`);
+                        tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteFirewallRule("`+data[i].ipcidr+`", true)'>Delete</button></td>`);
                         $("#firewall-table").append(tr)
                       }
                 }
@@ -64,8 +64,8 @@ function getfirewallrules(){
     });
 }
 
-function DeleteFirewallRule(ipcidr){
-        var container = {containerid: $_GET("id"), ipcidr: ipcidr};
+function DeleteFirewallRule(ipcidr, isblocked){
+        var container = {containerid: $_GET("id"), ipcidr: ipcidr, block: isblocked};
         isloggedin();
         $.ajax({
           type:"POST",
