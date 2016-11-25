@@ -47,8 +47,8 @@
 
                       <form>
                       <div class="form-group">
-                        <input id="subject" class="form-control input-md" type="text" placeholder="Subject">
-                        <textarea id="message" class="form-control input-md" cols="30" rows="5" placeholder="Message"></textarea>
+                        <input id="subject" class="form-control input-md" type="text" placeholder="Subject" maxlength="20">
+                        <textarea id="message" class="form-control input-md" cols="30" rows="5" placeholder="Message" maxlength="2048"></textarea>
                       </div>
                       </form>
 

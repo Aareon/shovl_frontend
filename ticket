@@ -42,7 +42,7 @@
             				<h2 id="ticket_msg" class="content-subhead center"></h2>
             				 <form id="creaton">
               				<div class="form-groupp">
-              				<textarea id="message" class="form-control input-md" cols="30" rows="5" placeholder="Message"></textarea>
+              				<textarea id="message" class="form-control input-md" cols="30" rows="5" placeholder="Message" maxlength="2048"></textarea>
               				</div>
             				</form>
             				<div class="pure-control-group">
