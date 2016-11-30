@@ -186,7 +186,7 @@ $('#https-box').click(function() {
 $('#fm-move').click(function() {
 		  swal({
 			title: "Move File/Folder",
-			text: "Enter the path to where you wish you move it:",
+			text: "Enter the full path or folder name to where you wish you move it:",
 			type: "input",
 			showCancelButton: true,
 			closeOnConfirm: true,
@@ -202,7 +202,13 @@ $('#fm-move').click(function() {
 			}
 
         $("input[name='checkrowbox']:checked").each(function () {
-          FM_Rename(currentdir+$(this).val(), currentdir+inputValue);
+		  var senddir = "";
+		  if ($(this).val().startsWith("/") == true){
+			  senddir = $(this).val();
+			}else{
+			  sendir = currentdir+$(this).val();
+			}
+          FM_Move(senddir, currentdir+inputValue);
         });
         pagealert("success", "Moved selected elements.");
         FM_DisplayCurrentDir(currentdir);
@@ -210,6 +216,12 @@ $('#fm-move').click(function() {
 });
 
 $("#fm-delete").click(function(){
+	var elements = new Array();
+    $("input[name='checkrowbox']:checked").each(function () {
+      elements.push($(this).val());
+    });
+
+    if (elements.length == 0) {
     swal({
       title: "WARNING! Are you sure you want to delete the selected elements?",
       text: "You will not be able to recover these files",
@@ -226,7 +238,11 @@ $("#fm-delete").click(function(){
         pagealert("success", "Deleted selected elements.")
         FM_DisplayCurrentDir(currentdir);
     	});
-    });
+    }else{
+		pagealert("error", "Please select atleast one element.")
+	}
+});
+
 
 function FM_Delete(dir){
   isloggedin();
@@ -318,6 +334,26 @@ $('#fm-rename').click(function() {
 		pagealert("error", "You can only rename one element at a time");
 	}
 });
+
+function FM_Move(dir, newdir){
+  isloggedin();
+  var req = {containerid: $_GET("id"), file: dir, newfile: newdir};
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/filemanager/move",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+              pagealert("success", result);
+            },
+            error: function(result) {
+              pagealert("error", result.responseText);
+            },
+   });
+}
 
 function FM_Rename(dir, newdir){
   isloggedin();
