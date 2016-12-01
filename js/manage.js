@@ -203,10 +203,10 @@ $('#fm-move').click(function() {
 
         $("input[name='checkrowbox']:checked").each(function () {
 		  var senddir = "";
-		  if ($(this).val().startsWith("/") == true){
-			  senddir = $(this).val();
+		  if (inputValue.startsWith("/") == true){
+			  senddir = inputValue;
 			}else{
-			  senddir = $(this).val();
+			  senddir = currentdir+inputValue;
 			}
           FM_Move(currentdir+$(this).val(), senddir);
         });
