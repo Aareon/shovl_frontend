@@ -221,25 +221,25 @@ $("#fm-delete").click(function(){
       elements.push($(this).val());
     });
 
-    if !(elements.length > 0) {
-    swal({
-      title: "WARNING! Are you sure you want to delete the selected elements?",
-      text: "You will not be able to recover these files",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, delete it!",
-      closeOnConfirm: true
-    },
-    function(){
-        $("input[name='checkrowbox']:checked").each(function () {
-          FM_Delete(currentdir+$(this).val());
-        });
-        pagealert("success", "Deleted selected elements.")
-        FM_DisplayCurrentDir(currentdir);
-    	});
-    }else{
+    if (elements.length > 0) {
 		pagealert("error", "Please select atleast one element.")
+    }else{
+		swal({
+		  title: "WARNING! Are you sure you want to delete the selected elements?",
+		  text: "You will not be able to recover these files",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes, delete it!",
+		  closeOnConfirm: true
+		},
+		function(){
+			$("input[name='checkrowbox']:checked").each(function () {
+			  FM_Delete(currentdir+$(this).val());
+			});
+			pagealert("success", "Deleted selected elements.")
+			FM_DisplayCurrentDir(currentdir);
+			});
 	}
 });
 
