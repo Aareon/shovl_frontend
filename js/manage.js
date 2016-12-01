@@ -221,7 +221,7 @@ $("#fm-delete").click(function(){
       elements.push($(this).val());
     });
 
-    if (elements.length == 0) {
+    if !(elements.length > 0) {
     swal({
       title: "WARNING! Are you sure you want to delete the selected elements?",
       text: "You will not be able to recover these files",
