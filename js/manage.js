@@ -222,9 +222,7 @@ $("#fm-delete").click(function(){
     });
 
     if (elements.length > 0) {
-		pagealert("error", "Please select atleast one element.")
-    }else{
-		swal({
+				swal({
 		  title: "WARNING! Are you sure you want to delete the selected elements?",
 		  text: "You will not be able to recover these files",
 		  type: "warning",
@@ -240,6 +238,8 @@ $("#fm-delete").click(function(){
 			pagealert("success", "Deleted selected elements.")
 			FM_DisplayCurrentDir(currentdir);
 			});
+    }else{
+		pagealert("error", "Please select atleast one element.")
 	}
 });
 
