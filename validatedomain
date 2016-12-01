@@ -57,7 +57,7 @@
                       <tbody id="dnsrecord_table"></tbody>
                     </table>
                     <div class="col-md-4 col-md-offset-4">
-                        <button id="recheck" class="btn btn-primary btn-block pull-right"> Recheck Records</button>
+                        <button id="recheck" class="btn btn-success btn-block pull-right"> Continue</button>
                     </div>
                     <div class="col-md-4">
                         <button id="delete" class="btn btn-danger btn-block pull-right"> Delete Website</button>

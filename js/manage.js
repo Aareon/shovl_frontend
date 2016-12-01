@@ -208,7 +208,7 @@ $('#fm-move').click(function() {
 			}else{
 			  sendir = currentdir+$(this).val();
 			}
-          FM_Move(senddir, currentdir+inputValue);
+          FM_Move(senddir, senddir);
         });
         pagealert("success", "Moved selected elements.");
         FM_DisplayCurrentDir(currentdir);

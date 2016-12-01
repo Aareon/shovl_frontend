@@ -170,7 +170,7 @@ function website_status(code){
 	return response;
 }
 
-function servicename(id){
+function serviceicon(id){
 	return localStorage.getItem("service_"+id)
 }
 
@@ -190,7 +190,7 @@ function getservices(){
             success: function(result) {
 				var data = JSON.parse(result);
 				for (var i = 0; i < data.length; i++) {
-					localStorage.setItem("service_"+data[i].id,data[i].name)
+					localStorage.setItem("service_"+data[i].name,data[i].icon)
 				}
             }
     });
@@ -213,22 +213,6 @@ function getpackages(){
 
             }
     });
-}
-
-function serviceicon(name){
-	var icon;
-	if (name == "Wordpress"){
-			icon = "fa-wordpress";
-	}else if (name == "Joomla"){
-			icon = "fa-joomla";
-	}else if( name == "Owncloud"){
-			icon = "fa-cloud";
-	}else if( name == "Custom"){
-			icon = "fa-globe";
-	}else{
-		icon = "fa-question";
-	}
-	return icon;
 }
 
 $(document).ready(function(){
