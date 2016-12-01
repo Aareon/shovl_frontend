@@ -73,7 +73,7 @@ $('#db-create').click(function() {
 			  swal.showInputError("Your database name can't be blank");
 			  return false
 			}
-			FSendCreateDatabase(inputValue);
+			SendCreateDatabase(inputValue);
 		  });
 });
 
@@ -90,7 +90,7 @@ function DeleteDatabase(database){
 		function(){
 			SendDeleteDatabase(database);
 		});
-});
+}
 
 
 function SendCreateDatabase(database){
