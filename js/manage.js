@@ -45,7 +45,7 @@ function getdatabases(){
           		var data = JSON.parse(result);
           		var p;
               if (data != null) {
-                  for (var i = 0; i < data.length; i++) {
+                  for (var i = 1; i < data.length; i++) {
                           tr = $('<tr>');
                           tr.append("<td>" + data[i] + "</td>");
                           tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteDatabase("` + data[i] + `")'>Delete</button></td>`);
