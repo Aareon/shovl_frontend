@@ -7,6 +7,7 @@ $(document).ready(function(){
   getinfo();
   getmanagelog(logs_offset);
   getdbinfo();
+  getdatabases();
   IsAdmin();
   FM_DisplayCurrentDir(currentdir);
   getpackages();
@@ -24,6 +25,114 @@ $(document).ready(function(){
 function reloadfirewallrules(){
   $("#firewall-table").html("");
   getfirewallrules();
+}
+
+function reloaddatabases(){
+  $("#database-table").html("");
+  getdatabases();
+}
+
+function getdatabases(){
+	 isloggedin();
+         $.ajax({
+            type:"GET",
+            url: "/api/account/database/list",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+          		var data = JSON.parse(result);
+          		var p;
+              if (data != null) {
+                  for (var i = 0; i < data.length; i++) {
+                          tr = $('<tr>');
+                          tr.append("<td>" + data[i] + "</td>");
+                          tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteDatabase("` + data[i] + `")'>Delete</button></td>`);
+                          $("#database-table").append(tr)
+                  }
+                }
+            },
+    });
+}
+
+$('#db-create').click(function() {
+		  swal({
+			title: "Create Database",
+			text: "Enter your new databases name:",
+			type: "input",
+			showCancelButton: true,
+			closeOnConfirm: true,
+			animation: "slide-from-top",
+			inputPlaceholder: "New Database Name"
+		  },
+		  function(inputValue){
+			if (inputValue === false) return false;
+
+			if (inputValue === "") {
+			  swal.showInputError("Your database name can't be blank");
+			  return false
+			}
+			FSendCreateDatabase(inputValue);
+		  });
+});
+
+function DeleteDatabase(database){
+			swal({
+		  title: "WARNING! Are you sure you want to delete this database?",
+		  text: "You will not be able to recover this data",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes, delete it!",
+		  closeOnConfirm: true
+		},
+		function(){
+			SendDeleteDatabase(database);
+		});
+});
+
+
+function SendCreateDatabase(database){
+        var container = {database: database};
+        isloggedin();
+        $.ajax({
+          type:"POST",
+          url: "/api/account/database/delete",
+          data: JSON.stringify(container),
+          beforeSend: function (request)
+          {
+              request.setRequestHeader("Authorization", localStorage.getItem("token"));
+          },
+          success: function(result) {
+              pagealert("success", result);
+              reloaddatabases();
+          },
+          error: function(result) {
+              pagealert("error", result.responseText);
+          },
+      });
+}
+
+function SendDeleteDatabase(database){
+        var container = {database: database};
+        isloggedin();
+        $.ajax({
+          type:"POST",
+          url: "/api/account/database/delete",
+          data: JSON.stringify(container),
+          beforeSend: function (request)
+          {
+              request.setRequestHeader("Authorization", localStorage.getItem("token"));
+          },
+          success: function(result) {
+              pagealert("success", result);
+              reloaddatabases();
+          },
+          error: function(result) {
+              pagealert("error", result.responseText);
+          },
+      });
 }
 
 function getfirewallrules(){

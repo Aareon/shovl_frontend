@@ -242,6 +242,24 @@
               				</table>
                     </div>
 
+					<div class="panel panel-primary">
+              <div class="panel-heading">Manage Databases</div>
+              <div class="panel-body">
+						  <div class="col-md-3">
+								<button id="db-create" class="btn btn-md btn-success" type="button"><i class="fa fa-database"></i> New Database</button>
+              </div>
+                            <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Database</th>
+                                <th>Manage</th>
+                              </tr>
+                            </thead>
+                            <tbody id="database-table"></tbody>
+                          </table>
+                </div>
+            </div>
+
                 			<form action="" id="dbupload" method="post" enctype="multipart/form-data" >
                         <div class="panel panel-primary">
                           <div class="panel-heading">Import a Database</div>
