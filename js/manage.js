@@ -206,7 +206,7 @@ $('#fm-move').click(function() {
 		  if ($(this).val().startsWith("/") == true){
 			  senddir = $(this).val();
 			}else{
-			  senddir = currentdir+$(this).val();
+			  senddir = $(this).val();
 			}
           FM_Move(currentdir+$(this).val(), senddir);
         });
