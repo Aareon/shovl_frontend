@@ -98,7 +98,7 @@ function SendCreateDatabase(database){
         isloggedin();
         $.ajax({
           type:"POST",
-          url: "/api/account/database/delete",
+          url: "/api/account/database/create",
           data: JSON.stringify(container),
           beforeSend: function (request)
           {
