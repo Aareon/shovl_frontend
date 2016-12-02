@@ -169,13 +169,13 @@
 						</div>
 					  </div>
 					  <div class="panel panel-primary">
-                            <div class="panel-body">
-							  <p>Renew your websites package, this will add 30 more days to your due date.</p>
-							  <button id="renew" type="button" class="btn btn-md btn-success">Renew</button>
+                <div class="panel-body">
                   <p class="text-success">
                   <label>
                     <input id="auto-renew" type="checkbox"> Auto Renew: Renew before expiry automatically using your balance(Automated)</p>
                   </label>
+							  <p>Renew your websites package, this will add 30 more days to your due date.</p>
+							  <button id="renew" type="button" class="btn btn-md btn-success">Renew</button>
 							</div>
 					  </div>
                     </div>

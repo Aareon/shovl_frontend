@@ -669,6 +669,9 @@ function getinfo(){
 				if (data.sslenabled){
 					$('#https-box').prop('checked', true);
 				}
+        if (data.renewenabled){
+          $('#auto-renew').prop('checked', true);
+        }
 				currentpackage = data.packageid;
 				$("#hostname").html("<strong>Domain: </strong><a href='http://"+data.hostname+"'>"+data.hostname+"</a>");
 				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
