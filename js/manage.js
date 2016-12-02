@@ -269,6 +269,29 @@ $("#cd-change").click(function(){
     });
 });
 
+$('#auto-renew').click(function() {
+	var ischecked = false
+	if ($(this).is(':checked')){
+		ischecked = true
+	}
+	var req = {containerid: $_GET("id"), enabled: ischecked};
+        $.ajax({
+           type:"POST",
+           url: "/api/containers/autorenew",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
 $('#https-box').click(function() {
 	var ischecked = false
 	if ($(this).is(':checked')){
