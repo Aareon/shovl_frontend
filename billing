@@ -22,7 +22,7 @@
                 <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
                 <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
                 <li><a href="profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
-                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i><br>&nbsp;&nbsp;Admin Panel</a></li>
+                                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i>&nbsp;&nbsp;Admin Panel</a></li>
                 <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
             </ul>
         </div>
@@ -82,7 +82,7 @@
 						   </div>
 						   <div class="panel panel-primary">
 								<div class="panel-body">
-									<h3>Make a paypal deposit</h3>								
+									<h3>Make a paypal deposit</h3>
 									   <div class="form-group">
 											<input id="paypal-amount" class="form-control input-md" type="number" step="0.01" placeholder="Amount of credits">
 										</div>
