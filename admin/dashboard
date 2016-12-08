@@ -35,7 +35,13 @@
 					      <div class="col-md-12">
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
-
+        					  <div class="panel panel-primary">
+                        <div class="panel-body">
+                          <p class="text-success">
+                					<p>Use latest git repository commit for systems update on backend webserver (Golang Web App Server) and git repository for frontend web code.<br>WARNING: Do not click this unless doing an update, it will result in close to a minute in downtime</p>
+                					<button id="update" type="button" class="btn btn-md btn-success" onclick="UpdateBackend();">Update</button>
+              					</div>
+        					  </div>
                   <!-- End of web contents -->
               </div>
             </div>
@@ -44,6 +50,7 @@
         </div>
       <!-- Start of JS imports -->
   <script src="js/global.js"></script>
+  <script src="js/dashboard.js"></script>
       <!-- End of JS imports -->
     </body>
 </html>
