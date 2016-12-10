@@ -46,10 +46,12 @@ function getdatabases(){
           		var p;
               if (data != null) {
                   for (var i = 1; i < data.length; i++) {
+						  if (data[i] != "information_schema" || data[i] != "performance_schema" || data[i] != "sys" || data[i] != "mysql"){
                           tr = $('<tr>');
                           tr.append("<td>" + data[i] + "</td>");
                           tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteDatabase("` + data[i] + `")'>Delete</button></td>`);
                           $("#database-table").append(tr)
+						}
                   }
                 }
             },
