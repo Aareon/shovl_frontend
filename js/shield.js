@@ -30,7 +30,7 @@ function getshields(){
 						tr = $('<tr>');
 						tr.append("<td>" + "<i class='fa fa-shield web_icon'></i>" +"</td>");
 						tr.append("<td>" + link(data[i].hostname)+data[i].hostname+"</a>" + "</td>");
-						tr.append("<td>" + data[i].serviceid + "</td>");
+						tr.append("<td>" + service_color(data[i].serviceid) + "</td>");
 						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
 						allcontainers = allcontainers.append(tr);
 					}
@@ -41,4 +41,15 @@ function getshields(){
 
 function link(id){
 		return '<a href="shield-manage?id='+id+'">';
+}
+function service_color(code){
+	var response;
+	if(code == "Business"){
+		response = "<div class='red'>Business</div>";
+	}else if(code == "Free"){
+		response = "<div class='green'>Free</div>";
+	}else if(code == "Premium"){
+		response = "<div class='orange'>Premium</div>";
+	}
+	return response;
 }
