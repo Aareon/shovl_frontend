@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	isloggedin();
 	getservices();
+	IsAdmin();
 });
 
 function getservices(){

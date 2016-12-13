@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Shovl - Create a Service</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -35,31 +35,47 @@
 					      <div class="col-md-12">
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
-                  <div id="domainbox">
-            			<h2 class="content-subhead">Domain name</h2>
-            			   <form>
-                      <div class="form-group">
-                        <input id="hostname" class="form-control input-md" id="inputsm" type="text" placeholder="domain.com" maxlength="128"">
-                      </div>
-              			</form>
+                  <div id="domainbox" class="col-md-12">
+                    <div class="panel panel-primary">
+                    <div class="panel-body">
+                			<h2 class="content-subhead">Domain name</h2>
+                			   <form>
+                          <div class="form-group">
+                            <input id="hostname" class="form-control input-md" id="inputsm" type="text" placeholder="domain.com" maxlength="128">
+                          </div>
+                  			</form>
+                    </div>
+                </div>
                   </div>
 
                     <div class="col-md-12">
-            				  <h2>Select a Service Type</h2>
-                      <div id="services" class="deploy_block" style="margin-top:10px;"></div>
+                      <div class="panel panel-primary">
+                      <div class="panel-body">
+              				  <h2>Select a Service Type</h2>
+                        <div id="services" class="deploy_block" style="margin-top:10px;"></div>
+                      </div>
+                      </div>
                     </div>
 
                     <div class="col-md-12">
+                      <div class="panel panel-primary">
+                      <div class="panel-body">
             				    <h2>Advanced Settings</h2>
             				    <div id="advanced" class="deploy_block" style="margin-top:10px;">
             				      <input class='deploy_checkbox' id='torenable' type='checkbox'></input>
             				      <label for='torenable'><span class='deploy_checkbox_icon'><img src="tor.png"></span><span class='deploy_checkbox_line1'>Tor hidden service</label>
             				    </div>
+                      </div>
+                      </div>
                     </div>
 
                     <div class="col-md-12">
-              				<h2 class="content-subhead">Select a Package</h2>
-                      <div id="packages" class="deploy_block" style="margin-top:10px;"></div>
+                      <div class="panel panel-primary">
+                      <div class="panel-body">
+                				<h2 class="content-subhead">Select a Package</h2>
+                        <div id="packages" class="deploy_block" style="margin-top:10px;"></div>
+                      </div>
+                    </div>
                     </div>
 
                   <div class="col-md-12">

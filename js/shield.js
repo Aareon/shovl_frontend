@@ -1,8 +1,6 @@
 $(document).ready(function(){
     getshields();
-    if(IsAdmin()){
-		$("#menubar").show();
-	}
+    IsAdmin();
 	setInterval(function(){
 		getshields();
 	}, 2500);

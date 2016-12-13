@@ -2,6 +2,7 @@ $(document).ready(function(){
 	isloggedin();
 	getservices();
 	getpackages();
+	IsAdmin();
 });
 
 $("#torenable").click(function(){

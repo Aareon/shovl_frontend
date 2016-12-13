@@ -1,5 +1,5 @@
 .sidenav {
-    background-color: #2780E3;
+    background-color: #1863e6;
     color: #fff;
     width: 275px;
     left: 275px;
@@ -29,7 +29,7 @@
     font-weight: bold;
     padding: 5px 0;
     margin-bottom: 20px;
-    background-color: #1967BE;
+    background-color: #175fdd;
     border-bottom: #81B4EF 2px solid;
 }
 .sidenav-toggle {
@@ -52,7 +52,7 @@
     font-size: 14px;
 }
 .sidenav-menu li a:hover {
-    background-color: #1967BE;
+    background-color: #175fdd;
 }
 
 .sidenav-mini {
