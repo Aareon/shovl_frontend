@@ -29,15 +29,11 @@ function getservices(){
 $("#createservice").click(function(){
 		if (!$("#hostname").val()){
 			pagealert("error", "You forgot to enter your domain");
-		}
-		if (!$("#host").val()){
+		}else if (!$("#host").val()){
 			pagealert("error", "You forgot to enter your origin server");
-		}
-		if (!$("#port").val()){
+		}else if (!$("#port").val()){
 			pagealert("error", "You forgot to enter your port");
-		}
-
-	if (document.querySelector('input[name="SID"]:checked') == null){
+		}else if (document.querySelector('input[name="SID"]:checked') == null){
 		pagealert("error", "You forgot to select a service");
 	} else{
 	 var order = {hostname: $("#hostname").val(), serviceid: document.querySelector('input[name="SID"]:checked').value, host: $("#host").val(), port: parseInt($("#port").val())};
