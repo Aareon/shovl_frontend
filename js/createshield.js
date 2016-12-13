@@ -16,8 +16,8 @@ function getservices(){
 				var data = JSON.parse(result);
 				var tr;
 				for (var i = 0; i < data.length; i++) {
-					tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].id+"' type='radio'></input>");
-					lbl = $("<label for='PID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span></label>");
+					tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].name+"' type='radio'></input>");
+					lbl = $("<label for='PID" + data[i].name + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span></label>");
 					$('#services').append(tr);
 					$('#services').append(lbl);
 				}
@@ -44,7 +44,7 @@ $("#createservice").click(function(){
 	 isloggedin();
          $.ajax({
             type:"POST",
-            url: "/api/containers/new",
+            url: "/api/shield/order",
             data: JSON.stringify(order),
             beforeSend: function (request)
             {
