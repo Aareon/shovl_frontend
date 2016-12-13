@@ -44,7 +44,7 @@
                   		<table class="table">
                   		<thead>
                   			<tr>
-                          <th></th>
+                          <th>Service</th>
                   				<th>Website</th>
                   				<th>Plan</th>
                   				<th>Due Date</th>
