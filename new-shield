@@ -36,33 +36,45 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                   <div id="domainbox" class="col-md-12">
-            			<h2 class="content-subhead">Domain name</h2>
-            			   <form>
-                      <div class="form-group">
-                        <div class="col-md-12">
-                          <input id="hostname" class="form-control input-md" id="inputsm" type="text" placeholder="domain.com" maxlength="128">
+                    <div class="panel panel-primary">
+                    <div class="panel-body">
+              			  <h2 class="content-subhead">Domain name</h2>
+              			   <form>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <input id="hostname" class="form-control input-md" id="inputsm" type="text" placeholder="domain.com" maxlength="128">
+                          </div>
                         </div>
-                      </div>
-							</form>
+          							</form>
+                    </div>
+                  </div>
                   </div>
 
-                  <div id="domainbox" class="col-md-12">
-            			<h2 class="content-subhead">Origin Webserver / Backend Webserver</h2>
-            			   <form>
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <input id="host" class="form-control input-md" id="inputsm" type="text" placeholder="Domain name or IP address" maxlength="128">
+                  <div id="origin box" class="col-md-12">
+                  <div class="panel panel-primary">
+                  <div class="panel-body">
+            			    <h2 class="content-subhead">Origin Webserver / Backend Webserver</h2>
+            			    <form>
+                        <div class="form-group">
+                          <div class="col-md-6">
+                            <input id="host" class="form-control input-md" id="inputsm" type="text" placeholder="Domain name or IP address" maxlength="128">
+                          </div>
+                          <div class="col-md-6">
+                            <input id="port" class="form-control input-md" id="inputsm" type="number" placeholder="Port By Default use 80" min="0" max="65535">
+                          </div>
                         </div>
-                        <div class="col-md-6">
-                          <input id="port" class="form-control input-md" id="inputsm" type="number" placeholder="Port By Default use 80" min="0" max="65535">
-                        </div>
-                      </div>
-							</form>
+							        </form>
                   </div>
+                </div>
+              </div>
 
                     <div class="col-md-12">
-            				  <h2>Select a Service Type</h2>
-                      <div id="services" class="deploy_block" style="margin-top:10px;"></div>
+                      <div class="panel panel-primary">
+                        <div class="panel-body">
+                				  <h2>Select a Service Type</h2>
+                          <div id="services" class="deploy_block" style="margin-top:10px;"></div>
+                        </div>
+                      </div>
                     </div>
 
                   <div class="col-md-12">
