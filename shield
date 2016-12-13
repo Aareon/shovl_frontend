@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+         <title>Shovl - Shield</title>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+ 		    <link rel="stylesheet" href="css/layouts/sidenav.css">
+         <link rel="stylesheet" href="css/layouts/global.css">
+    </head>
+    <body>
+        <!-- Side Menu -->
+        <div class="sidenav-mini">
+            <div class="sidenav-mini-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span></div>
+        </div>
+        <div class="sidenav">
+            <div class="sidenav-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span> Shovl</div>
+            <ul class="sidenav-menu">
+                <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+                <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
+                <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
+                <li><a href="profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
+                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i>&nbsp;&nbsp;Admin Panel</a></li>
+                <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
+            </ul>
+        </div>
+        <!-- End Side Menu -->
+
+        <div id="sidenav-offset" class="sidenav-offset">
+			<!-- Start of container -->
+          <div class="container-fluid">
+              <div class="row">
+					      <div class="col-md-12">
+                  <div id="alertbox"></div>
+                  <!-- Start of web contents -->
+                  <div id="newwebsite_div" class="col-md-4 col-md-offset-8">
+                  		<button id="newshield" class="btn btn-primary btn-block pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Service</button>
+                  </div>
+                  <div class="col-md-12">
+                  	<div class="panel panel-primary">
+                  	<div class="panel-heading">Manage Your Shield</div>
+                  		<table class="table">
+                  		<thead>
+                  			<tr>
+                  				<th>Website</th>
+                  				<th>Plan</th>
+                  				<th>Due Date</th>
+                  			</tr>
+                  		</thead>
+                  		<tbody id="service_table"></tbody></table>
+                      </div>
+                    </div>
+                  <!-- End of web contents -->
+              </div>
+            </div>
+          </div>
+      <!-- End of container -->
+        </div>
+      <!-- Start of JS imports -->
+  <script src="js/global.js"></script>
+  <script src="js/shield.js"></script>
+      <!-- End of JS imports -->
+    </body>
+</html>
