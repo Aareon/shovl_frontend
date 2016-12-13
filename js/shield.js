@@ -1,22 +1,12 @@
 $(document).ready(function(){
-	isloggedin();
-    getservices();
-    getpackages();
-    getcontainers();
+    getshields();
     if(IsAdmin()){
 		$("#menubar").show();
 	}
 	setInterval(function(){
-		getcontainers();
+		getshields();
 	}, 2500);
 });
-
-$("#main_tab").click(function(){
-    $("#main_div").show();
-    $("#admin_div").hide();
-    $("#admin_tab").removeClass('pure-menu-selected');
-    $('#main_tab').addClass('pure-menu-selected');
-})
 
 $("#newshield").click(function(){
 	window.location.assign("/app/new-shield");
