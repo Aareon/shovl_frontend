@@ -28,6 +28,7 @@ function getshields(){
 				var allcontainers = $('#service_table').clone().html("");
 				for (var i = 0; i < data.length; i++) {
 						tr = $('<tr>');
+						tr.append("<td>" + "<i class='fa fa-shield web_icon'></i>" +"</td>");
 						tr.append("<td>" + link(data[i].hostname)+data[i].hostname+"</a>" + "</td>");
 						tr.append("<td>" + data[i].serviceid + "</td>");
 						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
