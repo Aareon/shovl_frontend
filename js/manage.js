@@ -681,7 +681,6 @@ function getinfo(){
 				$("#package").html("<strong>Package: </strong>"+packagename(data.packageid));
 				$("#expires").html("<strong>Due date: </strong>"+GiveDate(data.expires_stamp));
             },
-            async: false,
     });
 }
 

@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Shovl - Manage Website</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+          <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -27,7 +29,7 @@
                 <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
                 <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
                 <li><a href="profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
-                                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i>&nbsp;&nbsp;Admin Panel</a></li>
+                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i>&nbsp;&nbsp;Admin Panel</a></li>
                 <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
             </ul>
         </div>
@@ -44,86 +46,165 @@
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#manage_div">Overview</a></li>
                     <li><a data-toggle="tab" href="#package_div">Package</a></li>
+                    <li><a data-toggle="tab" href="#caching_div">Caching</a></li>
                     <li><a data-toggle="tab" href="#security_div">Security</a></li>
                   </ul>
 
                   <div class="tab-content">
-                    <div id="manage_div" class="tab-pane fade in active">
-                      <div class="col-md-12">
-                        <div class="panel panel-primary">
-                          <div class="panel-heading">Information</div>
-                          <table class="table">
-                  				<thead>
-                  				</thead>
-                  				<tbody id="service_table">
-                  					<tr><td id="hostname"></td></tr>
-                  					<tr><td id="status"></td></tr>
-                  					<tr><td id="service"></td></tr>
-                  					<tr><td id="package"></td></tr>
-                  					<tr><td id="expires"></td></tr>
-                  				</tbody>
-                        </table>
-                      </div>
-                      </div>
-                    </div>
 
-
-                    <div id="package_div" class="tab-pane fade">
-					  <div class="panel panel-primary">
-                      <div class="panel-body">
-						<h2 class="content-subhead">Upgrade to another Package</h2>
-						<div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
-						<center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
-						</div>
-					  </div>
-					  <div class="panel panel-primary">
-                <div class="panel-body">
-                  <p class="text-success">
-                  <label>
-                    <input id="auto-renew" type="checkbox"> Auto Renew: Renew before expiry automatically using your balance(Automated)</p>
-                  </label>
-							  <p>Renew your websites package, this will add 30 more days to your due date.</p>
-							  <button id="renew" type="button" class="btn btn-md btn-success">Renew</button>
-							</div>
-					  </div>
-                    </div>
-
-                    <div id="security_div" class="tab-pane fade">
-                      <h2 class="content-subhead">Security settings</h2>
-                      <div id="force-https">
-
-          						  <label>
-          							  <input id="https-box" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle"> <p class="text-success">Force HTTPS: Redirect all traffic through HTTPS (Recommended)</p>
-          						  </label>
-                      </div>
-
-                      <div id="firewall" class="panel panel-primary">
-                          <div class="panel-heading">Firewall</div>
-                          <div class="panel-body">
-                            <table class="table">
-                            <thead>
-                              <tr>
-                                <th>Type</th>
-                                <th>IP address</th>
-                                <th>Manage</th>
-                              </tr>
-                            </thead>
-                            <tbody id="firewall-table"></tbody>
-                          </table>
-                          <div class="form-group col-md-3">
-                            <select class="form-control" id="fr-type">
-                              <option>Accept</option>
-                              <option>Block</option>
-                            </select>
+                      <div id="manage_div" class="tab-pane fade in active">
+                        <div class="panel panel-success">
+                          <div class="panel-heading">
+                            <h3 id="hostname-title" class="panel-title"></h3>
                           </div>
-                          <div class="form-group col-md-6">
-                            <input id="fr-ipcidr" class="form-control input-md" type="text" placeholder="IP address or IP CIDR">
+                            <div class="panel-body">
+                              <div class="col-md-6">
+                              <p id="devmode-info"></p>
+                              <p id="plan-info"></p>
+                              </div>
+                              <div class="col-md-6">
+                              <p id="ssl-info"></p>
+                              <p id="ssl-info"></p>
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-md-3">
-                            <button id="fr-create" class="btn btn-success btn-block">Create Rule</button>
+
+                          <div class="panel panel-primary">
+                          <div class="panel-heading">DNS Records (Subdomains)</div>
+                            <div class="panel-body">
+                              <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Names</th>
+                                  <th>Origin Server</th>
+                                  <th>Manage</th>
+                                </tr>
+                              </thead>
+                              <tbody id="dns-table"></tbody>
+                            </table>
+                            <div id="manage-dns" class="form-group">
+                              <div class="col-md-5">
+                                <input id="fr-ipcidr" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
+                              </div>
+                              <div class="col-md-5">
+                                <input id="fr-ipcidr" class="form-control input-md" type="number" placeholder="Port by Default use 80">
+                              </div>
+                              <div class="col-md-2">
+                                <button id="fr-create" class="btn btn-success btn-block">Update</button>
+                              </div>
+                          </div>
                           </div>
                         </div>
+                        </div>
+
+                      <div id="package_div" class="tab-pane fade">
+              					  <div class="panel panel-primary">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Upgrade to another Package</h3>
+                          </div>
+                          <div class="panel-body">
+              						<div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
+              						<center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
+              						</div>
+              					  </div>
+              					  <div class="panel panel-primary">
+                              <div class="panel-body">
+                                <div class="col-md-10">
+                                <p>Auto Renew: Renew before expiry automatically using your balance(Automated)</p>
+                                </div>
+                                <div class="col-md-2">
+                                  <label>
+                                    <input id="auto-renew" type="checkbox" data-toggle="toggle">
+                                  </label>
+                                </div>
+                                <div class="col-md-12">
+                							  <p>Renew your websites package, this will add 30 more days to your due date.</p>
+                							  <button id="renew" type="button" class="btn btn-md btn-success">Renew</button>
+                              </div>
+              							</div>
+              					  </div>
                       </div>
+
+                      <div id="security_div" class="tab-pane fade">
+                          <div class="panel panel-primary">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Force HTTPS</h3>
+                            </div>
+                              <div class="panel-body">
+                                <div class="col-md-10">
+                                  <p>Redirect all website visits through HTTPS</p>
+                                  <p><strong>Recommended:</strong> Protects your customers from network sniffers and malware.</p>
+                              </div>
+                              <div class="col-md-2">
+                                <label>
+                                  <input id="forcehttps-box" type="checkbox" data-toggle="toggle">
+                                </label>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Web Application Firewall</h3>
+                        </div>
+                          <div class="panel-body">
+                            <div class="col-md-10">
+                              <p>Intermediate system to protect your website from SQL Injection, XSS (Cross-site scripting), File Injection and from exploits and hacks.</p>
+                            </div>
+                            <div class="col-md-2">
+                              <label>
+                                <input id="waf-box" type="checkbox" data-toggle="toggle">
+                              </label>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="panel panel-primary">
+                      <div class="panel-heading">Firewall</div>
+                        <div class="panel-body">
+                          <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Type</th>
+                              <th>IP address</th>
+                              <th>Manage</th>
+                            </tr>
+                          </thead>
+                          <tbody id="firewall-table"></tbody>
+                        </table>
+                        <div class="form-group col-md-3">
+                          <select class="form-control" id="fr-type">
+                            <option>Accept</option>
+                            <option>Block</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <input id="fr-ipcidr" class="form-control input-md" type="text" placeholder="IP address or IP CIDR">
+                        </div>
+                        <div class="col-md-3">
+                          <button id="fr-create" class="btn btn-success btn-block">Create Rule</button>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div id="caching_div" class="tab-pane fade">
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Development Mode</h3>
+                        </div>
+                          <div class="panel-body">
+                            <div class="col-md-10">
+                              <p>Disable cache allowing you to see changes to your origin server in realtime.
+                              <p><strong>Note:</strong> Enabling this feature will slow down your website.</p>
+                          </div>
+                          <div class="col-md-2">
+                            <label>
+                              <input id="cache-box" type="checkbox" data-toggle="toggle">
+                            </label>
+                          </div>
+                      </div>
+                    </div>
                     </div>
 
                     </div>

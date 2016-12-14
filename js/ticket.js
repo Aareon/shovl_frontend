@@ -48,7 +48,6 @@ function getticket(){
             error: function(result) {
 				window.location.assign("/app/support");
 			},
-			async: false,
     });
 }
 
