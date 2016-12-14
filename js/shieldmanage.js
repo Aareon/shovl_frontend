@@ -44,7 +44,7 @@ function getinfo(){
     });
 }
 
-func isenabled(bool){
+function isenabled(bool){
   var result = ""
   if (bool){
     result = "Enabled"
