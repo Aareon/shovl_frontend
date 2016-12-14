@@ -1,3 +1,4 @@
+var currentpackage = ""
 $(document).ready(function(){
   getinfo();
   IsAdmin();
@@ -25,7 +26,6 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
-				SetManageStatus(data.status);
 				if (data.sslenabled){
 					$('#forcehttps-box').prop('checked', true);
 				}
