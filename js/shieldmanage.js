@@ -188,7 +188,7 @@ $('#auto-renew').click(function() {
 });
 
 $('#waf-box').change(function() {
-	var req = {hostname: $_GET("id"), enabled: !$(this).prop(('checked')};
+	var req = {hostname: $_GET("id"), enabled: !$(this).prop(('checked'))};
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/waf",
@@ -207,7 +207,7 @@ $('#waf-box').change(function() {
 });
 
 $('#cache-box').change(function() {
-	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked')};
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/cache",
@@ -226,7 +226,7 @@ $('#cache-box').change(function() {
 });
 
 $('#forcehttps-box').change(function() {
-	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked')};
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/https",
