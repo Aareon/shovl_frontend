@@ -26,20 +26,20 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
-				if (data.sslenabled){
+				if (data.forcehttps){
 					$('#forcehttps-box').prop('checked', true);
 				}
         if (data.cachedisabled){
           $('#cache-box').prop('checked', true);
         }
-        if (!data.wafdisabled){
+        if (data.wafdisabled == false){
           $('#waf-box').prop('checked', true);
         }
         $("#hostname-title").html(data.hostname);
         $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Developent Mode: </strong>"+isenabled(data.cachedisabled));
         $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
         $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
-        $("#cache-info").html("<i class='fa fa-database' style='font-size: 1.5em;'></i><strong> Cache: </strong>"+isenabled(!data.cachedisabled));
+        $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
             },
     });
 }
@@ -185,15 +185,49 @@ $('#auto-renew').click(function() {
    });
 });
 
-$('#https-box').click(function() {
-	var ischecked = false
-	if ($(this).is(':checked')){
-		ischecked = true
-	}
-	var req = {containerid: $_GET("id"), enabled: ischecked};
+$('#waf-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: !$(this).is(':checked')};
         $.ajax({
            type:"POST",
-           url: "/api/containers/https/setting",
+           url: "/api/shield/settings/waf",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#cache-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).is(':checked')};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/cache",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#forcehttps-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).is(':checked')};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/https",
            data: JSON.stringify(req),
            beforeSend: function (request)
            {
