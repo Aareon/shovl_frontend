@@ -103,7 +103,7 @@
                             <h3 class="panel-title">Upgrade to another Plan</h3>
                           </div>
                           <div class="panel-body">
-              						<div id="servicess_list" class="deploy_block" style="margin-top:10px;"></div>
+              						<div id="services_list" class="deploy_block" style="margin-top:10px;"></div>
               						<center><button id="service_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
               						</div>
               					  </div>
