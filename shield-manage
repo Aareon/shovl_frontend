@@ -45,7 +45,7 @@
                   <!-- Start of web contents -->
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#manage_div">Overview</a></li>
-                    <li><a data-toggle="tab" href="#package_div">Package</a></li>
+                    <li><a data-toggle="tab" href="#plan_div">Plan</a></li>
                     <li><a data-toggle="tab" href="#caching_div">Caching</a></li>
                     <li><a data-toggle="tab" href="#security_div">Security</a></li>
                   </ul>
@@ -97,14 +97,14 @@
                         </div>
                         </div>
 
-                      <div id="package_div" class="tab-pane fade">
+                      <div id="plan_div" class="tab-pane fade">
               					  <div class="panel panel-primary">
                           <div class="panel-heading">
-                            <h3 class="panel-title">Upgrade to another Package</h3>
+                            <h3 class="panel-title">Upgrade to another Plan</h3>
                           </div>
                           <div class="panel-body">
-              						<div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
-              						<center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
+              						<div id="servicess_list" class="deploy_block" style="margin-top:10px;"></div>
+              						<center><button id="service_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
               						</div>
               					  </div>
               					  <div class="panel panel-primary">

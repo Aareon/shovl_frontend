@@ -1,8 +1,9 @@
-var currentpackage = ""
+var currentservice = ""
+var currentedit = ""
 $(document).ready(function(){
   getinfo();
   IsAdmin();
-  getpackages();
+  getservices();
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
@@ -35,6 +36,7 @@ function getinfo(){
         if (data.wafdisabled == false){
           $('#waf-box').prop('checked', true);
         }
+        currentservice = data.serviceid;
         $("#hostname-title").html(data.hostname);
         $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Developent Mode: </strong>"+isenabled(data.cachedisabled));
         $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
@@ -242,15 +244,15 @@ $('#forcehttps-box').click(function() {
    });
 });
 
-$("#package_upgrade").click(function(){
-	var req = {containerid: $_GET("id"), packageid: parseInt(document.querySelector('input[name="PID"]:checked').value)};
-	if (document.querySelector('input[name="PID"]:checked') == null){
+$("#servuce_upgrade").click(function(){
+	var req = {hostname: $_GET("id"), servceid: parseInt(document.querySelector('input[name="SID"]:checked').value)};
+	if (document.querySelector('input[name="SID"]:checked') == null){
 		pagealert("error", "You forgot to select a package");
 	}else{
     isloggedin();
           $.ajax({
              type:"POST",
-             url: "/api/containers/upgrade",
+             url: "/api/containers/service",
              data: JSON.stringify(req),
              beforeSend: function (request)
              {
@@ -266,11 +268,11 @@ $("#package_upgrade").click(function(){
   }
 });
 
-function getpackages(){
+function getservices(){
 		   isloggedin();
             $.ajax({
             type:"GET",
-            url: "/api/packages",
+            url: "/api/shield/services/list",
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -279,13 +281,14 @@ function getpackages(){
 				var data = JSON.parse(result);
 				var tr;
 				for (var i = 0; i < data.length; i++) {
-					if (data[i].id != currentpackage) {
-						tr = $("<input class='deploy_checkbox' name='PID' value='" + data[i].id + "' id='PID"+data[i].id+"' type='radio'></input>");
-						lbl = $("<label for='PID" + data[i].id + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span><span class='deploy_checkbox_line2'>"+data[i].ram+"MB RAM "+data[i].diskspace+"GB Disk</span></label>");
-						$('#packages_list').append(tr);
-						$('#packages_list').append(lbl);
-					}
+          if (data.name != currentservice) {
+					tr = $("<input class='deploy_checkbox' name='SID' value='" + data[i].name + "' id='SID"+data[i].name+"' type='radio'></input>");
+					lbl = $("<label for='SID" + data[i].name + "'> <span class='deploy_checkbox_icon'><i class='fa fa-money package_icon' style='font-size: 1em;'></i></span><span class='deploy_checkbox_line1'>" + data[i].name + ": $"+data[i].price+"/Month</span></span></label>");
+					$('#services').append(tr);
+					$('#services').append(lbl);
+          }
 				}
-      }
+
+            }
     });
 }
