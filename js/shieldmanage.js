@@ -28,13 +28,13 @@ function getinfo(){
             success: function(result) {
 				var data = JSON.parse(result);
 				if (data.forcehttps){
-					$('#forcehttps-box').bootstrapToggle('on');
+					$('#forcehttps-box').attr('checked', true);
 				}
         if (data.cachedisabled){
-          $('#cache-box').bootstrapToggle('on');
+          $('#cache-box').attr('checked', true);
         }
         if (data.wafdisabled == false){
-          $('#waf-box').bootstrapToggle('on');
+          $('#waf-box').attr('checked', true);
         }
         currentservice = data.serviceid;
         $("#hostname-title").html(data.hostname);
@@ -187,8 +187,8 @@ $('#auto-renew').click(function() {
    });
 });
 
-$('#waf-box').change(function() {
-	var req = {hostname: $_GET("id"), enabled: !$(this).prop(('checked'))};
+$('#waf-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/waf",
@@ -206,7 +206,7 @@ $('#waf-box').change(function() {
    });
 });
 
-$('#cache-box').change(function() {
+$('#cache-box').click(function() {
 	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
            type:"POST",
@@ -225,7 +225,7 @@ $('#cache-box').change(function() {
    });
 });
 
-$('#forcehttps-box').change(function() {
+$('#forcehttps-box').click(function() {
 	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
            type:"POST",
