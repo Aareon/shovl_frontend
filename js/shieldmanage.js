@@ -28,13 +28,13 @@ function getinfo(){
             success: function(result) {
 				var data = JSON.parse(result);
 				if (data.forcehttps){
-					$('#forcehttps-box').prop('checked', true).change();
+					$('#forcehttps-box').bootstrapToggle('on');
 				}
         if (data.cachedisabled){
-          $('#cache-box').prop('checked', true).change();
+          $('#cache-box').bootstrapToggle('on');
         }
         if (data.wafdisabled == false){
-          $('#waf-box').prop('checked', true).change();
+          $('#waf-box').bootstrapToggle('on');
         }
         currentservice = data.serviceid;
         $("#hostname-title").html(data.hostname);
