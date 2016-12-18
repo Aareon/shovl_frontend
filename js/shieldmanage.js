@@ -4,6 +4,7 @@ $(document).ready(function(){
   getinfo();
   IsAdmin();
   getservices();
+  getfirewallrules();
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
@@ -67,7 +68,7 @@ function getinfo(){
         $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
         $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
             },
-          error: fucntion(result){
+          error: function(result){
             window.location("/app/shield");
           },
     });
