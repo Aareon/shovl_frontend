@@ -28,13 +28,16 @@ function getinfo(){
             success: function(result) {
 				var data = JSON.parse(result);
         //Display subdomains
+        var allsubs = $('#dns-table').clone().html("");
         for (var i = 0; i < data.subs.length; i++) {
             tr = $('<tr>');
             tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
             tr.append("<td>" + "<a class='text-muted'>points to </a><strong>"+data.subs[i].host+":"+ data.subs[i].port + "</strong></td>");
             tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button><button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button></td>`);
-            $("#dns-table").append(tr);
+            allsubs = allsubs.append(tr);
         }
+        $('#dns-table').replaceWith(allsubs)
+
 				if (data.forcehttps){
 					$('#forcehttps-box').attr('checked', true);
 				}
