@@ -32,8 +32,8 @@ function getinfo(){
             tr = $('<tr>');
             tr.append("<td>" + data.subs[i].domains[0] +"</td>");
             tr.append("<td>" + data.subs[i].host+":"+ data.subs[i].port + "</td>");
-            tr.append(`<td><button class='btn btn-info' type='button' onclick='EditSub("`+data.subs[i].domains[0]+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button></td>`);
-            $("dns-table").append(tr);
+            tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button></td>`);
+            $("#dns-table").append(tr);
         }
 				if (data.forcehttps){
 					$('#forcehttps-box').attr('checked', true);
@@ -53,6 +53,33 @@ function getinfo(){
             },
     });
 }
+
+function LoadSub(name, host, port){
+  $("#manage-dns").show();
+  currentedit = name;
+  $("#manage-dns-host").val(host);
+  $("#manage-dns-port").val(port);
+}
+
+$("#manage-dns-update").click(function(){
+     var req = {hostname: $_GET("id"), sub: name, host: host, port: port};
+     $.ajax({
+        type:"POST",
+        url: "/api/shields/sub/manage",
+        data: JSON.stringify(req),
+        beforeSend: function (request)
+        {
+            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
+        success: function(result) {
+          pagealert("success", result);
+          $("#manage-dns").hide();
+       },
+        error: function(result) {
+          pagealert("error", result.responseText);
+       },
+    });
+});
 
 function isenabled(bool){
   var result = ""

@@ -81,15 +81,15 @@
                               </thead>
                               <tbody id="dns-table"></tbody>
                             </table>
-                            <div id="manage-dns" class="form-group">
+                            <div id="manage-dns" style="display: none;" class="form-group">
                               <div class="col-md-5">
-                                <input id="fr-ipcidr" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
+                                <input id="manage-dns-host" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
                               </div>
                               <div class="col-md-5">
-                                <input id="fr-ipcidr" class="form-control input-md" type="number" placeholder="Port by Default use 80">
+                                <input id="manage-dns-port" class="form-control input-md" type="number" placeholder="Port by Default use 80">
                               </div>
                               <div class="col-md-2">
-                                <button id="fr-create" class="btn btn-success btn-block">Update</button>
+                                <button id="manage-dns-update" class="btn btn-success btn-block">Update</button>
                               </div>
                           </div>
                           </div>
@@ -148,7 +148,7 @@
                         </div>
                           <div class="panel-body">
                             <div class="col-md-10">
-                              <p>Intermediate system to protect your website from SQL Injection, XSS (Cross-site scripting), File Injection and from exploits and hacks.</p>
+                              <p>Intermediate system to protect your website from SQL Injection, XSS (Cross-site scripting), File Injection, from exploits and hacks.</p>
                             </div>
                             <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
                               <label>
