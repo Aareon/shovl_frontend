@@ -30,9 +30,9 @@ function getinfo(){
         //Display subdomains
         for (var i = 0; i < data.subs.length; i++) {
             tr = $('<tr>');
-            tr.append("<td>" + data.subs[i].domains[0] +"</td>");
-            tr.append("<td>" + data.subs[i].host+":"+ data.subs[i].port + "</td>");
-            tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button></td>`);
+            tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
+            tr.append("<td>" + "<a class='text-muted'>points to </a><strong>"+data.subs[i].host+":"+ data.subs[i].port + "</strong></td>");
+            tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button><button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button></td>`);
             $("#dns-table").append(tr);
         }
 				if (data.forcehttps){
@@ -59,6 +59,26 @@ function LoadSub(name, host, port){
   currentedit = name;
   $("#manage-dns-host").val(host);
   $("#manage-dns-port").val(port);
+}
+
+//Add confirm popup for this
+function DeleteSub(name){
+  var req = {hostname: $_GET("id"), sub: name};
+  $.ajax({
+     type:"POST",
+     url: "/api/shields/sub/delete",
+     data: JSON.stringify(req),
+     beforeSend: function (request)
+     {
+         request.setRequestHeader("Authorization", localStorage.getItem("token"));
+     },
+     success: function(result) {
+       pagealert("success", result);
+    },
+     error: function(result) {
+       pagealert("error", result.responseText);
+    },
+ });
 }
 
 $("#manage-dns-update").click(function(){
