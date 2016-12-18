@@ -44,8 +44,9 @@
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#manage_div">Overview</a></li>
                     <li><a data-toggle="tab" href="#plan_div">Plan</a></li>
-                    <li><a data-toggle="tab" href="#caching_div">Caching</a></li>
+                    <li><a data-toggle="tab" href="#speed_div">Speed</a></li>
                     <li><a data-toggle="tab" href="#security_div">Security</a></li>
+                    <li><a data-toggle="tab" href="#firewall_div">Firewall</a></li>
                   </ul>
 
                   <div class="tab-content">
@@ -67,8 +68,9 @@
                             </div>
                           </div>
 
+
                           <div class="panel panel-primary">
-                          <div class="panel-heading">DNS Records (Subdomains)</div>
+                          <div class="panel-heading"><button id="sub-create" data-toggle="tooltip" title= "Create Subdomain" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i> </button><h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 75%;padding-top: 8px;">DNS Records (Subdomains)</h5></div>
                             <div class="panel-body">
                               <table class="table">
                               <thead>
@@ -80,26 +82,64 @@
                               </thead>
                               <tbody id="dns-table"></tbody>
                             </table>
+                            <div id="new-dns" style="display: none;" class="form-group">
+                              <div class="panel panel-default">
+                              <div class="panel-body">
+                                <div class="form-group col-md-12">
+                                  <div class="col-md-12">
+                                    <p><strong>Subdomain</strong></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input id="new-dns-sub" class="form-control input-md" type="text" placeholder="Subdomain">
+                                  </div>
+                                  <div class="col-md-6" style="padding-left: 0;">
+                                    <h4 id="new-dns-domain"></h4>
+                                  </div>
+                                </div>
+                                  <div class="form-group col-md-12">
+                                  <div class="col-md-6">
+                                    <p><strong>Backend Host or IP</strong></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p><strong>Backend Port</strong></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input id="new-dns-host" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input id="new-dns-port" class="form-control input-md" type="number" placeholder="Port by Default use 80">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <button id="new-dns-create" class="btn btn-success btn-block">Create</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
                             <div id="manage-dns" style="display: none;" class="form-group">
-                              <div class="col-md-6">
-                                <p><strong>Backend Host or IP</strong></p>
+                              <div class="panel panel-default">
+                              <div class="panel-body">
+                                <div class="col-md-5">
+                                  <p><strong>Backend Host or IP</strong></p>
+                                </div>
+                                <div class="col-md-5">
+                                  <p><strong>Backend Port</strong></p>
+                                </div>
+                                <div class="col-md-5">
+                                  <input id="manage-dns-host" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
+                                </div>
+                                <div class="col-md-5">
+                                  <input id="manage-dns-port" class="form-control input-md" type="number" placeholder="Port by Default use 80">
+                                </div>
+                                <div class="col-md-2">
+                                  <button id="manage-dns-update" class="btn btn-success btn-block">Update</button>
+                                </div>
                               </div>
-                              <div class="col-md-6">
-                                <p><strong>Backend Port</strong></p>
-                              </div>
-                              <div class="col-md-5">
-                                <input id="manage-dns-host" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
-                              </div>
-                              <div class="col-md-5">
-                                <input id="manage-dns-port" class="form-control input-md" type="number" placeholder="Port by Default use 80">
-                              </div>
-                              <div class="col-md-2">
-                                <button id="manage-dns-update" class="btn btn-success btn-block">Update</button>
-                              </div>
-                          </div>
+                            </div>
                           </div>
                         </div>
-                        </div>
+                      </div>
+                      </div>
 
                       <div id="plan_div" class="tab-pane fade">
               					  <div class="panel panel-primary">
@@ -164,24 +204,42 @@
                       </div>
 
                       <div class="panel panel-primary">
-                      <div class="panel-heading">Firewall</div>
+                      <div class="panel-heading">
+                        <h3 class="panel-title">HTTP Strict Transport Security (HSTS)</h3>
+                      </div>
                         <div class="panel-body">
-                          <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Type</th>
-                              <th>IP address</th>
-                              <th>Manage</th>
-                            </tr>
-                          </thead>
-                          <tbody id="firewall-table"></tbody>
-                        </table>
-                        <div class="form-group col-md-3">
-                          <select class="form-control" id="fr-type">
+                          <div class="col-md-10">
+                            <p>Enforce web security policy for your website.</p>
+                          </div>
+                          <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                            <label>
+                              <input id="hsts-box" type="checkbox"><span></span>
+                            </label>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                <div id="firewall_div" class="tab-pane fade">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">Firewall</div>
+                    <div class="panel-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                        <th>Type</th>
+                        <th>IP address</th>
+                        <th>Manage</th>
+                        </tr>
+                      </thead>
+                      <tbody id="firewall-table"></tbody>
+                      </table>
+                      <div class="form-group col-md-3">
+                        <select class="form-control" id="fr-type">
                             <option>Accept</option>
                             <option>Block</option>
                           </select>
-                        </div>
+                      </div>
                         <div class="form-group col-md-6">
                           <input id="fr-ipcidr" class="form-control input-md" type="text" placeholder="IP address or IP CIDR">
                         </div>
@@ -190,16 +248,16 @@
                         </div>
                       </div>
                     </div>
-                    </div>
+                </div>
 
-                    <div id="caching_div" class="tab-pane fade">
+                    <div id="speed_div" class="tab-pane fade">
                       <div class="panel panel-primary">
                         <div class="panel-heading">
                           <h3 class="panel-title">Development Mode</h3>
                         </div>
                           <div class="panel-body">
                             <div class="col-md-10">
-                              <p>Disable cache allowing you to see changes to your origin server in realtime.
+                              <p>Disable cache allowing you to see changes to your origin server in realtime.</p>
                               <p><strong>Note:</strong> Enabling this feature will slow down your website.</p>
                           </div>
                           <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
@@ -209,6 +267,21 @@
                           </div>
                       </div>
                     </div>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">GZIP Compression</h3>
+                      </div>
+                        <div class="panel-body">
+                          <div class="col-md-10">
+                            <p>Compress source code for your website to speed it up.</p>
+                        </div>
+                        <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                          <label>
+                            <input id="gzip-box" type="checkbox"><span></span>
+                          </label>
+                        </div>
+                    </div>
+                  </div>
                     </div>
 
                     </div>

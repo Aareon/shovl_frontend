@@ -33,10 +33,17 @@ function getinfo(){
             tr = $('<tr>');
             tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
             tr.append("<td>" + "<span class='text-muted'>points to </span>"+data.subs[i].host+":"+ data.subs[i].port + "</td>");
-            tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button><button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button></td>`);
+            var deletebutton = ""
+            if (data.subs[i].domains[0] != data.hostname){
+              deletebutton = `<button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button>`;
+            }else {
+              deletebutton = `<button class='btn btn-danger disabled' type='button'>Delete</button>`;
+            }
+            tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button>`+deletebutton+`</td>`);
             allsubs = allsubs.append(tr);
         }
         $('#dns-table').replaceWith(allsubs)
+        $('#new-dns-domain').html("."+data.hostname);
 
 				if (data.forcehttps){
 					$('#forcehttps-box').attr('checked', true);
@@ -67,7 +74,7 @@ function LoadSub(name, host, port){
 //Add confirm popup for this
 function DeleteSub(name){
   var req = {hostname: $_GET("id"), sub: name};
-  if (sub == currentedit){
+  if (name == currentedit){
   $("#manage-dns").hide();
   }
   $.ajax({
@@ -86,6 +93,30 @@ function DeleteSub(name){
     },
  });
 }
+
+$("#sub-create").click(function(){
+     $("#new-dns").toggle();
+});
+
+$("#new-dns-create").click(function(){
+     var req = {hostname: $_GET("id"), sub: $("#new-dns-sub").val(), host: $("#new-dns-host").val(), port: parseInt($("#new-dns-port").val())};
+     $.ajax({
+        type:"POST",
+        url: "/api/shield/sub/create",
+        data: JSON.stringify(req),
+        beforeSend: function (request)
+        {
+            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
+        success: function(result) {
+          pagealert("success", result);
+          $("#new-dns").hide();
+       },
+        error: function(result) {
+          pagealert("error", result.responseText);
+       },
+    });
+});
 
 $("#manage-dns-update").click(function(){
      var req = {hostname: $_GET("id"), sub: currentedit, host: $("#manage-dns-host").val(), port: parseInt($("#manage-dns-port").val())};
