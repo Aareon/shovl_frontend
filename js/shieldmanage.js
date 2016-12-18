@@ -67,9 +67,12 @@ function LoadSub(name, host, port){
 //Add confirm popup for this
 function DeleteSub(name){
   var req = {hostname: $_GET("id"), sub: name};
+  if (sub == currentedit){
+  $("#manage-dns").hide();
+  }
   $.ajax({
      type:"POST",
-     url: "/api/shields/sub/delete",
+     url: "/api/shield/sub/delete",
      data: JSON.stringify(req),
      beforeSend: function (request)
      {
@@ -88,7 +91,7 @@ $("#manage-dns-update").click(function(){
      var req = {hostname: $_GET("id"), sub: currentedit, host: $("#manage-dns-host").val(), port: parseInt($("#manage-dns-port").val())};
      $.ajax({
         type:"POST",
-        url: "/api/shields/sub/manage",
+        url: "/api/shield/sub/manage",
         data: JSON.stringify(req),
         beforeSend: function (request)
         {
