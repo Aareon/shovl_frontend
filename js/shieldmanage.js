@@ -37,14 +37,20 @@ function getinfo(){
             if (data.subs[i].domains[0] != data.hostname){
               deletebutton = `<button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button>`;
             }else {
-              deletebutton = `<button class='btn btn-danger disabled' type='button'>Delete</button>`;
+              deletebutton = `<button class='btn btn-danger disabled' type='button' data-toggle='tooltip' title='You can only delete subdomains'>Delete</button>`;
             }
             tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button>`+deletebutton+`</td>`);
             allsubs = allsubs.append(tr);
         }
         $('#dns-table').replaceWith(allsubs)
+        //Load in settings
         $('#new-dns-domain').html("."+data.hostname);
-
+        if (data.hstsenabled){
+					$('#hsts-box').attr('checked', true);
+				}
+        if (data.gzipenabled){
+					$('#gzip-box').attr('checked', true);
+				}
 				if (data.forcehttps){
 					$('#forcehttps-box').attr('checked', true);
 				}
@@ -61,6 +67,9 @@ function getinfo(){
         $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
         $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
             },
+          error: fucntion(result){
+            window.location("/app/shield");
+          },
     });
 }
 
@@ -110,6 +119,9 @@ $("#new-dns-create").click(function(){
         },
         success: function(result) {
           pagealert("success", result);
+          $("#new-dns-sub").val("");
+          $("#new-dns-host").val("");
+          $("#new-dns-port").val("");
           $("#new-dns").hide();
        },
         error: function(result) {
@@ -155,10 +167,10 @@ function reloadfirewallrules(){
 
 function getfirewallrules(){
 	 isloggedin();
-   var req = {containerid: $_GET("id")};
+   var req = {hostname: $_GET("id")};
          $.ajax({
             type:"POST",
-            url: "/api/containers/firewall/list",
+            url: "/api/shield/firewall/list",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
@@ -192,11 +204,11 @@ function getfirewallrules(){
 }
 
 function DeleteFirewallRule(ipcidr, isblocked){
-        var container = {containerid: $_GET("id"), ipcidr: ipcidr, block: isblocked};
+        var container = {hostname: $_GET("id"), ipcidr: ipcidr, block: isblocked};
         isloggedin();
         $.ajax({
           type:"POST",
-          url: "/api/containers/firewall/delete",
+          url: "/api/shield/firewall/delete",
           data: JSON.stringify(container),
           beforeSend: function (request)
           {
@@ -217,10 +229,10 @@ $("#fr-create").click(function(){
     if ($("#fr-type").val() == "Block") {
       type = true;
     }
-     var req = {containerid: $_GET("id"), ipcidr: $("#fr-ipcidr").val(), block: type};
+     var req = {hostname: $_GET("id"), ipcidr: $("#fr-ipcidr").val(), block: type};
      $.ajax({
         type:"POST",
-        url: "/api/containers/firewall/new",
+        url: "/api/shield/firewall/new",
         data: JSON.stringify(req),
         beforeSend: function (request)
         {
@@ -322,6 +334,44 @@ $('#forcehttps-box').click(function() {
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/https",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#hsts-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/hsts",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#gzip-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/gzip",
            data: JSON.stringify(req),
            beforeSend: function (request)
            {
