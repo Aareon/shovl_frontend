@@ -27,6 +27,14 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
+        //Display subdomains
+        for (var i = 0; i < data.subs.length; i++) {
+            tr = $('<tr>');
+            tr.append("<td>" + data.subs[i].domains[0] +"</td>");
+            tr.append("<td>" + data.subs[i].host+":"+ data.subs[i].port + "</td>");
+            tr.append(`<td><button class='btn btn-info' type='button' onclick='EditSub("`+data.subs[i].domains[0]+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button></td>`);
+            $("dns-table").append(tr);
+        }
 				if (data.forcehttps){
 					$('#forcehttps-box').attr('checked', true);
 				}
