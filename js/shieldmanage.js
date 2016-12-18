@@ -32,7 +32,7 @@ function getinfo(){
         for (var i = 0; i < data.subs.length; i++) {
             tr = $('<tr>');
             tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
-            tr.append("<td>" + "<a class='text-muted'>points to </a><strong>"+data.subs[i].host+":"+ data.subs[i].port + "</strong></td>");
+            tr.append("<td>" + "<span class='text-muted'>points to </span>"+data.subs[i].host+":"+ data.subs[i].port + "</td>");
             tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button><button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button></td>`);
             allsubs = allsubs.append(tr);
         }
@@ -85,7 +85,7 @@ function DeleteSub(name){
 }
 
 $("#manage-dns-update").click(function(){
-     var req = {hostname: $_GET("id"), sub: name, host: host, port: port};
+     var req = {hostname: $_GET("id"), sub: currentedit, host: $("#manage-dns-host").val(), port: parseInt($("#manage-dns-port").val())};
      $.ajax({
         type:"POST",
         url: "/api/shields/sub/manage",
