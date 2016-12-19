@@ -1,5 +1,6 @@
 var currentservice = ""
 var currentedit = ""
+var ranonce = false
 $(document).ready(function(){
   getinfo();
   IsAdmin();
@@ -67,11 +68,59 @@ function getinfo(){
         $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
         $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
         $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
-            },
+
+        //Verify if atleast one subdomain is disabled/unconfirmed and display records
+        if (ranonce != true){
+          for (var i = 0; i < data.subs.length; i++){
+            if (data.subs[i].disabled){
+              DisplayAllMissingRecords(data.subs);
+              break;
+            }
+          }
+        }
+
+          },
           error: function(result){
             window.location.assign("/app/shield");
           },
     });
+}
+
+$("#recheck").click(function(){
+     ranonce = false;
+});
+
+function DisplayAllMissingRecords(subs){
+  $('#dnsrecord_table').html("");
+  for (var i = 0; i < subs.length; i++){
+    if (sub[i].disabled){
+      DisplayMissingRecord(sub[i].domains[0])
+    }
+  }
+  ranonce = true;
+  $("#recheck-records-panel").show();
+}
+
+function DisplayMissingRecord(hostname){
+  if ((hostname.split('.').length-1) > 1){
+    tr = $('<tr>');
+    tr.append("<td>" + "CNAME" +"</td>");
+    tr.append("<td>" + hostname +"</td>");
+    tr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
+    $("#dnsrecord_table").append(tr);
+  }else{
+    firsttr = $('<tr>');
+    firsttr.append("<td>" + "CNAME" +"</td>");
+    firsttr.append("<td>" + hostname +"</td>");
+    firsttr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
+    $("#dnsrecord_table").append(firsttr);
+
+    secondtr = $('<tr>');
+    secondtr.append("<td>" + "CNAME" +"</td>");
+    secondtr.append("<td>" + "www." + hostname +"</td>");
+    secondtr.append("<td>" + "is an alias of <strong>firewall.shovl.io</strong>" + "</td>");
+    $("#dnsrecord_table").append(secondtr);
+  }
 }
 
 function LoadSub(name, host, port){

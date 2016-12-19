@@ -68,6 +68,29 @@
                             </div>
                           </div>
 
+                          <div id="recheck-records-panel"  style="display: hidden;" class="panel panel-primary">
+                            <div class="panel-heading"><strong>Looks like you're missing some records</strong></div>
+                            <div class="panel-body">
+                              <h3 class="text-primary"><strong>Please visit your registrar's dashboard to set the following DNS records.</strong></h3>
+                              <h4>Set the records in the table below, your domain registrar should have an advanced section to set the records, if you need help, contact our support.</h4>
+                              <p>1.Visit your domain registrar's dashboard</p>
+                              <p>2.Enter the advanced settings section</p>
+                              <p>3.Now set the DNS records to the following:</p>
+                              <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Type</th>
+                                  <th>Name</th>
+                                  <th>Value</th>
+                                </tr>
+                              </thead>
+                              <tbody id="dnsrecord_table"></tbody>
+                            </table>
+                            <div class="col-md-4 col-md-offset-8">
+                                <button id="recheck" class="btn btn-success btn-block pull-right"> Recheck records</button>
+                            </div>
+                            </div>
+                          </div>
 
                           <div class="panel panel-primary">
                           <div class="panel-heading"><button id="sub-create" data-toggle="tooltip" title= "Create Subdomain" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i> </button><h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 75%;padding-top: 8px;">DNS Records (Subdomains)</h5></div>
@@ -149,7 +172,7 @@
                                   <p>WARNING: This will delete your shield, records and all related data from our service.</p>
                               </div>
                               <div class="col-md-2">
-                                <button id="delete-shield" class="btn btn-danger btn-block" type="button"></button>
+                                <button id="delete-shield" class="btn btn-danger btn-block" type="button">Delete</button>
                               </div>
                           </div>
                         </div>
