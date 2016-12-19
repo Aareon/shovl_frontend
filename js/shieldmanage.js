@@ -88,6 +88,22 @@ function getinfo(){
 
 $("#recheck").click(function(){
      ranonce = false;
+     var req = {hostname: $_GET("id")};
+     $.ajax({
+        type:"POST",
+        url: "/api/shield/delete",
+        data: JSON.stringify(req),
+        beforeSend: function (request)
+        {
+            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        },
+        success: function(result) {
+          pagealert("success", result);
+       },
+        error: function(result) {
+          pagealert("error", result.responseText);
+       },
+    });
 });
 
 function DisplayAllMissingRecords(subs){
