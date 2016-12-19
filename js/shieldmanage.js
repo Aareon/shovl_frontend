@@ -69,7 +69,7 @@ function getinfo(){
         $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
             },
           error: function(result){
-            window.location("/app/shield");
+            window.location.assign("/app/shield");
           },
     });
 }
@@ -106,6 +106,37 @@ function DeleteSub(name){
 
 $("#sub-create").click(function(){
      $("#new-dns").toggle();
+});
+
+$("#delete-shield").click(function(){
+    swal({
+    title: "WARNING! Are you sure you want to delete your shield?",
+    text: "You will not be able to recover this data",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: true
+  },
+  function(){
+    var req = {hostname: $_GET("id")};
+    $.ajax({
+       type:"POST",
+       url: "/api/shield/delete",
+       data: JSON.stringify(req),
+       beforeSend: function (request)
+       {
+           request.setRequestHeader("Authorization", localStorage.getItem("token"));
+       },
+       success: function(result) {
+         pagealert("success", result);
+         window.location.assign("/app/shield");
+      },
+       error: function(result) {
+         pagealert("error", result.responseText);
+      },
+   });
+  });
 });
 
 $("#new-dns-create").click(function(){
