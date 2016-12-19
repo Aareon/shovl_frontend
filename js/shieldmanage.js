@@ -91,7 +91,7 @@ $("#recheck").click(function(){
      var req = {hostname: $_GET("id")};
      $.ajax({
         type:"POST",
-        url: "/api/shield/delete",
+        url: "/api/shield/recheck",
         data: JSON.stringify(req),
         beforeSend: function (request)
         {
