@@ -69,13 +69,22 @@ function getinfo(){
         $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
         $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
 
-        //Verify if atleast one subdomain is disabled/unconfirmed and display records
-        if (ranonce != true){
-          for (var i = 0; i < data.subs.length; i++){
-            if (data.subs[i].disabled){
-              DisplayAllMissingRecords(data.subs);
-              break;
-            }
+
+        //Hide record table if no disabled records
+        var validate = 0
+        for (var i = 0; i < data.subs.length; i++){
+          if (data.subs[i].disabled){
+            validate++
+          }
+        }
+
+        if (validate == 0){
+          $("#recheck-records-panel").hide();
+        }else{
+          //Verify if atleast one subdomain is disabled/unconfirmed and display records
+          if (ranonce != true){
+                DisplayAllMissingRecords(data.subs);
+                break;
           }
         }
 
