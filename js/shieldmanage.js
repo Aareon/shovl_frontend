@@ -84,7 +84,6 @@ function getinfo(){
           //Verify if atleast one subdomain is disabled/unconfirmed and display records
           if (ranonce != true){
                 DisplayAllMissingRecords(data.subs);
-                break;
           }
         }
 
