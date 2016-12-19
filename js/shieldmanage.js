@@ -93,8 +93,8 @@ $("#recheck").click(function(){
 function DisplayAllMissingRecords(subs){
   $('#dnsrecord_table').html("");
   for (var i = 0; i < subs.length; i++){
-    if (sub[i].disabled){
-      DisplayMissingRecord(sub[i].domains[0])
+    if (subs[i].disabled){
+      DisplayMissingRecord(subs[i].domains[0])
     }
   }
   ranonce = true;
