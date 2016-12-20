@@ -492,7 +492,7 @@ $('#gzip-box').click(function() {
 });
 
 $("#service_upgrade").click(function(){
-	var req = {hostname: $_GET("id"), serviceid: parseInt(document.querySelector('input[name="SID"]:checked').value)};
+	var req = {hostname: $_GET("id"), serviceid: document.querySelector('input[name="SID"]:checked').value};
 	if (document.querySelector('input[name="SID"]:checked') == null){
 		pagealert("error", "You forgot to select a package");
 	}else{
