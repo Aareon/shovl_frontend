@@ -64,7 +64,7 @@ function getinfo(){
         }
         currentservice = data.serviceid;
         $("#hostname-title").html(data.hostname);
-        $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Developent Mode: </strong>"+isenabled(data.cachedisabled));
+        $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Development Mode: </strong>"+isenabled(data.cachedisabled));
         $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
         $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
         $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
@@ -492,14 +492,14 @@ $('#gzip-box').click(function() {
 });
 
 $("#service_upgrade").click(function(){
-	var req = {hostname: $_GET("id"), servceid: parseInt(document.querySelector('input[name="SID"]:checked').value)};
+	var req = {hostname: $_GET("id"), serviceid: parseInt(document.querySelector('input[name="SID"]:checked').value)};
 	if (document.querySelector('input[name="SID"]:checked') == null){
 		pagealert("error", "You forgot to select a package");
 	}else{
     isloggedin();
           $.ajax({
              type:"POST",
-             url: "/api/containers/service",
+             url: "/api/shield/upgrade",
              data: JSON.stringify(req),
              beforeSend: function (request)
              {
