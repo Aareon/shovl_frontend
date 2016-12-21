@@ -47,6 +47,7 @@ function pagealert(type, message){
 	}
 	$("#alertbox").fadeTo(3000, 500).slideUp(500, function(){
 	$("#alertbox").slideUp(500);
+	});   
 }
 
 function logout(){
