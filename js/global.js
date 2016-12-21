@@ -45,6 +45,8 @@ function pagealert(type, message){
 	}else if (type == "error"){
 		$("#alertbox").html(`<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Oh snap!</strong><br>`+message+`</div>`);
 	}
+	$("#alertbox").fadeTo(3000, 500).slideUp(500, function(){
+	$("#alertbox").slideUp(500);
 }
 
 function logout(){
