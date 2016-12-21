@@ -354,12 +354,12 @@ $("#fr-create").click(function(){
 });
 
 $("#renew").click(function(){
-    var container = {containerid: $_GET("id")};
+    var req = {hostname: $_GET("id")};
 	 isloggedin();
          $.ajax({
             type:"POST",
-            url: "/api/containers/renew",
-            data: JSON.stringify(container),
+            url: "/api/shield/renew",
+            data: JSON.stringify(req),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
@@ -371,29 +371,6 @@ $("#renew").click(function(){
 				pagealert("error", result.responseText);
 	  }
 	});
-});
-
-$('#auto-renew').click(function() {
-	var ischecked = false
-	if ($(this).is(':checked')){
-		ischecked = true
-	}
-	var req = {containerid: $_GET("id"), enabled: ischecked};
-        $.ajax({
-           type:"POST",
-           url: "/api/containers/autorenew",
-           data: JSON.stringify(req),
-           beforeSend: function (request)
-           {
-               request.setRequestHeader("Authorization", localStorage.getItem("token"));
-           },
-           success: function(result) {
-			   pagealert("success", result)
-			},
-		   error: function(result) {
-			   pagealert("error", result.responseText)
-			},
-   });
 });
 
 $('#waf-box').click(function() {

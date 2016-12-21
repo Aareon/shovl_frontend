@@ -68,7 +68,7 @@
                             </div>
                           </div>
 
-                          <div id="recheck-records-panel"  style="display: hidden;" class="panel panel-primary">
+                          <div id="recheck-records-panel"  style="display: none;" class="panel panel-primary">
                             <div class="panel-heading"><strong>Looks like you're missing some records</strong></div>
                             <div class="panel-body">
                               <h3 class="text-primary"><strong>Please visit your registrar's dashboard to set the following DNS records.</strong></h3>
@@ -189,18 +189,13 @@
               						</div>
               					  </div>
               					  <div class="panel panel-primary">
+                              <h3 class="panel-title">Renewals</h3>
                               <div class="panel-body">
                                 <div class="col-md-10">
-                                <p>Auto Renew: Renew before expiry automatically using your balance(Automated)</p>
-                                </div>
-                                <div class="col-md-2 checkbox checkbox-slider--b">
-                                  <label>
-                                    <input id="auto-renew" type="checkbox"><span></span>
-                                  </label>
-                                </div>
-                                <div class="col-md-12">
                 							  <p>Renew your websites package, this will add 30 more days to your due date.</p>
-                							  <button id="renew" type="button" class="btn btn-md btn-success">Renew</button>
+                              </div>
+                              <div class="col-md-2">
+                                <button id="renew" type="button" class="btn btn-md btn-block btn-success pull-right">Renew</button>
                               </div>
               							</div>
               					  </div>
