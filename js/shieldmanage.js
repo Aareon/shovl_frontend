@@ -1,6 +1,6 @@
-var currentservice = ""
-var currentedit = ""
-var ranonce = false
+var currentservice = "";
+var currentedit = "";
+var ranonce = false;
 $(document).ready(function(){
   getinfo();
   IsAdmin();
@@ -16,6 +16,7 @@ $(document).ready(function(){
   }, 2500);
 });
 
+var beforedata;
 function getinfo(){
     var hostname = {hostname: $_GET("id")};
 	 isloggedin();
@@ -28,65 +29,85 @@ function getinfo(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				var data = JSON.parse(result);
-        //Display subdomains
-        var allsubs = $('#dns-table').clone().html("");
-        for (var i = 0; i < data.subs.length; i++) {
-            tr = $('<tr>');
-            tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
-            tr.append("<td>" + "<span class='text-muted'>points to </span>"+data.subs[i].host+":"+ data.subs[i].port + "</td>");
-            var deletebutton = ""
-            if (data.subs[i].domains[0] != data.hostname){
-              deletebutton = `<button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button>`;
-            }else {
-              deletebutton = `<button class='btn btn-danger disabled' type='button' data-toggle='tooltip' title='You can only delete subdomains'>Delete</button>`;
-            }
-            tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button>`+deletebutton+`</td>`);
-            allsubs = allsubs.append(tr);
-        }
-        $('#dns-table').replaceWith(allsubs)
-        //Load in settings
-        $('#new-dns-domain').html("."+data.hostname);
-        if (data.hstsenabled){
-					$('#hsts-box').attr('checked', true);
-				}
-        if (data.gzipenabled){
-					$('#gzip-box').attr('checked', true);
-				}
-				if (data.forcehttps){
-					$('#forcehttps-box').attr('checked', true);
-				}
-        if (data.cachedisabled){
-          $('#cache-box').attr('checked', true);
-        }
-        if (data.wafdisabled == false){
-          $('#waf-box').attr('checked', true);
-        }
-        currentservice = data.serviceid;
-        $("#hostname-title").html(data.hostname);
-        $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Development Mode: </strong>"+isenabled(data.cachedisabled));
-        $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
-        $("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
-        $("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
+      				var data = JSON.parse(result);
+              if (data != beforedata){
+                //Display subdomains in table
+                var allsubs = $('#dns-table').clone().html("");
+                for (var i = 0; i < data.subs.length; i++) {
+                    tr = $('<tr>');
+                    tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
+                    tr.append("<td>" + "<span class='text-muted'>points to </span>"+data.subs[i].host+":"+ data.subs[i].port + "</td>");
+                    var deletebutton = ""
+                    if (data.subs[i].domains[0] != data.hostname){
+                      deletebutton = `<button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button>`;
+                    }else {
+                      deletebutton = `<button class='btn btn-danger disabled' type='button' data-toggle='tooltip' title='You can only delete subdomains'>Delete</button>`;
+                    }
+                    tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button>`+deletebutton+`</td>`);
+                    allsubs = allsubs.append(tr);
+                }
 
+                $('#dns-table').replaceWith(allsubs)
+                //Display SSL subs
+                var allsslsubs = $('#ssl-table').clone().html("");
+                for (var i = 0; i < data.subs.length; i++) {
+                    tr = $('<tr>');
+                    tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
+                    if (data.subs[i].sslenabled){
+                      tr.append("<td>" + '<span class="label label-success">Installed</span>' + "</td>");
+                      tr.append(`<td><button class='btn btn-info disabled' type='button'>Install</button>`+`<button class='btn btn-danger' type='button' onclick='DisableSSLSub("`+data.subs[i].name+`")'>Disable</button`+`</td>`);
+                    }else if (data.subs[i].disabled){
+                      tr.append("<td>" + '<span class="label label-warning">DNS Records Missing</span>' + "</td>");
+                      tr.append(`<td><button class='btn btn-info disabled' type='button'>Install</button>`+`<button class='btn btn-danger disabled' type='button'>Disable</button`+`</td>`);
+                    }else if (data.subs[i].sslenabled == false){
+                      tr.append("<td>" + '<span class="label label-danger">Disabled</span>' + "</td>");
+                      tr.append(`<td><button class='btn btn-info' type='button' onclick='InstallSSLSub("`+data.subs[i].name+`")'>Install</button>`+`<button class='btn btn-danger disabled' type='button'>Disable</button`+`</td>`);
+                    }
+                    allsslsubs = allsslsubs.append(tr);
+                }
 
-        //Hide record table if no disabled records
-        var validate = 0
-        for (var i = 0; i < data.subs.length; i++){
-          if (data.subs[i].disabled){
-            validate++
-          }
-        }
+                $('#ssl-table').replaceWith(allsslsubs)
 
-        if (validate == 0){
-          $("#recheck-records-panel").hide();
-        }else{
-          //Verify if atleast one subdomain is disabled/unconfirmed and display records
-          if (ranonce != true){
-                DisplayAllMissingRecords(data.subs);
-          }
-        }
+                //Load in settings
+                $('#new-dns-domain').html("."+data.hostname);
+                if (data.hstsenabled){
+        					$('#hsts-box').attr('checked', true);
+        				}
+                if (data.gzipenabled){
+        					$('#gzip-box').attr('checked', true);
+        				}
+        				if (data.forcehttps){
+        					$('#forcehttps-box').attr('checked', true);
+        				}
+                if (data.cachedisabled){
+                  $('#cache-box').attr('checked', true);
+                }
+                if (data.wafdisabled == false){
+                  $('#waf-box').attr('checked', true);
+                }
+                currentservice = data.serviceid;
+                $("#hostname-title").html(data.hostname);
+                $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Development Mode: </strong>"+isenabled(data.cachedisabled));
+                $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
+                //$("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
+                //$("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
+                //Hide record table if no disabled records
+                var validate = 0
+                for (var i = 0; i < data.subs.length; i++){
+                  if (data.subs[i].disabled){
+                    validate++
+                  }
+                }
 
+                if (validate == 0){
+                  $("#recheck-records-panel").hide();
+                }else{
+                  //Verify if atleast one subdomain is disabled/unconfirmed and display records
+                  if (ranonce != true){
+                        DisplayAllMissingRecords(data.subs);
+                  }
+                }
+              }
           },
           error: function(result){
             window.location.assign("/app/shield");
@@ -152,6 +173,44 @@ function LoadSub(name, host, port){
   currentedit = name;
   $("#manage-dns-host").val(host);
   $("#manage-dns-port").val(port);
+}
+
+function InstallSSLSub(name){
+  var req = {hostname: $_GET("id"), sub: name};
+  $.ajax({
+     type:"POST",
+     url: "/api/shield/sub/sslinstall",
+     data: JSON.stringify(req),
+     beforeSend: function (request)
+     {
+         request.setRequestHeader("Authorization", localStorage.getItem("token"));
+     },
+     success: function(result) {
+       pagealert("success", result);
+    },
+     error: function(result) {
+       pagealert("error", result.responseText);
+    },
+ });
+}
+
+function DisableSSLSub(name){
+  var req = {hostname: $_GET("id"), sub: name};
+  $.ajax({
+     type:"POST",
+     url: "/api/shield/sub/ssldisable",
+     data: JSON.stringify(req),
+     beforeSend: function (request)
+     {
+         request.setRequestHeader("Authorization", localStorage.getItem("token"));
+     },
+     success: function(result) {
+       pagealert("success", result);
+    },
+     error: function(result) {
+       pagealert("error", result.responseText);
+    },
+ });
 }
 
 //Add confirm popup for this
@@ -355,9 +414,8 @@ $("#fr-create").click(function(){
 
 $("#renew").click(function(){
     swal({
-    title: "WARNING! Are you sure you want to renew your shield?",
+    title: "Are you sure you want to renew your shield?",
     text: "You will be charged from your balance",
-    type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
     confirmButtonText: "Yes, Renew it!",

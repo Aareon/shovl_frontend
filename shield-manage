@@ -44,8 +44,7 @@
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#manage_div">Overview</a></li>
                     <li><a data-toggle="tab" href="#plan_div">Plan</a></li>
-                    <li><a data-toggle="tab" href="#speed_div">Speed</a></li>
-                    <li><a data-toggle="tab" href="#security_div">Security</a></li>
+                    <li><a data-toggle="tab" href="#settings_div">Settings</a></li>
                     <li><a data-toggle="tab" href="#firewall_div">Firewall</a></li>
                   </ul>
 
@@ -60,10 +59,6 @@
                               <div class="col-md-6">
                               <p id="devmode-info"></p>
                               <p id="plan-info"></p>
-                              </div>
-                              <div class="col-md-6">
-                              <p id="ssl-info"></p>
-                              <p id="cache-info"></p>
                               </div>
                             </div>
                           </div>
@@ -203,35 +198,18 @@
               					  </div>
                       </div>
 
-                      <div id="security_div" class="tab-pane fade">
-                          <div class="panel panel-primary">
-                            <div class="panel-heading">
-                              <h3 class="panel-title">Force HTTPS</h3>
-                            </div>
-                              <div class="panel-body">
-                                <div class="col-md-10">
-                                  <p>Redirect all website visits through HTTPS</p>
-                                  <p><strong>Recommended:</strong> Protects your customers from network sniffers and malware.</p>
-                              </div>
-                              <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
-                                <label>
-                                  <input id="forcehttps-box" type="checkbox"><span></span>
-                                </label>
-                              </div>
-                          </div>
-                        </div>
-
+                      <div id="settings_div" class="tab-pane fade">
                         <div class="panel panel-primary">
-                        <div class="panel-heading">
-                          <h3 class="panel-title">Web Application Firewall</h3>
-                        </div>
-                          <div class="panel-body">
-                            <div class="col-md-10">
-                              <p>Intermediate system to protect your website from SQL Injection, XSS (Cross-site scripting), File Injection, from exploits and hacks.</p>
+                          <div class="panel-heading">
+                            <h3 class="panel-title">GZIP Compression</h3>
+                          </div>
+                            <div class="panel-body">
+                              <div class="col-md-10">
+                                <p>Compress source code for your website to speed it up.</p>
                             </div>
                             <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
                               <label>
-                                <input id="waf-box" type="checkbox"><span></span>
+                                <input id="gzip-box" type="checkbox"><span></span>
                               </label>
                             </div>
                         </div>
@@ -239,20 +217,72 @@
 
                       <div class="panel panel-primary">
                       <div class="panel-heading">
-                        <h3 class="panel-title">HTTP Strict Transport Security (HSTS)</h3>
+                        <h3 class="panel-title">Web Application Firewall</h3>
                       </div>
                         <div class="panel-body">
                           <div class="col-md-10">
-                            <p>Enforce web security policy for your website.</p>
+                            <p>Intermediate system to protect your website from SQL Injection, XSS (Cross-site scripting), File Injection, from exploits and hacks.</p>
                           </div>
                           <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
                             <label>
-                              <input id="hsts-box" type="checkbox"><span></span>
+                              <input id="waf-box" type="checkbox"><span></span>
                             </label>
                           </div>
                       </div>
                     </div>
+
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Force HTTPS</h3>
+                      </div>
+                        <div class="panel-body">
+                          <div class="col-md-10">
+                            <p>Redirect all website visits through HTTPS</p>
+                            <p><strong>Recommended:</strong> Protects your customers from network sniffers and malware.</p>
+                        </div>
+                        <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                          <label>
+                            <input id="forcehttps-box" type="checkbox"><span></span>
+                          </label>
+                        </div>
                     </div>
+                  </div>
+
+                  <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">HTTP Strict Transport Security (HSTS)</h3>
+                  </div>
+                    <div class="panel-body">
+                      <div class="col-md-10">
+                        <p>Enforce web security policy for your website.</p>
+                      </div>
+                      <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                        <label>
+                          <input id="hsts-box" type="checkbox"><span></span>
+                        </label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="ssl_div" class="tab-pane fade">
+                <div class="panel panel-primary">
+                  <div class="panel-heading"><h3 class="panel-title">Setup SSL</h3></div>
+                  <div class="panel-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                        <th>Names</th>
+                        <th>Status</th>
+                        <th>Manage</th>
+                        </tr>
+                      </thead>
+                      <tbody id="ssl-table"></tbody>
+                      </table>
+
+                    </div>
+                  </div>
+              </div>
 
                 <div id="firewall_div" class="tab-pane fade">
                   <div class="panel panel-primary">
@@ -283,40 +313,6 @@
                       </div>
                     </div>
                 </div>
-
-                    <div id="speed_div" class="tab-pane fade">
-                      <div class="panel panel-primary">
-                        <div class="panel-heading">
-                          <h3 class="panel-title">Development Mode</h3>
-                        </div>
-                          <div class="panel-body">
-                            <div class="col-md-10">
-                              <p>Disable cache allowing you to see changes to your origin server in realtime.</p>
-                              <p><strong>Note:</strong> Enabling this feature will slow down your website.</p>
-                          </div>
-                          <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
-                            <label>
-                              <input id="cache-box" type="checkbox"><span></span>
-                            </label>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="panel panel-primary">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">GZIP Compression</h3>
-                      </div>
-                        <div class="panel-body">
-                          <div class="col-md-10">
-                            <p>Compress source code for your website to speed it up.</p>
-                        </div>
-                        <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
-                          <label>
-                            <input id="gzip-box" type="checkbox"><span></span>
-                          </label>
-                        </div>
-                    </div>
-                  </div>
-                    </div>
 
                     </div>
                   <!-- End of web contents -->

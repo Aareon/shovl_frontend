@@ -29,7 +29,7 @@ function getshields(){
 						tr.append("<td>" + "<i class='fa fa-shield web_icon'></i>" +"</td>");
 						tr.append("<td>" + link(data[i].hostname)+data[i].hostname+"</a>" + "</td>");
 						tr.append("<td>" + service_color(data[i].serviceid) + "</td>");
-            if (data.serviceid == "Free"){
+            if (data[i].serviceid == "Free"){
 						        tr.append("<td>" + "expires: never" + "</td>");
             }else{
 						        tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
