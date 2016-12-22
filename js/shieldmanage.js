@@ -87,10 +87,10 @@ function getinfo(){
                 }
                 currentservice = data.serviceid;
                 $("#hostname-title").html(data.hostname);
-                $("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Development Mode: </strong>"+isenabled(data.cachedisabled));
+                //$("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Development Mode: </strong>"+isenabled(data.cachedisabled));
                 $("#plan-info").html("<i class='fa fa-user' style='font-size: 1.5em;'></i><strong> Plan: </strong>"+data.serviceid);
                 //$("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
-                //$("#cache-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
+                $("#waf-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
                 //Hide record table if no disabled records
                 var validate = 0
                 for (var i = 0; i < data.subs.length; i++){
