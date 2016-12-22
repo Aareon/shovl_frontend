@@ -37,6 +37,14 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                     <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Live CDN Statistics</h3>
+                      </div>
+                        <div class="panel-body">
+                          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
                         <div class="panel-body">
                           <p class="text-success">
                           <p>Use latest git repository commit for systems update on ENTIRE CDN.<br>WARNING: Do not click this unless doing an update, it will result in a few seconds of downtime</p>

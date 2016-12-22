@@ -354,6 +354,16 @@ $("#fr-create").click(function(){
 });
 
 $("#renew").click(function(){
+    swal({
+    title: "WARNING! Are you sure you want to renew your shield?",
+    text: "You will be charged from your balance",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, Renew it!",
+    closeOnConfirm: true
+  },
+  function(){
     var req = {hostname: $_GET("id")};
 	 isloggedin();
          $.ajax({
@@ -370,7 +380,8 @@ $("#renew").click(function(){
             error: function(result) {
 				pagealert("error", result.responseText);
 	  }
-	});
+	 });
+  });
 });
 
 $('#waf-box').click(function() {
@@ -469,27 +480,38 @@ $('#gzip-box').click(function() {
 });
 
 $("#service_upgrade").click(function(){
-	var req = {hostname: $_GET("id"), serviceid: document.querySelector('input[name="SID"]:checked').value};
-	if (document.querySelector('input[name="SID"]:checked') == null){
-		pagealert("error", "You forgot to select a package");
-	}else{
-    isloggedin();
-          $.ajax({
-             type:"POST",
-             url: "/api/shield/upgrade",
-             data: JSON.stringify(req),
-             beforeSend: function (request)
-             {
-                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
-             },
-             success: function(result) {
-                 pagealert("success", result);
-             },
-             error: function(result) {
- 				        pagealert("error", result.responseText);
- 	  }
- 	  });
-  }
+    swal({
+    title: "WARNING! Are you sure you want to upgrade your shield?",
+    text: "You will be charged from your balance",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, Upgrade it!",
+    closeOnConfirm: true
+  },
+  function(){
+    var req = {hostname: $_GET("id"), serviceid: document.querySelector('input[name="SID"]:checked').value};
+  	if (document.querySelector('input[name="SID"]:checked') == null){
+  		pagealert("error", "You forgot to select a package");
+  	}else{
+      isloggedin();
+            $.ajax({
+               type:"POST",
+               url: "/api/shield/upgrade",
+               data: JSON.stringify(req),
+               beforeSend: function (request)
+               {
+                   request.setRequestHeader("Authorization", localStorage.getItem("token"));
+               },
+               success: function(result) {
+                   pagealert("success", result);
+               },
+               error: function(result) {
+   				        pagealert("error", result.responseText);
+   	  }
+   	  });
+    }
+  });
 });
 
 function getservices(){
