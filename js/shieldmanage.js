@@ -6,6 +6,7 @@ $(document).ready(function(){
   IsAdmin();
   getservices();
   getfirewallrules();
+  getstatssubs();
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
@@ -70,13 +71,6 @@ function getinfo(){
                     allsslsubs = allsslsubs.append(tr);
                 }
                 $('#ssl-table').replaceWith(allsslsubs)
-
-                //Load in websites for stats
-                var monitorsubs = $('#livestats-subs').clone().html("");
-                for (var i = 0; i < data.subs.length; i++) {
-                    monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
-                }
-                $('#livestats-subs').replaceWith(monitorsubs)
 
                 //Load in settings
                 $('#new-dns-domain').html("."+data.hostname);
@@ -605,6 +599,30 @@ function getservices(){
             }
     });
 }
+
+function getstatssubs(){
+    var hostname = {hostname: $_GET("id")};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/shield/view",
+            data: JSON.stringify(hostname),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+      				var data = JSON.parse(result);
+              //Load in websites for stats
+              var monitorsubs = $('#livestats-subs').clone().html("");
+              for (var i = 0; i < data.subs.length; i++) {
+                  monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
+              }
+              $('#livestats-subs').replaceWith(monitorsubs)
+            },
+   });
+ }
+
 
 function getserviceid(){
     var hostname = {hostname: $_GET("id")};
