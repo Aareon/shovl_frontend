@@ -1,4 +1,4 @@
-var currentservice = "";
+var currentservice = getserviceid();
 var currentedit = "";
 var ranonce = false;
 $(document).ready(function(){
@@ -246,8 +246,9 @@ $("#sub-create").click(function(){
 
 $("#delete-shield").click(function(){
     swal({
-    title: "Are you sure you want to delete your shield?",
+    title: "WARNING! Are you sure you want to delete your shield?",
     text: "You will not be able to recover this data",
+    type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
     confirmButtonText: "Yes, delete it!",
@@ -542,9 +543,8 @@ $('#gzip-box').click(function() {
 
 $("#service_upgrade").click(function(){
     swal({
-    title: "WARNING! Are you sure you want to upgrade your shield?",
+    title: "Are you sure you want to upgrade your shield?",
     text: "You will be charged from your balance",
-    type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
     confirmButtonText: "Yes, Upgrade it!",
@@ -587,7 +587,6 @@ function getservices(){
             success: function(result) {
 				var data = JSON.parse(result);
 				var tr;
-        currentservice = getserviceid();
 				for (var i = 0; i < data.length; i++) {
           if (data.name != currentservice) {
 					tr = $("<input class='deploy_checkbox' name='SID' value='" + data[i].name + "' id='SID"+data[i].name+"' type='radio'></input>");
