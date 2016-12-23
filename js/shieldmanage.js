@@ -724,8 +724,7 @@ var livestatsIntervalId;
 
  $("#livestats-monitor").click(function(){
     clearInterval(livestatsIntervalId);
-    //dps = [];
-    //aps = [];
+    chart.clear();
     $("#chart-div").show();
     viewingsub = $("#livestats-subs").val();
     livestatsIntervalId = setInterval(function(){
