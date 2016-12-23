@@ -38,8 +38,10 @@
                   <!-- Start of web contents -->
                   <div id="domainbox" class="col-md-12">
                     <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Domain name</h3>
+                      </div>
                     <div class="panel-body">
-              			  <h2 class="content-subhead">Domain name</h2>
               			   <form>
                         <div class="form-group">
                           <div class="col-md-12">
@@ -53,8 +55,10 @@
 
                   <div id="origin box" class="col-md-12">
                   <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Origin Webserver / Backend Webserver</h3>
+                    </div>
                   <div class="panel-body">
-            			    <h2 class="content-subhead">Origin Webserver / Backend Webserver</h2>
             			    <form>
                         <div class="form-group">
                           <div class="col-md-6">
@@ -71,8 +75,10 @@
 
                     <div class="col-md-12">
                       <div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Select a Service Type</h3>
+                        </div>
                         <div class="panel-body">
-                				  <h2>Select a Service Type</h2>
                           <div id="services" class="deploy_block" style="margin-top:10px;"></div>
                         </div>
                       </div>

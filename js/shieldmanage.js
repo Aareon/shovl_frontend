@@ -587,6 +587,7 @@ function getservices(){
             success: function(result) {
 				var data = JSON.parse(result);
 				var tr;
+        currentservice = getserviceid();
 				for (var i = 0; i < data.length; i++) {
           if (data.name != currentservice) {
 					tr = $("<input class='deploy_checkbox' name='SID' value='" + data[i].name + "' id='SID"+data[i].name+"' type='radio'></input>");
@@ -599,3 +600,27 @@ function getservices(){
             }
     });
 }
+
+function getserviceid(){
+    var hostname = {hostname: $_GET("id")};
+    var localserviceid = ""
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/shield/view",
+            data: JSON.stringify(hostname),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+      				var data = JSON.parse(result);
+              localserviceid = data.serviceid;
+            },
+            error: function(result) {
+               pagealert("error", result.responseText);
+            },
+            async: false,
+   });
+   return localserviceid
+ }

@@ -1,7 +1,7 @@
 var logs_offset = 0
 //File Manager global vars
 var currentdir = "/";
-var currentpackage = 0;
+var currentpackage = getpackageid();
 var currentstatus = 0;
 $(document).ready(function(){
   getinfo();
@@ -981,3 +981,27 @@ function getpackages(){
       }
     });
 }
+
+function getpackageid(){
+    var container = {containerid: $_GET("id")};
+    var localpackageid = 0
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/view",
+            data: JSON.stringify(container),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+      		  var data = JSON.parse(result);
+              localpackageid = data.packageid;
+            },
+            error: function(result) {
+               pagealert("error", result.responseText);
+            },
+            async: false,
+   });
+   return localpackageid
+ }
