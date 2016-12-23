@@ -69,8 +69,16 @@ function getinfo(){
                     }
                     allsslsubs = allsslsubs.append(tr);
                 }
-
                 $('#ssl-table').replaceWith(allsslsubs)
+
+                //Load in websites for stats
+                var monitorsubs = $('#livestats-subs').clone().html("");
+                for (var i = 0; i < data.subs.length; i++) {
+                    options = $('#livestats-subs');
+                    options.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
+                    monitorsubs = monitorsubs.append(options);
+                }
+                $('#ivestats-sub').replaceWith(monitorsubs)
 
                 //Load in settings
                 $('#new-dns-domain').html("."+data.hostname);
@@ -623,3 +631,86 @@ function getserviceid(){
    });
    return localserviceid
  }
+
+var livestatsIntervalId;
+ var dps = [];
+ var aps = [];
+
+ var chart = new CanvasJS.Chart("chartContainer",{
+ 			title :{
+ 				text: "Live traffic for Shield"
+ 			},
+ 			axisX:{
+ 				title: "Time",
+ 				valueFormatString: "m s"
+ 			  },
+ 			  axisY:{
+ 				title: "Request/s"
+ 			  },
+ 			data: [
+ 			{
+ 				name: "Attack Traffic",
+ 				legendMarkerType: "square",
+ 				showInLegend: true,
+ 				type: "splineArea",
+ 				color: "rgba(192, 57, 43,1.0)",
+ 				dataPoints: aps
+ 			},
+ 			{
+ 				name: "Clean Traffic",
+ 				legendMarkerType: "square",
+ 				showInLegend: true,
+ 				type: "splineArea",
+ 				color: "rgba(39, 174, 96,1.0)",
+ 				dataPoints: dps
+ 			}]
+ 		});
+
+ function updatechart(good, bad) {
+ 			var xVal = new Date();
+ 			dps.push({
+ 					x: xVal,
+ 					y: good
+ 			});
+ 			aps.push({
+ 					x: xVal,
+ 					y: bad
+ 			});
+ 			if (dps.length > 300)
+ 			{
+ 				dps.shift();
+ 			}
+ 			if (aps.length > 300)
+ 			{
+ 				aps.shift();
+ 			}
+ 			chart.render();
+ };
+
+ function getstats(hostname, sub){
+     var hostname = {hostname: hostname, sub : sub};
+ 	 isloggedin();
+          $.ajax({
+             type:"POST",
+             url: "/api/shield/sub/stats",
+             data: JSON.stringify(hostname),
+             beforeSend: function (request)
+             {
+                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
+             },
+             success: function(result) {
+       				var data = JSON.parse(result);
+       				updatechart(data.goodrps, data.badrps);
+           },
+     });
+ }
+
+ $("#livestats-monitor").click(function(){
+    clearInterval(livestatsIntervalId);
+    dps = [];
+    aps = [];
+    $("#chartContainer").show();
+    setInterval(function(){
+      livestatsIntervalId = getstats($_GET("id"), $("#livestats-subs").val());
+    }, 1000);
+ });

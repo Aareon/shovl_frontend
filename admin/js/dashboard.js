@@ -112,3 +112,21 @@ function updatechart(good, bad) {
 			}
 			chart.render();
 };
+
+function getstats(){
+    var hostname = {hostname: "*"};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/shield/stats",
+            data: JSON.stringify(hostname),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				var data = JSON.parse(result);
+				updatechart(data.goodrps, data.badrps);
+          },
+    });
+}

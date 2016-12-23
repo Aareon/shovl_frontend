@@ -48,6 +48,7 @@
                     <li><a data-toggle="tab" href="#settings_div">Settings</a></li>
                     <li id="ssl-tab"><a data-toggle="tab" href="#ssl_div">SSL</a></li>
                     <li><a data-toggle="tab" href="#firewall_div">Firewall</a></li>
+                    <li id="stats-tab"><a data-toggle="tab" href="#stats_div">Stats</a></li>
                   </ul>
 
                   <div class="tab-content">
@@ -314,6 +315,22 @@
                           <button id="fr-create" class="btn btn-success btn-block">Create Rule</button>
                         </div>
                       </div>
+                    </div>
+                </div>
+
+                <div id="stats_div" class="tab-pane fade">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">Live stats</div>
+                    <div class="panel-body">
+                      <div class="form-group col-md-9">
+                        <select class="form-control" id="livestats-subs">
+                          </select>
+                      </div>
+                        <div class="col-md-3">
+                          <button id="livestats-monitor" class="btn btn-success btn-block">Monitor</button>
+                        </div>
+                      </div>
+                      <div style="display: none;" id="chartContainer" style="height: 300px; width: 100%;"></div>
                     </div>
                 </div>
 
