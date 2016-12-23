@@ -7,7 +7,7 @@ $(document).ready(function(){
   getservices();
   getfirewallrules();
   getstatssubs();
-  $("#chartContainer").hide();
+  $("#chart-div").hide();
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
@@ -726,7 +726,7 @@ var livestatsIntervalId;
     clearInterval(livestatsIntervalId);
     dps = [];
     aps = [];
-    $("#chartContainer").show();
+    $("#chart-div").show();
     viewingsub = $("#livestats-subs").val();
     livestatsIntervalId = setInterval(function(){
       getstats($_GET("id"), viewingsub);
