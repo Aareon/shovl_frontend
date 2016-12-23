@@ -78,7 +78,7 @@ function getinfo(){
                     options.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
                     monitorsubs = monitorsubs.append(options);
                 }
-                $('#ivestats-sub').replaceWith(monitorsubs)
+                $('#livestats-sub').replaceWith(monitorsubs)
 
                 //Load in settings
                 $('#new-dns-domain').html("."+data.hostname);
