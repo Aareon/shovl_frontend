@@ -331,7 +331,7 @@
                           <button id="livestats-monitor" class="btn btn-success btn-block">Monitor</button>
                         </div>
                         <div class="col-md-12">
-                          <div style="display: none;" id="chartContainer" style="height: 300px; width: 100%;"></div>
+                          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                         </div>
                       </div>
                     </div>
