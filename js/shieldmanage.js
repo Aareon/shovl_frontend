@@ -708,7 +708,7 @@ var livestatsIntervalId;
     dps = [];
     aps = [];
     $("#chartContainer").show();
-    setInterval(function(){
-      livestatsIntervalId = getstats($_GET("id"), $("#livestats-subs").val());
+    livestatsIntervalId = setInterval(function(){
+      getstats($_GET("id"), $("#livestats-subs").val());
     }, 1000);
  });
