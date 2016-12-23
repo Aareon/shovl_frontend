@@ -74,9 +74,7 @@ function getinfo(){
                 //Load in websites for stats
                 var monitorsubs = $('#livestats-subs').clone().html("");
                 for (var i = 0; i < data.subs.length; i++) {
-                    options = $('#livestats-subs');
-                    options.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
-                    monitorsubs = monitorsubs.append(options);
+                    monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
                 }
                 $('#livestats-sub').replaceWith(monitorsubs)
 
