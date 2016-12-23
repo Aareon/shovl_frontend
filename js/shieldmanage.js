@@ -32,8 +32,8 @@ function getinfo(){
             },
             success: function(result) {
       				var data = JSON.parse(result);
-              if (data != beforedata){
-                beforedata = data;
+              if (result != beforedata){
+                beforedata = result;
                 if (data.serviceid == "Free"){
                   $('#ssl-tab').hide();
                 }
