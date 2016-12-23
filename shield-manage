@@ -45,7 +45,7 @@
                     <li class="active"><a data-toggle="tab" href="#manage_div">Overview</a></li>
                     <li><a data-toggle="tab" href="#plan_div">Plan</a></li>
                     <li><a data-toggle="tab" href="#settings_div">Settings</a></li>
-                    <li><a data-toggle="tab" href="#ssl_div">SSL</a></li>
+                    <li id="ssl-tab"><a data-toggle="tab" href="#ssl_div">SSL</a></li>
                     <li><a data-toggle="tab" href="#firewall_div">Firewall</a></li>
                   </ul>
 
@@ -57,9 +57,11 @@
                             <h3 id="hostname-title" class="panel-title"></h3>
                           </div>
                             <div class="panel-body">
-                              <div class="col-md-12">
-                              <p id="waf-info"></p>
-                              <p id="plan-info"></p>
+                              <div class="col-md-6">
+                                <p id="plan-info"></p>
+                              </div>
+                              <div class="col-md-6">
+                                <p id="waf-info"></p>
                               </div>
                             </div>
                           </div>

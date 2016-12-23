@@ -31,6 +31,10 @@ function getinfo(){
             success: function(result) {
       				var data = JSON.parse(result);
               if (data != beforedata){
+                beforedata = data;
+                if (data.serviceid == "Free"){
+                  $('#ssl-tab').hide();
+                }
                 //Display subdomains in table
                 var allsubs = $('#dns-table').clone().html("");
                 for (var i = 0; i < data.subs.length; i++) {
@@ -242,9 +246,8 @@ $("#sub-create").click(function(){
 
 $("#delete-shield").click(function(){
     swal({
-    title: "WARNING! Are you sure you want to delete your shield?",
+    title: "Are you sure you want to delete your shield?",
     text: "You will not be able to recover this data",
-    type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
     confirmButtonText: "Yes, delete it!",
