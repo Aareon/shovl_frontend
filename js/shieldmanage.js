@@ -37,6 +37,9 @@ function getinfo(){
                 if (data.serviceid == "Free"){
                   $('#ssl-tab').hide();
                 }
+                if (data.serviceid != "Business"){
+                  $('#stats-tab').hide();
+                }
                 //Display subdomains in table
                 var allsubs = $('#dns-table').clone().html("");
                 for (var i = 0; i < data.subs.length; i++) {

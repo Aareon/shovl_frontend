@@ -643,6 +643,7 @@ function getdbinfo(){
     });
 }
 
+var lastgetinfo;
 function getinfo(){
     var container = {containerid: $_GET("id")};
 	 isloggedin();
@@ -656,30 +657,32 @@ function getinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
+        if (lastgetinfo != result){
+          lastgetinfo = result;
+  				if (data.cnameenabled == false && data.torenabled == false){
+  					window.location.assign("/app/validatedomain?id="+$_GET("id"));
+  				}
 
-				if (data.cnameenabled == false && data.torenabled == false){
-					window.location.assign("/app/validatedomain?id="+$_GET("id"));
-				}
+  				if (data.torenabled == true){
+  						$("#force-https").hide();
+              $("#change-domain").hide();
+              $("#firewall").hide();
+  				}
 
-				if (data.torenabled == true){
-						$("#force-https").hide();
-            $("#change-domain").hide();
-            $("#firewall").hide();
-				}
-
-				SetManageStatus(data.status);
-				if (data.sslenabled){
-					$('#https-box').prop('checked', true);
-				}
-        if (data.renewenabled){
-          $('#auto-renew').prop('checked', true);
+  				SetManageStatus(data.status);
+  				if (data.sslenabled){
+  					$('#https-box').prop('checked', true);
+  				}
+          if (data.renewenabled){
+            $('#auto-renew').prop('checked', true);
+          }
+  				currentpackage = data.packageid;
+  				$("#hostname").html("<strong>Domain: </strong><a href='http://"+data.hostname+"'>"+data.hostname+"</a>");
+  				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
+  				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
+  				$("#package").html("<strong>Package: </strong>"+packagename(data.packageid));
+  				$("#expires").html("<strong>Due date: </strong>"+GiveDate(data.expires_stamp));
         }
-				currentpackage = data.packageid;
-				$("#hostname").html("<strong>Domain: </strong><a href='http://"+data.hostname+"'>"+data.hostname+"</a>");
-				$("#service").html("<strong>Service: </strong>"+"<i class='fa " + serviceicon(data.serviceid) +  "'></i> "+data.serviceid);
-				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
-				$("#package").html("<strong>Package: </strong>"+packagename(data.packageid));
-				$("#expires").html("<strong>Due date: </strong>"+GiveDate(data.expires_stamp));
             },
     });
 }
