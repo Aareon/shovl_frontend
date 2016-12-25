@@ -168,7 +168,7 @@ function getshields(offset){
 		   	var req = {offset: offset};
             $.ajax({
             type: "POST",
-            url: "/api/admin/shields",
+            url: "/api/admin/usermanage/shields",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
