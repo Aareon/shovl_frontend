@@ -55,7 +55,7 @@
                                 <p class="text-primary">CPU Usage:</p>
                               </div>
                               <div class="col-md-10 progress">
-                                <div id="cpu" class="progress-bar progress-bar-success" role="progressbar"><span>60% XMB/XMB</span></div>
+                                <div id="cpu" class="progress-bar progress-bar-success" role="progressbar"></div>
                               </div>
                           </div>
 
@@ -64,7 +64,7 @@
                                 <p class="text-primary">RAM Usage:</p>
                               </div>
                               <div class="col-md-10 progress">
-                                <div id="memory" class="progress-bar progress-bar-success" role="progressbar"><span>60% XMB/XMB</span></div>
+                                <div id="memory" class="progress-bar progress-bar-success" role="progressbar"></div>
                               </div>
                           </div>
 
@@ -73,7 +73,7 @@
                                 <p class="text-primary">Disk Usage:</p>
                               </div>
                               <div class="col-md-10 progress">
-                                <div id="disk" class="progress-bar progress-bar-success" role="progressbar"><span>60% XMB/XMB</span></div>
+                                <div id="disk" class="progress-bar progress-bar-success" role="progressbar">></div>
                               </div>
                           </div>
                         </div>
@@ -98,7 +98,7 @@
           </div>
       <!-- End of container -->
         </div>
-      <!-- Start of JS imports->
+      <!-- Start of JS imports-->
   <script src="js/global.js"></script>
   <script src="js/dashboard.js"></script>
       <!-- End of JS imports -->
