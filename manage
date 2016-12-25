@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 		    <link rel="stylesheet" href="css/layouts/sidenav.css">
         <link rel="stylesheet" href="css/layouts/global.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/titatoggle/1.2.11/titatoggle-dist-min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/4.0.9/sweetalert2.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
@@ -27,7 +28,7 @@
                 <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
                 <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
                 <li><a href="profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</a><li>
-                                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i>&nbsp;&nbsp;Admin Panel</a></li>
+                <li id="adminpanel" style="display: none;"><a href="/app/admin/dashboard"><i class="fa fa-terminal "></i>&nbsp;&nbsp;Admin Panel</a></li>
                 <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
             </ul>
         </div>
@@ -164,32 +165,60 @@
 
                     <div id="package_div" class="tab-pane fade">
 					  <div class="panel panel-primary">
-                      <div class="panel-body">
-						<h2 class="content-subhead">Upgrade to another Package</h2>
-						<div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
-						<center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
-						</div>
+              <div class="panel-heading">
+                <h3 class="panel-title">Upgrade to another Package</h3>
+              </div>
+              <div class="panel-body">
+  						      <div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
+  						      <center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
+  						</div>
 					  </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Auto Renew</h3>
+              </div>
+                <div class="panel-body">
+                  <div class="col-md-10">
+                    <p>Renew before expiry automatically using your balance <strong>(Automated)</strong></p>
+                </div>
+                <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                  <label>
+                    <input id="auto-renew" type="checkbox"><span></span>
+                  </label>
+                </div>
+            </div>
+          </div>
+
 					  <div class="panel panel-primary">
                 <div class="panel-body">
-                  <p class="text-success">
-                  <label>
-                    <input id="auto-renew" type="checkbox"> Auto Renew: Renew before expiry automatically using your balance(Automated)</p>
-                  </label>
+              <div class="col-md-10">
 							  <p>Renew your websites package, this will add 30 more days to your due date.</p>
+              </div>
+              <div class="col-md-2">
 							  <button id="renew" type="button" class="btn btn-md btn-success">Renew</button>
+              </div>
 							</div>
 					  </div>
                     </div>
 
                     <div id="security_div" class="tab-pane fade">
-                      <h2 class="content-subhead">Security settings</h2>
-                      <div id="force-https">
-          						  <p class="text-success">
-          						  <label>
-          							  <input id="https-box" type="checkbox"> Force HTTPS: Redirect all traffic through HTTPS (Recommended)</p>
-          						  </label>
+                      <div id="force-https" class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Force HTTPS</h3>
+                        </div>
+                          <div class="panel-body">
+                            <div class="col-md-10">
+                              <p>Redirect all website visits through HTTPS</p>
+                              <p><strong>Recommended:</strong> Protects your customers from network sniffers and malware.</p>
+                          </div>
+                          <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                            <label>
+                              <input id="https-box" type="checkbox"><span></span>
+                            </label>
+                          </div>
                       </div>
+                    </div>
                       <div id="change-domain">
                           <div class="panel panel-primary">
                             <div class="panel-heading">Change Domain Name</div>
