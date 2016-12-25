@@ -38,15 +38,7 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                   <div class="col-md-12">
-                      <!-- Start of navbar -->
-                      <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#websites_div">Websites</a></li>
-                      </ul>
-                      <!-- End of navbar -->
-
-                      <div class="tab-content">
-
-                      <div id="websites_div" class="tab-pane fade in active">
+                    <div id="websites_div">
                         <div class="col-md-12">
                           <table class="table">
                           <thead>
@@ -60,10 +52,8 @@
                           </thead>
                           <tbody id="service_table"></tbody>
                           </table>
-                          <center><button id="adminloadmore" class="btn btn-primary">Load More</button></center>
                         </div>
                       </div>
-                    </div>
                   </div>
                   <!-- End of web contents -->
               </div>
