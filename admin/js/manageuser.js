@@ -131,41 +131,9 @@ function getcontainers(){
 function weblink(id){
 		return '<a href="/app/manage?id='+id+'">';
 }
-
-function getshields(){
-	 isloggedin();
-   	 var req = {email: $_GET("email")};
-         $.ajax({
-            type:"POST",
-            url: "/api/admin/usermanage/containers",
-            data: JSON.stringify(req),
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            success: function(result) {
-				var data = JSON.parse(result);
-				var p;
-				var allcontainers = $('#service_table').clone().html("");
-        if (data != null){
-  				for (var i = 0; i < data.length; i++) {
-  						tr = $('<tr>');
-  						tr.append("<td>" + "<i class='fa " + serviceicon(data[i].serviceid) +  " web_icon'></i>" +"</td>");
-  						tr.append("<td>" + weblink(data[i].containerid)+data[i].hostname+"</a>" + "</td>");
-  						tr.append("<td>" + packagename(data[i].packageid) + "</td>");
-  						tr.append("<td>" + website_status(data[i].status) + "</td>");
-  						tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
-  						allcontainers = allcontainers.append(tr);
-  				}
-        }
-				$('#service_table').replaceWith(allcontainers)
-            }
-    });
-}
-
 function getshields(offset){
 		   isloggedin();
-		   	var req = {offset: offset};
+		   	var req = {email: $_GET("email")};
             $.ajax({
             type: "POST",
             url: "/api/admin/usermanage/shields",
