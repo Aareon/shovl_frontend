@@ -685,6 +685,8 @@ function getinfo(){
   				$("#status").html("<strong>Status: </strong>"+website_status(data.status));
   				$("#package").html("<strong>Package: </strong>"+packagename(data.packageid));
   				$("#expires").html("<strong>Due date: </strong>"+GiveDate(data.expires_stamp));
+          $("#disk").html("<span>"+data.disk+"% "+data.diskused+"GB/"+data.disktotal+"GB"+"</span>");
+          $("#disk").css("width", data.disk+"%");
         }
             },
     });

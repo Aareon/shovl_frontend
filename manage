@@ -61,6 +61,7 @@
                   				</thead>
                   				<tbody id="service_table">
                   					<tr><td id="hostname"></td></tr>
+                            <tr><td><div class="col-md-12"><div class="col-md-2"><p class="text-primary">Disk Usage:</p></div><div class="col-md-10"><div class="progress"><div id="disk" class="progress-bar progress-bar-success" role="progressbar"></div></div></div></div></td></tr>
                   					<tr><td id="status"></td></tr>
                   					<tr><td id="service"></td></tr>
                   					<tr><td id="package"></td></tr>
