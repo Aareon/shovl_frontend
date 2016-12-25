@@ -33,14 +33,16 @@ function mytickets(offset){
             success: function(result) {
 				var data = JSON.parse(result);
 				var tr;
-				for (var i = 0; i < data.tickets.length; i++) {
-					tr = $('<tr/>');
-					tr.append("<td>" + data.tickets[i].id + "</td>");
-					tr.append("<td>" + ticketlink(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
-					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
-					tr.append("<td>" + status(data.tickets[i].status) + "</td>");
-					$('#ticket_body').append(tr);
-				}
+        if (data != null){
+  				for (var i = 0; i < data.tickets.length; i++) {
+  					tr = $('<tr/>');
+  					tr.append("<td>" + data.tickets[i].id + "</td>");
+  					tr.append("<td>" + ticketlink(data.tickets[i].id)+htmlEntities(data.tickets[i].subject)+"</a>" + "</td>");
+  					tr.append("<td>" + convertTimestamp(data.tickets[i].create_stamp) + "</td>");
+  					tr.append("<td>" + status(data.tickets[i].status) + "</td>");
+  					$('#ticket_body').append(tr);
+  				}
+        }
 				if (data.canloadmore) {
 					 $("#ticketsloadmore").removeClass("disabled")
 				}else {
@@ -145,7 +147,7 @@ function getshields(offset){
             success: function(result) {
 							var data = JSON.parse(result);
 							var tr;
-              var allcontainers = $('#shielde_table').clone().html("");
+              var allcontainers = $('#shield_table').clone().html("");
               if (data != null){
                 for (var i = 0; i < data.length; i++) {
                     tr = $('<tr>');
