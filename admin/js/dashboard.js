@@ -16,14 +16,14 @@ function getmetrics(){
 					 },
 					 success: function(result) {
 						 var data = JSON.parse(result);
-						 $("#cpu").html("<span>"+data.cpu+"</span>");
-						 $("#cpu").css("width", data.cpu);
+						 $("#cpu").html("<span>"+data.cpu+"%</span>");
+						 $("#cpu").css("width", data.cpu+"%");
 
-						 $("#memory").html("<span>"+data.memory+" "+data.memoryused+"MB/"+data.memorytotal+"MB"+"</span>");
-						 $("#memory").css("width", data.memory);
+						 $("#memory").html("<span>"+data.memory+"% "+data.memoryused+"MB/"+data.memorytotal+"MB"+"</span>");
+						 $("#memory").css("width", data.memory+"%");
 
-						 $("#disk").html("<span>"+data.disk+" "+data.diskused+"GB/"+data.disktotal+"GB"+"</span>");
-						 $("#disk").css("width", data.disk);
+						 $("#disk").html("<span>"+data.disk+"% "+data.diskused+"GB/"+data.disktotal+"GB"+"</span>");
+						 $("#disk").css("width", data.disk+"%");
 				 },
 	 });
 }
