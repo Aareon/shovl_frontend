@@ -7,7 +7,7 @@ $(document).ready(function(){
 $("#adminloadmore").click(function(){
 	if ($("#adminloadmore").hasClass("disabled") == false){
 		admin_offset += 1
-		getcontainers(admin_offset);
+		getshields(admin_offset);
 	}
 });
 

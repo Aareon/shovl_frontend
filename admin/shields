@@ -38,20 +38,25 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                   <div class="col-md-12">
-                    <div id="websites_div">
-                        <div class="col-md-12">
-                          <table class="table">
-                          <thead>
-                              <tr>
-                                  <th>Service</th>
-                                  <th>Email</th>
-                                  <th>Domain name</th>
-                                  <th>Plan</th>
-                                  <th>Due Date</th>
-                              </tr>
-                          </thead>
-                          <tbody id="service_table"></tbody>
-                          </table>
+                          <div class="panel panel-primary">
+                            <div class="panel-heading">All shields</div>
+                            <div class="panel-body">
+                              <div class="col-md-12">
+                                <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Email</th>
+                                        <th>Domain name</th>
+                                        <th>Plan</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="service_table"></tbody>
+                                </table>
+                                <center><button id="adminloadmore" class="btn btn-primary">Load More</button></center>
+                              </div>
+                            </div>
                         </div>
                       </div>
                   </div>
