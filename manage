@@ -79,6 +79,7 @@
               					<button data-toggle="tooltip" title= "Stop Website" id="stop" class="btn btn-primary square"><i class="fa fa-stop button_icon"></i></button>
               					<button data-toggle="tooltip" title= "Restart Website" id="restart" class="btn btn-primary square"><i class="fa fa-refresh button_icon"></i></button>
               					<button data-toggle="tooltip" title= "Delete Website" id="delete" class="btn btn-primary square"><i class="fa fa-remove button_icon"></i></button>
+                        <button style="display:none;" data-toggle="tooltip" title= "Suspend Website" id="suspend" class="btn btn-primary square"><i class="fa fa-ban button_icon"></i></button>
               					</center>
             					</div>
                     </div>
