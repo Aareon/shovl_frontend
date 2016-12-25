@@ -4,20 +4,31 @@ $(document).ready(function(){
 	}, 1000);
 });
 
+function getmetrics(){
+
+
+}
+
 function getstats(){
-    var hostname = {hostname: "*"};
 	 isloggedin();
          $.ajax({
-            type:"POST",
-            url: "/api/shield/stats",
+            type:"GET",
+            url: "/api/admin/stats",
             data: JSON.stringify(hostname),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				var data = JSON.parse(result);
-				updatechart(data.goodrps, data.badrps);
+							var data = JSON.parse(result);
+							$("#cpu").html("<span>"+data.cpu+"</span>");
+							$("#cpu").css("width", data.cpu);
+
+							$("#memory").html("<span>"+data.memory+" "+data.memoryused+"MB/"+data.memorytotal+"MB"+"</span>");
+							$("#memory").css("width", data.memory);
+
+							$("#disk").html("<span>"+data.disk+" "+data.diskused+"GB/"+data.disktotal+"GB"+"</span>");
+							$("#disk").css("width", data.disk);
           },
     });
 }
