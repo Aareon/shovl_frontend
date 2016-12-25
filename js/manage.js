@@ -10,6 +10,7 @@ $(document).ready(function(){
   getdatabases();
   if(IsAdmin()){
     $("#suspend").show();
+    $("#unsuspend").show();
   }
   FM_DisplayCurrentDir(currentdir);
   getpackages();
@@ -706,6 +707,27 @@ $("#start").click(function(){
             },
             error: function(result) {
 				          pagealert("error", result.responseText);
+	  }
+	});
+});
+
+$("#unsuspend").click(function(){
+    var container = {containerid: $_GET("id")};
+	 isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/unsuspend",
+            data: JSON.stringify(container),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+                SetManageStatus(0);
+                pagealert("success", "Website has been suspended");
+            },
+            error: function(result) {
+				        pagealert("error", result.responseText);
 	  }
 	});
 });
