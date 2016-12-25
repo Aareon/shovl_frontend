@@ -10,7 +10,6 @@ function getmetrics(){
 				$.ajax({
 					 type:"GET",
 					 url: "/api/admin/stats",
-					 data: JSON.stringify(hostname),
 					 beforeSend: function (request)
 					 {
 							 request.setRequestHeader("Authorization", localStorage.getItem("token"));
