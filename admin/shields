@@ -19,13 +19,13 @@
         <div class="sidenav">
             <div class="sidenav-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span> Shovl</div>
             <ul class="sidenav-menu">
-              <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
-              <li><a href="#"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
-              <li><a href="shields"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
-              <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
-              <li><a href="users"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
-              <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
-              <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
+                <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                <li><a href="websites"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+                <li><a href="#"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
+                <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
+                <li><a href="users"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
+                <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
+                <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
             </ul>
         </div>
         <!-- End Side Menu -->
@@ -41,7 +41,6 @@
                       <!-- Start of navbar -->
                       <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#websites_div">Websites</a></li>
-                        <li><a data-toggle="tab" href="#packages_div">Packages</a></li>
                       </ul>
                       <!-- End of navbar -->
 
@@ -52,11 +51,11 @@
                           <table class="table">
                           <thead>
                               <tr>
-                                  <th>Owner</th>
                                   <th>Service</th>
+                                  <th>Email</th>
                                   <th>Domain name</th>
-                                  <th>Package</th>
-                                  <th>Status</th>
+                                  <th>Plan</th>
+                                  <th>Due Date</th>
                               </tr>
                           </thead>
                           <tbody id="service_table"></tbody>
@@ -64,29 +63,6 @@
                           <center><button id="adminloadmore" class="btn btn-primary">Load More</button></center>
                         </div>
                       </div>
-
-                      <div id="packages_div" class="tab-pane fade">
-                  			<h2>Create a package</h2>
-                  		  <form>
-                  			<div class="form-group">
-                          <div class="col-md-6">
-                  				      <input id="package_name" class="form-control input-md" type="text" placeholder="Name" maxlength="32">
-                          </div>
-                          <div class="col-md-6">
-                            <input id="package_amount" class="form-control input-md" type="number" placeholder="Price" step="0.01">
-                          </div>
-                          <div class="col-md-6">
-                  				      <input id="package_ram" class="form-control input-md" type="number" placeholder="RAM (MB)">
-                          </div>
-                          <div class="col-md-6">
-                            <input id="package_disk" class="form-control input-md" type="number" placeholder="Disk Space (GB)">
-                          </div>
-                  			</div>
-                  			</form>
-                        <div class="col-md-12">
-                  			     <button id="createpackage" class="btn btn-primary btn-block">Create Package</button>
-                        </div>
-                			</div>
                     </div>
                   </div>
                   <!-- End of web contents -->
@@ -97,7 +73,7 @@
         </div>
       <!-- Start of JS imports -->
         <script src="js/global.js"></script>
-        <script src="js/websites.js"></script>
+        <script src="js/shields.js"></script>
       <!-- End of JS imports -->
     </body>
 </html>
