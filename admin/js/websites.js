@@ -56,6 +56,14 @@ function getcontainers(offset){
 						tr.append("<td>" + packagename(data.containers[i].packageid) + "</td>");
 						tr.append("<td>" + website_status(data.containers[i].status) + "</td>");
 						$('#service_table').append(tr);
+					}else{
+						tr = $('<tr/>');
+						tr.append("<td>" + userlink(data.containers[i].email)+data.containers[i].email+"</a>" + "</td>");
+						tr.append("<td>" + "<i class='fa fa-database web_icon'></i>" +"</td>");
+						tr.append("<td>" + "</td>");
+						tr.append("<td>" + "SQL") + "</td>");
+						tr.append("<td>" + website_status(data.containers[i].status) + "</td>");
+						$('#service_table').append(tr);
 					}
 				}
 				if (data.canloadmore) {
