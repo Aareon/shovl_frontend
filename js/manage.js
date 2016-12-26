@@ -927,6 +927,49 @@ e.preventDefault();
          });
       });
 
+function FM_ZipUpload(){
+                isloggedin();
+                var formdata = new FormData(document.querySelector("#fm-zipform"));
+                formdata.set("containerid", $_GET("id"));
+                formdata.set("dir", currentdir);
+
+                    $.ajax({
+            			xhr: function() {
+            				var xhr = new window.XMLHttpRequest();
+            				xhr.upload.addEventListener("progress", function(evt) {
+            					if (evt.lengthComputable) {
+            						var percentComplete = (evt.loaded / evt.total) * 100;
+            						if (percentComplete == 100){
+            							$("#filemanage_progress").hide();
+            							$("#filemanage_progressbar").css("width", "0%")
+            						}else{
+            							$("#filemanage_progress").show();
+            							$("#filemanage_progressbar").css("width", percentComplete+"%")
+            						}
+            					}
+            			   }, false);
+            			   return xhr;
+            			},
+                        url: "/api/containers/filemanager/zipupload",
+                        type: "POST",
+                        data: formdata,
+                        beforeSend: function (request)
+                        {
+                            request.setRequestHeader("Authorization", localStorage.getItem("token"));
+                        },
+                        mimeTypes:"multipart/form-data",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function(result){
+                            pagealert("success", result);
+                            FM_DisplayCurrentDir(currentdir);
+                        },error: function(result){
+                            pagealert("error", result.responseText);
+                        }
+                     });
+                  }
+
 function FM_Upload(){
           isloggedin();
           var formdata = new FormData(document.querySelector("#fm-form"));
