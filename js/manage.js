@@ -468,17 +468,7 @@ function toBinaryString(data) {
 
 function FM_Download(filepath){
   isloggedin();
-  var xhr = new XMLHttpRequest;
-  xhr.open("GET", "/api/containers/filemanager/download/"+$_GET("id")+filepath);
-  xhr.addEventListener( "load", function(){
-      var data = toBinaryString(this.responseText);
-      data = "data:application/text;base64,"+btoa(data);
-      document.location = data;
-  }, false);
-
-  xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-  xhr.overrideMimeType( "application/octet-stream; charset=x-user-defined;" );
-  xhr.send(null);
+  window.location.assign("/api/containers/filemanager/download/"+localStorage.getItem("token")+"/"+$_GET("id")+filepath);
 }
 
 $('#fm-rename').click(function() {
