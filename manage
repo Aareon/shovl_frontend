@@ -146,6 +146,7 @@
                             <form style="display:inline-block;" action="" id="fm-form" method="post" enctype="multipart/form-data" >
                             <label id="fm-upload" class="btn btn-sm btn-success btn-file"><i class="fa fa-upload"></i> Upload<input  type="file" name="file"  required id="upload" style="display: none;" onchange="FM_Upload();"></label>
                             </form>
+                            <button id="fm-download" class="btn btn-sm btn-success" type="button"><i class="fa fa-download"></i> Download</button>
                             <button id="fm-mkdir" class="btn btn-sm btn-success" type="button"><i class="fa fa-folder"></i> New Folder</button>
                             <button id="fm-move" class="btn btn-sm btn-primary" type="button"><i class="fa fa-arrow-right"></i> Move</button>
                             <button id="fm-rename" class="btn btn-sm btn-primary" type="button"><i class="fa fa-pencil"></i> Rename</button>

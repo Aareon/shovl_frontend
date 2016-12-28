@@ -441,6 +441,46 @@ function FM_Mkdir(dir){
    });
 }
 
+$('#fm-download').click(function() {
+	var elements = new Array();
+    $("input[name='checkrowbox']:checked").each(function () {
+      elements.push($(this).val());
+    });
+
+    if (elements.length == 1) {
+			FM_Download(currentdir+elements[0]);
+	}else{
+		pagealert("error", "You can only download one file at a time.");
+	}
+});
+
+function toBinaryString(data) {
+    var ret = [];
+    var len = data.length;
+    var byte;
+    for (var i = 0; i < len; i++) {
+        byte=( data.charCodeAt(i) & 0xFF )>>> 0;
+        ret.push( String.fromCharCode(byte) );
+    }
+
+    return ret.join('');
+}
+
+function FM_Download(filepath){
+  isloggedin();
+  var xhr = new XMLHttpRequest;
+  xhr.open("GET", "/api/containers/filemanager/download/"+$_GET("id")+filepath);
+  xhr.addEventListener( "load", function(){
+      var data = toBinaryString(this.responseText);
+      data = "data:application/text;base64,"+btoa(data);
+      document.location = data;
+  }, false);
+
+  xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+  xhr.overrideMimeType( "application/octet-stream; charset=x-user-defined;" );
+  xhr.send(null);
+}
+
 $('#fm-rename').click(function() {
 	var elements = new Array();
     $("input[name='checkrowbox']:checked").each(function () {
