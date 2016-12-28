@@ -468,7 +468,7 @@ function toBinaryString(data) {
 
 function FM_Download(filepath){
   isloggedin();
-  window.location.assign("/api/containers/filemanager/download/"+localStorage.getItem("token")+"/"+$_GET("id")+filepath);
+  window.location.assign("/api/containers/filemanager/download/"+localStorage.getItem("token")+"/"+$_GET("id")+"?filepath="+filepath);
 }
 
 $('#fm-rename').click(function() {
