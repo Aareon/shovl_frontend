@@ -13,6 +13,7 @@ $("#login").click(function(){
                 localStorage.setItem("refresh_token", req.refresh_token);
                 setTimeout(function()
 							{
+							pagealert("success", "Login Successful, Redirecting...");
 							var lastlink = localStorage.getItem("lastlink")
 								if (lastlink === null) {
 									 window.location.assign("/app/dashboard");

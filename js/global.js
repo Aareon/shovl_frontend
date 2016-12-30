@@ -15,7 +15,7 @@ function isloggedin(){
 				localStorage.setItem("refresh_token", data.refresh_token);
             },
             error: function(result) {
-                localStorage.setItem("lastlink", window.location.pathname);
+                localStorage.setItem("lastlink", (location.pathname+location.search).substr(1));
 				window.location.assign("/app/login");
             },
             async: false

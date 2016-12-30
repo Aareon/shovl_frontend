@@ -5,16 +5,16 @@ var currentpackage = getpackageid();
 var currentstatus = 0;
 $(document).ready(function(){
   getinfo();
-  getmanagelog(logs_offset);
-  getdbinfo();
-  getdatabases();
   if(IsAdmin()){
     $("#suspend").show();
     $("#unsuspend").show();
   }
+  getdbinfo();
+  getdatabases();
   FM_DisplayCurrentDir(currentdir);
   getpackages();
   getfirewallrules();
+  getmanagelog(logs_offset);
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
