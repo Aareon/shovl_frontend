@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 
 $("#send-email").click(function(){
-     var mailreq = {prefix: $("#prefix").val(), recipient: $("#recipient").val(), subject: $("#subject").val(), body: $("#body").val("");};
+     var mailreq = {prefix: $("#prefix").val(), recipient: $("#recipient").val(), subject: $("#subject").val(), body: $("#body").val()};
 		 isloggedin();
          $.ajax({
             type:"POST",
