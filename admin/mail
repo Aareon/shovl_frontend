@@ -66,8 +66,9 @@
           </div>
       <!-- End of container -->
         </div>
-      <!-- Start of JS imports >
+      <!-- Start of JS imports -->
   <script src="js/global.js"></script>
+  <script src="js/mail.js"></script>
       <!-- End of JS imports -->
     </body>
 </html>
