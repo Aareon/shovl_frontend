@@ -42,7 +42,7 @@
 
             			<div id="create_div">
             				<h2 id="ticket_msg" class="content-subhead center"></h2>
-            				 <form id="creaton">
+            				<form id="creaton">
               				<div class="form-groupp">
               				<textarea id="message" class="form-control input-md" cols="30" rows="5" placeholder="Message" maxlength="2048"></textarea>
               				</div>
@@ -52,7 +52,7 @@
             				</div>
             				<div class="pure-control-group">
             				<button id="close" class="btn btn-danger btn-block" style="display: none;" type="button">Close Ticket</button>
-                    </div>
+						</div>
                   </div>
                   <!-- End of web contents -->
               </div>

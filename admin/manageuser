@@ -23,6 +23,7 @@
               <li><a href="websites"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
               <li><a href="shields"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
               <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
+			  <li><a href="mail"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Mail</a></li>
               <li><a href="users"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
               <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
               <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>

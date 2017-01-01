@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Shovl - Mail</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
             <li><a href="websites"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
             <li><a href="shields"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
             <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
-			  <li><a href="mail"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Mail</a></li>
+            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Mail</a></li>
             <li><a href="users"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
             <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
             <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
@@ -38,7 +38,28 @@
 				<div class="col-md-12">
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
-
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">Contact a customer</div>
+                    <div class="panel-body">
+                      <form>
+                        <div class="form-group col-md-4">
+                          <input id="prefix" class="form-control input-md" type="text" placeholder="Email prefix @shovl.io">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <input id="recipient" class="form-control input-md" type="text" placeholder="Recipient">
+                        </div>
+            						<div class="form-group col-md-4">
+            							<input id="subject" class="form-control input-md" type="text" placeholder="Email Subject">
+            						</div>
+            						<div class="form-group col-md-12">
+                          <textarea id="body" class="form-control input-md" cols="30" rows="5" placeholder="Email Body (HTML Supported)" maxlength="2048"></textarea>
+                        </div>
+                      </form>
+                      <div class="col-md-12">
+                        <button id="send-email" class="btn btn-primary btn-block">Send Email</button>
+                      </div>
+                  </div>
+                </div>
                   <!-- End of web contents -->
               </div>
             </div>
