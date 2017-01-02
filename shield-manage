@@ -47,7 +47,7 @@
                     <li class="active"><a data-toggle="tab" href="#manage_div">Overview</a></li>
                     <li><a data-toggle="tab" href="#plan_div">Plan</a></li>
                     <li><a data-toggle="tab" href="#settings_div">Settings</a></li>
-                    <li id="ssl-tab"><a data-toggle="tab" href="#ssl_div">SSL</a></li>
+                    <li><a data-toggle="tab" href="#ssl_div">SSL</a></li>
                     <li><a data-toggle="tab" href="#firewall_div">Firewall</a></li>
                     <li id="stats-tab"><a data-toggle="tab" href="#stats_div">Stats</a></li>
                   </ul>

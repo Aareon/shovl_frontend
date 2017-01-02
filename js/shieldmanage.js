@@ -31,13 +31,10 @@ function getinfo(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-      				var data = JSON.parse(result);
+      		  var data = JSON.parse(result);
               if (result != beforedata){
                 beforedata = result;
-                if (data.serviceid == "Free"){
-                  $('#ssl-tab').hide();
-                }
-                if (data.serviceid != "Business"){
+                if (data.serviceid != "Premium"){
                   $('#stats-tab').hide();
                 }
                 //Display subdomains in table
