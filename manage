@@ -102,38 +102,6 @@
                     </div>
 
                     <div id="files_div" class="tab-pane fade">
-                      <div class="col-md-12">
-                      <form action="" id="webrootupload" method="post" enctype="multipart/form-data" >
-                        <div class="panel panel-primary">
-                          <div class="panel-heading">Import a Website</div>
-              				        <table class="table">
-                    						<thead>
-                    							<tr>
-                    							</tr>
-                    						</thead>
-                    						<tbody id="service_table">
-                    							<tr><td>
-                    							<div class="form-group">
-                                  WARNING! This will overwrite your website with the contents of the archive.<br>
-                    							Website contents (.zip .rar .7z .tar.gz): <label class="btn btn-sm btn-primary btn-file">Browse...<input  type="file" name="file"  required id="upload" style="display: none;"></label>
-                    							</div>
-                    							</td></tr>
-                    							<tr id="webroot_progress" style="display: none;"><td>
-                    								<div class="progress">
-                    									<div id="webroot_progressbar" class="progress-bar" role="progressbar"></div>
-                    								</div>
-                    							</td></tr>
-                    							<tr><td>
-                    							<div class="form-group">
-                    							<center><button class="submit btn btn-primary">Upload</button></center>
-                    							</div>
-                    							</td></tr>
-                    						</tbody>
-                      				</table>
-                      </div>
-              			</form>
-                    </div>
-
                     <div class="col-md-12">
                       <div class="panel panel-primary">
                       <div class="panel-heading">File Manager</div>

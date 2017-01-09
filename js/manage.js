@@ -914,49 +914,6 @@ e.preventDefault();
          });
       });
 
-$("#webrootupload").submit(function(e){
-isloggedin();
-e.preventDefault();
-
-    var formdata = new FormData(this);
-    formdata.set("containerid", $_GET("id"));
-
-        $.ajax({
-			xhr: function() {
-				var xhr = new window.XMLHttpRequest();
-				xhr.upload.addEventListener("progress", function(evt) {
-					if (evt.lengthComputable) {
-						var percentComplete = (evt.loaded / evt.total) * 100;
-						if (percentComplete == 100){
-							$("#webroot_progress").hide();
-							$("#webroot_progressbar").css("width", "0%")
-						}else{
-							$("#webroot_progress").show();
-							$("#webroot_progressbar").css("width", percentComplete+"%")
-						}
-					}
-			   }, false);
-			   return xhr;
-			},
-            url: "/api/containers/webroot/upload",
-            type: "POST",
-            data: formdata,
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            mimeTypes:"multipart/form-data",
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(){
-                pagealert("success", "Website uploaded!<br>Starting import");
-            },error: function(result){
-                pagealert("error", result.responseText);
-            }
-         });
-      });
-
 function FM_ZipUpload(){
                 isloggedin();
                 var formdata = new FormData(document.querySelector("#fm-zipform"));
