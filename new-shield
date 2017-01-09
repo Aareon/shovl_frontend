@@ -53,26 +53,29 @@
                     </div>
                   </div>
                   </div>
-
-                  <div id="origin box" class="col-md-12">
-                  <div class="panel panel-primary">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Origin Webserver / Backend Webserver</h3>
+                  <div class="col-md-12">
+                          <div class="panel panel-primary">
+                            <div class="panel-heading"><strong>Set your Nameservers before continuing</strong></div>
+                            <div class="panel-body">
+                              <h3 class="text-primary"><strong>Please visit your registrar's dashboard to change your nameservers.</strong></h3>
+                              <h4>Set the nameservers in the table below, your domain registrar should have a page to switch over your nameservers, if you need help, contact our support.</h4>
+                              <p>1.Visit your domain registrar's dashboard</p>
+                              <p>2.Select change nameservers or move to webhost</p>
+                              <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Type</th>
+                                  <th>Value</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr><td>NS</td><td><strong>ns1.shovl.io</strong></td></tr>
+                                <tr><td>NS</td><td><strong>ns2.shovl.io</strong></td></tr>
+                              </tbody>
+                            </table>
+                            </div>
+                          </div>
                     </div>
-                  <div class="panel-body">
-            			    <form>
-                        <div class="form-group">
-                          <div class="col-md-6">
-                            <input id="host" class="form-control input-md" id="inputsm" type="text" placeholder="Domain name or IP address" maxlength="128">
-                          </div>
-                          <div class="col-md-6">
-                            <input id="port" class="form-control input-md" id="inputsm" type="number" placeholder="Port By Default use 80" min="0" max="65535">
-                          </div>
-                        </div>
-							        </form>
-                  </div>
-                </div>
-              </div>
 
                     <div class="col-md-12">
                       <div class="panel panel-primary">
@@ -94,7 +97,7 @@
           </div>
       <!-- End of container -->
         </div>
-      <!-- Start of JS imports -->
+      <!-- Start of JS imports >
   <script src="js/global.js"></script>
   <script src="js/createshield.js"></script>
       <!-- End of JS imports -->

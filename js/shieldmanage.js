@@ -38,40 +38,25 @@ function getinfo(){
                   $('#stats-tab').hide();
                 }
                 //Display subdomains in table
-                var allsubs = $('#dns-table').clone().html("");
-                for (var i = 0; i < data.subs.length; i++) {
+                var allrecords = $('#dns-table').clone().html("");
+                for (var i = 0; i < data.records.length; i++) {
                     tr = $('<tr>');
-                    tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
-                    tr.append("<td>" + "<span class='text-muted'>points to </span>"+data.subs[i].host+":"+ data.subs[i].port + "</td>");
-                    var deletebutton = ""
-                    if (data.subs[i].domains[0] != data.hostname){
-                      deletebutton = `<button class='btn btn-danger' type='button' onclick='DeleteSub("`+data.subs[i].name+`")'>Delete</button>`;
-                    }else {
-                      deletebutton = `<button class='btn btn-danger disabled' type='button' data-toggle='tooltip' title='You can only delete subdomains'>Delete</button>`;
+                    tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
+                    tr.append("<td>" + data.records[i].name +"</td>");
+                    if (data.records[i].type == "MX"){
+                      tr.append("<td>" + "<span class='text-muted'>mail handled by </span>" + data.records[i].content +"</td>");
+                    }else if (data.records[i].type == "CNAME"){
+                      tr.append("<td>" + "<span class='text-muted'>is an alias of </span>" + data.records[i].content +"</td>");
+                    }else if (data.records[i].type == "A" || data.records[i].type == "AAAA"){
+                      tr.append("<td>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
+                    }else{
+                      tr.append("<td>" + data.records[i].content +"</td>");
                     }
-                    tr.append(`<td><button class='btn btn-info' type='button' onclick='LoadSub("`+data.subs[i].name+`", "`+data.subs[i].host+`", "`+data.subs[i].port+`")'>Edit</button>`+deletebutton+`</td>`);
+                    tr.append(`<td><button class='btn btn-info' type='button' onclick='<button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].name+`")'>Delete</button></td>`);
                     allsubs = allsubs.append(tr);
                 }
 
-                $('#dns-table').replaceWith(allsubs)
-                //Display SSL subs
-                var allsslsubs = $('#ssl-table').clone().html("");
-                for (var i = 0; i < data.subs.length; i++) {
-                    tr = $('<tr>');
-                    tr.append("<td><strong>" + data.subs[i].domains[0] +"</strong></td>");
-                    if (data.subs[i].sslenabled){
-                      tr.append("<td>" + '<span class="label label-success">Installed</span>' + "</td>");
-                      tr.append(`<td><button class='btn btn-info disabled' type='button'>Install</button>`+`<button class='btn btn-danger' type='button' onclick='DisableSSLSub("`+data.subs[i].name+`")'>Disable</button`+`</td>`);
-                    }else if (data.subs[i].disabled){
-                      tr.append("<td>" + '<span class="label label-warning">DNS Records Missing</span>' + "</td>");
-                      tr.append(`<td><button class='btn btn-info disabled' type='button'>Install</button>`+`<button class='btn btn-danger disabled' type='button'>Disable</button`+`</td>`);
-                    }else if (data.subs[i].sslenabled == false){
-                      tr.append("<td>" + '<span class="label label-danger">Disabled</span>' + "</td>");
-                      tr.append(`<td><button class='btn btn-info' type='button' onclick='InstallSSLSub("`+data.subs[i].name+`")'>Install</button>`+`<button class='btn btn-danger disabled' type='button'>Disable</button`+`</td>`);
-                    }
-                    allsslsubs = allsslsubs.append(tr);
-                }
-                $('#ssl-table').replaceWith(allsslsubs)
+                $('#dns-table').replaceWith(allrecords)
 
                 //Load in settings
                 $('#new-dns-domain').html("."+data.hostname);

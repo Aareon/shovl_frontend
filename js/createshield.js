@@ -37,7 +37,7 @@ $("#createservice").click(function(){
 		}else if (document.querySelector('input[name="SID"]:checked') == null){
 		pagealert("error", "You forgot to select a service");
 	} else{
-	 var order = {hostname: $("#hostname").val(), serviceid: document.querySelector('input[name="SID"]:checked').value, host: $("#host").val(), port: parseInt($("#port").val())};
+	 var order = {hostname: $("#hostname").val(), serviceid: document.querySelector('input[name="SID"]:checked').value).val())};
 	 isloggedin();
          $.ajax({
             type:"POST",

@@ -69,99 +69,98 @@
                             </div>
                           </div>
 
-                          <div id="recheck-records-panel"  style="display: none;" class="panel panel-primary">
-                            <div class="panel-heading"><strong>Looks like you're missing some records</strong></div>
+                          <div>
+                          </div>
+
+
+                          <div class="panel panel-primary">
+                          <div class="panel-heading">DNS Records</div>
                             <div class="panel-body">
-                              <h3 class="text-primary"><strong>Please visit your registrar's dashboard to set the following DNS records.</strong></h3>
-                              <h4>Set the records in the table below, your domain registrar should have an advanced section to set the records, if you need help, contact our support.</h4>
-                              <p>1.Visit your domain registrar's dashboard</p>
-                              <p>2.Enter the advanced settings section</p>
-                              <p>3.Now set the DNS records to the following:</p>
+                              <div class="form-group col-md-2">
+                                <div class="panel panel-primary">
+                                  <div class="panel-body">
+                                <select class="form-control" id="record-type">
+                                    <option>A</option>
+                                    <option>AAAA</option>
+                                    <option>CNAME</option>
+                                    <option>MX</option>
+                                    <option>SRV</option>
+                                    <option>SPF</option>
+                                    <option>TXT</option>
+                                  </select>
+                              </div>
+                            </div>
+                          </div>
+                              <div id="record-name-form" class="form-group col-md-4">
+                                <div class="panel panel-primary">
+                                <div class="panel-body">
+                                  <input id="record-name" class="form-control input-md" type="text" placeholder="Name e.g. www">
+                                </div>
+                              </div>
+                              </div>
+                                <div id="record-value-form" class="form-group col-md-4">
+                                  <div class="panel panel-primary">
+                                    <div id="val-a" class="panel-body">
+                                      <input id="record-a" class="form-control input-md" type="text" placeholder="IPv4 Address e.g. 1.1.1.1">
+                                    </div>
+                                    <div style="display: none;" id="val-cname" class="panel-body">
+                                      <input id="record-cname" class="form-control input-md" type="text" placeholder="Domain name">
+                                    </div>
+                                    <div style="display: none;" id="val-txt" class="panel-body">
+                                      <input id="record-txt" class="form-control input-md" type="text" placeholder="Text">
+                                    </div>
+                                    <div style="display: none;" id="val-spf" class="panel-body">
+                                      <input id="record-spf" class="form-control input-md" type="text" placeholder="Policy parameters">
+                                    </div>
+                                    <div style="display: none;" id="val-aaaa" class="panel-body">
+                                      <input id="record-aaaa" class="form-control input-md" type="text" placeholder="IPv6 Address">
+                                    </div>
+                                    <div style="display: none;" id="val-srv" class="panel-body">
+                                      <div class="form-group">
+                                      <select class="form-control" id="record-srv-protocol">
+                                          <option>TCP</option>
+                                          <option>UDP</option>
+                                          <option>TLS</option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group">
+                                      <input id="record-srv-priority" class="form-control input-md" type="number" placeholder="Priority e.g. 1">
+                                      </div>
+                                      <div class="form-group">
+                                        <input id="record-srv-weight" class="form-control input-md" type="number" placeholder="Weight e.g. 1">
+                                      </div>
+                                      <div class="form-group">
+                                      <input id="record-srv-port" class="form-control input-md" type="number" placeholder="Port e.g. 1">
+                                      </div>
+                                      <div class="form-group">
+                                      <input id="record-srv-target" class="form-control input-md" type="text" placeholder="Target e.g. example.com">
+                                      </div>
+                                    </div>
+                                    <div style="display: none;" id="val-mx" class="panel-body">
+                                      <div class="form-group">
+                                      <input id="record-mx-priority" class="form-control input-md" type="number" placeholder="Priority e.g. 1">
+                                      </div>
+                                      <div class="form-group">
+                                      <input id="record-mx-server" class="form-control input-md" type="text" placeholder="Server e.g. smtp.website.com">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <button id="record-create" class="btn btn-success btn-block">Add Record</button>
+                                </div>
                               <table class="table">
                               <thead>
                                 <tr>
                                   <th>Type</th>
                                   <th>Name</th>
                                   <th>Value</th>
-                                </tr>
-                              </thead>
-                              <tbody id="dnsrecord_table"></tbody>
-                            </table>
-                            <div class="col-md-4 col-md-offset-8">
-                                <button id="recheck" class="btn btn-success btn-block pull-right"> Recheck records</button>
-                            </div>
-                            </div>
-                          </div>
-
-                          <div class="panel panel-primary">
-                          <div class="panel-heading"><button id="sub-create" data-toggle="tooltip" title= "Create Subdomain" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i> </button><h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 75%;padding-top: 8px;">DNS Records (Subdomains)</h5></div>
-                            <div class="panel-body">
-                              <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Names</th>
-                                  <th>Origin Server</th>
                                   <th>Manage</th>
                                 </tr>
                               </thead>
                               <tbody id="dns-table"></tbody>
                             </table>
-                            <div id="new-dns" style="display: none;" class="form-group">
-                              <div class="panel panel-default">
-                              <div class="panel-body">
-                                <div class="form-group col-md-12">
-                                  <div class="col-md-12">
-                                    <p><strong>Subdomain</strong></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <input id="new-dns-sub" class="form-control input-md" type="text" placeholder="Subdomain">
-                                  </div>
-                                  <div class="col-md-6" style="padding-left: 0;">
-                                    <h4 id="new-dns-domain"></h4>
-                                  </div>
-                                </div>
-                                  <div class="form-group col-md-12">
-                                  <div class="col-md-6">
-                                    <p><strong>Backend Host or IP</strong></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <p><strong>Backend Port</strong></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <input id="new-dns-host" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
-                                  </div>
-                                  <div class="col-md-6">
-                                    <input id="new-dns-port" class="form-control input-md" type="number" placeholder="Port by Default use 80">
-                                  </div>
-                                </div>
-                                <div class="col-md-12">
-                                  <button id="new-dns-create" class="btn btn-success btn-block">Create</button>
-                                </div>
-                            </div>
                           </div>
-                        </div>
-                            <div id="manage-dns" style="display: none;" class="form-group">
-                              <div class="panel panel-default">
-                              <div class="panel-body">
-                                <div class="col-md-5">
-                                  <p><strong>Backend Host or IP</strong></p>
-                                </div>
-                                <div class="col-md-5">
-                                  <p><strong>Backend Port</strong></p>
-                                </div>
-                                <div class="col-md-5">
-                                  <input id="manage-dns-host" class="form-control input-md" type="text" placeholder="Backend/Origin server: Hostname or IP address">
-                                </div>
-                                <div class="col-md-5">
-                                  <input id="manage-dns-port" class="form-control input-md" type="number" placeholder="Port by Default use 80">
-                                </div>
-                                <div class="col-md-2">
-                                  <button id="manage-dns-update" class="btn btn-success btn-block">Update</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
 
                           <div class="panel panel-primary">
@@ -239,22 +238,6 @@
               </div>
 
               <div id="ssl_div" class="tab-pane fade">
-                <div class="panel panel-primary">
-                  <div class="panel-heading"><h3 class="panel-title">Setup SSL</h3></div>
-                  <div class="panel-body">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                        <th>Names</th>
-                        <th>Status</th>
-                        <th>Manage</th>
-                        </tr>
-                      </thead>
-                      <tbody id="ssl-table"></tbody>
-                      </table>
-
-                    </div>
-                  </div>
                     <div class="panel panel-primary">
                       <div class="panel-heading">
                         <h3 class="panel-title">Force HTTPS</h3>
@@ -344,8 +327,9 @@
           </div> <!-- End of container -->
           </div> <!-- sidenav-offset-inner -->
         </div> <!-- sidenav-offset -->
-      <!-- Start of JS imports -->
-  <script src="js/global.js"></script>
+      <!-- Start of JS imports >
+  <script src="js/global.js"></script>-->
+  <script src="js/dns.js"></script>
   <script src="js/shieldmanage.js"></script>
       <!-- End of JS imports -->
     </body>
