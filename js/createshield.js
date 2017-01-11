@@ -30,10 +30,6 @@ function getservices(){
 $("#createservice").click(function(){
 		if (!$("#hostname").val()){
 			pagealert("error", "You forgot to enter your domain");
-		}else if (!$("#host").val()){
-			pagealert("error", "You forgot to enter your origin server");
-		}else if (!$("#port").val()){
-			pagealert("error", "You forgot to enter your port");
 		}else if (document.querySelector('input[name="SID"]:checked') == null){
 		pagealert("error", "You forgot to select a service");
 	} else{

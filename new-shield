@@ -97,7 +97,7 @@
           </div>
       <!-- End of container -->
         </div>
-      <!-- Start of JS imports >
+      <!-- Start of JS imports -->
   <script src="js/global.js"></script>
   <script src="js/createshield.js"></script>
       <!-- End of JS imports -->
