@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Shovl - Support Staff</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+		    <link rel="stylesheet" href="css/layouts/sidenav.css">
+        <link rel="stylesheet" href="css/layouts/global.css">
+    </head>
+    <body>
+        <!-- Side Menu -->
+        <div class="sidenav-mini">
+            <div class="sidenav-mini-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span></div>
+        </div>
+        <div class="sidenav">
+            <div class="sidenav-header"><span class="sidenav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></span> Shovl</div>
+            <ul class="sidenav-menu">
+                <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                <li><a href="websites"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+              <li><a href="shields"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
+              <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
+			  <li><a href="mail"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Mail</a></li>
+                <li><a href="users"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
+                <li><a href="/app/dashboard"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</a><li>
+                <li><a href="#" id="signout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Sign Out</a><li>
+            </ul>
+        </div>
+        <!-- End Side Menu -->
+
+        <div id="sidenav-offset" class="sidenav-offset">
+			<!-- Start of container -->
+          <div class="container-fluid">
+              <div class="row">
+					      <div class="col-md-12">
+                  <div id="alertbox"></div>
+                  <!-- Start of web contents -->
+                      <h2>All tickets</h2>
+              				<table id="ticket-table" class="table">
+              				<thead>
+              					<tr>
+              						<th>#</th>
+              						<th>Creator</th>
+              						<th>Subject</th>
+              						<th>Date</th>
+              						<th>Status</th>
+              					</tr>
+              				</thead>
+              				<tbody id="admin_body"></tbody>
+              			</table>
+            				<center><button id="adminloadmore" class="btn btn-primary">Load More</button></center>
+                  <!-- End of web contents -->
+              </div>
+            </div>
+          </div>
+      <!-- End of container -->
+        </div>
+      <!-- Start of JS imports -->
+        <script src="js/global.js"></script>
+        <script src="js/support.js"></script>
+      <!-- End of JS imports -->
+    </body>
+</html>

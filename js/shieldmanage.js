@@ -265,7 +265,7 @@ $("#new-dns-create").click(function(){
      var req = {hostname: $_GET("id"), sub: $("#new-dns-sub").val(), host: $("#new-dns-host").val(), port: parseInt($("#new-dns-port").val())};
      $.ajax({
         type:"POST",
-        url: "/api/shield/sub/create",
+        url: "/api/shield//create",
         data: JSON.stringify(req),
         beforeSend: function (request)
         {
@@ -277,26 +277,6 @@ $("#new-dns-create").click(function(){
           $("#new-dns-host").val("");
           $("#new-dns-port").val("");
           $("#new-dns").hide();
-       },
-        error: function(result) {
-          pagealert("error", result.responseText);
-       },
-    });
-});
-
-$("#manage-dns-update").click(function(){
-     var req = {hostname: $_GET("id"), sub: currentedit, host: $("#manage-dns-host").val(), port: parseInt($("#manage-dns-port").val())};
-     $.ajax({
-        type:"POST",
-        url: "/api/shield/sub/manage",
-        data: JSON.stringify(req),
-        beforeSend: function (request)
-        {
-            request.setRequestHeader("Authorization", localStorage.getItem("token"));
-        },
-        success: function(result) {
-          pagealert("success", result);
-          $("#manage-dns").hide();
        },
         error: function(result) {
           pagealert("error", result.responseText);

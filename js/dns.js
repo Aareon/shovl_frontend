@@ -1,23 +1,36 @@
 $("#record-create").click(function(){
   var type = $("#record-type").val();
   var req;
-
   if (type == "MX"){
-    $("#val-mx").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_mx_server: $("#record-mx-server").val(), record_mx_priority: $("#record-mx-priority").val()};
   }else if (type == "A"){
-      $("#val-a").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_a: $("#record-a").val()};
   }else if (type == "AAAA"){
-      $("#val-aaaa").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_aaaa: $("#record-aaaa").val()};
   }else if (type == "TXT"){
-      $("#val-txt").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_txt: $("#record-txt").val()};
   }else if (type == "SPF"){
-      $("#val-spf").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_spf: $("#record-spf").val()};
   }else if (type == "CNAME"){
-      $("#val-cname").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
   }else if (type == "SRV"){
-      $("#val-srv").fadeIn(800);
+      req = {hostname: $_GET("id"), protected: $("shield-box").prop(('checked')), type: type, record_srv_target: $("#record-srv-target").val(), record_srv_protocol: $("#record-srv-protocol").val(), record_srv_port: $("#record-srv-port").val(), record_srv_weight: $("#record-srv-weight").val()};
   }
-  
+  $.ajax({
+     type:"POST",
+     url: "/api/shield/dns/create",
+     data: JSON.stringify(req),
+     beforeSend: function (request)
+     {
+         request.setRequestHeader("Authorization", localStorage.getItem("token"));
+     },
+     success: function(result) {
+       pagealert("success", result);
+    },
+     error: function(result) {
+       pagealert("error", result.responseText);
+    },
+ });
 });
 
 $("#record-type").change(function(){
