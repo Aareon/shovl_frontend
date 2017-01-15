@@ -74,7 +74,7 @@
 
 
                           <div class="panel panel-primary">
-                          <div class="panel-heading">DNS Records</div>
+                          <div class="panel-heading"><button id="dns-create" data-toggle="tooltip" title= "Create DNS Record" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i> </button><h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 75%;padding-top: 8px;">DNS Records</h5></div>
                             <div class="panel-body">
                               <table class="table">
                               <thead>

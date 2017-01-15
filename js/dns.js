@@ -25,6 +25,7 @@ $("#record-create").click(function(){
          request.setRequestHeader("Authorization", localStorage.getItem("token"));
      },
      success: function(result) {
+       $("#new-record-div").hide();
        pagealert("success", result);
     },
      error: function(result) {

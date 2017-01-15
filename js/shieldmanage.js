@@ -18,6 +18,10 @@ $(document).ready(function(){
   }, 2500);
 });
 
+$("#dns-create").click(function(){
+     $("#new-record-div").toggle();
+});
+
 var beforedata;
 function getinfo(){
     var hostname = {hostname: $_GET("id")};
