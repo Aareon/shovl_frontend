@@ -43,23 +43,24 @@ function getinfo(){
                 }
                 //Display subdomains in table
                 var allrecords = $('#dns-table').clone().html("");
-                for (var i = 0; i < data.records.length; i++) {
-                    tr = $('<tr>');
-                    tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
-                    tr.append("<td>" + data.records[i].name +"</td>");
-                    if (data.records[i].type == "MX"){
-                      tr.append("<td>" + "<span class='text-muted'>mail handled by </span>" + data.records[i].content +"</td>");
-                    }else if (data.records[i].type == "CNAME"){
-                      tr.append("<td>" + "<span class='text-muted'>is an alias of </span>" + data.records[i].content +"</td>");
-                    }else if (data.records[i].type == "A" || data.records[i].type == "AAAA"){
-                      tr.append("<td>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
-                    }else{
-                      tr.append("<td>" + data.records[i].content +"</td>");
-                    }
-                    tr.append(`<td><button class='btn btn-info' type='button' onclick='<button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].name+`")'>Delete</button></td>`);
-                    allsubs = allsubs.append(tr);
+                if(data.record != null){
+                  for (var i = 0; i < data.records.length; i++) {
+                      tr = $('<tr>');
+                      tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
+                      tr.append("<td>" + data.records[i].name +"</td>");
+                      if (data.records[i].type == "MX"){
+                        tr.append("<td>" + "<span class='text-muted'>mail handled by </span>" + data.records[i].content +"</td>");
+                      }else if (data.records[i].type == "CNAME"){
+                        tr.append("<td>" + "<span class='text-muted'>is an alias of </span>" + data.records[i].content +"</td>");
+                      }else if (data.records[i].type == "A" || data.records[i].type == "AAAA"){
+                        tr.append("<td>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
+                      }else{
+                        tr.append("<td>" + data.records[i].content +"</td>");
+                      }
+                      tr.append(`<td><button class='btn btn-info' type='button' onclick='<button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].name+`")'>Delete</button></td>`);
+                      allsubs = allsubs.append(tr);
+                  }
                 }
-
                 $('#dns-table').replaceWith(allrecords)
 
                 //Load in settings
@@ -585,8 +586,10 @@ function getstatssubs(){
       				var data = JSON.parse(result);
               //Load in websites for stats
               var monitorsubs = $('#livestats-subs').clone().html("");
-              for (var i = 0; i < data.subs.length; i++) {
-                  monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
+              if (data.subs != null) {
+                for (var i = 0; i < data.subs.length; i++) {
+                    monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
+                }
               }
               $('#livestats-subs').replaceWith(monitorsubs)
             },
