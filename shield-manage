@@ -166,7 +166,7 @@
                                         <input id="record-srv-port" class="form-control input-md" type="number" placeholder="Port e.g. 1">
                                         </div>
                                         <div class="form-group">
-                                        <input id="record-srv-service" class="form-control input-md" type="number" placeholder="Service e.g. _minecraft">
+                                        <input id="record-srv-service" class="form-control input-md" type="text" placeholder="Service e.g. _minecraft">
                                         </div>
                                         <div class="form-group">
                                         <input id="record-srv-target" class="form-control input-md" type="text" placeholder="Target e.g. example.com">
