@@ -6,19 +6,19 @@ $("#record-create").click(function(){
     name = $("#record-name").val() + ".";
   }
   if (type == "MX"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_mx_server: $("#record-mx-server").val(), record_mx_priority: $("#record-mx-priority").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_mx_server: $("#record-mx-server").val(), record_mx_priority: $("#record-mx-priority").val()};
   }else if (type == "A"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_a: $("#record-a").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_a: $("#record-a").val()};
   }else if (type == "AAAA"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_aaaa: $("#record-aaaa").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_aaaa: $("#record-aaaa").val()};
   }else if (type == "TXT"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_txt: $("#record-txt").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_txt: $("#record-txt").val()};
   }else if (type == "SPF"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_spf: $("#record-spf").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_spf: $("#record-spf").val()};
   }else if (type == "CNAME"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
   }else if (type == "SRV"){
-      req = {hostname: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_srv_target: $("#record-srv-target").val(), record_srv_service: $("#record-srv-service").val(), record_srv_protocol: $("#record-srv-protocol").val(), record_srv_port: $("#record-srv-port").val(), record_srv_weight: $("#record-srv-weight").val()};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_srv_target: $("#record-srv-target").val(), record_srv_service: $("#record-srv-service").val(), record_srv_protocol: $("#record-srv-protocol").val(), record_srv_port: $("#record-srv-port").val(), record_srv_weight: $("#record-srv-weight").val()};
   }
   $.ajax({
      type:"POST",
