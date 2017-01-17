@@ -114,17 +114,6 @@ $("#recheck").click(function(){
     });
 });
 
-function DisplayAllMissingRecords(subs){
-  $('#dnsrecord_table').html("");
-  for (var i = 0; i < subs.length; i++){
-    if (subs[i].disabled){
-      DisplayMissingRecord(subs[i].domains[0])
-    }
-  }
-  ranonce = true;
-  $("#recheck-records-panel").show();
-}
-
 function LoadSub(name, host, port){
   $("#manage-dns").show();
   currentedit = name;
