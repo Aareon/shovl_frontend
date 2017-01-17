@@ -18,7 +18,7 @@ $("#record-create").click(function(){
   }else if (type == "CNAME"){
       req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
   }else if (type == "SRV"){
-      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_srv_target: $("#record-srv-target").val(), record_srv_service: $("#record-srv-service").val(), record_srv_protocol: $("#record-srv-protocol").val(), record_srv_port:  parseInt($("#record-srv-port").val()), record_srv_weight:  parseInt($("#record-srv-weight").val())};
+      req = {hostname: $_GET("id"), name: name+$_GET("id"), protected: $("#shield-box").prop(('checked')), type: type, record_srv_target: $("#record-srv-target").val(), record_srv_service: $("#record-srv-service").val(), record_srv_protocol: $("#record-srv-protocol").val(), record_srv_port:  parseInt($("#record-srv-port").val()), record_srv_weight: parseInt($("#record-srv-weight").val()), record_srv_priority: parseInt($("#record-srv-priority").val())};
   }
   $.ajax({
      type:"POST",
