@@ -58,7 +58,7 @@ function getinfo(){
                         tr.append("<td>" + data.records[i].content +"</td>");
                       }
                       tr.append(`<td><button class='btn btn-info' type='button' onclick='<button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].name+`")'>Delete</button></td>`);
-                      allsubs = allsubs.append(tr);
+                      allrecords = allrecords.append(tr);
                   }
                 }
                 $('#dns-table').replaceWith(allrecords)
