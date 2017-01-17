@@ -43,7 +43,7 @@ function getinfo(){
                 }
                 //Display subdomains in table
                 var allrecords = $('#dns-table').clone().html("");
-                if(data.record != null){
+                if(data.records != null){
                   for (var i = 0; i < data.records.length; i++) {
                       tr = $('<tr>');
                       tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
