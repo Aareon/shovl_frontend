@@ -57,7 +57,7 @@ function getinfo(){
                       }else{
                         tr.append("<td>" + data.records[i].content +"</td>");
                       }
-                      tr.append(`<td><button class='btn btn-info' type='button' onclick='<button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].name+`")'>Delete</button></td>`);
+                      tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].id+`")'>Delete</button></td>`);
                       allrecords = allrecords.append(tr);
                   }
                 }
@@ -94,80 +94,14 @@ function getinfo(){
     });
 }
 
-$("#recheck").click(function(){
-     ranonce = false;
-     var req = {hostname: $_GET("id")};
-     $.ajax({
-        type:"POST",
-        url: "/api/shield/recheck",
-        data: JSON.stringify(req),
-        beforeSend: function (request)
-        {
-            request.setRequestHeader("Authorization", localStorage.getItem("token"));
-        },
-        success: function(result) {
-          pagealert("success", result);
-       },
-        error: function(result) {
-          pagealert("error", result.responseText);
-       },
-    });
-});
-
-function LoadSub(name, host, port){
-  $("#manage-dns").show();
-  currentedit = name;
-  $("#manage-dns-host").val(host);
-  $("#manage-dns-port").val(port);
-}
-
-function InstallSSLSub(name){
-  var req = {hostname: $_GET("id"), sub: name};
-  $.ajax({
-     type:"POST",
-     url: "/api/shield/sub/sslinstall",
-     data: JSON.stringify(req),
-     beforeSend: function (request)
-     {
-         request.setRequestHeader("Authorization", localStorage.getItem("token"));
-     },
-     success: function(result) {
-       pagealert("success", result);
-    },
-     error: function(result) {
-       pagealert("error", result.responseText);
-    },
- });
-}
-
-function DisableSSLSub(name){
-  var req = {hostname: $_GET("id"), sub: name};
-  $.ajax({
-     type:"POST",
-     url: "/api/shield/sub/ssldisable",
-     data: JSON.stringify(req),
-     beforeSend: function (request)
-     {
-         request.setRequestHeader("Authorization", localStorage.getItem("token"));
-     },
-     success: function(result) {
-       pagealert("success", result);
-    },
-     error: function(result) {
-       pagealert("error", result.responseText);
-    },
- });
-}
-
-//Add confirm popup for this
-function DeleteSub(name){
-  var req = {hostname: $_GET("id"), sub: name};
+function DeleteRecord(id){
+  var req = {hostname: $_GET("id"), id: id};
   if (name == currentedit){
   $("#manage-dns").hide();
   }
   $.ajax({
      type:"POST",
-     url: "/api/shield/sub/delete",
+     url: "/api/shield/dns/delete",
      data: JSON.stringify(req),
      beforeSend: function (request)
      {
@@ -181,10 +115,6 @@ function DeleteSub(name){
     },
  });
 }
-
-$("#sub-create").click(function(){
-     $("#new-dns").toggle();
-});
 
 $("#delete-shield").click(function(){
     swal({
@@ -373,25 +303,6 @@ $('#waf-box').click(function() {
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/waf",
-           data: JSON.stringify(req),
-           beforeSend: function (request)
-           {
-               request.setRequestHeader("Authorization", localStorage.getItem("token"));
-           },
-           success: function(result) {
-			   pagealert("success", result)
-			},
-		   error: function(result) {
-			   pagealert("error", result.responseText)
-			},
-   });
-});
-
-$('#cache-box').click(function() {
-	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
-        $.ajax({
-           type:"POST",
-           url: "/api/shield/settings/cache",
            data: JSON.stringify(req),
            beforeSend: function (request)
            {
