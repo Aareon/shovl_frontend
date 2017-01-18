@@ -51,10 +51,10 @@ function getinfo(){
                         if (data.records[i].protected){
                           tr.append("<td>" + `<i class='fa fa-shield text-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 2em;'></i>` +"</td>");
                         }else {
-                          tr.append("<td>" + `<i class='fa fa-shield text-danger' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 2em;'></i>` +"</td>");
+                          tr.append("<td>" + `<i class='fa fa-shield text-muted' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 2em;'></i>` +"</td>");
                         }
                       }else {
-                          tr.append("<td>"+"</td>");
+                          tr.append("<td>" + `<i class='fa fa-ban text-muted' data-toggle="tooltip" title= "Unsupported by Shield" style='font-size: 2em;'></i>` +"</td>");
                       }
                       tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
                       tr.append("<td>" + data.records[i].name +"</td>");
