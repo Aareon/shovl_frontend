@@ -46,6 +46,16 @@ function getinfo(){
                 if(data.records != null){
                   for (var i = 0; i < data.records.length; i++) {
                       tr = $('<tr>');
+                      //Display status
+                      if (data.records[i].type == "A" || data.records[i].type == "CNAME"){
+                        if (data.records[i].protected){
+                          tr.append("<td>" + `<i class='fa fa-shield text-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 2em;'></i>` +"</td>");
+                        }else {
+                          tr.append("<td>" + `<i class='fa fa-shield text-danger' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 2em;'></i>` +"</td>");
+                        }
+                      }else {
+                          tr.append("<td>"+"</td>");
+                      }
                       tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
                       tr.append("<td>" + data.records[i].name +"</td>");
                       //Display value
@@ -57,16 +67,6 @@ function getinfo(){
                         tr.append("<td>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
                       }else{
                         tr.append("<td>" + data.records[i].content +"</td>");
-                      }
-                      //Display status
-                      if (data.records[i].type == "A" || data.records[i].type == "CNAME"){
-                        if (data.records[i].protected){
-                          tr.append("<td>" + `<i class='fa fa-shield fa-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 1.5em;'></i>` +"</td>");
-                        }else {
-                          tr.append("<td>" + `<i class='fa fa-shield fa-danger' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 1.5em;'></i>` +"</td>");
-                        }
-                      }else {
-                          tr.append("<td>"+"</td>");
                       }
                       tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].id+`")'>Delete</button></td>`);
                       allrecords = allrecords.append(tr);
