@@ -61,9 +61,9 @@ function getinfo(){
                       //Display status
                       if (data.records[i].type == "A" || data.records[i].type == "CNAME"){
                         if (data.records[i].protected){
-                          tr.append("<td>" + <i class='fa fa-shield fa-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 1.5em;'></i> +"</td>");
+                          tr.append("<td>" + `<i class='fa fa-shield fa-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 1.5em;'></i>` +"</td>");
                         }else {
-                          tr.append("<td>" + <i class='fa fa-shield fa-danger' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 1.5em;'></i> +"</td>");
+                          tr.append("<td>" + `<i class='fa fa-shield fa-danger' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 1.5em;'></i>` +"</td>");
                         }
                       }else {
                           tr.append("<td>"+"</td>");
