@@ -82,6 +82,7 @@
                                   <th>Type</th>
                                   <th>Name</th>
                                   <th>Value</th>
+                                  <th>Status</th>
                                   <th>Manage</th>
                                 </tr>
                               </thead>

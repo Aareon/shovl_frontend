@@ -48,6 +48,7 @@ function getinfo(){
                       tr = $('<tr>');
                       tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
                       tr.append("<td>" + data.records[i].name +"</td>");
+                      //Display value
                       if (data.records[i].type == "MX"){
                         tr.append("<td>" + "<span class='text-muted'>mail handled by </span>" + data.records[i].content +"</td>");
                       }else if (data.records[i].type == "CNAME"){
@@ -56,6 +57,16 @@ function getinfo(){
                         tr.append("<td>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
                       }else{
                         tr.append("<td>" + data.records[i].content +"</td>");
+                      }
+                      //Display status
+                      if (data.records[i].type == "A" || data.records[i].type == "CNAME"){
+                        if (data.records[i].protected){
+                          tr.append("<td>" + <i class='fa fa-shield fa-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 1.5em;'></i> +"</td>");
+                        }else {
+                          tr.append("<td>" + <i class='fa fa-shield fa-danger' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 1.5em;'></i> +"</td>");
+                        }
+                      }else {
+                          tr.append("<td>"+"</td>");
                       }
                       tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].id+`")'>Delete</button></td>`);
                       allrecords = allrecords.append(tr);
@@ -87,9 +98,6 @@ function getinfo(){
                 //$("#ssl-info").html("<i class='fa fa-lock' style='font-size: 1.5em;'></i><strong> SSL: </strong>"+isenabled(data.sslenabled));
                 $("#waf-info").html("<i class='fa fa-shield' style='font-size: 1.5em;'></i><strong> WAF: </strong>"+isenabled(!data.wafdisabled));
               }
-          },
-          error: function(result){
-            window.location.assign("/app/shield");
           },
     });
 }
