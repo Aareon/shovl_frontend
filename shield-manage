@@ -186,10 +186,10 @@
                                   <div class="col-md-12" id="securebackend-div" style="display:none;">
                                       <div class="panel panel-primary">
                                       <div class="panel-body">
-                                      <div class="col-md-6">
+                                      <div class="col-md-10">
                                       <h5><strong>Use HTTPS to connect to origin:</strong></h5>
                                       </div>
-                                        <div class="col-md-6 checkbox checkbox-slider--b checkbox-slider">
+                                        <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider">
                                           <label>
                                             <input id="securebackend-box" type="checkbox"><span></span>
                                           </label>
