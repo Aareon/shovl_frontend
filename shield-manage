@@ -182,22 +182,21 @@
                                         </div>
                                       </div>
                                     </div>
-
-                                    <div class="col-md-12" id="securebackend-div" style="display:none;">
-                                        <div class="panel panel-primary">
-                                        <div class="panel-body">
-                                        <div class="col-md-6">
-                                        <h5><strong>Use HTTPS to connect to origin:</strong></h5>
-                                        </div>
-                                          <div class="col-md-6 checkbox checkbox-slider--b checkbox-slider">
-                                            <label>
-                                              <input id="securebackend-box" type="checkbox"><span></span>
-                                            </label>
-                                        </div>
+                                  </div>
+                                  <div class="col-md-12" id="securebackend-div" style="display:none;">
+                                      <div class="panel panel-primary">
+                                      <div class="panel-body">
+                                      <div class="col-md-6">
+                                      <h5><strong>Use HTTPS to connect to origin:</strong></h5>
+                                      </div>
+                                        <div class="col-md-6 checkbox checkbox-slider--b checkbox-slider">
+                                          <label>
+                                            <input id="securebackend-box" type="checkbox"><span></span>
+                                          </label>
                                       </div>
                                     </div>
                                   </div>
-                                  </div>
+                                </div>
                                   <div class="col-md-12">
                                     <button id="record-create" class="btn btn-success btn-block">Add Record</button>
                                   </div>

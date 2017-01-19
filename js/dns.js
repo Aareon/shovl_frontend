@@ -38,6 +38,10 @@ $("#record-create").click(function(){
  });
 });
 
+$(document).ready(function () {
+  $("#record-type").trigger("change");
+})
+
 $("#record-type").change(function(){
   var type = this.value;
   HideDNSForms(type);
