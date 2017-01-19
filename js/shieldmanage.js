@@ -40,6 +40,8 @@ function getinfo(){
                 beforedata = result;
                 if (data.serviceid != "Premium"){
                   $('#stats-tab').hide();
+                }else{
+                  getstatssubs();
                 }
                 //Display subdomains in table
                 var allrecords = $('#dns-table').clone().html("");
