@@ -1,3 +1,5 @@
+pagealert("warning", "Shovl experienced data loss, please recreate your account if you had one, we will return your services.")
+
 $("#login").click(function(){
      var account = {email: $("#email_field").val(), password: $("#pass_field").val()};
 
