@@ -41,10 +41,10 @@
                   <div class="col-md-12">
                     <ul class="nav nav-tabs">
                       <li class="active"><a data-toggle="tab" href="#shields_div">Shields</a></li>
-                      <li><a data-toggle="tab" href="#attackss_div">Attacks</a></li>
+                      <li><a data-toggle="tab" href="#attacks_div">Attacks</a></li>
                     </ul>
                     <div class="tab-content">
-                      <div class="tab-pane fade">
+                      <div id="attacks_div" class="tab-pane fade">
                             <div class="panel panel-primary">
                               <div class="panel-heading">DDoS attack logs</div>
                               <div class="panel-body">
@@ -67,7 +67,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="tab-pane fade in active">
+                      <div id="shields_div" class="tab-pane fade in active">
                             <div class="panel panel-primary">
                               <div class="panel-heading">All shields</div>
                               <div class="panel-body">
