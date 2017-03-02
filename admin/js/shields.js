@@ -47,8 +47,8 @@ function getattacks(offset){
 							for (var i = 0; i < data.attack_logs.length; i++) {
 									tr = $('<tr/>');
 									tr.append("<td>" + data.attack_logs[i].domain +"</td>");
-									tr.append("<td>" + data.shields[i].averagerps + "r/s" + "</td>");
-									tr.append("<td>" + data.shields[i].peakrps + "r/s" + "</td>");
+									tr.append("<td>" + data.attack_logs[i].averagerps + "r/s" + "</td>");
+									tr.append("<td>" + data.attack_logs[i].peakrps + "r/s" + "</td>");
 									if (data.attack_logs[i].duration != 0){
 										tr.append("<td>" + forHumans(data.attack_logs[i].duration) + "</td>");
 									}else {
