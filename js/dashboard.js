@@ -35,7 +35,7 @@ function getcontainers(){
             success: function(result) {
 				var data = JSON.parse(result);
 				if (result != lastgetcontainers){
-					lastgetcontainer = result;
+					lastgetcontainers = result;
 					var p;
 					var allcontainers = $('#service_table').clone().html("");
 					for (var i = 0; i < data.length; i++) {

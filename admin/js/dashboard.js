@@ -29,7 +29,8 @@ function getmetrics(){
 	 });
 }
 
-function getattacks(offset){
+var lastgetcontainers
+function getattacks(){
 		   isloggedin();
             $.ajax({
             type: "GET",
@@ -40,7 +41,10 @@ function getattacks(offset){
             },
             success: function(result) {
 							var data = JSON.parse(result);
-							var tr;
+							if (result != lastgetcontainers){
+							lastgetcontainers = result;
+							var tr;							
+							var allcontainers = $('#attacks_table').clone().html("");
 							for (var i = 0; i < data.attack_logs.length; i++) {
 									tr = $('<tr/>');
 									tr.append("<td>" + data.attack_logs[i].domain +"</td>");
@@ -57,8 +61,10 @@ function getattacks(offset){
 									}else {
 										tr.append("<td>" + "<p class='text-danger'>Ongoing</p>" + "</td>");
 									}
-									$('#attacks_table').append(tr);
+									allcontainers = allcontainers.append(tr);
 							}
+							$('#attacks_table').replaceWith(allcontainers);
+						}
             }
     });
 }
