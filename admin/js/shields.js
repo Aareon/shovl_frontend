@@ -3,6 +3,7 @@ var attacks_offset = 0
 $(document).ready(function(){
 	isloggedin();
     getshields();
+    getattacks();
 });
 
 $("#attacksloadmore").click(function(){
