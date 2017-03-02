@@ -48,6 +48,26 @@
                         </div>
                     </div>
                     <div class="panel panel-primary">
+                      <div class="panel-heading">Active DDoS attacks</div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Domain</th>
+                                  <th>Average</th>
+                                  <th>Peak</th>
+                                  <th>Duration</th>
+                                  <th>Start Time</th>
+                                  <th>End Time</th>
+                              </tr>
+                          </thead>
+                          <tbody id="attacks_table"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                    <div class="panel panel-primary">
                       <div class="panel-heading">
                         <h3 class="panel-title">System Statistics</h3>
                       </div>

@@ -2,6 +2,7 @@ $(document).ready(function(){
 	setInterval(function(){
 		getstats();
 		getmetrics();
+		getattacks();
 	}, 1000);
 });
 
@@ -26,6 +27,40 @@ function getmetrics(){
 						 $("#disk").css("width", data.disk+"%");
 				 },
 	 });
+}
+
+function getattacks(offset){
+		   isloggedin();
+            $.ajax({
+            type: "GET",
+            url: "/api/admin/liveattacks",
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+							var data = JSON.parse(result);
+							var tr;
+							for (var i = 0; i < data.attack_logs.length; i++) {
+									tr = $('<tr/>');
+									tr.append("<td>" + data.attack_logs[i].domain +"</td>");
+									tr.append("<td>" + data.attack_logs[i].averagerps + "r/s" + "</td>");
+									tr.append("<td>" + data.attack_logs[i].peakrps + "r/s" + "</td>");
+									if (data.attack_logs[i].duration != 0){
+										tr.append("<td>" + forHumans(data.attack_logs[i].duration) + "</td>");
+									}else {
+										tr.append("<td>" + "<p class='text-danger'>Ongoing</p>" + "</td>");
+									}
+									tr.append("<td>" + convertTimestamp(data.attack_logs[i].start_stamp) + "</td>");
+									if (data.attack_logs[i].end_stamp != 0){
+										tr.append("<td>" + convertTimestamp(data.attack_logs[i].end_stamp) + "</td>");
+									}else {
+										tr.append("<td>" + "<p class='text-danger'>Ongoing</p>" + "</td>");
+									}
+									$('#attacks_table').append(tr);
+							}
+            }
+    });
 }
 
 function UpdateBackend(){
