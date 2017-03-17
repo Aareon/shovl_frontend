@@ -360,6 +360,33 @@
                         </div>
                       </div>
                     </div>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">Recent DDoS attack logs</div>
+                      <div class="panel-body">
+                        <div class="col-md-12">
+                          <div class="form-group col-md-9">
+                            <select class="form-control" id="attacks-subs">
+                              </select>
+                          </div>
+                            <div class="col-md-3">
+                              <button id="attacks-monitor" class="btn btn-success btn-block">Fetch</button>
+                            </div>
+                          <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Domain</th>
+                                  <th>Average</th>
+                                  <th>Peak</th>
+                                  <th>Duration</th>
+                                  <th>Start Time</th>
+                                  <th>End Time</th>
+                              </tr>
+                          </thead>
+                          <tbody id="attacks_table"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
                 </div>
 
                     </div>
@@ -370,7 +397,7 @@
           </div> <!-- sidenav-offset-inner -->
         </div> <!-- sidenav-offset -->
       <!-- Start of JS imports -->
-  <script src="js/global.js"></script>-->
+  <script src="js/global.js"></script>
   <script src="js/dns.js"></script>
   <script src="js/shieldmanage.js"></script>
       <!-- End of JS imports -->

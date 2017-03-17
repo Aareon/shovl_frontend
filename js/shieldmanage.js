@@ -22,6 +22,59 @@ $("#dns-create").click(function(){
      $("#new-record-div").toggle();
 });
 
+function forHumans ( seconds ) {
+    var levels = [
+        [Math.floor(seconds / 31536000), 'years'],
+        [Math.floor((seconds % 31536000) / 86400), 'days'],
+        [Math.floor(((seconds % 31536000) % 86400) / 3600), 'hours'],
+        [Math.floor((((seconds % 31536000) % 86400) % 3600) / 60), 'minutes'],
+        [(((seconds % 31536000) % 86400) % 3600) % 60, 'seconds'],
+    ];
+    var returntext = '';
+
+    for (var i = 0, max = levels.length; i < max; i++) {
+        if ( levels[i][0] === 0 ) continue;
+        returntext += ' ' + levels[i][0] + ' ' + (levels[i][0] === 1 ? levels[i][1].substr(0, levels[i][1].length-1): levels[i][1]);
+    };
+    return returntext.trim();
+}
+
+$("#attacks-monitor").click(function(){
+ getattacks($("#livestats-subs").val());
+});
+
+function getattacks(sub){
+		   isloggedin();
+            $.ajax({
+            type: "POST",
+            url: "/api/admin/attacks",
+            data: JSON.stringify(req),
+            var hostname = {hostname: $_GET("id"), sub : sub};
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+							var data = JSON.parse(result);
+							var tr;
+							for (var i = 0; i < data.attack_logs.length; i++) {
+									tr = $('<tr/>');
+									tr.append("<td>" + data.attack_logs[i].domain +"</td>");
+									tr.append("<td>" + data.attack_logs[i].averagerps + "r/s" + "</td>");
+									tr.append("<td>" + data.attack_logs[i].peakrps + "r/s" + "</td>");
+									if (data.attack_logs[i].duration != 0){
+										tr.append("<td>" + forHumans(data.attack_logs[i].duration) + "</td>");
+									}
+									tr.append("<td>" + convertTimestamp(data.attack_logs[i].start_stamp) + "</td>");
+									if (data.attack_logs[i].end_stamp != 0){
+										tr.append("<td>" + convertTimestamp(data.attack_logs[i].end_stamp) + "</td>");
+									}
+									$('#attacks_table').append(tr);
+							}
+            }
+    });
+}
+
 var beforedata;
 function getinfo(){
     var hostname = {hostname: $_GET("id")};
@@ -464,6 +517,7 @@ function getstatssubs(){
                 }
               }
               $('#livestats-subs').replaceWith(monitorsubs)
+              $('#attacks-subs').replaceWith(monitorsubs)
             },
    });
  }
