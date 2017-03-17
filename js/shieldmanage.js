@@ -53,6 +53,7 @@ function getattacks(sub){
             success: function(result) {
 							var data = JSON.parse(result);
 							var tr;
+              var allcontainers = $('#attacks_table').clone().html("");
 							for (var i = 0; i < data.attack_logs.length; i++) {
 									tr = $('<tr/>');
 									tr.append("<td>" + data.attack_logs[i].domain +"</td>");
@@ -65,8 +66,9 @@ function getattacks(sub){
 									if (data.attack_logs[i].end_stamp != 0){
 										tr.append("<td>" + convertTimestamp(data.attack_logs[i].end_stamp) + "</td>");
 									}
-									$('#attacks_table').replaceWith(tr);
+                  allcontainers = allcontainers.append(tr);
 							}
+              $('#attacks_table').replaceWith(allcontainers);
             }
     });
 }
