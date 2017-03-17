@@ -45,11 +45,11 @@ $("#attacks-monitor").click(function(){
 
 function getattacks(sub){
 		   isloggedin();
+       var req = {hostname: $_GET("id"), sub : sub};
             $.ajax({
             type: "POST",
             url: "/api/admin/attacks",
             data: JSON.stringify(req),
-            var hostname = {hostname: $_GET("id"), sub : sub};
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
