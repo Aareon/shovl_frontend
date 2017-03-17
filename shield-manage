@@ -364,13 +364,6 @@
                       <div class="panel-heading">Recent DDoS attack logs</div>
                       <div class="panel-body">
                         <div class="col-md-12">
-                          <div class="form-group col-md-9">
-                            <select class="form-control" id="attacks-subs">
-                              </select>
-                          </div>
-                            <div class="col-md-3">
-                              <button id="attacks-monitor" class="btn btn-success btn-block">Fetch</button>
-                            </div>
                           <table class="table">
                           <thead>
                               <tr>

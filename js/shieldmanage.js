@@ -39,10 +39,6 @@ function forHumans ( seconds ) {
     return returntext.trim();
 }
 
-$("#attacks-monitor").click(function(){
- getattacks($("#livestats-subs").val());
-});
-
 function getattacks(sub){
 		   isloggedin();
        var req = {hostname: $_GET("id"), sub : sub};
@@ -517,13 +513,6 @@ function getstatssubs(){
                 }
               }
               $('#livestats-subs').replaceWith(monitorsubs)
-              monitorsubs = $('#attack-subs').clone().html("");
-              if (data.subs != null) {
-                for (var i = 0; i < data.subs.length; i++) {
-                    monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
-                }
-              }
-              $('#attacks-subs').replaceWith(monitorsubs)
             },
    });
  }
@@ -638,4 +627,5 @@ var livestatsIntervalId;
     livestatsIntervalId = setInterval(function(){
       getstats($_GET("id"), viewingsub);
     }, 1000);
+    getattacks($("#livestats-subs").val());
  });
