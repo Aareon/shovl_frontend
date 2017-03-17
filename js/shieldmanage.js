@@ -48,7 +48,7 @@ function getattacks(sub){
        var req = {hostname: $_GET("id"), sub : sub};
             $.ajax({
             type: "POST",
-            url: "/api/admin/attacks",
+            url: "/api/shield/attacks",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
@@ -69,7 +69,7 @@ function getattacks(sub){
 									if (data.attack_logs[i].end_stamp != 0){
 										tr.append("<td>" + convertTimestamp(data.attack_logs[i].end_stamp) + "</td>");
 									}
-									$('#attacks_table').append(tr);
+									$('#attacks_table').replaceWith(tr);
 							}
             }
     });
@@ -517,6 +517,12 @@ function getstatssubs(){
                 }
               }
               $('#livestats-subs').replaceWith(monitorsubs)
+              monitorsubs = $('#attack-subs').clone().html("");
+              if (data.subs != null) {
+                for (var i = 0; i < data.subs.length; i++) {
+                    monitorsubs = monitorsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
+                }
+              }
               $('#attacks-subs').replaceWith(monitorsubs)
             },
    });
