@@ -132,6 +132,9 @@ function getinfo(){
                 if (data.hstsenabled){
         					$('#hsts-box').attr('checked', true);
         				}
+                if (data.challengehidden){
+                  $('#hidechallenge-box').attr('checked', true);
+                }
                 if (data.imghotlink){
                   $('#imghotlink-box').attr('checked', true);
                 }
