@@ -419,6 +419,44 @@ $('#imghotlink-box').click(function() {
    });
 });
 
+$('#hidechallenge-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/hidechallenge",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#imghotlink-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/imghotlink",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
 $('#hsts-box').click(function() {
 	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
