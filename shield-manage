@@ -267,6 +267,22 @@
 
                       <div class="panel panel-primary">
                       <div class="panel-heading">
+                        <h3 class="panel-title">Image Hotlinking</h3>
+                      </div>
+                        <div class="panel-body">
+                          <div class="col-md-10">
+                            <p>Disable Anti-Bot page for images and gifs, this makes posting links to images on websites/apps possible.</p>
+                          </div>
+                          <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                            <label>
+                              <input id="imghotlink-box" type="checkbox"><span></span>
+                            </label>
+                          </div>
+                      </div>
+                    </div>
+
+                      <div class="panel panel-primary">
+                      <div class="panel-heading">
                         <h3 class="panel-title">Web Application Firewall</h3>
                       </div>
                         <div class="panel-body">
@@ -299,22 +315,6 @@
                         </div>
                     </div>
                   </div>
-
-                  <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Image Hotlinking</h3>
-                  </div>
-                    <div class="panel-body">
-                      <div class="col-md-10">
-                        <p>Disable Anti-Bot page for images and gifs, this makes posting links to images on websites/apps possible.</p>
-                      </div>
-                      <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
-                        <label>
-                          <input id="imghotlink-box" type="checkbox"><span></span>
-                        </label>
-                      </div>
-                  </div>
-                </div>
 
                   <div class="panel panel-primary">
                   <div class="panel-heading">
