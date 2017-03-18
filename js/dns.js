@@ -17,9 +17,9 @@ if (name == "@"){
   }else if (type == "AAAA"){
       req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_aaaa: $("#record-aaaa").val()};
   }else if (type == "TXT"){
-      req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_txt: $("#record-txt").val()};
+      req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_txt: '"'+$("#record-txt").val()+'"'};
   }else if (type == "SPF"){
-      req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_spf: $("#record-spf").val()};
+      req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_spf: '"'+$("#record-spf").val()+'"'};
   }else if (type == "CNAME"){
       req = {securebackend: $("#securebackend-box").prop(('checked')), hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
   }else if (type == "SRV"){
