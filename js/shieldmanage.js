@@ -110,16 +110,16 @@ function getinfo(){
                           tr.append("<td>" + `<i class='fa fa-ban text-muted' data-toggle="tooltip" title= "Unsupported by Shield" style='font-size: 2em;'></i>` +"</td>");
                       }
                       tr.append("<td><strong>" + data.records[i].type +"</strong></td>");
-                      tr.append("<td>" + data.records[i].name +"</td>");
+                      tr.append("<td style='word-wrap: break-word;'>" + data.records[i].name +"</td>");
                       //Display value
                       if (data.records[i].type == "MX"){
-                       tr.append("<td style='word-wrap: break-word;max-width: 150px'>" + "<span class='text-muted'>mail handled by </span>" + data.records[i].content +"</td>");
+                       tr.append("<td style='word-wrap: break-word;max-width: 300px'>" + "<span class='text-muted'>mail handled by </span>" + data.records[i].content +"</td>");
                       }else if (data.records[i].type == "CNAME"){
-                        tr.append("<td style='word-wrap: break-word;max-width: 150px'>" + "<span class='text-muted'>is an alias of </span>" + data.records[i].content +"</td>");
+                        tr.append("<td style='word-wrap: break-word;max-width: 300px'>" + "<span class='text-muted'>is an alias of </span>" + data.records[i].content +"</td>");
                       }else if (data.records[i].type == "A" || data.records[i].type == "AAAA"){
-                       tr.append("<td style='word-wrap: break-word;max-width: 150px'>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
+                       tr.append("<td style='word-wrap: break-word;max-width: 300px'>" + "<span class='text-muted'>points to </span>" + data.records[i].content +"</td>");
                       }else{
-                        tr.append("<td style='word-wrap: break-word;max-width: 150px'>" + data.records[i].content +"</td>");
+                        tr.append("<td style='word-wrap: break-word;max-width: 300px'>" + data.records[i].content +"</td>");
                       }
                       tr.append(`<td><button class='btn btn-danger' type='button' onclick='DeleteRecord("`+data.records[i].id+`")'>Delete</button></td>`);
                       allrecords = allrecords.append(tr);
