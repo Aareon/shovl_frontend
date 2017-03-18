@@ -400,7 +400,7 @@ $('#forcehttps-box').click(function() {
    });
 });
 
-$('#hsts-box').click(function() {
+$('#imghotlink-box').click(function() {
 	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
         $.ajax({
            type:"POST",
