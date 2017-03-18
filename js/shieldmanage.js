@@ -20,6 +20,9 @@ $(document).ready(function(){
 
 $("#dns-create").click(function(){
      $("#new-record-div").toggle();
+     if ($("#new-record-div").is(":visible")) {
+		 window.scrollTo(0,document.body.scrollHeight);
+	}
 });
 
 function forHumans ( seconds ) {

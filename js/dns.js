@@ -36,6 +36,7 @@ if (name == "@"){
      success: function(result) {
        $("#new-record-div").hide();
        pagealert("success", result);
+       document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
      error: function(result) {
        pagealert("error", result.responseText);
