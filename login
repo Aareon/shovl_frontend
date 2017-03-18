@@ -13,6 +13,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <link rel="stylesheet" href="css/layouts/loginbox.css">
         <link rel="stylesheet" href="css/layouts/global.css">
+            <!-- favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
     </head>
     <body>
 			<!-- Start of login form -->
