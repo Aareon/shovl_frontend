@@ -5,9 +5,14 @@ $("#record-create").click(function(){
   if ($("#record-name").val() != "") {
     name = $("#record-name").val();
   }
-  if(name.includes($_GET("id")) == false){
-	name = name+ "."+$_GET("id")
+  if(name.includes($_GET("id")) == false){	  
+	name = name+"."+$_GET("id")
 }
+	  if (name == "@"){
+		  name = $_GET("id");
+	  }else if (name == ""){
+		  name = $_GET("id");
+	  }
   if (type == "MX"){
       req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_mx_server: $("#record-mx-server").val(), record_mx_priority:  parseInt($("#record-mx-priority").val())};
   }else if (type == "A"){
