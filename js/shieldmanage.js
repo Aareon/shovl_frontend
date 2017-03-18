@@ -132,6 +132,9 @@ function getinfo(){
                 if (data.hstsenabled){
         					$('#hsts-box').attr('checked', true);
         				}
+                if (data.imghotlink){
+                  $('#imghotlink-box').attr('checked', true);
+                }
                 if (data.gzipenabled){
         					$('#gzip-box').attr('checked', true);
         				}
@@ -383,6 +386,25 @@ $('#forcehttps-box').click(function() {
         $.ajax({
            type:"POST",
            url: "/api/shield/settings/https",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#hsts-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/imghotlink",
            data: JSON.stringify(req),
            beforeSend: function (request)
            {
