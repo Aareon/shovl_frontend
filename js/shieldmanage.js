@@ -105,7 +105,7 @@ function getinfo(){
                       //Display status
                       if (data.records[i].type == "A" || data.records[i].type == "CNAME"){
                         if (data.records[i].protected){
-                          var statusappend = "<td>" + `<i class='fa fa-shield text-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 2em;'></i>`;
+                          var statusappend = "<td>" + `<i class='fa fa-shield text-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 2em;'></i>&nbsp&nbsp`;
                           if (data.records[i].securebackend){
                             statusappend += `<i class="fa fa-lock text-success" data-toggle="tooltip" title="Secure connection to Origin" style="font-size: 2em;"></i>` +"</td>";
                           }else {
