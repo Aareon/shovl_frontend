@@ -104,10 +104,18 @@ function getinfo(){
                       tr = $('<tr>');
                       //Display status
                       if (data.records[i].type == "A" || data.records[i].type == "CNAME"){
+                        <td><i class="fa fa-lock text-success" data-toggle="tooltip" title="Secure connection to Origin" style="font-size: 2em;"></i></td>
+                        <td><i class="fa fa-lock text-success" data-toggle="tooltip" title="Secure connection to Origin" style="font-size: 2em;"></i></td>
                         if (data.records[i].protected){
-                          tr.append("<td>" + `<i class='fa fa-shield text-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 2em;'></i>` +"</td>");
+                          var statusappend = "<td>" + `<i class='fa fa-shield text-success' data-toggle="tooltip" title= "Protected by Shield" style='font-size: 2em;'></i>`);
+                          if (data.records[i].securebackend){
+                            statusappend += `<i class="fa fa-lock text-success" data-toggle="tooltip" title="Secure connection to Origin" style="font-size: 2em;"></i>` +"</td>";
+                          }else {
+                            statusappend += `<i class="fa fa-lock text-muted" data-toggle="tooltip" title="Insecure connection to Origin" style="font-size: 2em;"></i>` +"</td>";
+                          }
+                          tr.append(statusappend);
                         }else {
-                          tr.append("<td>" + `<i class='fa fa-shield text-muted' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 2em;'></i>` +"</td>");
+                          tr.append("<td>" + `<i class='fa fa-shield text-muted' data-toggle="tooltip" title= "Not protected by Shield" style='font-size: 2em;'></i>`);
                         }
                       }else {
                           tr.append("<td>" + `<i class='fa fa-ban text-muted' data-toggle="tooltip" title= "Unsupported by Shield" style='font-size: 2em;'></i>` +"</td>");
