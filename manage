@@ -145,11 +145,11 @@
                     <div id="package_div" class="tab-pane fade">
 					  <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title">Upgrade to another Package</h3>
+                <h3 class="panel-title">Change to another Package</h3>
               </div>
               <div class="panel-body">
   						      <div id="packages_list" class="deploy_block" style="margin-top:10px;"></div>
-  						      <center><button id="package_upgrade" class="btn btn-block btn-primary">Upgrade</button></center>
+  						      <center><button id="package_upgrade" class="btn btn-block btn-primary">Change Plan</button></center>
   						</div>
 					  </div>
 

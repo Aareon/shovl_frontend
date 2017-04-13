@@ -22,6 +22,10 @@ if (name == "@"){
       req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_spf: '"'+$("#record-spf").val()+'"'};
   }else if (type == "CNAME"){
       req = {securebackend: $("#securebackend-box").prop(('checked')), hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
+  }else if (type == "ALIAS"){
+      req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
+  }else if (type == "NS"){
+      req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_cname: $("#record-cname").val()};
   }else if (type == "SRV"){
       req = {hostname: $_GET("id"), name: name, protected: $("#shield-box").prop(('checked')), type: type, record_srv_target: $("#record-srv-target").val(), record_srv_service: $("#record-srv-service").val(), record_srv_protocol: $("#record-srv-protocol").val(), record_srv_port:  parseInt($("#record-srv-port").val()), record_srv_weight: parseInt($("#record-srv-weight").val()), record_srv_priority: parseInt($("#record-srv-priority").val())};
   }
@@ -65,6 +69,10 @@ $("#record-type").change(function(){
   }else if (type == "CNAME"){
       $("#val-cname").fadeIn(800);
       $("#securebackend-div").fadeIn(800);
+  }else if (type == "ALIAS"){
+      $("#val-cname").fadeIn(800);
+  }else if (type == "NS"){
+      $("#val-cname").fadeIn(800);
   }else if (type == "SRV"){
       $("#val-srv").fadeIn(800);
   }

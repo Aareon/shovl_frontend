@@ -171,6 +171,16 @@ function getinfo(){
 }
 
 function DeleteRecord(id){
+     swal({
+    title: "WARNING! Are you sure you want to delete this record?",
+    text: "You will not be able to recover this data",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: true
+  },
+  function(){
   var req = {hostname: $_GET("id"), id: id};
   if (name == currentedit){
   $("#manage-dns").hide();
@@ -190,6 +200,7 @@ function DeleteRecord(id){
        pagealert("error", result.responseText);
     },
  });
+  });
 }
 
 $("#delete-shield").click(function(){
@@ -509,11 +520,11 @@ $('#gzip-box').click(function() {
 
 $("#service_upgrade").click(function(){
     swal({
-    title: "Are you sure you want to upgrade your shield?",
+    title: "Are you sure you want to change your shield plan?",
     text: "You will be charged from your balance",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Yes, Upgrade it!",
+    confirmButtonText: "Yes, Change it!",
     closeOnConfirm: true
   },
   function(){
