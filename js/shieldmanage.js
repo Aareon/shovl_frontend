@@ -399,7 +399,7 @@ $('#waf-box').click(function() {
 			   pagealert("success", result)
 			},
 		   error: function(result) {
-			   $(this).prop('checked', false);
+			  $('#waf-box').prop('checked', false);
 			   pagealert("error", result.responseText)
 			},
    });
@@ -457,7 +457,7 @@ $('#hidechallenge-box').click(function() {
 			   pagealert("success", result)
 			},
 		   error: function(result) {
-			   $(this).prop('checked', false);
+			   $('#hidechallenge-box').prop('checked', false);
 			   pagealert("error", result.responseText)
 			},
    });
