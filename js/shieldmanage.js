@@ -94,7 +94,21 @@ function getinfo(){
                 beforedata = result;
                 if (data.serviceid != "Premium"){
                   $('#stats-tab').hide();
+                  //Disable WAF and Invisible challenge
+                  //data-toggle="tooltip" title= "Not protected by Shield"
+                  $('#imghotlink-box').attr("disabled", true);
+                  $('#imghotlink-box').attr("data-toggle", "tooltip");
+                  $('#imghotlink-box').attr("title", "Upgrade ot Premium to use this feature");
+                  $('#hidechallenge-box').attr("disabled", true);
+                  $('#hidechallenge-box').attr("data-toggle", "tooltip");
+                  $('#hidechallenge-box').attr("title", "Upgrade ot Premium to use this feature");
                 }else{
+				  $('#imghotlink-box').removeAttr("disabled");
+				  $('#imghotlink-box').removeAttr("data-toggle");
+				  $('#imghotlink-box').removeAttr("title");
+                  $('#hidechallenge-box').removeAttr("disabled");
+                  $('#hidechallenge-box').removeAttr("data-toggle");
+                  $('#hidechallenge-box').removeAttr("title");
                   getstatssubs();
                 }
                 //Display subdomains in table
