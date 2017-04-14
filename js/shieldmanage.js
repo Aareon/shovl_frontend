@@ -399,7 +399,7 @@ $('#waf-box').click(function() {
 			   pagealert("success", result)
 			},
 		   error: function(result) {
-			   $(this).attr('checked', false);
+			   $(this).prop('checked', false);
 			   pagealert("error", result.responseText)
 			},
    });
@@ -438,7 +438,6 @@ $('#imghotlink-box').click(function() {
 			   pagealert("success", result)
 			},
 		   error: function(result) {
-			   $(this).attr('checked', false);
 			   pagealert("error", result.responseText)
 			},
    });
@@ -458,6 +457,7 @@ $('#hidechallenge-box').click(function() {
 			   pagealert("success", result)
 			},
 		   error: function(result) {
+			   $(this).prop('checked', false);
 			   pagealert("error", result.responseText)
 			},
    });
