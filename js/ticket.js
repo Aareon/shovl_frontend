@@ -42,7 +42,7 @@ function getticket(){
 					$("#close").hide();
 				}
 				p = $('<div class="col-md-12">');
-				p.append('<div class="panel panel-primary">'+'<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+'</div>'+'<div class="panel-body" style="word-wrap:break-word">'+htmlEntities(data.message)+"<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
+				p.append('<div class="panel panel-primary">'+'<div class="panel-heading"><i class="fa fa-user"></i> '+data.creator+'</div>'+'<div class="panel-body" style="word-wrap:break-word">'+htmlEntities(data.message).replace(/\n/g, '<br />')+"<br>Sent: "+convertTimestamp(data.create_stamp)+"</div>");
 				$('#message_box').html(p);
             },
             error: function(result) {
@@ -69,7 +69,7 @@ function getreplies(){
 				if (data != null){
 					for (var i = 0; i < data.length; i++) {
 						p = $('<div class="col-md-12">');
-						p.append('<div class="panel panel-primary">'+'<div class="panel-heading"><i class="fa fa-user"></i> '+data[i].creator+'</div>'+'<div class="panel-body">'+htmlEntities(data[i].message)+"<br>Sent: "+convertTimestamp(data[i].create_stamp)+"</div>");
+						p.append('<div class="panel panel-primary">'+'<div class="panel-heading"><i class="fa fa-user"></i> '+data[i].creator+'</div>'+'<div class="panel-body">'+htmlEntities(data[i].message).replace(/\n/g, '<br />')+"<br>Sent: "+convertTimestamp(data[i].create_stamp)+"</div>");
 						allreplies = allreplies.append(p)
 					}
 				}

@@ -600,6 +600,14 @@ function getstatssubs(){
                 }
               }
               $('#livestats-subs').replaceWith(monitorsubs)
+
+              var sslsubs = $('#ssl-subs').clone().html("");
+              if (data.subs != null) {
+                for (var i = 0; i < data.subs.length; i++) {
+                    sslsubs = sslsubs.append(`<option value="`+data.subs[i].name+`">`+data.subs[i].domains[0]+`</option>`);
+                }
+              }
+              $('#ssl-subs').replaceWith(sslsubs)
             },
    });
  }
@@ -701,6 +709,26 @@ var livestatsIntervalId;
            },
      });
  }
+
+$("#ssl-submit").click(function(){
+   var req = {hostname: $_GET("id"), keychain: {name: $("#ssl-subs").val(), fullchain: $("#fullchain-textArea"),privkey:$("#privkey-textArea")}};
+  isloggedin();
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/customssl",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+               pagealert("success", result);
+           },
+           error: function(result) {
+              pagealert("error", result.responseText);
+          }
+   });
+});
 
  $("#livestats-monitor").click(function(){
     clearInterval(livestatsIntervalId);
