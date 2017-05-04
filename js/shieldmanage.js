@@ -711,7 +711,7 @@ var livestatsIntervalId;
  }
 
 $("#ssl-submit").click(function(){
-   var req = {hostname: $_GET("id"), keychain: {name: $("#ssl-subs").val(), fullchain: $("#fullchain-textArea"),privkey:$("#privkey-textArea")}};
+   var req = {hostname: $_GET("id"), keychain: {name: $("#ssl-subs").val(), fullchain: $("#fullchain-textArea").val(), privkey:$("#privkey-textArea").val()}};
   isloggedin();
         $.ajax({
            type:"POST",
