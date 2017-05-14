@@ -700,6 +700,7 @@ function getinfo(){
   						$("#force-https").hide();
               $("#change-domain").hide();
               $("#firewall").hide();
+              $("#privkey-div").show();
   				}
 
   				SetManageStatus(data.status);
