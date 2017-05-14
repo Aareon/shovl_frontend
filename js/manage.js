@@ -1086,3 +1086,23 @@ function getpackageid(){
    });
    return localpackageid
  }
+
+ $("#privkey-submit").click(function(){
+    var req = {containerid: $_GET("id"), privkey:$("#privkey-textArea").val()};
+   isloggedin();
+         $.ajax({
+            type:"POST",
+            url: "/api/containers/torcustomkey",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+                pagealert("success", result);
+            },
+            error: function(result) {
+               pagealert("error", result.responseText);
+           }
+    });
+ });
