@@ -76,6 +76,7 @@ form {
 
 table th, table td {
     text-align: center;
+    word-wrap: break-word;
   }
 
 
