@@ -71,7 +71,7 @@ form {
 
 table th, table td {
     text-align: center;
-    word-wrap: break-word;
+    word-break: break-all;
   }
 
 .package_icon {
