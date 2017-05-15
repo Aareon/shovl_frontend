@@ -40,12 +40,9 @@
 					      <div class="col-md-12">
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
-                  <div id="newwebsite_div" class="col-md-4 col-md-offset-8">
-                  		<button id="newwebsite" class="btn btn-primary btn-block pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Service</button>
-                  </div>
                   <div class="col-md-12">
                   	<div class="panel panel-primary">
-                  	<div class="panel-heading">Manage your websites</div>
+                    <div class="panel-heading"><button id="newwebsite" data-toggle="tooltip" title= "Create Service" class="btn btn-default pull-right"><i class="fa fa-plus" aria-hidden="true"></i> </button><h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 75%;padding-top: 8px;">Manage your websites</h5></div>
                   		<table class="table">
                   		<thead>
                   			<tr>
