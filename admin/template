@@ -24,6 +24,7 @@
             <ul class="sidenav-menu">
             <li><a href="dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
             <li><a href="websites"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
+            <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
             <li><a href="shields"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
             <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
 			  <li><a href="mail"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Mail</a></li>

@@ -46,7 +46,6 @@
                     <ul class="nav nav-tabs">
                       <li class="active"><a data-toggle="tab" href="#history_div">Transactions</a></li>
                       <li><a data-toggle="tab" href="#funds_div">Add Funds</a></li>
-                      <li id="admin_tab" style="display: none;"><a data-toggle="tab"  href="#admin_div">Admin</a></li>
                     </ul>
                     <!-- End of navbar -->
 
@@ -98,49 +97,6 @@
 							</div>
 						  </div>
 
-                      <div id="admin_div" class="tab-pane fade">
-                        <div class="col-md-12">
-                          <h3>Make a Giftcode</h3>
-                        <form>
-                        <div class="form-group">
-
-                            <div class="col-md-6">
-                            <input id="giftcode_admin" class="form-control input-md" type="text" placeholder="Gift Code" maxlength="32">
-                            </div>
-
-                            <div class="col-md-3">
-                            <input id="amount_admin" class="form-control input-md" type="number" placeholder="Amount" step="0.01">
-                            </div>
-
-                            <div class="col-md-3">
-                              <button id="randomcode" class="btn btn-primary btn-block" type="button">Random Code</button>
-                            </div>
-                        </form>
-                      </div>
-
-                        <div class="col-md-12" style="margin-top:10px; margin-bottom:10px;">
-                          <button id="creategiftcode" class="btn btn-primary btn-block">Create Giftcode</button>
-                        </div>
-
-                        <div id="admin_table_div" class="col-md-12">
-                          <div class="panel panel-primary">
-                        	<div class="panel-heading">Giftcode Information</div>
-                            <table class="table">
-                            <thead>
-                              <tr>
-                                <th>Code</th>
-                                <th>Amount</th>
-                                <th>Used by</th>
-                                <th>Status</th>
-                              </tr>
-                            </thead>
-                            <tbody id="giftcode_body"></tbody>
-                            </table>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- End of web contents -->
-              </div>
             </div>
           </div>
       <!-- End of container -->

@@ -1,49 +1,28 @@
 var history_offset = 0
 $(document).ready(function(){
-	isloggedin();
+		isloggedin();
     gethistory(history_offset);
-    balance();
+		getgiftcodes();
 });
 
 $("#randomcode").click(function(){
     $("#giftcode_admin").val(randomString(32));
 })
 
-$("#paypal-deposit").click(function(){
-	var req = {"amount": parseFloat($("#paypal-amount").val())}
+$("#creategiftcode").click(function(){
+	var giftcode = {"code": $("#giftcode_admin").val(), "amount": parseFloat($("#amount_admin").val())}
 	        $.ajax({
             type:"POST",
-            url: "/api/paypal/deposit",
-            data: JSON.stringify(req),
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            success: function(result) {
-				$("#paypal-amount").attr('disabled', 'disabled');
-				$("#paypal-div").html(result);
-				},
-			 error: function(result) {
-				pagealert("error", result.responseText);
-			}
-    });
-})
-
-$("#addfunds").click(function(){
-	var giftcode = {"code": $("#giftcode").val()}
-	        $.ajax({
-            type:"POST",
-            url: "/api/account/billing/giftcode",
+            url: "/api/account/billing/giftcode/admin",
             data: JSON.stringify(giftcode),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#history_body").html("");
-				gethistory();
-				balance();
-				pagealert("success", "Your account has been credited");
+				$("#giftcode_body").html("");
+				getgiftcodes();
+				pagelert("success", "Gift code created");
 				},
 			 error: function(result) {
 				pagealert("error", result.responseText);
@@ -56,7 +35,7 @@ function gethistory(offset){
 	 var req = {offset: offset};
          $.ajax({
             type:"POST",
-            url: "/api/account/billing/history",
+            url: "/api/admin/billing/history/admin",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
@@ -68,6 +47,7 @@ function gethistory(offset){
 				for (var i = 0; i < data.bills.length; i++) {
 						p = $('<tr>');
 						p.append('<td>'+data.bills[i].id+'</td>');
+						p.append('<td>'+userlink(data.bills[i].email)+data.bills[i].email+"</a>"+'</td>');
 						p.append("<td>"+htmlEntities(data.bills[i].description)+"</td>");
 						p.append("<td>"+convertTimestamp(data.bills[i].timestamp)+"</td>");
 						p.append("<td>"+credit_text(data.bills[i].amount)+"</td>");
@@ -90,17 +70,26 @@ $("#loadmore").click(function(){
 	}
 });
 
-function balance() {
-	isloggedin();
-    $.ajax({
+function getgiftcodes(){
+            $.ajax({
             type:"GET",
-            url: "/api/account/billing/balance",
+            url: "/api/account/billing/giftcode/admin",
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-			    $("#balance").html(credit_text(parseFloat(result)));
+				var data = JSON.parse(result);
+				var tr;
+				for (var i = 0; i < data.length; i++) {
+					tr = $('<tr/>');
+					tr.append("<td>" + data[i].code + "</td>");
+					tr.append("<td>" + data[i].amount+ "</a>" + "</td>");
+					tr.append("<td>" + data[i].usedby+"</a>" + "</td>");
+					tr.append("<td>" + status(data[i].status) + "</td>");
+					$('#giftcode_body').append(tr);
+				}
+
             }
     });
 }
