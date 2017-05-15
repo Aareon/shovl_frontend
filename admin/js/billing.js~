@@ -35,7 +35,7 @@ function gethistory(offset){
 	 var req = {offset: offset};
          $.ajax({
             type:"POST",
-            url: "/api/account/billing/history/admin",
+            url: "/api/admin/billing/history/admin",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
