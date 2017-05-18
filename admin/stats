@@ -53,6 +53,7 @@
                           <tr><td id="totalincome"></td></tr>
                           <tr><td id="totalcontainers"></td></tr>
                           <tr><td id="totalshields"></td></tr>
+                          <tr><td id="totalattacks"></td></tr>
                           <tr><td id="totalusers"></td></tr>
                         </tbody>
                       </table>

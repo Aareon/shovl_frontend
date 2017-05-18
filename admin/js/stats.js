@@ -22,6 +22,7 @@ function getinfo(){
 					$("#totalcontainers").html("<strong><i class='fa fa-globe'></i> Containers: </strong>"+data.totalcontainers);
 					$("#totalshields").html("<strong><i class='fa fa-shield'></i> Shields: </strong>"+data.totalshields);
 					$("#totalusers").html("<strong><i class='fa fa-user'></i> Users: </strong>"+data.totalusers);
+					$("#totalattacks").html("<strong><i class='fa fa-area-chart'></i> Attacks: </strong>"+data.totalattacks);
 				}
             },
     });
