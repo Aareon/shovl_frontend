@@ -26,6 +26,7 @@
               <li><a href="websites"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Websites</a></li>
               <li><a href="billing"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp;Billing</a></li>
               <li><a href="shields"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;Shields</a></li>
+              <li><a href="stats"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;&nbsp;Stats</a></li>
               <li><a href="support"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Support</a></li>
 			  <li><a href="mail"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Mail</a></li>
               <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Users</a><li>
