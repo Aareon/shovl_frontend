@@ -557,15 +557,14 @@ function FM_SetDir(dir){
 }
 
 function PreviousDir(dir){
-	var resultdir = "";
-	var args = dir.split("/");
-	for (i = 1; i < args.length; i++){
-		 "/" + args[i] + "/"
-	}
-	if (args.length == 1){
-		resultdir = "/";
+	var splitPath = dir.split("/");
+	var endPaths = [splitPath[0] + "/"];
+	if(splitPath.length >= 2){
+		for(var i = 1; i <= splitPath.length-1; i++){
+			endPaths.push(endPaths[i-1] + splitPath[i] + "/")
+		}
 	}	
-	return resultdir
+	return endPaths[endPaths.length-1]
 }
 
 function FM_DisplayCurrentDir(dir){
