@@ -550,7 +550,7 @@ function FM_SetDir(dir){
 		if(dir.startsWith("/")){
 			currentdir = dir
 		}else {
-			currentdir += dir + "/";
+			currentdir += dir;
 		}
   }
   FM_DisplayCurrentDir(currentdir);
@@ -564,7 +564,7 @@ function PreviousDir(dir){
 			endPaths.push(endPaths[i-1] + splitPath[i] + "/")
 		}
 	}	
-	return endPaths[endPaths.length-1]
+	return endPaths[endPaths.length-2]
 }
 
 function FM_DisplayCurrentDir(dir){
