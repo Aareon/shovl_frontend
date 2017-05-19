@@ -547,7 +547,6 @@ function FM_SetDir(dir){
   if (dir == "/"){
 	  currentdir = dir
   }else{
-		previousdir = currentdir;
 		if(dir.startsWith("/")){
 			currentdir = dir
 		}else {
@@ -557,11 +556,23 @@ function FM_SetDir(dir){
   FM_DisplayCurrentDir(currentdir);
 }
 
+function PreviousDir(dir){
+	var resultdir = "";
+	var args = dir.split("/");
+	for (i = 1; i < args.length; i++){
+		 "/" + args[i] + "/"
+	}
+	if (args.length == 1){
+		resultdir = "/";
+	}	
+	return resultdir
+}
+
 function FM_DisplayCurrentDir(dir){
   $('#filemanage_table').html("")
   if(dir != "/"){
     p = $('<tr>');
-    p.append(`<td></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_SetDir("`+previousdir+`");'> `+previousdir+` </a></td>`);
+    p.append(`<td></td><td class="move-left"><i class="fa fa-folder"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick='FM_SetDir("`+PreviousDir(dir)+`");'> `+PreviousDir(dir)+` </a></td>`);
     $('#filemanage_table').append(p);
   }
   p = $('<tr>');
