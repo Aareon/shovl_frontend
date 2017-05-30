@@ -159,6 +159,9 @@ function getinfo(){
                 if (data.wafdisabled == false){
                   $('#waf-box').attr('checked', true);
                 }
+                if (data.sensorchallenge){
+                  $('#sensor-box').attr('checked', true);
+                }
                 currentservice = data.serviceid;
                 $("#hostname-title").html(data.hostname);
                 //$("#devmode-info").html("<i class='fa fa-hdd-o' style='font-size: 1.5em;'></i><strong> Development Mode: </strong>"+isenabled(data.cachedisabled));
@@ -383,6 +386,26 @@ $("#renew").click(function(){
 	  }
 	 });
   });
+});
+
+$('#sensor-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/sensormode",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			  $('#sensor-box').prop('checked', false);
+			   pagealert("error", result.responseText)
+			},
+   });
 });
 
 $('#waf-box').click(function() {
