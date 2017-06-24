@@ -51,14 +51,20 @@
                     <div id="profile_div" class="tab-pane fade in active">
                       <h3>Your Details</h3>
                       <form>
-
                       <div class="form-group">
                       <input id="fullname" class="form-control input-md" type="text" placeholder="Full Name" maxlength="32">
+                      </div>
+                      <div class="form-group">
                       <input id="phonenumber" class="form-control input-md" type="text" placeholder="Phone Number" maxlength="20">
+                      </div>
+                      <div class="form-group">
                       <input id="address" class="form-control input-md" type="text" placeholder="Address" maxlength="64">
+                      </div>
+                      <div class="form-group">
                       <input id="city" class="form-control input-md" type="text" placeholder="City" maxlength="32">
+                      </div>
 
-                      <div class="pure-control-group">
+                      <div class="form-group pure-control-group">
                       <select id="country" class="form-control input-md">
                       <option value="">Select your country</option>
                       <option value="AF">Afghanistan</option>
@@ -323,7 +329,11 @@
 
                  			<div class="form-group">
                  				<input id="password" class="form-control input-md" type="password" placeholder="Current Password" maxlength="48">
-                 				<input id="newpassword_1" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
+								</div>
+								<div class="form-group">
+									<input id="newpassword_1" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
+								</div>
+								  <div class="form-group">
                  				<input id="newpassword_2" class="form-control input-md" type="password" placeholder="Confirm New Password" maxlength="48">
                  			</div>
                  			</form>
