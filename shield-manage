@@ -266,6 +266,22 @@
                             </div>
                         </div>
                       </div>
+                      
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Caching</h3>
+                        </div>
+                          <div class="panel-body">
+                            <div class="col-md-10">
+                              <p>Cache static content (HTML, CSS, JS, Images) on Shovl edge servers.<br>Caching can speed up page load time.</p>
+                          </div>
+                          <div class="col-md-2 checkbox checkbox-slider--b checkbox-slider-md">
+                            <label>
+                              <input id="cache-box" type="checkbox"><span></span>
+                            </label>
+                          </div>
+                      </div>
+                    </div>
 
                       <div class="panel panel-primary">
                       <div class="panel-heading">

@@ -153,7 +153,7 @@ function getinfo(){
         				if (data.forcehttps){
         					$('#forcehttps-box').attr('checked', true);
         				}
-                if (data.cachedisabled){
+                if (data.caching){
                   $('#cache-box').attr('checked', true);
                 }
                 if (data.wafdisabled == false){
@@ -403,6 +403,26 @@ $('#sensor-box').click(function() {
 			},
 		   error: function(result) {
 			  $('#sensor-box').prop('checked', false);
+			   pagealert("error", result.responseText)
+			},
+   });
+});
+
+$('#cache-box').click(function() {
+	var req = {hostname: $_GET("id"), enabled: $(this).prop(('checked'))};
+        $.ajax({
+           type:"POST",
+           url: "/api/shield/settings/caching",
+           data: JSON.stringify(req),
+           beforeSend: function (request)
+           {
+               request.setRequestHeader("Authorization", localStorage.getItem("token"));
+           },
+           success: function(result) {
+			   pagealert("success", result)
+			},
+		   error: function(result) {
+			  $('#cache-box').prop('checked', false);
 			   pagealert("error", result.responseText)
 			},
    });
