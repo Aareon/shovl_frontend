@@ -329,11 +329,11 @@
 
                  			<div class="form-group">
                  				<input id="password" class="form-control input-md" type="password" placeholder="Current Password" maxlength="48">
-								</div>
-								<div class="form-group">
-									<input id="newpassword_1" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
-								</div>
-								  <div class="form-group">
+      								</div>
+      								<div class="form-group">
+      									<input id="newpassword_1" class="form-control input-md" type="password" placeholder="New Password" maxlength="48">
+      								</div>
+								    <div class="form-group">
                  				<input id="newpassword_2" class="form-control input-md" type="password" placeholder="Confirm New Password" maxlength="48">
                  			</div>
                  			</form>

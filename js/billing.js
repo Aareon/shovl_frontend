@@ -29,6 +29,26 @@ $("#paypal-deposit").click(function(){
     });
 })
 
+$("#btc-deposit").click(function(){
+	var req = {"amount": parseFloat($("#btc-amount").val())}
+	        $.ajax({
+            type:"POST",
+            url: "/api/btc/deposit",
+            data: JSON.stringify(req),
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Authorization", localStorage.getItem("token"));
+            },
+            success: function(result) {
+				$("#btc-amount").attr('disabled', 'disabled');
+				$("#btc-div").html(result);
+				},
+			 error: function(result) {
+				pagealert("error", result.responseText);
+			}
+    });
+})
+
 $("#addfunds").click(function(){
 	var giftcode = {"code": $("#giftcode").val()}
 	        $.ajax({
