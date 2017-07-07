@@ -50,7 +50,6 @@
                     <li class="active"><a data-toggle="tab" href="#manage_div">Manage</a></li>
                     <li><a data-toggle="tab" href="#logs_div">Logs</a></li>
                     <li><a data-toggle="tab" href="#files_div">Files</a></li>
-                    <li><a data-toggle="tab" href="#database_div">Database</a></li>
                     <li><a data-toggle="tab" href="#package_div">Package</a></li>
                     <li><a data-toggle="tab" href="#security_div">Security</a></li>
                   </ul>
@@ -257,59 +256,6 @@
                 					<tr><td><div style="display: none;" id="db_password"></div><a style="display: none;" id="hide-password">Hide</a><a id="show-password">Show</a></td></tr>
                 				</tbody>
               				</table>
-                    </div>
-
-					<div class="panel panel-primary">
-              <div class="panel-heading">Manage Databases</div>
-              <div class="panel-body">
-						  <div class="col-md-3">
-								<button id="db-create" class="btn btn-md btn-success" type="button"><i class="fa fa-database"></i> New Database</button>
-              </div>
-                            <table class="table">
-                            <thead>
-                              <tr>
-                                <th>Database</th>
-                                <th>Manage</th>
-                              </tr>
-                            </thead>
-                            <tbody id="database-table"></tbody>
-                          </table>
-                </div>
-            </div>
-
-                			<form action="" id="dbupload" method="post" enctype="multipart/form-data" >
-                        <div class="panel panel-primary">
-                          <div class="panel-heading">Import a Database</div>
-                  				<table class="table">
-                  						<thead>
-                  							<tr>
-                  							</tr>
-                  						</thead>
-                  						<tbody id="service_table">
-                  							<tr><td>
-                  							<div class="form-group col-md-12">
-                  							<input name="db_name" class="form-control input-md" type="text" placeholder="Database Name" maxlength="32">
-                  							</div>
-                  							</td></tr>
-                  							<tr><td>
-                  							<div class="form-group">
-                  							Database file(.sql): <label class="btn btn-sm btn-primary btn-file">Browse...<input type="file" name="file" required id="upload" style="display: none;"></label>
-                  							</div>
-                  							</td></tr>
-                  							<tr id="db_progress" style="display: none;"><td>
-                  								<div class="progress">
-                  									<div id="db_progressbar" class="progress-bar" role="progressbar"></div>
-                  								</div>
-                  							</td></tr>
-                  							<tr><td>
-                  							<div class="form-group">
-                  							<center><button class="submit btn btn-primary">Import</button></center>
-                  							</div>
-                  							</td></tr>
-                  						</tbody>
-                  				</table>
-                          </div>
-                			</form>
                     </div>
                   <!-- End of web contents -->
               </div>

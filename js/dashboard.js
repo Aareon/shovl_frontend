@@ -47,12 +47,24 @@ function getcontainers(){
 							tr.append("<td>" + website_status(data[i].status) + "</td>");
 							tr.append("<td>" + "expires: " +GiveDate(data[i].expires_stamp) + "</td>");
 							allcontainers = allcontainers.append(tr);
+						}else{
+							tr = $('<tr>');
+							tr.append("<td>" + "<i class='fa fa-database web_icon'></i>" +"</td>");
+							tr.append("<td>" + sql_link(data[i].containerid)+"MySQL Container</a>" + "</td>");
+							tr.append("<td>" + "SQL" + "</td>");
+							tr.append("<td>" + website_status(data[i].status) + "</td>");
+							tr.append("<td>" + "expires: never" + "</td>");
+							allcontainers = allcontainers.append(tr);
 						}
 					}
 					$('#service_table').replaceWith(allcontainers)
             }
 					}
     });
+}
+
+function sql_link(id){
+		return '<a href="sql-manage?id='+id+'">';
 }
 
 function link(id){
