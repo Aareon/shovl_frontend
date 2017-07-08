@@ -1,7 +1,6 @@
 $(document).ready(function(){
     //Load user information in details
    isloggedin();
-   IsAdmin();
             $.ajax({
             type:"GET",
             url: "/api/account/details",

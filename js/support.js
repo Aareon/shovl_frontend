@@ -2,7 +2,6 @@ var tickets_offset = 0
 $(document).ready(function(){
 	isloggedin();
 	mytickets();
-  IsAdmin();
 });
 
 $("#loadmore").click(function(){

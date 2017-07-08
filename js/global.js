@@ -23,6 +23,7 @@ function isloggedin(){
 	}
 }
 
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
@@ -226,6 +227,7 @@ function getpackages(){
 
 $(document).ready(function(){
 isloggedin();
+IsAdmin();
 });
 
 /* Tribute to the NSA
