@@ -47,29 +47,11 @@
                   <div id="alertbox"></div>
                   <!-- Start of web contents -->
                   <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#manage_div">Manage</a></li>
+                    <li class="active"><a data-toggle="tab" href="#database_div">Database</a></li>
                     <li><a data-toggle="tab" href="#logs_div">Logs</a></li>
-                    <li><a data-toggle="tab" href="#database_div">Database</a></li>
                   </ul>
 
                   <div class="tab-content">
-                    <div id="manage_div" class="tab-pane fade in active">
-                      <div class="col-md-12">
-                        <div class="panel panel-primary">
-                          <div class="panel-heading">Information</div>
-                          <table class="table">
-                  				<thead>
-                  				</thead>
-                  				<tbody id="service_table">
-                  					<tr><td id="hostname"></td></tr>
-                  					<tr><td id="status"></td></tr>
-                  					<tr><td id="service"></td></tr>
-                  					<tr><td id="expires"></td></tr>
-                  				</tbody>
-                        </table>
-                      </div>
-                    </div>
-
                     <div id="logs_div" class="tab-pane fade">
                       <div class="col-md-12">
                         <table class="table">
@@ -85,7 +67,7 @@
                     </div>
                     </div>
 
-                    <div id="database_div" class="tab-pane fade">
+                    <div id="database_div" class="tab-pane fade in active">
                       <div class="panel panel-primary">
                         <div class="panel-heading">MySQL Database Information</div>
                         <table class="table">
