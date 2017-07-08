@@ -1,9 +1,5 @@
 var logs_offset = 0
 //File Manager global vars
-var currentdir = "/";
-var previousdir = "";
-var currentpackage = getpackageid();
-var currentstatus = 0;
 $(document).ready(function(){
   getinfo();
   getdbinfo();
