@@ -4,7 +4,6 @@ $(document).ready(function(){
   getinfo();
   getdbinfo();
   getdatabases();
-  getmanagelog(logs_offset);
   $('tr').click(function(event) {
     if (event.target.type !== 'checkbox') {
       $(':checkbox', this).trigger('click');
@@ -148,47 +147,6 @@ function toBinaryString(data) {
 
     return ret.join('');
 }
-
-function getmanagelog(offset){
-	 isloggedin();
-	 var req = {containerid: $_GET("id"), offset: offset};
-         $.ajax({
-            type:"POST",
-            url: "/api/containers/managelogs",
-            data: JSON.stringify(req),
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Authorization", localStorage.getItem("token"));
-            },
-            success: function(result) {
-				var data = JSON.parse(result);
-				var p;
-        if (data != null){
-  				for (var i = 0; i < data.manage_logs.length; i++) {
-    					if (data.manage_logs[i].serviceid != 0){
-    					tr = $('<tr>');
-    					tr.append("<td>" + data.manage_logs[i].action + "</td>");
-    					tr.append("<td>" + convertTimestamp(data.manage_logs[i].timestamp) + "</td>");
-    					$('#managelog_table').append(tr);
-    					}
-  				  }
-        }
-
-				if (data.canloadmore) {
-					 $("#loadmore").removeClass("disabled")
-				}else {
-					 $("#loadmore").addClass("disabled")
-				}
-            }
-    });
-}
-
-$("#loadmore").click(function(){
-	if ($("#loadmore").hasClass("disabled") == false){
-		logs_offset += 1
-		getmanagelog(logs_offset);
-	}
-});
 
 function getdbinfo(){
 	 isloggedin();

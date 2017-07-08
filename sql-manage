@@ -48,7 +48,6 @@
                   <!-- Start of web contents -->
                   <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#database_div">Database</a></li>
-                    <li><a data-toggle="tab" href="#logs_div">Logs</a></li>
                   </ul>
 
                   <div class="tab-content">
