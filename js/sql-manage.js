@@ -159,7 +159,8 @@ function getdbinfo(){
             },
             success: function(result) {
 				var data = JSON.parse(result);
-				$("#db_hostname").html("<strong>Domain: </strong>"+data.hostname);
+				$("#notice").html("<strong>For website configurations the hostname is 'mysql' but for PHPMyAdmin access, use the hostname below</strong>");
+				$("#db_hostname").html("<strong>Hostname: </strong>"+data.hostname);
 				$("#db_username").html("<strong>Username: </strong>"+data.username);
 				$("#db_password").html("<strong>Password: </strong>"+data.password);
             },
