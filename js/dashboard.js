@@ -50,7 +50,7 @@ function getcontainers(){
 						}else{
 							tr = $('<tr>');
 							tr.append("<td>" + "<i class='fa fa-database web_icon'></i>" +"</td>");
-							tr.append("<td>" + sql_link(data[i].containerid)+"MySQL Container</a>" + "</td>");
+							tr.append("<td>" + sql_link(data[i].containerid)+"MariaDB Container</a>" + "</td>");
 							tr.append("<td>" + "SQL" + "</td>");
 							tr.append("<td>" + website_status(data[i].status) + "</td>");
 							tr.append("<td>" + "expires: never" + "</td>");
