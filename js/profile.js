@@ -52,6 +52,9 @@ $("#change-password").click(function(){
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
+				$("#password").val("")
+				$("#newpassword_1").val("")
+				$("#newpassword_2").val("")
                 pagealert("success", "Password Changed");
             },
             error: function(result) {
