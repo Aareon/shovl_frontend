@@ -10,7 +10,7 @@ $("#randomcode").click(function(){
 })
 
 $("#card-deposit").click(function(){
-	var req = {"amount": parseInt($("#card-amount").val()), "year": parseInt($("#card-year").val()), "month": parseInt($("#card-month").val()), "number": $("#card-number").val(), "cvc": $("#card-cvc").val(), "name": $("#card-name").val()}
+	var req = {"amount": parseInt($("#card-amount").val())*100, "year": parseInt($("#card-year").val()), "month": parseInt($("#card-month").val()), "number": $("#card-number").val(), "cvc": $("#card-cvc").val(), "name": $("#card-name").val()}
 	        $.ajax({
             type:"POST",
             url: "/api/stripe/deposit",
