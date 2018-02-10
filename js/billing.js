@@ -9,20 +9,19 @@ $("#randomcode").click(function(){
     $("#giftcode_admin").val(randomString(32));
 })
 
-$("#paypal-deposit").click(function(){
-	var req = {"amount": parseFloat($("#paypal-amount").val())}
+$("#card-deposit").click(function(){
+	var req = {"amount": parseInt($("#card-amount").val()), "year": parseInt($("#card-year").val()), "month": parseInt($("#card-month").val()), "number": $("#card-number").val(), "cvc": $("#card-cvc").val(), "name": $("#card-name").val()}
 	        $.ajax({
             type:"POST",
-            url: "/api/paypal/deposit",
+            url: "/api/stripe/deposit",
             data: JSON.stringify(req),
             beforeSend: function (request)
             {
                 request.setRequestHeader("Authorization", localStorage.getItem("token"));
             },
             success: function(result) {
-				$("#paypal-amount").attr('disabled', 'disabled');
-				$("#paypal-div").html(result);
-				},
+					pagealert("success", result);
+			},
 			 error: function(result) {
 				pagealert("error", result.responseText);
 			}

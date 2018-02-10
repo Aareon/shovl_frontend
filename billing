@@ -86,12 +86,27 @@
 						   </div>
 						   <div class="panel panel-primary">
 								<div class="panel-body">
-									<h3>Make a Paypal deposit</h3>
-									   <div class="form-group">
-											<input id="paypal-amount" class="form-control input-md" type="number" step="0.01" placeholder="Amount of credits in USD">
+									<h3>Make a Card deposit</h3>
+									   <div class="form-group col-md-12">
+											<input id="card-amount" class="form-control input-md" type="number" placeholder="Amount of credits in USD">
+										</div>
+										<div class="form-group col-md-12">
+											<input id="card-name" class="form-control input-md" type="text" placeholder="Card Holder Name">
+										</div>
+										<div class="form-group col-md-12">
+											<input id="card-number" class="form-control input-md" type="text" placeholder="Card Number">
+										</div>
+										<div class="form-group col-md-3">
+											<input id="card-month" class="form-control input-md" type="number" placeholder="Expiry Month">
+										</div>
+										<div class="form-group col-md-3">
+											<input id="card-year" class="form-control input-md" type="number" placeholder="Expiry Year">
+										</div>
+										<div class="form-group col-md-6">
+											<input id="card-cvc" class="form-control input-md" type="text" placeholder="CVC (3 digits on back of card)">
 										</div>
 										<div id="paypal-div">
-											<button id="paypal-deposit" class="btn btn-primary btn-block" type="button">Buy Credits</button>
+											<button id="card-deposit" class="btn btn-primary btn-block" type="button">Buy Credits</button>
 										</div>
 								  </div>
 							</div>
