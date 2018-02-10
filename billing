@@ -106,7 +106,7 @@
 											<input id="card-cvc" class="form-control input-md" type="text" placeholder="CVC (3 digits on back of card)">
 										</div>
 										<div id="paypal-div">
-											<button id="card-deposit" class="btn btn-primary btn-block" type="button">Buy Credits</button>
+											<button id="card-deposit" class="btn btn-primary btn-block" type="button">Buy Credits through Stripe</button>
 										</div>
 								  </div>
 							</div>
